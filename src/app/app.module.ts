@@ -11,7 +11,7 @@ import { SideEffectItemComponent } from './side-effects/side-effect-item/side-ef
 const routes: Routes = [
   { path: '',component:AppComponent },
   { path: 'drug/listing', component: DrugsComponent},
-  { path: 'food', component: FoodItemComponent}
+  { path: 'food', component: FoodItemComponent},
   {path :'sideeffect', component:SideEffectItemComponent }
 ];
 @NgModule({
