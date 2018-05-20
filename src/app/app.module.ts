@@ -8,11 +8,13 @@ import {DrugsModule} from './drugs/drugs.module';
 import {DrugsComponent} from './drugs/drugs.component';
 import { PillItemComponent } from './pill/pill-item/pill-item.component';
 import { SideEffectItemComponent } from './side-effects/side-effect-item/side-effect-item.component';
+import { ActiveIngrediantItemComponent } from 'src/app/active-ingredients/active-ingrediant-item/active-ingrediant-item.component';
 const routes: Routes = [
   { path: '',component:AppComponent },
   { path: 'drug/listing', component: DrugsComponent},
   { path: 'food', component: FoodItemComponent},
-  {path :'sideeffect', component:SideEffectItemComponent }
+  {path :'sideeffect', component:SideEffectItemComponent },
+  { path:'ai', component: ActiveIngrediantItemComponent}
 ];
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ const routes: Routes = [
     PillListingComponent,
     PillItemComponent,
     FoodItemComponent,
-    SideEffectItemComponent
+    SideEffectItemComponent,
+    ActiveIngrediantItemComponent
     
   ],
   imports: [
