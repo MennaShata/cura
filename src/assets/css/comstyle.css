@@ -1,0 +1,19 @@
+.thumb-info.custom-thumb-info-style-2 .thumb-info-caption .date {
+    position: absolute;
+    top: -12px;
+    right: 12px;
+    padding: 8px 13px 5px;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 1.5px;
+}
+.thumb-info.custom-thumb-info-style-2 .thumb-info-caption {
+    display: block;
+    position: relative;
+    padding: 30px !important;
+}
+article.thumb-info {
+    width: 300px;
+    height: 400px;
+
+}
