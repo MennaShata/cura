@@ -10,7 +10,6 @@ const routes: Routes = [
   { path: '',component:AppComponent },
   { path: 'drug/listing', component: DrugsComponent},
   { path: 'food', component: FoodItemComponent}
-
 ];
 @NgModule({
   declarations: [
