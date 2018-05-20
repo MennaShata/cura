@@ -6,6 +6,7 @@ import { PillListingComponent } from './pill/pill-listing/pill-listing.component
 import {RouterModule,Routes} from '@angular/router';
 import {DrugsModule} from './drugs/drugs.module';
 import {DrugsComponent} from './drugs/drugs.component';
+import { PillItemComponent } from './pill/pill-item/pill-item.component';
 const routes: Routes = [
   { path: '',component:AppComponent },
   { path: 'drug/listing', component: DrugsComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     PillListingComponent,
+    PillItemComponent,
     FoodItemComponent
   ],
   imports: [
