@@ -8,6 +8,10 @@ import { DiseaseDetailsComponent } from './disease-details/disease-details.compo
   imports: [
     CommonModule
   ],
-  declarations: [DiseaseAddComponent, DiseaseLisingComponent, DiseaseDetailsComponent]
+  declarations: [
+    DiseaseAddComponent, 
+    DiseaseLisingComponent, 
+    DiseaseDetailsComponent,
+]
 })
 export class DiseaseModule { }
