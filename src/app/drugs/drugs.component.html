@@ -1,14 +1,30 @@
 <form method="post" action="#">
     <div class="container">
         <div role="main" class="main shop">
-            <app-search></app-search>
+            <div class="row">
+            <app-search class="col-xs-8 col-xs-offset-2"></app-search>
+            <div class="col-xs-2 mt-xlg" style="font-size:xx-large;color:#008fe2;">
+                    <a href="#"><i class="fa fa-plus-circle"></i></a>
+                </div>
+            </div>
             <br>
             <br>
             <div class="row">
-
-                <app-filter></app-filter>
-                <app-drug-listing></app-drug-listing>
+                <app-filter class="col-md-2"></app-filter>
+                <div class="col-md-10">
+                    <div class="featured-boxes">
+                        <div class="row">
+                            <app-drug-listing class="col-md-12"></app-drug-listing>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </form>
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<script src="~/Scripts/MyScript.js"></script>
