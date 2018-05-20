@@ -1,0 +1,21 @@
+.drug-status
+{
+	background-color: rgb(0, 132, 255);
+
+}
+
+.drug-status h4
+{
+	color: white;
+	padding-top:.5%
+}
+.drug-avatar
+{
+	text-align: center;
+}
+.drug-btn{
+padding-left:10px !important
+}
+.list-side-borders2{
+	border-right: 1px solid #DBDBDB !important
+}
