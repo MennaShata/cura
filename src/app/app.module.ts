@@ -1,3 +1,5 @@
+import { FoodInteractionItemComponent } from './Interactions/Food-Interactions/Food-Interaction-Item/Food-Interaction-Item.component';
+import { FoodAddComponent } from './food/food-add/food-add.component';
 import { FoodItemComponent } from './food/food-item/food-item.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -10,14 +12,18 @@ import { PillItemComponent } from './pill/pill-item/pill-item.component';
 const routes: Routes = [
   { path: '',component:AppComponent },
   { path: 'drug/listing', component: DrugsComponent},
-  { path: 'food', component: FoodItemComponent}
+  { path: 'food', component: FoodItemComponent},
+  { path: 'food/add', component: FoodAddComponent},
+  { path: 'interactions/foodinteractions', component: FoodInteractionItemComponent}
 ];
 @NgModule({
   declarations: [
     AppComponent,
     PillListingComponent,
     PillItemComponent,
-    FoodItemComponent
+    FoodItemComponent,
+    FoodAddComponent,
+    FoodInteractionItemComponent
   ],
   imports: [
     BrowserModule,
