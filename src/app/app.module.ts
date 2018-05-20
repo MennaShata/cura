@@ -15,7 +15,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    PillListingComponent
+    PillListingComponent,
+    FoodItemComponent
   ],
   imports: [
     BrowserModule,
