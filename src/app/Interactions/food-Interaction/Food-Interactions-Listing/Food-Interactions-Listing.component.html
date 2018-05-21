@@ -1,33 +1,33 @@
 <section class="section our-services">
   <div class="container">
-    <!-- <div class="owl-carousel show-nav-title custom-arrows-style-4" data-plugin-options="{'responsive': {'767': {'items': 1}, '1200': {'items': 2}}, 'margin': 15, 'loop': false, 'dots': false, 'nav': true}"> -->
+    <div class="owl-carousel show-nav-title custom-arrows-style-4" data-plugin-options="{'responsive': {'767': {'items': 1}, '1200': {'items': 2}}, 'margin': 15, 'loop': false, 'dots': false, 'nav': true}">
       <div *ngFor="let foodinteraction of foodInteractionList" class="col-md-6">
         <div class="featured-box featured-box-secondary featured-box-text-left">
           <div class="box-content">
             <div class="row">
               <div class="col-md-12">
                 <i class="{{foodinteraction.icon}}"></i>
-                <h2>{{foodinteraction.foodName}}</h2>
+                <h2>Interaction with {{foodinteraction.foodName}} products </h2>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
                 <p>
-                  <strong>{{foodinteraction.degree}}</strong>
+                  <strong>Degree: {{foodinteraction.degree}}</strong>
                 </p>
                 <p>
-                  <strong>{{foodinteraction.description}}</strong>
+                  <strong>Description: {{foodinteraction.description}}</strong>
                 </p>
 
               </div>
             </div>
             <div class="row">
-              <button class="col-md-offset-8 btn btn-lg btn-secondary mr-xs mb-lg" type="button" id="@Url.Action">Learn More</button>
+              <button class="col-md-offset-9 btn btn-lg btn-secondary mr-xs mb-lg" type="button" id="@Url.Action">Learn More</button>
 
             </div>
           </div>
         </div>
       </div>
-    <!-- </div> -->
+    </div>
   </div>
 </section>
