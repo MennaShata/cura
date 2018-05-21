@@ -1,3 +1,19 @@
-<p>
-  food-listing works!
-</p>
+<div role="main" class="main shop">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        
+        <div class="featured-boxes">
+          <div class="row">
+           <app-food-item 
+           *ngFor="let fooditem of foodlist" 
+           [food]="fooditem" 
+           class="col-sm-4">
+          </app-food-item>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
