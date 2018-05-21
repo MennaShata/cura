@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DiseaseSmallItemComponent } from '../disease-small-item/disease-small-item.component';
 
 @Component({
   selector: 'app-disease-lising',
@@ -8,8 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class DiseaseLisingComponent implements OnInit {
 
   constructor() { }
-
   ngOnInit() {
+    
   }
 
 }
