@@ -8,11 +8,13 @@ import { AppComponent } from './app.component';
 import { DiseaseSmallItemComponent } from './diseases/disease-small-item/disease-small-item.component';
 import { PillListingComponent } from './pill/pill-listing/pill-listing.component';
 import {RouterModule,Routes} from '@angular/router';
+import{PillModule} from './pill/pill.module';
 import {DrugsModule} from './drugs/drugs.module';
 import {DrugsComponent} from './drugs/drugs.component';
 import { PillItemComponent } from './pill/pill-item/pill-item.component';
 import { SideEffectItemComponent } from './side-effects/side-effect-item/side-effect-item.component';
 import { ActiveIngrediantItemComponent } from 'src/app/active-ingredients/active-ingrediant-item/active-ingrediant-item.component';
+import { ActiveIngredientListingComponent } from 'src/app/active-ingredients/active-ingredient-listing/active-ingredient-listing.component';
 import { FoodInteractionsListingComponent } from './Interactions/Food-Interaction/Food-Interactions-Listing/Food-Interactions-Listing.component';
 
 const routes: Routes = [
@@ -38,6 +40,7 @@ const routes: Routes = [
     FoodInteractionItemComponent,
     SideEffectItemComponent,
     ActiveIngrediantItemComponent,
+    ActiveIngredientListingComponent,
     FoodListingComponent,
     FoodInteractionsListingComponent
     
@@ -46,6 +49,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     DrugsModule,
+    PillModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

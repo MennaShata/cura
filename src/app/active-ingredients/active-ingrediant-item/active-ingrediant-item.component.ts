@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Iactiveingredient } from 'src/app/shared/models/interfaces/iactiveingredient';
 
 @Component({
   selector: 'app-active-ingrediant-item',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActiveIngrediantItemComponent implements OnInit {
 
+  @Input() ai:Iactiveingredient;
   constructor() { }
 
   ngOnInit() {
