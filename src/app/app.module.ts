@@ -1,4 +1,5 @@
-import { FoodInteractionItemComponent } from './Interactions/Food-Interactions/Food-Interaction-Item/Food-Interaction-Item.component';
+import { FoodListingComponent } from './food/food-listing/food-listing.component';
+import { FoodInteractionItemComponent } from './Interactions/Food-Interaction/Food-Interaction-Item/Food-Interaction-Item.component';
 import { FoodAddComponent } from './food/food-add/food-add.component';
 import { FoodItemComponent } from './food/food-item/food-item.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,14 +14,18 @@ import { PillItemComponent } from './pill/pill-item/pill-item.component';
 import { SideEffectItemComponent } from './side-effects/side-effect-item/side-effect-item.component';
 import { ActiveIngrediantItemComponent } from 'src/app/active-ingredients/active-ingrediant-item/active-ingrediant-item.component';
 import { ActiveIngredientListingComponent } from 'src/app/active-ingredients/active-ingredient-listing/active-ingredient-listing.component';
+import { FoodInteractionsListingComponent } from './Interactions/Food-Interaction/Food-Interactions-Listing/Food-Interactions-Listing.component';
+
 const routes: Routes = [
   { path: '',component:AppComponent },
   { path: 'drug/listing', component: DrugsComponent},
   { path: 'food', component: FoodItemComponent},
   { path: 'food/add', component: FoodAddComponent},
-  { path: 'interactions/foodinteractions', component: FoodInteractionItemComponent},
+  { path: 'interactions/foodinteraction', component: FoodInteractionItemComponent},
   {path :'sideeffect', component:SideEffectItemComponent },
-  { path:'ai', component: ActiveIngredientListingComponent}
+  { path:'ai', component: ActiveIngrediantItemComponent},
+  { path:'food/foodlist', component: FoodListingComponent},
+  { path:'interactions/foodinteraction/listing', component: FoodInteractionsListingComponent}
 ];
 @NgModule({
   declarations: [
@@ -34,7 +39,9 @@ const routes: Routes = [
     FoodInteractionItemComponent,
     SideEffectItemComponent,
     ActiveIngrediantItemComponent,
-    ActiveIngredientListingComponent
+    ActiveIngredientListingComponent,
+    FoodListingComponent,
+    FoodInteractionsListingComponent
     
 
   ],
