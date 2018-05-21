@@ -40,8 +40,7 @@ const routes: Routes = [
     AppComponent,
 
     DiseaseSmallItemComponent,
-    PillListingComponent,
-    PillItemComponent,
+    
     FoodItemComponent,
     FoodAddComponent,
     FoodInteractionItemComponent,
