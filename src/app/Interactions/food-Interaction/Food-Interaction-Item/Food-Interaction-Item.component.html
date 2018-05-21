@@ -1,33 +1,26 @@
-<section class="section our-services">
-  <div class="container">
-    <!-- <div class="owl-carousel show-nav-title custom-arrows-style-4" data-plugin-options="{'responsive': {'767': {'items': 1}, '1200': {'items': 2}}, 'margin': 15, 'loop': false, 'dots': false, 'nav': true}"> -->
-      <div class="col-md-6">
-        <div class="featured-box featured-box-secondary featured-box-text-left">
-          <div class="box-content">
-            <div class="row">
-              <div class="col-md-12">
-                <i class="icon-featured @Model.FoodIcon pull-left mr-lg"></i>
-                <h2>Interaction with @Model.FoodName products</h2>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <p>
-                  <strong>Degree: @Model.Degree </strong>
-                </p>
-                <p>
-                  <strong>Description: @Model.Description </strong>
-                </p>
 
-              </div>
-            </div>
-            <div class="row">
-              <button class="col-md-offset-8 btn btn-lg btn-secondary mr-xs mb-lg" type="button" id="@Url.Action">Learn More</button>
-
-            </div>
-          </div>
+  <div class="featured-box featured-box-secondary featured-box-text-left">
+    <div class="box-content">
+      <div class="row">
+        <div class="col-md-12">
+          <i class="{{foodinteraction.icon}}"></i>
+          <h2>Interaction with {{foodinteraction.foodName}} products </h2>
         </div>
       </div>
-    <!-- </div> -->
+      <div class="row">
+        <div class="col-md-12">
+          <p>
+            <strong>Degree: {{foodinteraction.degree}}</strong>
+          </p>
+          <p>
+            <strong>Description: {{foodinteraction.description}}</strong>
+          </p>
+
+        </div>
+      </div>
+      <div class="row">
+        <button class="col-md-offset-9 btn btn-lg btn-secondary mr-xs mb-lg" type="button" id="@Url.Action">Learn More</button>
+
+      </div>
+    </div>
   </div>
-</section>
