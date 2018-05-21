@@ -25,6 +25,7 @@ import { FoodInteractionsListingComponent } from './Interactions/Food-Interactio
 
 
 const routes: Routes = [
+  { path:'pill/item', component: PillComponent},
   { path: '',component:AppComponent },
   { path: 'drug/listing', component: DrugsComponent},
   { path: 'food', component: FoodItemComponent},
@@ -34,7 +35,7 @@ const routes: Routes = [
   { path:'ai', component: ActiveIngrediantItemComponent},
   { path:'food/foodlist', component: FoodListingComponent},
   { path:'interactions/foodinteraction/listing', component: FoodInteractionsListingComponent},
-  { path:'pill/item', component: PillComponent}
+
 ];
 @NgModule({
   declarations: [
