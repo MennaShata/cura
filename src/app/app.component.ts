@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DiseaseSmallItemComponent } from './diseases/disease-small-item/disease-small-item.component'
 
 @Component({
   selector: 'app-root',
