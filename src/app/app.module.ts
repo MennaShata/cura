@@ -37,14 +37,14 @@ const routes: Routes = [
   { path:'ai', component: ActiveIngrediantItemComponent},
   { path:'food/foodlist', component: FoodListingComponent},
   { path:'interactions/foodinteraction/listing', component: FoodInteractionsListingComponent},
-  { path:'pill/item', component: PillComponent}
+  { path:'pill/item', component: PillComponent},
+  { path:"diseaseComponent" ,component:DiseaseComponentComponent}
+
 ];
 @NgModule({
   declarations: [
     AppComponent,
-
     DiseaseSmallItemComponent,
-    
     FoodItemComponent,
     FoodAddComponent,
     FoodInteractionItemComponent,
@@ -52,7 +52,9 @@ const routes: Routes = [
     ActiveIngrediantItemComponent,
     SideEffectListingComponent,
     FoodListingComponent,
-    FoodInteractionsListingComponent
+    FoodInteractionsListingComponent,
+    DiseaseComponentComponent,
+    DiseaseLisingComponent
   ],
   imports: [
     BrowserModule,

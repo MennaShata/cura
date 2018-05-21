@@ -7,7 +7,7 @@ import { DrugAddComponent } from './drug-add/drug-add.component';
 import { DrugItemSmallComponent } from './drug-item-small/drug-item-small.component';
 import {SearchComponent} from './../shared/search/search.component'; 
 import { AppModule } from '../app.module';
-//import {FilterComponent} from './../shared/filter/filter.component';
+import {FilterComponent} from './../shared/filter/filter.component';
 
 @NgModule({
   imports: [
@@ -19,7 +19,7 @@ import { AppModule } from '../app.module';
     DrugAddComponent,
     DrugItemSmallComponent,
     SearchComponent,
-    //FilterComponent
+    FilterComponent
     ]
 })
 export class DrugsModule { }
