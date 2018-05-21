@@ -33,7 +33,7 @@ const routes: Routes = [
   { path:'ai', component: ActiveIngrediantItemComponent},
   { path:'food/foodlist', component: FoodListingComponent},
   { path:'interactions/foodinteraction/listing', component: FoodInteractionsListingComponent},
-  { path:'pill/listing', component: PillComponent}
+  { path:'pill/item', component: PillComponent}
 ];
 @NgModule({
   declarations: [
@@ -50,8 +50,6 @@ const routes: Routes = [
     ActiveIngredientListingComponent,
     FoodListingComponent,
     FoodInteractionsListingComponent
-    
-
   ],
   imports: [
     BrowserModule,
