@@ -17,7 +17,6 @@ import { DiseaseSmallItemComponent } from './disease-small-item/disease-small-it
     DiseaseDetailsComponent,
     FilterComponent,
     DiseaseSmallItemComponent,
-,
     DiseaseComponentComponent
 ]
 })
