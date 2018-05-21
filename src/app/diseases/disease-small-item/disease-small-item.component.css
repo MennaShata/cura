@@ -1,0 +1,242 @@
+.btn-tertiary
+{
+    color: #ffffff;
+    background-color: #3aabdd;
+    border-color: #3aabdd #3aabdd #2291c2;
+}
+.btn {
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    transition: all 0.1s;
+}
+.mr-xs {
+    margin-right: 5px !important;
+}
+.mb-lg {
+    margin-bottom: 20px !important;
+}
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+button, select {
+    text-transform: none;
+}
+button {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+   
+}
+.box-content {
+    border-top-color: #3aabdd;
+}
+
+
+p {
+    color: #777;
+    line-height: 24px;
+    margin: 0 0 20px;
+}
+
+p {
+    margin: 0 0 10px;
+}
+p {
+    color: #50545F;
+}
+a, p, span, input {
+    font-family: "Sintony", sans-serif;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+user agent stylesheet
+p {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+.featured-box {
+    background: #F5F5F5;
+    background: -webkit-linear-gradient( top , #FFF 1%, #fcfcfc 98%) repeat scroll 0 0 transparent;
+    background: linear-gradient(to bottom, #FFF 1%, #fcfcfc 98%) repeat scroll 0 0 transparent;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-bottom: 1px solid #DFDFDF;
+    border-left: 1px solid #ECECEC;
+    border-radius: 8px;
+    border-right: 1px solid #ECECEC;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    min-height: 100px;
+    position: relative;
+    text-align: center;
+    z-index: 1;
+}
+
+:after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+:after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html .featured-box-tertiary .box-content {
+    border-top-color: #3aabdd;
+}
+
+#header .header-search .form-control, #header .header-nav-main nav > ul > li > a, #header .header-nav-main nav > ul > li.dropdown .dropdown-menu, #header .header-nav-main nav > ul > li.dropdown .dropdown-menu li.dropdown-submenu > .dropdown-menu, #header .header-nav-main nav > ul > li.dropdown-mega > .dropdown-menu, #header .header-nav-main nav > ul > li.dropdown-mega .dropdown-mega-sub-nav > li > a, #header.header-transparent .header-nav-main, #header.header-semi-transparent .header-nav-main, #header.header-semi-transparent-light .header-nav-main, #header .header-nav-main nav > ul > li.dropdown-mega.dropdown-mega-signin .dropdown-menu, .slider-container .tparrows, .nivo-slider .theme-default .nivoSlider, .nivo-slider .theme-default .nivoSlider img, .home-intro-compact, html.dark #header, html.boxed .body, blockquote.with-borders, p.drop-caps.drop-caps-style-2:first-child:first-letter, .btn-3d, select, .captcha-refresh, .featured-icon, .panel-group .panel-heading, .tabs, .nav-tabs li a, .tab-content, .tabs.tabs-bottom .tab-content, .tabs.tabs-bottom .nav-tabs li a, .tabs-left .tab-content, .tabs-left .nav-tabs > li:first-child a, .tabs-left .nav-tabs > li:last-child a, .tabs-right .tab-content, .tabs-right .nav-tabs > li:first-child a, .tabs-right .nav-tabs > li:last-child a, .nav-tabs.nav-justified li:first-child a, .nav-tabs.nav-justified li:first-child a:hover, .nav-tabs.nav-justified li:last-child a, .nav-tabs.nav-justified li:last-child a:hover, .tabs.tabs-bottom .nav.nav-tabs.nav-justified li:first-child a, .tabs.tabs-bottom .nav.nav-tabs.nav-justified li:last-child a, .tabs-navigation, .tabs-navigation .nav-tabs > li:first-child a, .tabs-navigation .nav-tabs > li:last-child a, .toggle > label, .toggle.toggle-simple .toggle > label, .toggle.toggle-simple .toggle > label:after, .owl-carousel .owl-nav [class*="owl-"], .owl-carousel.rounded-nav .owl-nav [class*="owl-"], .owl-carousel.rounded-nav .owl-nav [class*="owl-"]:hover, .owl-carousel.full-width .owl-nav .owl-prev, .owl-carousel.big-nav .owl-nav .owl-prev, .owl-carousel.full-width .owl-nav .owl-next, .owl-carousel.big-nav .owl-nav .owl-next, .embed-responsive.embed-responsive-borders, .pricing-table h3, .pricing-table .plan, .featured-box, .featured-box .box-content, .thumb-info, .thumb-info .thumb-info-wrapper, .thumb-info .thumb-info-wrapper:after, .thumb-info .thumb-info-type, .thumb-info img, section.timeline .timeline-date, section.timeline .timeline-box, .testimonial blockquote, .testimonial.testimonial-style-2 blockquote, .testimonial.testimonial-style-3 blockquote, .testimonial.testimonial-style-4, .testimonial.testimonial-style-4 blockquote, .testimonial.testimonial-style-5 blockquote, .testimonial.testimonial-style-6 blockquote, .container .call-to-action, .progress, .progress.progress-border-radius, .progress.progress-border-radius .progress-bar, .progress-bar, .progress-bar-tooltip, .counters.with-borders .counter, html .scroll-to-top, .google-map.small, .google-map-borders, article.post .post-date .month, article.post .post-date .day, article .post-video, article .post-audio, ul.comments .comment-block, .recent-posts .date .month, #header nav.mega-menu .mega-menu-shop .dropdown-menu, .shop ul.products .product .add-to-cart-product, .product-info, .product-info img, .product-info + .product-info, .img-thumbnail.img-thumbnail-hover-icon:before, .product-thumb-info {
+    border-radius: 0;
+}
+.featured-box .box-content {
+    border-radius: 8px;
+    border-top: 1px solid #CCC;
+    border-top-width: 4px;
+    padding: 30px 30px 10px 30px;
+    position: relative;
+    top: -1px;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+.featured-box {
+    background: #F5F5F5;
+    background: -webkit-linear-gradient( top , #FFF 1%, #fcfcfc 98%) repeat scroll 0 0 transparent;
+    background: linear-gradient(to bottom, #FFF 1%, #fcfcfc 98%) repeat scroll 0 0 transparent;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-bottom: 1px solid #DFDFDF;
+    border-left: 1px solid #ECECEC;
+    border-radius: 8px;
+    border-right: 1px solid #ECECEC;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    min-height: 100px;
+    position: relative;
+    text-align: center;
+    z-index: 1;
+}
+
+:after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+:after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html .featured-box-tertiary .box-content {
+    border-top-color: #3aabdd;
+}
+
+.featured-box .box-content {
+    border-radius: 8px;
+    border-top: 1px solid #CCC;
+    border-top-width: 4px;
+    padding: 30px 30px 10px 30px;
+    position: relative;
+    top: -1px;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+user agent stylesheet
+div {
+    display: block;
+}
+
+p {
+    color: #777;
+    line-height: 24px;
+    margin: 0 0 20px;
+}
+
+p {
+    margin: 0 0 10px;
+}
+p {
+    color: #50545F;
+}
+a, p, span, input {
+    font-family: "Sintony", sans-serif;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+user agent stylesheet
+p {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
