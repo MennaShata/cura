@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Isideeffect } from '../../shared/models/interfaces/Isideeffect';
 
 @Component({
   selector: 'app-side-effect-item',
@@ -7,10 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideEffectItemComponent implements OnInit {
 
-  
+ @Input() public sideeffect :Isideeffect;
 
   constructor() {
-   
    }
 
   ngOnInit() {
