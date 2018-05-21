@@ -1,3 +1,4 @@
+import { FoodListingComponent } from './food/food-listing/food-listing.component';
 import { FoodInteractionItemComponent } from './Interactions/Food-Interactions/Food-Interaction-Item/Food-Interaction-Item.component';
 import { FoodAddComponent } from './food/food-add/food-add.component';
 import { FoodItemComponent } from './food/food-item/food-item.component';
@@ -12,6 +13,7 @@ import {DrugsComponent} from './drugs/drugs.component';
 import { PillItemComponent } from './pill/pill-item/pill-item.component';
 import { SideEffectItemComponent } from './side-effects/side-effect-item/side-effect-item.component';
 import { ActiveIngrediantItemComponent } from 'src/app/active-ingredients/active-ingrediant-item/active-ingrediant-item.component';
+
 const routes: Routes = [
   { path: '',component:AppComponent },
   { path: 'drug/listing', component: DrugsComponent},
@@ -19,7 +21,8 @@ const routes: Routes = [
   { path: 'food/add', component: FoodAddComponent},
   { path: 'interactions/foodinteractions', component: FoodInteractionItemComponent},
   {path :'sideeffect', component:SideEffectItemComponent },
-  { path:'ai', component: ActiveIngrediantItemComponent}
+  { path:'ai', component: ActiveIngrediantItemComponent},
+  { path:'food/foodlist', component: FoodListingComponent}
 ];
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ const routes: Routes = [
     FoodAddComponent,
     FoodInteractionItemComponent,
     SideEffectItemComponent,
-    ActiveIngrediantItemComponent
+    ActiveIngrediantItemComponent,
+    FoodListingComponent
     
 
   ],
