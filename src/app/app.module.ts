@@ -13,6 +13,7 @@ import { DiseaseSmallItemComponent } from './diseases/disease-small-item/disease
 import { DiseaseLisingComponent } from './diseases/disease-lising/disease-lising.component';
 import { DiseaseComponentComponent } from './diseases/disease-component/disease-component.component';
 import { FilterComponent } from './shared/filter/filter.component';
+import { DiseaseModule } from './diseases/disease.module';
 const routes: Routes = [
   { path: '',component:AppComponent },
   { path: 'drug/listing', component: DrugsComponent},
@@ -39,6 +40,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     DrugsModule,
+    DiseaseModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

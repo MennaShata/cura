@@ -6,11 +6,12 @@ import { DrugListingComponent } from './drug-listing/drug-listing.component';
 import { DrugAddComponent } from './drug-add/drug-add.component';
 import { DrugItemSmallComponent } from './drug-item-small/drug-item-small.component';
 import {SearchComponent} from './../shared/search/search.component'; 
-import {FilterComponent} from './../shared/filter/filter.component';
+import { AppModule } from '../app.module';
+//import {FilterComponent} from './../shared/filter/filter.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
   ],
   declarations: [DrugsComponent,
     DrugDetailsComponent,
@@ -18,7 +19,7 @@ import {FilterComponent} from './../shared/filter/filter.component';
     DrugAddComponent,
     DrugItemSmallComponent,
     SearchComponent,
-    FilterComponent
+    //FilterComponent
     ]
 })
 export class DrugsModule { }
