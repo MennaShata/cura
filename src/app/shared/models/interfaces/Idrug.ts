@@ -8,4 +8,5 @@ export interface Idrug{
     strengthUnit:string;
     usage:string;
     dosage:string;
+
 }
