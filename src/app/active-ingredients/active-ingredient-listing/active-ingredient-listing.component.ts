@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActiveIngredientService } from 'src/app/shared/services/active-ingredient/active-ingredient.service';
+import { Iactiveingredient } from 'src/app/shared/models/interfaces/iactiveingredient';
 
 @Component({
   selector: 'app-active-ingredient-listing',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActiveIngredientListingComponent implements OnInit {
 
-  constructor() { }
+  ais:Iactiveingredient[];
+  constructor(private ActiveIngredientService:ActiveIngredientService) { }
 
   ngOnInit() {
+    this.ais = this.ActiveIngredientService.getAll();
   }
 
 }
