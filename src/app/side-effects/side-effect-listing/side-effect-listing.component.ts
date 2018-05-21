@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Isideeffect } from '../../shared/models/interfaces/Isideeffect';
+import { SideeffectService } from '../../shared/services/sideeffect.service';
 
 @Component({
   selector: 'app-side-effect-listing',
@@ -9,24 +10,12 @@ import { Isideeffect } from '../../shared/models/interfaces/Isideeffect';
 export class SideEffectListingComponent implements OnInit {
 
   public sideeffects: Isideeffect[];
-  constructor() { 
-    this.sideeffects =[
-      {
-        name : "soda3",
-        description:"haza el dwa bigeb soda3 lma yta5d m3 el lban",
-        icon:"fa fa-user"
-
-    },
-    {
-      name : "soda3 nsfi",
-      description:"haza el dwa bigeb soda3 lma yta5d m3 el lban",
-      icon:"fa fa-user"
-
-  }
-  ];
-  }
+  sideeffectService :SideeffectService;
+  constructor() { }
 
   ngOnInit() {
+    this.sideeffectService= new SideeffectService;
+    this.sideeffects= this.sideeffectService.getAll();
   }
 
 }
