@@ -12,6 +12,6 @@ import { DiseaseSmallItemComponent } from './disease-small-item/disease-small-it
   ],
   declarations: [DiseaseAddComponent, DiseaseLisingComponent, DiseaseDetailsComponent,
     DiseaseSmallItemComponent
-  ]
+]
 })
 export class DiseaseModule { }
