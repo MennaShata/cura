@@ -33,7 +33,7 @@ export class PillService {
 
       },
       {
-        id: 2,
+        id: 3,
         name: "Tamol",
         image: "./../../../assets/images/CoDydramol.jpg",
         strength: "100",
