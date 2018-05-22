@@ -6,8 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { AppComponent } from './app.component';
 import { PillListingComponent } from './pill/pill-listing/pill-listing.component';
-import {RouterModule,Routes} from '@angular/router';
-
+import {RouterModule,Routes,ActivatedRoute} from '@angular/router';
 import {DrugsModule} from './drugs/drugs.module';
 import {DrugsComponent} from './drugs/drugs.component';
 import {DrugDetailsComponent } from './drugs/drug-details/drug-details.component';
@@ -17,6 +16,7 @@ import { PillItemComponent } from './pill/pill-item/pill-item.component';
 
 import { SideEffectItemComponent } from './side-effects/side-effect-item/side-effect-item.component';
 import { ActiveIngrediantItemComponent } from 'src/app/active-ingredients/active-ingrediant-item/active-ingrediant-item.component';
+import { FormsModule }   from '@angular/forms';
 import { DiseaseSmallItemComponent } from './diseases/disease-small-item/disease-small-item.component';
 import { DiseaseLisingComponent } from './diseases/disease-lising/disease-lising.component';
 import { DiseaseComponentComponent } from './diseases/disease-component/disease-component.component';
@@ -31,7 +31,11 @@ import { DiseaseServiceService } from './shared/services/disease-service.service
 const routes: Routes = [
   { path:'pill/item', component: PillComponent},
   { path: 'drug/listing', component: DrugsComponent},
+
   { path: 'drug/detail/:id', component: DrugDetailsComponent},
+
+  { path:'drug/details/:id' , component :DrugDetailsComponent},
+
   { path: 'food', component: FoodItemComponent},
   { path: 'food/add', component: FoodAddComponent},
   { path: 'sideeffectlisting', component: SideEffectListingComponent},
@@ -64,6 +68,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     DrugsModule,
+    FormsModule,
     PillModule,
     RouterModule,
     RouterModule.forRoot(routes)
