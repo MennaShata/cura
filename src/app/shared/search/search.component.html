@@ -1,3 +1,4 @@
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
   <div class=" mt-xlg">
       <div class="input-group">
           <div class="input-group-btn search-panel">
@@ -17,8 +18,7 @@
                   </li>
                   <li>
                       <a href="#less_than">
-                          Less than
-                          <
+                          Less than >
                       </a>
                   </li>
                   <li class="divider"></li>
@@ -28,9 +28,9 @@
               </ul>
           </div>
           <input type="hidden" name="search_param" value="all" id="search_param">
-          <input type="text" class="form-control" name="txtSearch" id="DrugName" placeholder="Search term...">
+          <input type="text" class="form-control" name="txtSearch" id="DrugName" placeholder="Search term..." [(ngModel)]="drug" />
           <span class="input-group-btn">
-              <button class="btn btn-primary btn-md" type="submit">
+              <button class="btn btn-primary btn-md" type="Submit">
                   <span>
                       <i class="fa fa-search" style="color:white"></i>
                   </span>
@@ -39,3 +39,4 @@
           </span>
       </div>
   </div>
+</form>
