@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { IfoodInteraction } from './../../../shared/models/interfaces/ifoodInteraction';
+import { Component, OnInit, Input } from '@angular/core';
+
 
 @Component({
   selector: 'app-Food-Interaction-Item',
@@ -7,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FoodInteractionItemComponent implements OnInit {
 
+  @Input() foodInteraction:IfoodInteraction;
   constructor() { }
 
   ngOnInit() {
