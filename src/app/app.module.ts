@@ -25,6 +25,7 @@ import { DiseaseModule } from './diseases/disease.module';
 import { SideEffectListingComponent } from './side-effects/side-effect-listing/side-effect-listing.component';
 import { ActiveIngredientListingComponent } from 'src/app/active-ingredients/active-ingredient-listing/active-ingredient-listing.component';
 import { FoodInteractionsListingComponent } from './Interactions/Food-Interaction/Food-Interactions-Listing/Food-Interactions-Listing.component';
+import { DiseaseServiceService } from './shared/services/disease-service.service';
 
 
 const routes: Routes = [
@@ -62,7 +63,7 @@ const routes: Routes = [
     PillModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [DiseaseServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
