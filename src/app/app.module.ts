@@ -58,7 +58,8 @@ const routes: Routes = [
     FoodListingComponent,
     FoodInteractionsListingComponent,
     DiseaseComponentComponent,
-    DiseaseLisingComponent
+    DiseaseLisingComponent,
+    ActiveIngredientListingComponent
   ],
   imports: [
     BrowserModule,
