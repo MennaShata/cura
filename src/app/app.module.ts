@@ -23,7 +23,8 @@ const routes: Routes = [
   { path: 'food/add', component: FoodAddComponent},
   { path: 'interactions/foodinteraction', component: FoodInteractionItemComponent},
   {path :'sideeffect', component:SideEffectItemComponent },
-  { path:'ai', component: ActiveIngrediantItemComponent},
+  { path:'activeingredient', component: ActiveIngrediantItemComponent},
+  { path:'activeingredient/listing', component: ActiveIngredientListingComponent},  
   { path:'food/foodlist', component: FoodListingComponent},
   { path:'interactions/foodinteraction/listing', component: FoodInteractionsListingComponent}
 ];
