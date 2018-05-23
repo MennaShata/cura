@@ -1,25 +1,29 @@
-
-  <div class="featured-box featured-box-primary align-left mt-xlg">
-    <div class="box-content" style="padding-top:18px">
-      <div class="row drug-buttons ">
-        <div class="col-md-offset-10 col-xs-offset-9">
-          <a>
-            <i class="fa fa-edit"></i>
-          </a>
-          <a>
-            <i class="fa fa-trash">
+<div class="featured-box featured-box-primary align-left mt-xlg">
+  <div class="box-content" style="padding-top:18px">
+    <div class="row drug-buttons ">
+      <div class="col-md-offset-10 col-xs-offset-9">
+        <button type="button" class="btn-borders btn-primary btn-info primary btn-xs">
+          <a href="#">
+            <i class="fa fa-edit">
             </i>
           </a>
-        </div>
+        </button>
+        <button type="button" class="btn-danger primary btn-xs btn-borders">
+          <a href="#">
+            <i class="fa fa-trash" onclick="Delete()">
+            </i>
+          </a>
+        </button>
       </div>
-      <div class="row">
+    </div>
+    <div class="row">
 
-        <div class="col-md-4 col-xs-4">
-          <i class="{{food.icon}}"></i>
-        </div>
-        <div class="col-md-8 col-xs-8">
-          {{food.name}}
-        </div>
+      <div class="col-md-4 col-xs-4">
+        <i class="{{food.icon}}"></i>
+      </div>
+      <div class="col-md-8 col-xs-8">
+        {{food.name}}
       </div>
     </div>
   </div>
+</div>
