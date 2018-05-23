@@ -10,7 +10,9 @@
       <div class="row">
         <div class="col-md-12">
           <p>{{ai.description}}</p>
-          <button class="btn btn-lg btn-primary mr-xs mb-lg" type="button">Learn More</button>
+          <a [routerLink]="['/activeingredient/details',ai.id]">
+              <button class="btn btn-lg btn-primary mr-xs mb-lg" type="button" >View More</button>
+          </a>
         </div>
       </div>
     </div>
