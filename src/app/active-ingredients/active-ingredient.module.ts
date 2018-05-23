@@ -4,12 +4,14 @@ import { ActiveIngredientAddComponent } from './active-ingredient-add/active-ing
 import { ActiveIngredientListingComponent } from './active-ingredient-listing/active-ingredient-listing.component';
 import { ActiveIngrediantItemComponent } from './active-ingrediant-item/active-ingrediant-item.component';
 import { ActiveIngredientDetailsComponent } from './active-ingredient-details/active-ingredient-details.component';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
-  declarations: [,
+  declarations: [
     ActiveIngredientAddComponent,
     ActiveIngredientListingComponent,
     ActiveIngrediantItemComponent,
