@@ -35,6 +35,7 @@ import { ActiveIngredientDetailsComponent } from './active-ingredients/active-in
 import { ActiveIngrediantItemComponent } from './active-ingredients/active-ingrediant-item/active-ingrediant-item.component';
 import { ActiveIngredientListingComponent } from './active-ingredients/active-ingredient-listing/active-ingredient-listing.component';
 import { ActiveIngredientModule } from './active-ingredients/active-ingredient.module';
+import { SideEffectModule } from './side-effects/side-effect.module';
 
 
 const routes: Routes = [
@@ -86,6 +87,7 @@ const routes: Routes = [
     PillModule,
     RouterModule,
     ActiveIngredientModule,
+    SideEffectModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
