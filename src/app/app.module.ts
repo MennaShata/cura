@@ -19,14 +19,12 @@ import { FormsModule }   from '@angular/forms';
 import { DiseaseSmallItemComponent } from './diseases/disease-small-item/disease-small-item.component';
 import { DiseaseLisingComponent } from './diseases/disease-lising/disease-lising.component';
 import { DiseaseComponentComponent } from './diseases/disease-component/disease-component.component';
-import { FilterComponent } from './shared/filter/filter.component';
 import { DiseaseModule } from './diseases/disease.module';
 import { SideEffectListingComponent } from './side-effects/side-effect-listing/side-effect-listing.component';
 import { FoodInteractionsListingComponent } from './Interactions/Food-Interaction/Food-Interactions-Listing/Food-Interactions-Listing.component';
 import { SingleFoodInteractionComponent } from './Interactions/food-Interaction/Single-Food-Interaction/Single-Food-Interaction.component';
 import { DiseaseServiceService } from './shared/services/disease-service.service';
 import { SideEffectsComponent } from './side-effects/side-effects.component';
-import { SearchComponent } from './shared/search/search.component';
 import { DiseaseDetailsComponent } from './diseases/disease-details/disease-details.component';
 import { LatestNewsComponent } from './shared/components/latest-news/latest-news.component';
 
@@ -36,6 +34,7 @@ import { ActiveIngrediantItemComponent } from './active-ingredients/active-ingre
 import { ActiveIngredientListingComponent } from './active-ingredients/active-ingredient-listing/active-ingredient-listing.component';
 import { ActiveIngredientModule } from './active-ingredients/active-ingredient.module';
 import { SideEffectModule } from './side-effects/side-effect.module';
+import { SharedModule } from './shared/shared.module';
 
 
 const routes: Routes = [
@@ -87,6 +86,7 @@ const routes: Routes = [
     RouterModule,
     ActiveIngredientModule,
     SideEffectModule,
+    SharedModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
