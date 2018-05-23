@@ -25,6 +25,8 @@ import { SideEffectListingComponent } from './side-effects/side-effect-listing/s
 import { FoodInteractionsListingComponent } from './Interactions/Food-Interaction/Food-Interactions-Listing/Food-Interactions-Listing.component';
 import { SingleFoodInteractionComponent } from './Interactions/food-Interaction/Single-Food-Interaction/Single-Food-Interaction.component';
 import { DiseaseServiceService } from './shared/services/disease-service.service';
+import { SideEffectsComponent } from './side-effects/side-effects.component';
+import { SearchComponent } from './shared/search/search.component';
 import { DiseaseDetailsComponent } from './diseases/disease-details/disease-details.component';
 import { LatestNewsComponent } from './shared/components/latest-news/latest-news.component';
 
@@ -42,7 +44,8 @@ const routes: Routes = [
 
   { path: 'food', component: FoodItemComponent},
   { path: 'food/add', component: FoodAddComponent},
-  { path :'sideeffectlisting', component: SideEffectListingComponent},
+  { path: 'sideeffectlisting', component: SideEffectListingComponent},
+  { path: 'sideeffectlisting2', component: SideEffectsComponent},
   { path: 'interactions/foodinteraction', component: FoodInteractionItemComponent},
   {path :'sideeffect', component:SideEffectItemComponent },
 
