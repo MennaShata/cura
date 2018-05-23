@@ -55,6 +55,8 @@ const routes: Routes = [
 
   { path:'food/foodlist', component: FoodListingComponent},
   { path:'interactions/foodinteraction/listing', component: FoodInteractionsListingComponent},
+  { path:'pill/item', component: PillComponent},
+  { path:'interactions/foodinteraction/page/:id', component: SingleFoodInteractionComponent},
   
   { path:'interactions/foodinteraction/page', component: SingleFoodInteractionComponent},
   {path:'diseaseDetails', component:DiseaseDetailsComponent},
@@ -75,6 +77,7 @@ const routes: Routes = [
     SingleFoodInteractionComponent,
     DiseaseComponentComponent,
     DiseaseLisingComponent,
+    ActiveIngredientListingComponent,
     DiseaseDetailsComponent,
     LatestNewsComponent
   ],
