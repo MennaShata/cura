@@ -25,13 +25,10 @@ import { DiseaseModule } from './diseases/disease.module';
 import { SideEffectListingComponent } from './side-effects/side-effect-listing/side-effect-listing.component';
 import { ActiveIngredientListingComponent } from 'src/app/active-ingredients/active-ingredient-listing/active-ingredient-listing.component';
 import { FoodInteractionsListingComponent } from './Interactions/Food-Interaction/Food-Interactions-Listing/Food-Interactions-Listing.component';
-<<<<<<< HEAD
 import { SingleFoodInteractionComponent } from './Interactions/food-Interaction/Single-Food-Interaction/Single-Food-Interaction.component';
-=======
 import { DiseaseServiceService } from './shared/services/disease-service.service';
 import { DiseaseDetailsComponent } from './diseases/disease-details/disease-details.component';
 import { LatestNewsComponent } from './shared/components/latest-news/latest-news.component';
->>>>>>> 26860c59d9e25681f4317f1b9c75f514b0e8a4a5
 
 
 const routes: Routes = [
@@ -44,11 +41,7 @@ const routes: Routes = [
 
   { path: 'food', component: FoodItemComponent},
   { path: 'food/add', component: FoodAddComponent},
-<<<<<<< HEAD
   { path :'sideeffectlisting', component: SideEffectListingComponent},
-=======
-  { path: 'sideeffectlisting', component: SideEffectListingComponent},
->>>>>>> 26860c59d9e25681f4317f1b9c75f514b0e8a4a5
   { path: 'interactions/foodinteraction', component: FoodInteractionItemComponent},
   {path :'sideeffect', component:SideEffectItemComponent },
   { path:'activeingredient', component: ActiveIngrediantItemComponent},
@@ -56,13 +49,10 @@ const routes: Routes = [
   { path:'food/foodlist', component: FoodListingComponent},
   { path:'interactions/foodinteraction/listing', component: FoodInteractionsListingComponent},
   { path:'pill/item', component: PillComponent},
-<<<<<<< HEAD
-  { path:'interactions/foodinteraction/page', component: SingleFoodInteractionComponent}
-=======
+  { path:'interactions/foodinteraction/page', component: SingleFoodInteractionComponent},
   {path:'diseaseDetails', component:DiseaseDetailsComponent},
   { path:"diseaseComponent" ,component:DiseaseComponentComponent}
 
->>>>>>> 26860c59d9e25681f4317f1b9c75f514b0e8a4a5
 ];
 
 @NgModule({
@@ -77,13 +67,10 @@ const routes: Routes = [
     SideEffectListingComponent,
     FoodListingComponent,
     FoodInteractionsListingComponent,
-<<<<<<< HEAD
-    SingleFoodInteractionComponent
-=======
+    SingleFoodInteractionComponent,
     DiseaseComponentComponent,
     DiseaseLisingComponent,
     ActiveIngredientListingComponent
->>>>>>> 26860c59d9e25681f4317f1b9c75f514b0e8a4a5
   ],
   imports: [
     BrowserModule,
