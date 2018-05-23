@@ -6,11 +6,17 @@ import { DrugListingComponent } from './drug-listing/drug-listing.component';
 import { DrugAddComponent } from './drug-add/drug-add.component';
 import { DrugItemSmallComponent } from './drug-item-small/drug-item-small.component';
 import {SearchComponent} from './../shared/search/search.component'; 
+import { AppModule } from '../app.module';
 import {FilterComponent} from './../shared/filter/filter.component';
+import { FormsModule }   from '@angular/forms';
+import { RouterModule, Routes ,ActivatedRoute} from '@angular/router';
+
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    [FormsModule],
+    RouterModule,
   ],
   declarations: [DrugsComponent,
     DrugDetailsComponent,

@@ -1,11 +1,11 @@
 export interface Ipill{
+    id:number;
+    name:string;
     image:string;
-    drugName:string;
-    drugTypeName:string;
-    drugTypeImage:string;
-    activeIngredient:string[];
-    strength:number;
+    strength:string;
     strengthUnit:string;
-    usage:string;
-    dosage:string;
+    backImprint:string;
+    frontImprint:string;
+    color:string;
+    shape:string;
 }
