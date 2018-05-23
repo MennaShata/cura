@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Iactiveingredient } from './../../shared/models/interfaces/iactiveingredient';
+import { ActiveIngredientService } from './../../shared/services/active-ingredient/active-ingredient.service';
 
 @Component({
   selector: 'app-active-ingredient-details',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActiveIngredientDetailsComponent implements OnInit {
 
-  constructor() { }
+  public ai:Iactiveingredient;
+  id:number;
+  constructor(private ActiveIngredientService:ActiveIngredientService , private ActivatedRoute:ActivatedRoute) { }
 
   ngOnInit() {
+    this.ActivatedRoute.params.subscribe((params)=>{this.id=params['id'];});
+    this.ai = this.ActiveIngredientService.getById(this.id);
   }
 
 }
