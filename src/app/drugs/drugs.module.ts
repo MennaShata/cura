@@ -17,14 +17,14 @@ import { RouterModule, Routes ,ActivatedRoute} from '@angular/router';
     CommonModule,
     [FormsModule],
     RouterModule,
+
   ],
   declarations: [DrugsComponent,
     DrugDetailsComponent,
     DrugListingComponent,
     DrugAddComponent,
     DrugItemSmallComponent,
-    SearchComponent,
-    FilterComponent
+    
     ]
 })
 export class DrugsModule { }

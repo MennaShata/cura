@@ -6,7 +6,7 @@ import { SideEffectItemComponent } from './side-effect-item/side-effect-item.com
 import { SideEffectsComponent } from './side-effects.component';
 import { SharedModule } from '../shared/shared.module';
 import { AppModule } from '../app.module';
-import { SearchComponent } from '../shared/search/search.component';
+
 
 
 @NgModule({
@@ -14,12 +14,12 @@ import { SearchComponent } from '../shared/search/search.component';
     CommonModule,
     SharedModule
   ],
-  declarations: [,
+  declarations: [
     SideEffectListingComponent,
     SideEffectAddComponent,
     SideEffectItemComponent,
     SideEffectsComponent,
-    SearchComponent
+    
    
 ]
 })

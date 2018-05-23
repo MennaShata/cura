@@ -70,8 +70,7 @@ const routes: Routes = [
     FoodItemComponent,
     FoodAddComponent,
     FoodInteractionItemComponent,
-    SideEffectItemComponent,
-    SideEffectListingComponent,
+    
     FoodListingComponent,
     FoodInteractionsListingComponent,
     SingleFoodInteractionComponent,
