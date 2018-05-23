@@ -77,7 +77,6 @@ const routes: Routes = [
     SingleFoodInteractionComponent,
     DiseaseComponentComponent,
     DiseaseLisingComponent,
-    ActiveIngredientListingComponent,
     DiseaseDetailsComponent,
     LatestNewsComponent
   ],
