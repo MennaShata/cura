@@ -23,7 +23,10 @@ import { FilterComponent } from './shared/filter/filter.component';
 import { DiseaseModule } from './diseases/disease.module';
 import { SideEffectListingComponent } from './side-effects/side-effect-listing/side-effect-listing.component';
 import { FoodInteractionsListingComponent } from './Interactions/Food-Interaction/Food-Interactions-Listing/Food-Interactions-Listing.component';
+import { SingleFoodInteractionComponent } from './Interactions/food-Interaction/Single-Food-Interaction/Single-Food-Interaction.component';
 import { DiseaseServiceService } from './shared/services/disease-service.service';
+import { DiseaseDetailsComponent } from './diseases/disease-details/disease-details.component';
+import { LatestNewsComponent } from './shared/components/latest-news/latest-news.component';
 
 import { ActiveIngredientService } from './shared/services/active-ingredient/active-ingredient.service';
 import { ActiveIngredientDetailsComponent } from './active-ingredients/active-ingredient-details/active-ingredient-details.component';
@@ -39,7 +42,7 @@ const routes: Routes = [
 
   { path: 'food', component: FoodItemComponent},
   { path: 'food/add', component: FoodAddComponent},
-  { path: 'sideeffectlisting', component: SideEffectListingComponent},
+  { path :'sideeffectlisting', component: SideEffectListingComponent},
   { path: 'interactions/foodinteraction', component: FoodInteractionItemComponent},
   {path :'sideeffect', component:SideEffectItemComponent },
 
@@ -50,6 +53,8 @@ const routes: Routes = [
   { path:'food/foodlist', component: FoodListingComponent},
   { path:'interactions/foodinteraction/listing', component: FoodInteractionsListingComponent},
   { path:'pill/item', component: PillComponent},
+  { path:'interactions/foodinteraction/page', component: SingleFoodInteractionComponent},
+  {path:'diseaseDetails', component:DiseaseDetailsComponent},
   { path:"diseaseComponent" ,component:DiseaseComponentComponent}
 
 ];
@@ -65,11 +70,11 @@ const routes: Routes = [
     SideEffectListingComponent,
     FoodListingComponent,
     FoodInteractionsListingComponent,
+    SingleFoodInteractionComponent,
     DiseaseComponentComponent,
     DiseaseLisingComponent,
-    
-    
-    
+    DiseaseDetailsComponent,
+    LatestNewsComponent
   ],
   imports: [
     BrowserModule,
