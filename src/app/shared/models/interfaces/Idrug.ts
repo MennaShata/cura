@@ -1,4 +1,5 @@
 export interface Idrug{
+    id:number;
     image:string;
     drugName:string;
     drugTypeName:string;
@@ -8,5 +9,10 @@ export interface Idrug{
     strengthUnit:string;
     usage:string;
     dosage:string;
+    company:string;
+    pregnancyWarning:string,
+    childernWarning:string,
+    warning:string,
+    approvalHistory:string
 
 }
