@@ -55,13 +55,10 @@ const routes: Routes = [
 
   { path:'food/foodlist', component: FoodListingComponent},
   { path:'interactions/foodinteraction/listing', component: FoodInteractionsListingComponent},
-<<<<<<< HEAD
   { path:'pill/item', component: PillComponent},
   { path:'interactions/foodinteraction/page/:id', component: SingleFoodInteractionComponent},
-=======
   
   { path:'interactions/foodinteraction/page', component: SingleFoodInteractionComponent},
->>>>>>> 3283d9ec0d85c690ca82620d2508bc1f0f2bcc6e
   {path:'diseaseDetails', component:DiseaseDetailsComponent},
   { path:"diseaseComponent" ,component:DiseaseComponentComponent}
 
@@ -80,10 +77,7 @@ const routes: Routes = [
     SingleFoodInteractionComponent,
     DiseaseComponentComponent,
     DiseaseLisingComponent,
-<<<<<<< HEAD
     ActiveIngredientListingComponent,
-=======
->>>>>>> 3283d9ec0d85c690ca82620d2508bc1f0f2bcc6e
     DiseaseDetailsComponent,
     LatestNewsComponent
   ],
