@@ -26,6 +26,8 @@ import { SideEffectListingComponent } from './side-effects/side-effect-listing/s
 import { ActiveIngredientListingComponent } from 'src/app/active-ingredients/active-ingredient-listing/active-ingredient-listing.component';
 import { FoodInteractionsListingComponent } from './Interactions/Food-Interaction/Food-Interactions-Listing/Food-Interactions-Listing.component';
 import { DiseaseServiceService } from './shared/services/disease-service.service';
+import { SideEffectsComponent } from './side-effects/side-effects.component';
+import { SearchComponent } from './shared/search/search.component';
 
 
 const routes: Routes = [
@@ -39,6 +41,8 @@ const routes: Routes = [
   { path: 'food', component: FoodItemComponent},
   { path: 'food/add', component: FoodAddComponent},
   { path: 'sideeffectlisting', component: SideEffectListingComponent},
+  { path: 'sideeffectlisting2', component: SideEffectsComponent},
+
   { path: 'interactions/foodinteraction', component: FoodInteractionItemComponent},
   {path :'sideeffect', component:SideEffectItemComponent },
   { path:'activeingredient', component: ActiveIngrediantItemComponent},
@@ -64,7 +68,9 @@ const routes: Routes = [
     FoodInteractionsListingComponent,
     DiseaseComponentComponent,
     DiseaseLisingComponent,
-    ActiveIngredientListingComponent
+    ActiveIngredientListingComponent,
+    SideEffectsComponent,
+ 
   ],
   imports: [
     BrowserModule,
