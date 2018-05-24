@@ -10,6 +10,7 @@ import {RouterModule,Routes,ActivatedRoute} from '@angular/router';
 import {DrugsModule} from './drugs/drugs.module';
 import {DrugsComponent} from './drugs/drugs.component';
 import {DrugDetailsComponent} from './drugs/drug-details/drug-details.component';
+import {DrugAddComponent} from './drugs/drug-add/drug-add.component';
 import { PillModule } from './pill/pill.module';
 import { PillComponent } from './pill/pill.component';
 import { PillItemComponent } from './pill/pill-item/pill-item.component';
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: '',component:AppComponent },
   { path: 'drug/listing', component: DrugsComponent},
   { path:'drug/details/:id' , component :DrugDetailsComponent},
+  { path:'drug/addDrug' , component:DrugAddComponent},
   { path: 'food', component: FoodItemComponent},
   { path: 'food/add', component: FoodAddComponent},
   {path :'sideeffectlisting', component: SideEffectListingComponent},
