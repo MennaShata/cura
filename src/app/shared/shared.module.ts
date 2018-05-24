@@ -13,7 +13,11 @@ import { FormsModule }   from '@angular/forms';
   ],
   declarations: [SharedComponent,
     SearchComponent,
-    FilterComponent
+    FilterComponent,
+],
+exports:[
+  SearchComponent,
+  FilterComponent
 ]
 })
 export class SharedModule { }

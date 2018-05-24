@@ -1,3 +1,55 @@
-<p>
-  Single-Food-Interaction works!
-</p>
+<section class="page-header page-header-color page-header-primary page-header-float-breadcrumb">
+        <div class="container">
+          
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="mt-xs">
+                        {{foodInteraction.foodName}}
+                    </h1>
+                    <ul class="breadcrumb breadcrumb-valign-mid">
+                        <li>
+                            <a href="#">Interactions</a>
+                        </li>
+                        <li class="active">Food Interactions</li>
+                        <li class="active">{{foodInteraction.foodName}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+</section>
+<div class="container">
+  <div class="row ">
+
+      <div class="col-md-offset-2 col-md-6">
+          <div class="post-content">
+              <h2>
+                  <a href="blog-post.html">Interaction with {{foodInteraction.foodName}} products </a>
+
+              </h2>
+              <div class="post-meta">
+                  <span>
+                      <strong>Degree: </strong>{{foodInteraction.degree}}
+                  </span>
+
+              </div>
+
+              <p>
+                  <strong>Description: </strong>{{foodInteraction.description}}
+              </p>
+
+          </div>
+          <div>
+
+              <a class="drug-btn btn btn-borders btn-primary custom-button text-uppercase mt-lg mb-lg font-weight-bold">
+                  <i class="fa fa-user-md"></i> Switch to Professional Report
+              </a>
+
+          </div>
+      </div>
+      <div class="col-md-3">
+          <aside class="sidebar patient-profile">
+              <h4>Other Food Interactions for Panadol</h4>          
+          </aside>
+      </div>
+  </div>
+</div>

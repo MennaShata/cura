@@ -1,3 +1,4 @@
+import { FoodService } from './../../shared/services/food.service';
 import { Ifood } from './../../shared/models/interfaces/ifood';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -9,9 +10,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class FoodItemComponent implements OnInit {
 
   @Input() food:Ifood;
-  constructor() { }
+  constructor(private FoodService:FoodService) { }
+  onDelete(id:number){
+    this.FoodService.deleteFood(id);
+  }
 
   ngOnInit() {
+   
   }
 
 }

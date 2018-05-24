@@ -12,3 +12,7 @@
     font-size: 40px;
     line-height: 110px;
 }
+.item-centered {
+    display: flex;
+    align-items: center;
+}

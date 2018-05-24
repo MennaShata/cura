@@ -5,10 +5,12 @@ import { PillListingComponent } from './pill-listing/pill-listing.component';
 import { PillItemComponent } from './pill-item/pill-item.component';
 import { PillInfoComponent } from './pill-info/pill-info.component';
 import { PillSearchComponent } from './pill-search/pill-search.component';
+import { RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   declarations: [PillComponent,
     PillListingComponent,
