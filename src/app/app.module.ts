@@ -29,6 +29,10 @@ import { SingleFoodInteractionComponent } from './Interactions/food-Interaction/
 import { DiseaseServiceService } from './shared/services/disease-service.service';
 import { DiseaseDetailsComponent } from './diseases/disease-details/disease-details.component';
 import { LatestNewsComponent } from './shared/components/latest-news/latest-news.component';
+import { ForbiddenDrugsComponent } from './diseases/forbidden-drugs/forbidden-drugs.component';
+import { TreatedDrugsComponent } from './diseases/treated-drugs/treated-drugs.component';
+import { OneTreatedDrugComponent } from './diseases/one-treated-drug/one-treated-drug.component';
+import { OneForbiddenDrugComponent } from './diseases/one-forbidden-drug/one-forbidden-drug.component';
 
 
 const routes: Routes = [
@@ -72,7 +76,11 @@ const routes: Routes = [
     DiseaseLisingComponent,
     ActiveIngredientListingComponent,
     DiseaseDetailsComponent,
-    LatestNewsComponent
+    LatestNewsComponent,
+    ForbiddenDrugsComponent,
+    TreatedDrugsComponent,
+    OneTreatedDrugComponent,
+    OneForbiddenDrugComponent
   ],
   imports: [
     BrowserModule,
