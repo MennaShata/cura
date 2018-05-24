@@ -10,15 +10,25 @@ import {DrugServiceService} from './../../shared/services/drug-service.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
- @Output() searchClicked:EventEmitter<string>= new EventEmitter<string>();
+// @Output() searchClicked:EventEmitter<string>= new EventEmitter<string>();
  public drug:string;
   constructor(private c:DrugServiceService) { }
 
   ngOnInit() {
     
   }
-  onSubmit(f: NgForm) {
+  // onSubmit(f: NgForm) {
+  //   debugger;
+  //   this.c.drugSearch(this.drug);
+  // }
+  // onChange(){
+  //   debugger;
+  //  this.searchClicked.emit(this.drug);
+  // }
+  onChange(){
     debugger;
     this.c.drugSearch(this.drug);
+    //this.c.getAllDrug();
+  
   }
 }

@@ -9,6 +9,7 @@ import { TreatedDrugsComponent } from './treated-drugs/treated-drugs.component';
 import { OneTreatedDrugComponent } from './one-treated-drug/one-treated-drug.component';
 import { OneForbiddenDrugComponent } from './one-forbidden-drug/one-forbidden-drug.component';
 import { ForbiddenDrugsComponent } from './forbidden-drugs/forbidden-drugs.component';
+import { LatestNewsComponent } from '../shared/components/latest-news/latest-news.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { ForbiddenDrugsComponent } from './forbidden-drugs/forbidden-drugs.compo
     OneTreatedDrugComponent,
     OneForbiddenDrugComponent,
     ForbiddenDrugsComponent,
+    DiseaseSmallItemComponent, LatestNewsComponent
 ]
 })
 export class DiseaseModule { }
