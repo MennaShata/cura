@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Isideeffect } from '../../shared/models/interfaces/Isideeffect';
-import { SideeffectService } from '../../shared/services/sideeffect.service';
+import { SideeffectService } from '../../shared/services/side-effect/sideeffect.service';
 
 @Component({
   selector: 'app-side-effect-listing',
@@ -14,6 +14,7 @@ export class SideEffectListingComponent implements OnInit {
   constructor(private sideeffectService:SideeffectService) { }
 
   ngOnInit() {
+  
     this.sideeffects= this.sideeffectService.getAll();
   }
 
