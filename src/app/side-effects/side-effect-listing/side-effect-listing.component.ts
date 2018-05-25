@@ -10,11 +10,10 @@ import { SideeffectService } from '../../shared/services/sideeffect.service';
 export class SideEffectListingComponent implements OnInit {
 
   public sideeffects: Isideeffect[];
-  sideeffectService :SideeffectService;
-  constructor() { }
+  
+  constructor(private sideeffectService:SideeffectService) { }
 
   ngOnInit() {
-    this.sideeffectService= new SideeffectService;
     this.sideeffects= this.sideeffectService.getAll();
   }
 
