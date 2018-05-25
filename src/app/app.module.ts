@@ -28,6 +28,10 @@ import { DiseaseServiceService } from './shared/services/disease-service.service
 import { SideEffectsComponent } from './side-effects/side-effects.component';
 import { DiseaseDetailsComponent } from './diseases/disease-details/disease-details.component';
 import { LatestNewsComponent } from './shared/components/latest-news/latest-news.component';
+import { ForbiddenDrugsComponent } from './diseases/forbidden-drugs/forbidden-drugs.component';
+import { TreatedDrugsComponent } from './diseases/treated-drugs/treated-drugs.component';
+import { OneTreatedDrugComponent } from './diseases/one-treated-drug/one-treated-drug.component';
+import { OneForbiddenDrugComponent } from './diseases/one-forbidden-drug/one-forbidden-drug.component';
 
 import { ActiveIngredientService } from './shared/services/active-ingredient/active-ingredient.service';
 import { ActiveIngredientDetailsComponent } from './active-ingredients/active-ingredient-details/active-ingredient-details.component';
@@ -80,7 +84,11 @@ const routes: Routes = [
     DiseaseComponentComponent,
     DiseaseLisingComponent,
     DiseaseDetailsComponent,
-    LatestNewsComponent
+    LatestNewsComponent,
+    ForbiddenDrugsComponent,
+    TreatedDrugsComponent,
+    OneTreatedDrugComponent,
+    OneForbiddenDrugComponent
   ],
   imports: [
     BrowserModule,
