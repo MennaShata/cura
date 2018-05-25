@@ -15,6 +15,12 @@ export class FoodService {
   public getFoodList(){
     return this.foodArray;
   }
+  public deleteFood(id:number){
+    const index = this.foodArray.findIndex(a=>a.id === id);
+    if(index > -1){
+      this.foodArray.splice(index,1)
+    }
+  }
 constructor() { }
 
 }

@@ -1,14 +1,19 @@
-import { Injectable } from '@angular/core';
+import { Injectable ,EventEmitter , Output } from '@angular/core';
 import {Idrug} from './../models/interfaces/Idrug';
+import { DrugListingComponent } from 'src/app/drugs/drug-listing/drug-listing.component';
+import { Observable } from 'rxjs/internal/Observable';
+import { of } from 'rxjs';
+// import { Observable } from 'rxjs/internal/Observable';
+
 @Injectable({
   providedIn: 'root'
 })
 export class DrugServiceService {
-   arr:Idrug[]=[
+   private arr:Idrug[]=[
    {
      id:0,
      image:'../../../assets/images/panadol1.jpg',
-     drugName:'Panadol',
+     drugName:'panadol',
      drugTypeName:'Drink ',
      drugTypeImage:'../../../assets/images/drugBottle.PNG',
      activeIngredient:['Paracetamol','Paracetamol'],
@@ -25,7 +30,7 @@ export class DrugServiceService {
    {
      id:1,
     image:'../../../assets/images/panadol1.jpg',
-    drugName:'Panadol',
+    drugName:'panadol',
     drugTypeName:'pill ',
     drugTypeImage:'../../../assets/images/drugBottle.PNG',
     activeIngredient:['Paracetamol','Paracetamol2'],
@@ -42,7 +47,7 @@ export class DrugServiceService {
    {
      id:2,
     image:'../../../assets/images/aspirin.jpg',
-    drugName:'Asprin',
+    drugName:'asprin',
     drugTypeName:'pill ',
     drugTypeImage:'../../../assets/images/drugBottle.PNG',
     activeIngredient:['Paracetamol','Paracetamol2'],
@@ -57,22 +62,20 @@ export class DrugServiceService {
     approvalHistory:' 22-2-2012'
    }
   ];
-
+  private temp:Idrug[];
+@Output() searchChanged = new EventEmitter<string>();
 constructor() { }
-getAllDrug()
+// getAllDrug()
+// {
+//   debugger;
+//   return this.arr;
+// }
+
+getAllDrug():Observable<Idrug[]>
 {
-  return this.arr;
-}
-drugSearch(e){
-  for(let i=0;i<this.arr.length;i++){
-    if(this.arr[i]==e){
-      this.arr=[];
-      this.arr.push(this.arr[i]);
-    }
-  }
+  return of (this.arr)
 }
 getById(id){
-  debugger;
   for(let i=0;i<this.arr.length;i++){
     if(this.arr[i].id==id){
       return this.arr[i];
@@ -80,5 +83,42 @@ getById(id){
   }
 
 }
-
+drugDelete(id){
+  for(let i=0;i<this.arr.length;i++){
+    if(this.arr[i].id==id){
+      this.arr.splice(id,1);
+    }
+  }
+  
+  }
+// drugSearch(e):Observable<Idrug[]>{
+//   debugger;
+//   for(let i=0;i<this.arr.length;i++){
+//     if(this.arr[i].drugName==e){
+//       this.arr=[];
+//       this.arr.push(this.arr[i]);
+//     }
+//   }
+//   return Observable.bind(this.arr);
+// }
+drugSearch(e){
+debugger;
+  this.arr = this.arr.filter(function(ele){
+    return ele.drugName == e;
+  })
+debugger;
+  
+  // this.temp=this.arr;
+  // for(let i=0;i<this.temp.length;i++){
+  //   debugger;
+  //   if(this.temp[i].drugName==e){
+  //     debugger;
+  //     this.arr=[];
+  //     //this.arr.push(this.arr[i]);
+  //     this.arr.push(this.temp[0]);
+  //   }
+  // }
+  // debugger;
+  // this.searchChanged.emit();
+}
 }
