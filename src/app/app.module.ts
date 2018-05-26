@@ -65,9 +65,11 @@ const routes: Routes = [
   { path:'interactions/foodinteraction/page/:id', component: SingleFoodInteractionComponent},
   
   { path:'interactions/foodinteraction/page', component: SingleFoodInteractionComponent},
-  {path:'diseaseDetails', component:DiseaseDetailsComponent},
-  { path:"diseaseComponent" ,component:DiseaseComponentComponent}
-
+  // {path:'diseaseDetails', component:DiseaseDetailsComponent},
+  { path:"diseaseComponent" ,component:DiseaseComponentComponent},
+  { path:"diseaseListing" ,component:DiseaseLisingComponent},
+  { path:'diseaseDetails/:id' , component :DiseaseDetailsComponent},
+  
 ];
 
 @NgModule({

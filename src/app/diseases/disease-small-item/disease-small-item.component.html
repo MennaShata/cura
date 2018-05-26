@@ -1,16 +1,32 @@
 <div class="featured-box featured-box-tertiary mt-sm ">
     <div class="box-content">
+        <div class="col-md-4 col-md-offset-10" style="margin-top:-10px;">
+            <button type="button" class="btn-borders btn-primary btn-info primary btn-xs">
+                <i class="fa fa-edit">
+                </i>
+            </button>
+            <button type="button" class="btn-danger primary btn-xs btn-borders" (click)="deleteDisease(disease.id)">
+                <i class="fa fa-trash">
+                </i>
+            </button>
+        </div>
+
+
         <div class="col-md-12">
             <i class="fa fa-stethoscope" style="font-size:50px;color:#3aabdd;"></i>
             <!-- <h2 class="mb-none" style="margin-top:20px;">{{disease.name}}</h2> -->
             <h2 class="mb-none" style="margin-top:20px;">{{disease.name}}</h2>
             <p>
-                    {{disease.descripton}}
+                {{disease.descripton}}
             </p>
             <!-- <p>
                     {{disease.descripton}}
             </p> -->
         </div>
-        <button class="btn btn-tertiary mr-xs mb-lg" type="button">Know More</button>
+        <!-- <a [routerLink]="['/diseaseDetails',disease.id]">know more </a> -->
+        <a [routerLink]="['/diseaseDetails',disease.id]">
+            <button class="btn btn-primary btn-tertiary">know more</button>
+        </a>
+
     </div>
 </div>
