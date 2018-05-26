@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Isideeffect } from '../../shared/models/interfaces/Isideeffect';
-import { SideeffectService } from '../../shared/services/sideeffect.service';
+import { SideeffectService } from '../../shared/services/side-effect/sideeffect.service';
 
 @Component({
   selector: 'app-side-effect-listing',
@@ -10,11 +10,11 @@ import { SideeffectService } from '../../shared/services/sideeffect.service';
 export class SideEffectListingComponent implements OnInit {
 
   public sideeffects: Isideeffect[];
-  sideeffectService :SideeffectService;
-  constructor() { }
+  
+  constructor(private sideeffectService:SideeffectService) { }
 
   ngOnInit() {
-    this.sideeffectService= new SideeffectService;
+  
     this.sideeffects= this.sideeffectService.getAll();
   }
 
