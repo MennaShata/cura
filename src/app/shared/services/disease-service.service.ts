@@ -69,4 +69,8 @@ export class DiseaseServiceService {
     }
 
   }
+
+  add(d:Idisease){
+    this.diseases.push(d);
+  }
 }

@@ -40,6 +40,7 @@ import { ActiveIngredientListingComponent } from './active-ingredients/active-in
 import { ActiveIngredientModule } from './active-ingredients/active-ingredient.module';
 import { SideEffectModule } from './side-effects/side-effect.module';
 import { SharedModule } from './shared/shared.module';
+import { DiseaseAddComponent } from './diseases/disease-add/disease-add.component';
 
 
 const routes: Routes = [
@@ -69,7 +70,7 @@ const routes: Routes = [
   { path:"diseaseComponent" ,component:DiseaseComponentComponent},
   { path:"diseaseListing" ,component:DiseaseLisingComponent},
   { path:'diseaseDetails/:id' , component :DiseaseDetailsComponent},
-  
+  { path:'diseaseAdd' , component :DiseaseAddComponent}
 ];
 
 @NgModule({
@@ -79,7 +80,7 @@ const routes: Routes = [
     FoodItemComponent,
     FoodAddComponent,
     FoodInteractionItemComponent,
-    
+    DiseaseAddComponent,
     FoodListingComponent,
     FoodInteractionsListingComponent,
     SingleFoodInteractionComponent,
