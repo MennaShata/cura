@@ -72,7 +72,7 @@ html .btn-primary {
 }
 .behind
 {
-    background-image:url("../img/6.jpg");
+    background-image:url("../../assets/images/6.jpg");
     background-attachment: fixed;
     
     
@@ -93,7 +93,7 @@ html .background-color-quaternary {
 }
 .qa
 {
-    background-image: url("../img/5p.jpg");    
+    background-image: url("../../assets/images/5p.jpg");    
     background-repeat: no-repeat;
     background-size: cover;
     /*background-color: #2d529f;
