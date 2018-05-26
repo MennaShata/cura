@@ -40,11 +40,9 @@ import { ActiveIngredientListingComponent } from './active-ingredients/active-in
 import { ActiveIngredientModule } from './active-ingredients/active-ingredient.module';
 import { SideEffectModule } from './side-effects/side-effect.module';
 import { SharedModule } from './shared/shared.module';
-<<<<<<< HEAD
 import { DiseaseAddComponent } from './diseases/disease-add/disease-add.component';
-=======
 import { HomeComponent } from './Home/Home.component';
->>>>>>> e859b00c3970d59d5800707a85c47fa8fd73b0fe
+
 
 
 const routes: Routes = [
@@ -97,9 +95,9 @@ const routes: Routes = [
     ForbiddenDrugsComponent,
     TreatedDrugsComponent,
     OneTreatedDrugComponent,
-    OneForbiddenDrugComponent
-,
-    HomeComponent
+    OneForbiddenDrugComponent,
+    HomeComponent,
+    DiseaseAddComponent
 ],
   imports: [
     BrowserModule,
