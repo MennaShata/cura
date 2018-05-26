@@ -1,39 +1,43 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import {DrugServiceService} from './../../shared/services/drug-service.service';
+import {DrugServiceService} from './../../shared/services/drug/drug-service.service';
 import {Idrug} from './../../shared/models/interfaces/Idrug';
 @Component({
   selector: 'app-drug-listing',
   templateUrl: './drug-listing.component.html',
   styleUrls: ['./drug-listing.component.css']
 })
-export class DrugListingComponent implements OnInit , OnChanges{
+//, OnChanges
+export class DrugListingComponent implements OnInit {
   public drugs:Idrug[]=[];
   
-  constructor(private c:DrugServiceService) { 
-    this.c.getAllDrug().subscribe(
+  constructor(private drugService:DrugServiceService) { 
+    // this.drugService.getAllDrug().subscribe(
       
-      (data)=>{this.drugs=data}
-    )
+    //   (data)=>{this.drugs=data}
+    // )
   }
 
   ngOnInit() {
-    this.c.getAllDrug().subscribe(
+    this.drugService.getAllDrug().subscribe(
       
       (data)=>{this.drugs=data}
     )
   }
-  ngOnChanges(){
-  this.c.getAllDrug().subscribe(
+}
+//   ngOnChanges(){
+//   this.drugService.getAllDrug().subscribe(
     
-    (data)=>{this.drugs=data}
-  )
-}    // this.c.searchChanged.subscribe(
+//     (data)=>{this.drugs=data}
+//   )
+// } }
+
+// this.c.searchChanged.subscribe(
     //  (value)=>{
     //    debugger;
     //    this.c.drugSearch(value);
     //   }
     // );
-  }
+  
 
   //  searchListing(){
   //   debugger;

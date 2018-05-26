@@ -40,15 +40,21 @@ import { ActiveIngredientListingComponent } from './active-ingredients/active-in
 import { ActiveIngredientModule } from './active-ingredients/active-ingredient.module';
 import { SideEffectModule } from './side-effects/side-effect.module';
 import { SharedModule } from './shared/shared.module';
+<<<<<<< HEAD
 import { DiseaseAddComponent } from './diseases/disease-add/disease-add.component';
+=======
+import { HomeComponent } from './Home/Home.component';
+>>>>>>> e859b00c3970d59d5800707a85c47fa8fd73b0fe
 
 
 const routes: Routes = [
+  {path :'', component : HomeComponent},
+  {path:'drug',children:[
+    { path: 'listing', component: DrugsComponent},
+    { path:'details/:id' , component :DrugDetailsComponent},
+    { path:'addDrug' , component:DrugAddComponent},
+  ]},
   { path:'pill/item', component: PillComponent},
-  { path: 'drug/listing', component: DrugsComponent},
-  { path:'drug/details/:id' , component :DrugDetailsComponent},
-  { path:'drug/addDrug' , component:DrugAddComponent},
-
   { path: 'food', component: FoodItemComponent},
   { path: 'food/add', component: FoodAddComponent},
   { path: 'sideeffectlisting', component: SideEffectListingComponent},
@@ -92,7 +98,9 @@ const routes: Routes = [
     TreatedDrugsComponent,
     OneTreatedDrugComponent,
     OneForbiddenDrugComponent
-  ],
+,
+    HomeComponent
+],
   imports: [
     BrowserModule,
     DrugsModule,

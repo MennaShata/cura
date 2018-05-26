@@ -1,2759 +1,38 @@
 /*
 Name: 			Theme Base
 Written by: 	Okler Themes - (http://www.okler.net)
-Theme Version: 	1.3.0
+Theme Version:	5.7.1
 */
 
+// Theme
 window.theme = {};
 
-// Navigation
-(function( $ ) {
+// Theme Common Functions
+window.theme.fn = {
 
-	'use strict';
+	getOptions: function(opts) {
 
-	var $items = $( '.nav-main li.nav-parent' );
+		if (typeof(opts) == 'object') {
 
-	function expand( li ) {
-		li.children( 'ul.nav-children' ).slideDown( 'fast', function() {
-			li.addClass( 'nav-expanded' );
-			$(this).css( 'display', '' );
-			ensureVisible( li );
-		});
-	}
+			return opts;
 
-	function collapse( li ) {
-		li.children('ul.nav-children' ).slideUp( 'fast', function() {
-			$(this).css( 'display', '' );
-			li.removeClass( 'nav-expanded' );
-		});
-	}
+		} else if (typeof(opts) == 'string') {
 
-	function ensureVisible( li ) {
-		var scroller = li.offsetParent();
-		if ( !scroller.get(0) ) {
-			return false;
-		}
+			try {
+				return JSON.parse(opts.replace(/'/g,'"').replace(';',''));
+			} catch(e) {
+				return {};
+			}
 
-		var top = li.position().top;
-		if ( top < 0 ) {
-			scroller.animate({
-				scrollTop: scroller.scrollTop() + top
-			}, 'fast');
-		}
-	}
-
-	$items.find('> a').on('click', function() {
-		var prev = $( this ).closest('ul.nav').find('> li.nav-expanded' ),
-			next = $( this ).closest('li');
-
-		if ( prev.get( 0 ) !== next.get( 0 ) ) {
-			collapse( prev );
-			expand( next );
 		} else {
-			collapse( prev );
+
+			return {};
+
 		}
-	});
 
-}).apply( this, [ jQuery ]);
-
-// Skeleton
-(function(theme, $) {
-
-	'use strict';
-
-	theme = theme || {};
-
-	var $body		= $( 'body' ),
-		$html		= $( 'html' ),
-		$window		= $( window ),
-		isAndroid	= navigator.userAgent.toLowerCase().indexOf('android') > -1;
-
-	// mobile devices with fixed has a lot of issues when focus inputs and others...
-	if ( typeof $.browser !== 'undefined' && $.browser.mobile && $html.hasClass('fixed') ) {
-		$html.removeClass( 'fixed' ).addClass( 'scroll' );
 	}
 
-	var Skeleton = {
-
-		options: {
-			sidebars: {
-				menu: '#content-menu',
-				left: '#sidebar-left',
-				right: '#sidebar-right'
-			}
-		},
-
-		customScroll: ( !Modernizr.overflowscrolling && !isAndroid && $.fn.nanoScroller !== 'undefined'),
-
-		initialize: function() {
-			this
-				.setVars()
-				.build()
-				.events();
-		},
-
-		setVars: function() {
-			this.sidebars = {};
-
-			this.sidebars.left = {
-				$el: $( this.options.sidebars.left )
-			};
-
-			this.sidebars.right = {
-				$el: $( this.options.sidebars.right ),
-				isOpened: $html.hasClass( 'sidebar-right-opened' )
-			};
-
-			this.sidebars.menu = {
-				$el: $( this.options.sidebars.menu ),
-				isOpened: $html.hasClass( 'inner-menu-opened' )
-			};
-
-			return this;
-		},
-
-		build: function() {
-
-			if ( typeof $.browser !== 'undefined' && $.browser.mobile ) {
-				$html.addClass( 'mobile-device' );
-			} else {
-				$html.addClass( 'no-mobile-device' );
-			}
-
-			$html.addClass( 'custom-scroll' );
-			if ( this.customScroll ) {
-				this.buildSidebarLeft();
-				this.buildContentMenu();
-			}
-
-			this.buildSidebarRight();
-
-			return this;
-		},
-
-		events: function() {
-			if ( this.customScroll ) {
-				this.eventsSidebarLeft();
-			}
-
-			this.eventsSidebarRight();
-			this.eventsContentMenu();
-
-			if ( typeof $.browser !== 'undefined' && !this.customScroll && isAndroid ) {
-				this.fixScroll();
-			}
-
-			return this;
-		},
-
-		fixScroll: function() {
-			var _self = this;
-
-			$window
-				.on( 'sidebar-left-opened sidebar-right-toggle', function( e, data ) {
-					_self.preventBodyScrollToggle( data.added );
-				});
-		},
-
-		buildSidebarLeft: function() {
-			this.sidebars.left.$nano = this.sidebars.left.$el.find( '.nano' );
-
-			this.sidebars.left.$nano.nanoScroller({
-				alwaysVisible: true,
-				preventPageScrolling: true
-			});
-
-			return this;
-		},
-
-		eventsSidebarLeft: function() {
-
-			var $nano = this.sidebars.left.$nano;
-
-			var updateNanoScroll = function() {
-				if ( $.support.transition ) {
-					$nano.nanoScroller();
-					$nano
-						.one('bsTransitionEnd', updateNanoScroll)
-						.emulateTransitionEnd(150)
-				} else {
-					updateNanoScroll();
-				}
-			};
-
-			this.sidebars.left.$el
-				.on( 'click', function() {
-					updateNanoScroll();
-				});
-
-			$nano
-				.on( 'mouseenter', function() {
-					if ( $html.hasClass( 'sidebar-left-collapsed' ) ) {
-						$nano.nanoScroller();
-					}
-				})
-				.on( 'mouseleave', function() {
-					if ( $html.hasClass( 'sidebar-left-collapsed' ) ) {
-						$nano.nanoScroller();
-					}
-				});
-
-			return this;
-		},
-
-		buildSidebarRight: function() {
-			this.sidebars.right.isOpened = $html.hasClass( 'sidebar-right-opened' );
-
-			if ( this.customScroll ) {
-				this.sidebars.right.$nano = this.sidebars.right.$el.find( '.nano' );
-
-				this.sidebars.right.$nano.nanoScroller({
-					alwaysVisible: true,
-					preventPageScrolling: true
-				});
-			}
-
-			return this;
-		},
-
-		eventsSidebarRight: function() {
-			var _self = this;
-
-			var open = function() {
-				if ( _self.sidebars.right.isOpened ) {
-					return close();
-				}
-
-				_self.sidebars.right.isOpened = true;
-
-				$html.addClass( 'sidebar-right-opened' );
-
-				$window.trigger( 'sidebar-right-toggle', {
-					added: true,
-					removed: false
-				});
-
-				$html.on( 'click.close-right-sidebar', function(e) {
-					e.stopPropagation();
-					close(e);
-				});
-			};
-
-			var close = function(e) {
-				if ( !!e && !!e.target && ($(e.target).closest( '.sidebar-right' ).get(0) || !$(e.target).closest( 'html' ).get(0)) ) {
-					e.preventDefault();
-					return false;
-				}
-
-				$html.removeClass( 'sidebar-right-opened' );
-				$html.off( 'click.close-right-sidebar' );
-
-				$window.trigger( 'sidebar-right-toggle', {
-					added: false,
-					removed: true
-				});
-
-				_self.sidebars.right.isOpened = false;
-			};
-
-			var bind = function() {
-				$('[data-open="sidebar-right"]').on('click', function(e) {
-					var $el = $(this);
-					e.stopPropagation();
-
-					if ( $el.is('a') )
-						e.preventDefault();
-
-					open();
-				});
-			};
-
-			this.sidebars.right.$el.find( '.mobile-close' )
-				.on( 'click', function( e ) {
-					e.preventDefault();
-					$html.trigger( 'click.close-right-sidebar' );
-				});
-
-			bind();
-
-			return this;
-		},
-
-		buildContentMenu: function() {
-			if ( !$html.hasClass( 'fixed' ) ) {
-				return false;
-			}
-
-			this.sidebars.menu.$nano = this.sidebars.menu.$el.find( '.nano' );
-
-			this.sidebars.menu.$nano.nanoScroller({
-				alwaysVisible: true,
-				preventPageScrolling: true
-			});
-
-			return this;
-		},
-
-		eventsContentMenu: function() {
-			var _self = this;
-
-			var open = function() {
-				if ( _self.sidebars.menu.isOpened ) {
-					return close();
-				}
-
-				_self.sidebars.menu.isOpened = true;
-
-				$html.addClass( 'inner-menu-opened' );
-
-				$window.trigger( 'inner-menu-toggle', {
-					added: true,
-					removed: false
-				});
-
-				$html.on( 'click.close-inner-menu', function(e) {
-
-					close(e);
-				});
-
-			};
-
-			var close = function(e) {
-				if ( !!e && !!e.target && !$(e.target).closest( '.inner-menu-collapse' ).get(0) && ($(e.target).closest( '.inner-menu' ).get(0) || !$(e.target).closest( 'html' ).get(0)) ) {
-					return false;
-				}
-
-				e.stopPropagation();
-
-				$html.removeClass( 'inner-menu-opened' );
-				$html.off( 'click.close-inner-menu' );
-
-				$window.trigger( 'inner-menu-toggle', {
-					added: false,
-					removed: true
-				});
-
-				_self.sidebars.menu.isOpened = false;
-			};
-
-			var bind = function() {
-				$('[data-open="inner-menu"]').on('click', function(e) {
-					var $el = $(this);
-					e.stopPropagation();
-
-					if ( $el.is('a') )
-						e.preventDefault();
-
-					open();
-				});
-			};
-
-			bind();
-
-			/* Nano Scroll */
-			if ( $html.hasClass( 'fixed' ) ) {
-				var $nano = this.sidebars.menu.$nano;
-
-				var updateNanoScroll = function() {
-					if ( $.support.transition ) {
-						$nano.nanoScroller();
-						$nano
-							.one('bsTransitionEnd', updateNanoScroll)
-							.emulateTransitionEnd(150)
-					} else {
-						updateNanoScroll();
-					}
-				};
-
-				this.sidebars.menu.$el
-					.on( 'click', function() {
-						updateNanoScroll();
-					});
-			}
-
-			return this;
-		},
-
-		preventBodyScrollToggle: function( shouldPrevent, $el ) {
-			setTimeout(function() {
-				if ( shouldPrevent ) {
-					$body
-						.data( 'scrollTop', $body.get(0).scrollTop )
-						.css({
-							position: 'fixed',
-							top: $body.get(0).scrollTop * -1
-						})
-				} else {
-					$body
-						.css({
-							position: '',
-							top: ''
-						})
-						.scrollTop( $body.data( 'scrollTop' ) );
-				}
-			}, 150);
-		}
-
-	};
-
-	// expose to scope
-	$.extend(theme, {
-		Skeleton: Skeleton
-	});
-
-}).apply(this, [ window.theme, jQuery ]);
-
-// Base
-(function(theme, $) {
-
-	'use strict';
-
-	theme = theme || {};
-
-	theme.Skeleton.initialize();
-
-}).apply(this, [ window.theme, jQuery ]);
-
-/*
-Name: 			Theme Admin Extension
-Written by: 	Okler Themes - (http://www.okler.net)
-Theme Version: 	1.3.0
-*/
-
-window.theme = {};
-
-// Mailbox
-(function(theme, $) {
-
-	theme = theme || {};
-
-	var instanceName = '__mailbox';
-
-	var capitalizeString = function( str ) {
-    	return str.charAt( 0 ).toUpperCase() + str.slice( 1 );
-	}
-
-	var Mailbox = function($wrapper) {
-		return this.initialize($wrapper);
-	};
-
-	Mailbox.prototype = {
-		initialize: function($wrapper) {
-			if ( $wrapper.data( instanceName ) ) {
-				return this;
-			}
-
-			this.$wrapper = $wrapper;
-
-			this
-				.setVars()
-				.setData()
-				.build()
-				.events();
-
-			return this;
-		},
-
-		setVars: function() {
-			this.view = capitalizeString( this.$wrapper.data( 'mailbox-view' ) || "" );
-
-			return this;
-		},
-
-		setData: function() {
-			this.$wrapper.data(instanceName, this);
-
-			return this;
-		},
-
-		build: function() {
-
-			if ( typeof this[ 'build' + this.view ] === 'function' ) {
-				this[ 'build' + this.view ].call( this );
-			}
-
-
-			return this;
-		},
-
-		events: function() {
-			if ( typeof this[ 'events' + this.view ] === 'function' ) {
-				this[ 'events' + this.view ].call( this );
-			}
-
-			return this;
-		},
-
-		buildFolder: function() {
-			this.$wrapper.find('.mailbox-email-list .nano').nanoScroller({
-				alwaysVisible: true,
-				preventPageScrolling: true
-			});
-		},
-
-		buildEmail: function() {
-			this.buildComposer();
-		},
-
-		buildCompose: function() {
-			this.buildComposer();
-		},
-
-		buildComposer: function() {
-			this.$wrapper.find( '#compose-field' ).summernote({
-				height: 250,
-				toolbar: [
-					['style', ['style']],
-					['font', ['bold', 'italic', 'underline', 'clear']],
-					['fontname', ['fontname']],
-					['color', ['color']],
-					['para', ['ul', 'ol', 'paragraph']],
-					['height', ['height']],
-					['table', ['table']],
-					['insert', ['link', 'picture', 'video']],
-					['view', ['fullscreen']],
-					['help', ['help']]
-				]
-			});
-		},
-
-		eventsCompose: function() {
-			var $composer,
-				$contentBody,
-				$html,
-				$innerBody;
-
-			$composer		= $( '.note-editable' );
-			$contentBody	= $( '.content-body' );
-			$html			= $( 'html' );
-			$innerBody		= $( '.inner-body' );
-
-			var adjustComposeSize = function() {
-				var composerHeight,
-					composerTop,
-					contentBodyPaddingBottom,
-					innerBodyHeight,
-					viewportHeight,
-					viewportWidth;
-
-
-				contentBodyPaddingBottom	= parseInt( $contentBody.css('paddingBottom'), 10 ) || 0;
-				viewportHeight				= Math.max( document.documentElement.clientHeight, window.innerHeight || 0 );
-				viewportWidth				= Math.max( document.documentElement.clientWidth, window.innerWidth || 0 );
-
-				$composer.css( 'height', '' );
-
-				if ( viewportWidth < 767 || $html.hasClass('mobile-device') ) {
-					composerTop	   = $composer.offset().top;
-					composerHeight = viewportHeight - composerTop;
-				} else {
-					if ( $html.hasClass( 'fixed' ) ) {
-						composerTop	= $composer.offset().top;
-					} else {
-						composerTop	= $composer.position().top;
-					}
-					composerHeight = $innerBody.outerHeight() - composerTop;
-				}
-
-				composerHeight -= contentBodyPaddingBottom;
-
-				$composer.css({
-					height: composerHeight
-				});
-			};
-
-			var timer;
-			$(window)
-				.on( 'resize orientationchange sidebar-left-toggle mailbox-recalc', function() {
-					clearTimeout( timer );
-					timer = setTimeout(function() {
-						adjustComposeSize();
-					}, 100);
-				});
-
-			adjustComposeSize();
-		}
-	};
-
-	// expose to scope
-	$.extend(theme, {
-		Mailbox: Mailbox
-	});
-
-	// jquery plugin
-	$.fn.themeMailbox = function(opts) {
-		return this.each(function() {
-			var $this = $(this);
-
-			if ($this.data(instanceName)) {
-				return $this.data(instanceName);
-			} else {
-				return new Mailbox($this);
-			}
-
-		});
-	}
-
-}).apply(this, [ window.theme, jQuery ]);
-
-// Lock Screen
-(function( $ ) {
-
-	'use strict';
-
-	var LockScreen = {
-
-		initialize: function() {
-			this.$body = $( 'body' );
-
-			this
-				.build()
-				.events();
-		},
-
-		build: function() {
-			var lockHTML,
-				userinfo;
-
-			userinfo = this.getUserInfo();
-			this.lockHTML = this.buildTemplate( userinfo );
-
-			this.$lock        = this.$body.children( '#LockScreenInline' );
-			this.$userPicture = this.$lock.find( '#LockUserPicture' );
-			this.$userName    = this.$lock.find( '#LockUserName' );
-			this.$userEmail   = this.$lock.find( '#LockUserEmail' );
-
-			return this;
-		},
-
-		events: function() {
-			var _self = this;
-
-			this.$body.find( '[data-lock-screen="true"]' ).on( 'click', function( e ) {
-				e.preventDefault();
-
-				_self.show();
-			});
-
-			return this;
-		},
-
-		formEvents: function( $form ) {
-			var _self = this;
-
-			$form.on( 'submit', function( e ) {
-				e.preventDefault();
-
-				_self.hide();
-			});
-		},
-
-		show: function() {
-			var _self = this,
-				userinfo = this.getUserInfo();
-
-			this.$userPicture.attr( 'src', userinfo.picture );
-			this.$userName.text( userinfo.username );
-			this.$userEmail.text( userinfo.email );
-
-			this.$body.addClass( 'show-lock-screen' );
-
-			$.magnificPopup.open({
-				items: {
-					src: this.lockHTML,
-					type: 'inline'
-				},
-				modal: true,
-				mainClass: 'mfp-lock-screen',
-				callbacks: {
-					change: function() {
-						_self.formEvents( this.content.find( 'form' ) );
-					}
-				}
-			});
-		},
-
-		hide: function() {
-			$.magnificPopup.close();
-		},
-
-		getUserInfo: function() {
-			var $info,
-				picture,
-				name,
-				email;
-
-			// always search in case something is changed through ajax
-			$info    = $( '#userbox' );
-			picture  = $info.find( '.profile-picture img' ).attr( 'data-lock-picture' );
-			name     = $info.find( '.profile-info' ).attr( 'data-lock-name' );
-			email    = $info.find( '.profile-info' ).attr( 'data-lock-email' );
-
-			return {
-				picture: picture,
-				username: name,
-				email: email
-			};
-		},
-
-		buildTemplate: function( userinfo ) {
-			return [
-					'<section id="LockScreenInline" class="body-sign body-locked body-locked-inline">',
-						'<div class="center-sign">',
-							'<div class="panel panel-sign">',
-								'<div class="panel-body">',
-									'<form>',
-										'<div class="current-user text-center">',
-											'<img id="LockUserPicture" src="{{picture}}" alt="John Doe" class="img-circle user-image" />',
-											'<h2 id="LockUserName" class="user-name text-dark m-none">{{username}}</h2>',
-											'<p  id="LockUserEmail" class="user-email m-none">{{email}}</p>',
-										'</div>',
-										'<div class="form-group mb-lg">',
-											'<div class="input-group input-group-icon">',
-												'<input id="pwd" name="pwd" type="password" class="form-control input-lg" placeholder="Password" />',
-												'<span class="input-group-addon">',
-													'<span class="icon icon-lg">',
-														'<i class="fa fa-lock"></i>',
-													'</span>',
-												'</span>',
-											'</div>',
-										'</div>',
-
-										'<div class="row">',
-											'<div class="col-xs-6">',
-												'<p class="mt-xs mb-none">',
-													'<a href="#">Not John Doe?</a>',
-												'</p>',
-											'</div>',
-											'<div class="col-xs-6 text-right">',
-												'<button type="submit" class="btn btn-primary">Unlock</button>',
-											'</div>',
-										'</div>',
-									'</form>',
-								'</div>',
-							'</div>',
-						'</div>',
-					'</section>'
-				]
-				.join( '' )
-				.replace( /\{\{picture\}\}/, userinfo.picture )
-				.replace( /\{\{username\}\}/, userinfo.username )
-				.replace( /\{\{email\}\}/, userinfo.email );
-		}
-
-	};
-
-	this.LockScreen = LockScreen;
-
-	$(function() {
-		LockScreen.initialize();
-	});
-
-}).apply(this, [ jQuery ]);
-
-// Panels
-(function( $ ) {
-
-	$(function() {
-		$('.panel')
-			.on( 'click', '.panel-actions a.fa-caret-up', function( e ) {
-				e.preventDefault();
-
-				var $this,
-					$panel;
-
-				$this = $( this );
-				$panel = $this.closest( '.panel' );
-
-				$this
-					.removeClass( 'fa-caret-up' )
-					.addClass( 'fa-caret-down' );
-
-				$panel.find('.panel-body, .panel-footer').slideDown( 200 );
-			})
-			.on( 'click', '.panel-actions a.fa-caret-down', function( e ) {
-				e.preventDefault();
-
-				var $this,
-					$panel;
-
-				$this = $( this );
-				$panel = $this.closest( '.panel' );
-
-				$this
-					.removeClass( 'fa-caret-down' )
-					.addClass( 'fa-caret-up' );
-
-				$panel.find('.panel-body, .panel-footer').slideUp( 200 );
-			})
-			.on( 'click', '.panel-actions a.fa-times', function( e ) {
-				e.preventDefault();
-
-				var $panel,
-					$row;
-
-				$panel = $(this).closest('.panel');
-
-				if ( !!( $panel.parent('div').attr('class') || '' ).match( /col-(xs|sm|md|lg)/g ) && $panel.siblings().length === 0 ) {
-					$row = $panel.closest('.row');
-					$panel.parent('div').remove();
-					if ( $row.children().length === 0 ) {
-						$row.remove();
-					}
-				} else {
-					$panel.remove();
-				}
-			});
-	});
-
-})( jQuery );
-
-// Bootstrap Toggle
-(function( $ ) {
-
-	'use strict';
-
-	var $window = $( window );
-
-	var toggleClass = function( $el ) {
-		if ( !!$el.data('toggleClassBinded') ) {
-			return false;
-		}
-
-		var $target,
-			className,
-			eventName;
-
-		$target = $( $el.attr('data-target') );
-		className = $el.attr('data-toggle-class');
-		eventName = $el.attr('data-fire-event');
-
-
-		$el.on('click.toggleClass', function(e) {
-			e.preventDefault();
-			$target.toggleClass( className );
-
-			var hasClass = $target.hasClass( className );
-
-			if ( !!eventName ) {
-				$window.trigger( eventName, {
-					added: hasClass,
-					removed: !hasClass
-				});
-			}
-		});
-
-		$el.data('toggleClassBinded', true);
-
-		return true;
-	};
-
-	$(function() {
-		$('[data-toggle-class][data-target]').each(function() {
-			toggleClass( $(this) );
-		});
-	});
-
-}).apply( this, [ jQuery ]);
-
-// Form to Object
-(function( $ ) {
-
-	'use strict';
-
-	$.fn.formToObject = function() {
-		var arrayData,
-			objectData;
-
-		arrayData	= this.serializeArray();
-		objectData	= {};
-
-		$.each( arrayData, function() {
-			var value;
-
-			if (this.value != null) {
-				value = this.value;
-			} else {
-				value = '';
-			}
-
-			if (objectData[this.name] != null) {
-				if (!objectData[this.name].push) {
-					objectData[this.name] = [objectData[this.name]];
-				}
-
-				objectData[this.name].push(value);
-			} else {
-				objectData[this.name] = value;
-			}
-		});
-
-		return objectData;
-	};
-
-})( jQuery );
-
-// Codemirror
-(function(theme, $) {
-
-	theme = theme || {};
-
-	var instanceName = '__codemirror';
-
-	var PluginCodeMirror = function($el, opts) {
-		return this.initialize($el, opts);
-	};
-
-	PluginCodeMirror.defaults = {
-		lineNumbers: true,
-		styleActiveLine: true,
-		matchBrackets: true,
-		theme: 'monokai'
-	};
-
-	PluginCodeMirror.prototype = {
-		initialize: function($el, opts) {
-			if ( $el.data( instanceName ) ) {
-				return this;
-			}
-
-			this.$el = $el;
-
-			this
-				.setData()
-				.setOptions(opts)
-				.build();
-
-			return this;
-		},
-
-		setData: function() {
-			this.$el.data(instanceName, this);
-
-			return this;
-		},
-
-		setOptions: function(opts) {
-			this.options = $.extend( true, {}, PluginCodeMirror.defaults, opts );
-
-			return this;
-		},
-
-		build: function() {
-			CodeMirror.fromTextArea( this.$el.get(0), this.options );
-
-			return this;
-		}
-	};
-
-	// expose to scope
-	$.extend(theme, {
-		PluginCodeMirror: PluginCodeMirror
-	});
-
-	// jquery plugin
-	$.fn.themePluginCodeMirror = function(opts) {
-		return this.each(function() {
-			var $this = $(this);
-
-			if ($this.data(instanceName)) {
-				return $this.data(instanceName);
-			} else {
-				return new PluginCodeMirror($this, opts);
-			}
-
-		});
-	}
-
-}).apply(this, [ window.theme, jQuery ]);
-
-// Colorpicker
-(function(theme, $) {
-
-	theme = theme || {};
-
-	var instanceName = '__colorpicker';
-
-	var PluginColorPicker = function($el, opts) {
-		return this.initialize($el, opts);
-	};
-
-	PluginColorPicker.defaults = {
-	};
-
-	PluginColorPicker.prototype = {
-		initialize: function($el, opts) {
-			if ( $el.data( instanceName ) ) {
-				return this;
-			}
-
-			this.$el = $el;
-
-			this
-				.setData()
-				.setOptions(opts)
-				.build();
-
-			return this;
-		},
-
-		setData: function() {
-			this.$el.data(instanceName, this);
-
-			return this;
-		},
-
-		setOptions: function(opts) {
-			this.options = $.extend( true, {}, PluginColorPicker.defaults, opts );
-
-			return this;
-		},
-
-		build: function() {
-			this.$el.colorpicker( this.options );
-
-			return this;
-		}
-	};
-
-	// expose to scope
-	$.extend(theme, {
-		PluginColorPicker: PluginColorPicker
-	});
-
-	// jquery plugin
-	$.fn.themePluginColorPicker = function(opts) {
-		return this.each(function() {
-			var $this = $(this);
-
-			if ($this.data(instanceName)) {
-				return $this.data(instanceName);
-			} else {
-				return new PluginColorPicker($this, opts);
-			}
-
-		});
-	}
-
-}).apply(this, [ window.theme, jQuery ]);
-
-// Datepicker
-(function(theme, $) {
-
-	theme = theme || {};
-
-	var instanceName = '__datepicker';
-
-	var PluginDatePicker = function($el, opts) {
-		return this.initialize($el, opts);
-	};
-
-	PluginDatePicker.defaults = {
-	};
-
-	PluginDatePicker.prototype = {
-		initialize: function($el, opts) {
-			if ( $el.data( instanceName ) ) {
-				return this;
-			}
-
-			this.$el = $el;
-
-			this
-				.setVars()
-				.setData()
-				.setOptions(opts)
-				.build();
-
-			return this;
-		},
-
-		setVars: function() {
-			this.skin = this.$el.data( 'plugin-skin' );
-
-			return this;
-		},
-
-		setData: function() {
-			this.$el.data(instanceName, this);
-
-			return this;
-		},
-
-		setOptions: function(opts) {
-			this.options = $.extend( true, {}, PluginDatePicker.defaults, opts );
-
-			return this;
-		},
-
-		build: function() {
-			this.$el.datepicker( this.options );
-
-			if ( !!this.skin ) {
-				this.$el.data('datepicker').picker.addClass( 'datepicker-' + this.skin );
-			}
-
-			return this;
-		}
-	};
-
-	// expose to scope
-	$.extend(theme, {
-		PluginDatePicker: PluginDatePicker
-	});
-
-	// jquery plugin
-	$.fn.themePluginDatePicker = function(opts) {
-		return this.each(function() {
-			var $this = $(this);
-
-			if ($this.data(instanceName)) {
-				return $this.data(instanceName);
-			} else {
-				return new PluginDatePicker($this, opts);
-			}
-
-		});
-	}
-
-}).apply(this, [ window.theme, jQuery ]);
-
-// iosSwitcher
-(function(theme, $) {
-
-	theme = theme || {};
-
-	var instanceName = '__IOS7Switch';
-
-	var PluginIOS7Switch = function($el) {
-		return this.initialize($el);
-	};
-
-	PluginIOS7Switch.prototype = {
-		initialize: function($el) {
-			if ( $el.data( instanceName ) ) {
-				return this;
-			}
-
-			this.$el = $el;
-
-			this
-				.setData()
-				.build();
-
-			return this;
-		},
-
-		setData: function() {
-			this.$el.data(instanceName, this);
-
-			return this;
-		},
-
-		build: function() {
-			var switcher = new Switch( this.$el.get(0) );
-
-			$( switcher.el ).on( 'click', function( e ) {
-				e.preventDefault();
-				switcher.toggle();
-			});
-
-			return this;
-		}
-	};
-
-	// expose to scope
-	$.extend(theme, {
-		PluginIOS7Switch: PluginIOS7Switch
-	});
-
-	// jquery plugin
-	$.fn.themePluginIOS7Switch = function(opts) {
-		return this.each(function() {
-			var $this = $(this);
-
-			if ($this.data(instanceName)) {
-				return $this.data(instanceName);
-			} else {
-				return new PluginIOS7Switch($this);
-			}
-
-		});
-	}
-
-}).apply(this, [ window.theme, jQuery ]);
-
-// Markdown
-(function(theme, $) {
-
-	theme = theme || {};
-
-	var instanceName = '__markdownEditor';
-
-	var PluginMarkdownEditor = function($el, opts) {
-		return this.initialize($el, opts);
-	};
-
-	PluginMarkdownEditor.defaults = {
-		iconlibrary: 'fa'
-	};
-
-	PluginMarkdownEditor.prototype = {
-		initialize: function($el, opts) {
-			if ( $el.data( instanceName ) ) {
-				return this;
-			}
-
-			this.$el = $el;
-
-			this
-				.setData()
-				.setOptions(opts)
-				.build();
-
-			return this;
-		},
-
-		setData: function() {
-			this.$el.data(instanceName, this);
-
-			return this;
-		},
-
-		setOptions: function(opts) {
-			this.options = $.extend( true, {}, PluginMarkdownEditor.defaults, opts );
-
-			return this;
-		},
-
-		build: function() {
-			this.$el.markdown( this.options );
-
-			return this;
-		}
-	};
-
-	// expose to scope
-	$.extend(theme, {
-		PluginMarkdownEditor: PluginMarkdownEditor
-	});
-
-	// jquery plugin
-	$.fn.themePluginMarkdownEditor = function(opts) {
-		return this.each(function() {
-			var $this = $(this);
-
-			if ($this.data(instanceName)) {
-				return $this.data(instanceName);
-			} else {
-				return new PluginMarkdownEditor($this, opts);
-			}
-
-		});
-	}
-
-}).apply(this, [ window.theme, jQuery ]);
-
-// Masked Input
-(function(theme, $) {
-
-	theme = theme || {};
-
-	var instanceName = '__maskedInput';
-
-	var PluginMaskedInput = function($el, opts) {
-		return this.initialize($el, opts);
-	};
-
-	PluginMaskedInput.defaults = {
-	};
-
-	PluginMaskedInput.prototype = {
-		initialize: function($el, opts) {
-			if ( $el.data( instanceName ) ) {
-				return this;
-			}
-
-			this.$el = $el;
-
-			this
-				.setData()
-				.setOptions(opts)
-				.build();
-
-			return this;
-		},
-
-		setData: function() {
-			this.$el.data(instanceName, this);
-
-			return this;
-		},
-
-		setOptions: function(opts) {
-			this.options = $.extend( true, {}, PluginMaskedInput.defaults, opts );
-
-			return this;
-		},
-
-		build: function() {
-			this.$el.mask( this.$el.data('input-mask'), this.options );
-
-			return this;
-		}
-	};
-
-	// expose to scope
-	$.extend(theme, {
-		PluginMaskedInput: PluginMaskedInput
-	});
-
-	// jquery plugin
-	$.fn.themePluginMaskedInput = function(opts) {
-		return this.each(function() {
-			var $this = $(this);
-
-			if ($this.data(instanceName)) {
-				return $this.data(instanceName);
-			} else {
-				return new PluginMaskedInput($this, opts);
-			}
-
-		});
-	}
-
-}).apply(this, [ window.theme, jQuery ]);
-
-// MaxLength
-(function(theme, $) {
-
-	theme = theme || {};
-
-	var instanceName = '__maxlength';
-
-	var PluginMaxLength = function($el, opts) {
-		return this.initialize($el, opts);
-	};
-
-	PluginMaxLength.defaults = {
-		alwaysShow: true,
-		placement: 'bottom-left',
-		warningClass: 'label label-success bottom-left',
-		limitReachedClass: 'label label-danger bottom-left'
-	};
-
-	PluginMaxLength.prototype = {
-		initialize: function($el, opts) {
-			if ( $el.data( instanceName ) ) {
-				return this;
-			}
-
-			this.$el = $el;
-
-			this
-				.setData()
-				.setOptions(opts)
-				.build();
-
-			return this;
-		},
-
-		setData: function() {
-			this.$el.data(instanceName, this);
-
-			return this;
-		},
-
-		setOptions: function(opts) {
-			this.options = $.extend( true, {}, PluginMaxLength.defaults, opts );
-
-			return this;
-		},
-
-		build: function() {
-			this.$el.maxlength( this.options );
-
-			return this;
-		}
-	};
-
-	// expose to scope
-	$.extend(theme, {
-		PluginMaxLength: PluginMaxLength
-	});
-
-	// jquery plugin
-	$.fn.themePluginMaxLength = function(opts) {
-		return this.each(function() {
-			var $this = $(this);
-
-			if ($this.data(instanceName)) {
-				return $this.data(instanceName);
-			} else {
-				return new PluginMaxLength($this, opts);
-			}
-
-		});
-	}
-
-}).apply(this, [ window.theme, jQuery ]);
-
-// MultiSelect
-(function(theme, $) {
-
-	theme = theme || {};
-
-	var instanceName = '__multiselect';
-
-	var PluginMultiSelect = function($el, opts) {
-		return this.initialize($el, opts);
-	};
-
-	PluginMultiSelect.defaults = {
-		templates: {
-			filter: '<div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input class="form-control multiselect-search" type="text"></div>'
-		}
-	};
-
-	PluginMultiSelect.prototype = {
-		initialize: function($el, opts) {
-			if ( $el.data( instanceName ) ) {
-				return this;
-			}
-
-			this.$el = $el;
-
-			this
-				.setData()
-				.setOptions(opts)
-				.build();
-
-			return this;
-		},
-
-		setData: function() {
-			this.$el.data(instanceName, this);
-
-			return this;
-		},
-
-		setOptions: function(opts) {
-			this.options = $.extend( true, {}, PluginMultiSelect.defaults, opts );
-
-			return this;
-		},
-
-		build: function() {
-			this.$el.multiselect( this.options );
-
-			return this;
-		}
-	};
-
-	// expose to scope
-	$.extend(theme, {
-		PluginMultiSelect: PluginMultiSelect
-	});
-
-	// jquery plugin
-	$.fn.themePluginMultiSelect = function(opts) {
-		return this.each(function() {
-			var $this = $(this);
-
-			if ($this.data(instanceName)) {
-				return $this.data(instanceName);
-			} else {
-				return new PluginMultiSelect($this, opts);
-			}
-
-		});
-	}
-
-}).apply(this, [ window.theme, jQuery ]);
-
-// Select2
-(function(theme, $) {
-
-	theme = theme || {};
-
-	var instanceName = '__select2';
-
-	var PluginSelect2 = function($el, opts) {
-		return this.initialize($el, opts);
-	};
-
-	PluginSelect2.defaults = {
-	};
-
-	PluginSelect2.prototype = {
-		initialize: function($el, opts) {
-			if ( $el.data( instanceName ) ) {
-				return this;
-			}
-
-			this.$el = $el;
-
-			this
-				.setData()
-				.setOptions(opts)
-				.build();
-
-			return this;
-		},
-
-		setData: function() {
-			this.$el.data(instanceName, this);
-
-			return this;
-		},
-
-		setOptions: function(opts) {
-			this.options = $.extend( true, {}, PluginSelect2.defaults, opts );
-
-			return this;
-		},
-
-		build: function() {
-			this.$el.select2( this.options );
-
-			return this;
-		}
-	};
-
-	// expose to scope
-	$.extend(theme, {
-		PluginSelect2: PluginSelect2
-	});
-
-	// jquery plugin
-	$.fn.themePluginSelect2 = function(opts) {
-		return this.each(function() {
-			var $this = $(this);
-
-			if ($this.data(instanceName)) {
-				return $this.data(instanceName);
-			} else {
-				return new PluginSelect2($this, opts);
-			}
-
-		});
-	}
-
-}).apply(this, [ window.theme, jQuery ]);
-
-// Spinner
-(function(theme, $) {
-
-	theme = theme || {};
-
-	var instanceName = '__spinner';
-
-	var PluginSpinner = function($el, opts) {
-		return this.initialize($el, opts);
-	};
-
-	PluginSpinner.defaults = {
-	};
-
-	PluginSpinner.prototype = {
-		initialize: function($el, opts) {
-			if ( $el.data( instanceName ) ) {
-				return this;
-			}
-
-			this.$el = $el;
-
-			this
-				.setData()
-				.setOptions(opts)
-				.build();
-
-			return this;
-		},
-
-		setData: function() {
-			this.$el.data(instanceName, this);
-
-			return this;
-		},
-
-		setOptions: function(opts) {
-			this.options = $.extend( true, {}, PluginSpinner.defaults, opts );
-
-			return this;
-		},
-
-		build: function() {
-			this.$el.spinner( this.options );
-
-			return this;
-		}
-	};
-
-	// expose to scope
-	$.extend(theme, {
-		PluginSpinner: PluginSpinner
-	});
-
-	// jquery plugin
-	$.fn.themePluginSpinner = function(opts) {
-		return this.each(function() {
-			var $this = $(this);
-
-			if ($this.data(instanceName)) {
-				return $this.data(instanceName);
-			} else {
-				return new PluginSpinner($this, opts);
-			}
-
-		});
-	}
-
-}).apply(this, [ window.theme, jQuery ]);
-
-// SummerNote
-(function(theme, $) {
-
-	theme = theme || {};
-
-	var instanceName = '__summernote';
-
-	var PluginSummerNote = function($el, opts) {
-		return this.initialize($el, opts);
-	};
-
-	PluginSummerNote.defaults = {
-		onfocus: function() {
-			$( this ).closest( '.note-editor' ).addClass( 'active' );
-		},
-		onblur: function() {
-			$( this ).closest( '.note-editor' ).removeClass( 'active' );
-		}
-	};
-
-	PluginSummerNote.prototype = {
-		initialize: function($el, opts) {
-			if ( $el.data( instanceName ) ) {
-				return this;
-			}
-
-			this.$el = $el;
-
-			this
-				.setData()
-				.setOptions(opts)
-				.build();
-
-			return this;
-		},
-
-		setData: function() {
-			this.$el.data(instanceName, this);
-
-			return this;
-		},
-
-		setOptions: function(opts) {
-			this.options = $.extend( true, {}, PluginSummerNote.defaults, opts );
-
-			return this;
-		},
-
-		build: function() {
-			this.$el.summernote( this.options );
-
-			return this;
-		}
-	};
-
-	// expose to scope
-	$.extend(theme, {
-		PluginSummerNote: PluginSummerNote
-	});
-
-	// jquery plugin
-	$.fn.themePluginSummerNote = function(opts) {
-		return this.each(function() {
-			var $this = $(this);
-
-			if ($this.data(instanceName)) {
-				return $this.data(instanceName);
-			} else {
-				return new PluginSummerNote($this, opts);
-			}
-
-		});
-	}
-
-}).apply(this, [ window.theme, jQuery ]);
-
-// TextArea AutoSize
-(function(theme, $) {
-
-	theme = theme || {};
-
-	var initialized = false;
-	var instanceName = '__textareaAutosize';
-
-	var PluginTextAreaAutoSize = function($el, opts) {
-		return this.initialize($el, opts);
-	};
-
-	PluginTextAreaAutoSize.defaults = {
-	};
-
-	PluginTextAreaAutoSize.prototype = {
-		initialize: function($el, opts) {
-			if (initialized) {
-				return this;
-			}
-
-			this.$el = $el;
-
-			this
-				.setData()
-				.setOptions(opts)
-				.build();
-
-			return this;
-		},
-
-		setData: function() {
-			this.$el.data(instanceName, this);
-
-			return this;
-		},
-
-		setOptions: function(opts) {
-			this.options = $.extend( true, {}, PluginTextAreaAutoSize.defaults, opts );
-
-			return this;
-		},
-
-		build: function() {
-			this.$el.autosize( this.options );
-
-			return this;
-		}
-	};
-
-	// expose to scope
-	$.extend(theme, {
-		PluginTextAreaAutoSize: PluginTextAreaAutoSize
-	});
-
-	// jquery plugin
-	$.fn.themePluginTextAreaAutoSize = function(opts) {
-		return this.each(function() {
-			var $this = $(this);
-
-			if ($this.data(instanceName)) {
-				return $this.data(instanceName);
-			} else {
-				return new PluginTextAreaAutoSize($this, opts);
-			}
-
-		});
-	}
-
-}).apply(this, [ window.theme, jQuery ]);
-
-// TimePicker
-(function(theme, $) {
-
-	theme = theme || {};
-
-	var instanceName = '__timepicker';
-
-	var PluginTimePicker = function($el, opts) {
-		return this.initialize($el, opts);
-	};
-
-	PluginTimePicker.defaults = {
-		disableMousewheel: true
-	};
-
-	PluginTimePicker.prototype = {
-		initialize: function($el, opts) {
-			if ( $el.data( instanceName ) ) {
-				return this;
-			}
-
-			this.$el = $el;
-
-			this
-				.setData()
-				.setOptions(opts)
-				.build();
-
-			return this;
-		},
-
-		setData: function() {
-			this.$el.data(instanceName, this);
-
-			return this;
-		},
-
-		setOptions: function(opts) {
-			this.options = $.extend( true, {}, PluginTimePicker.defaults, opts );
-
-			return this;
-		},
-
-		build: function() {
-			this.$el.timepicker( this.options );
-
-			return this;
-		}
-	};
-
-	// expose to scope
-	$.extend(theme, {
-		PluginTimePicker: PluginTimePicker
-	});
-
-	// jquery plugin
-	$.fn.themePluginTimePicker = function(opts) {
-		return this.each(function() {
-			var $this = $(this);
-
-			if ($this.data(instanceName)) {
-				return $this.data(instanceName);
-			} else {
-				return new PluginTimePicker($this, opts);
-			}
-
-		});
-	}
-
-}).apply(this, [ window.theme, jQuery ]);
-
-// Map Builder
-(function( theme, $ ) {
-
-	'use strict';
-
-	// prevent undefined var
-	theme = theme || {};
-
-	// internal var to check if reached limit
-	var timeouts = 0;
-
-	// instance
-	var instanceName = '__gmapbuilder';
-
-	// private
-	var roundNumber = function( number, precision ) {
-		if( precision < 0 ) {
-			precision = 0;
-		} else if( precision > 10 ) {
-			precision = 10;
-		}
-		var a = [ 1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000, 10000000000 ];
-
-		return Math.round( number * a[ precision ] ) / a[ precision ];
-	};
-
-	// definition
-	var GMapBuilder = function( $wrapper, opts ) {
-		return this.initialize( $wrapper, opts );
-	};
-
-	GMapBuilder.defaults = {
-		mapSelector: '#gmap',
-
-		markers: {
-			modal: '#MarkerModal',
-			list: '#MarkersList',
-			removeAll: '#MarkerRemoveAll'
-		},
-
-		previewModal: '#ModalPreview',
-		getCodeModal: '#ModalGetCode',
-
-		mapOptions: {
-			center: {
-				lat: -38.908133,
-				lng: -13.692628
-			},
-			panControl: true,
-			zoom: 3
-		}
-	};
-
-	GMapBuilder.prototype = {
-
-		markers: [],
-
-		initialize: function( $wrapper, opts ) {
-			this.$wrapper = $wrapper;
-
-			this
-				.setData()
-				.setOptions( opts )
-				.setVars()
-				.build()
-				.events();
-
-			return this;
-		},
-
-		setData: function() {
-			this.$wrapper.data( instanceName, this );
-
-			return this;
-		},
-
-		setOptions: function( opts ) {
-			this.options = $.extend( true, {}, GMapBuilder.defaults, opts );
-
-			return this;
-		},
-
-		setVars: function() {
-			this.$mapContainer		= this.$wrapper.find( this.options.mapSelector );
-
-			this.$previewModal		= $( this.options.previewModal );
-			this.$getCodeModal		= $( this.options.getCodeModal );
-
-			this.marker				= {};
-			this.marker.$modal  	= $( this.options.markers.modal );
-			this.marker.$form		= this.marker.$modal.find( 'form' );
-			this.marker.$list		= $( this.options.markers.list );
-			this.marker.$removeAll	= $( this.options.markers.removeAll );
-
-			return this;
-		},
-
-		build: function() {
-			var _self = this;
-
-			if ( !!window.SnazzyThemes ) {
-				var themeOpts = [];
-
-				$.each( window.SnazzyThemes, function( i, theme ) {
-					themeOpts.push( $('<option value="' + theme.id + '">' + theme.name + '</option>').data( 'json', theme.json ) );
-				});
-
-				this.$wrapper.find( '[data-builder-field="maptheme"]' ).append( themeOpts );
-			}
-
-			this.geocoder = new google.maps.Geocoder();
-
-			google.maps.event.addDomListener( window, 'load', function() {
-				_self.options.mapOptions.center = new google.maps.LatLng( _self.options.mapOptions.center.lat, _self.options.mapOptions.center.lng );
-
-				_self.map = new google.maps.Map( _self.$mapContainer.get(0), _self.options.mapOptions );
-
-				_self
-					.updateControl( 'latlng' )
-					.updateControl( 'zoomlevel' );
-
-				_self.mapEvents();
-			});
-
-			return this;
-		},
-
-		events: function() {
-			var _self = this;
-
-			this.$wrapper.find( '[data-builder-field]' ).each(function() {
-				var $this = $( this ),
-					field,
-					value;
-
-				field = $this.data( 'builder-field' );
-
-				$this.on( 'change', function() {
-
-					if ( $this.is( 'select' ) ) {
-						value = $this.children( 'option:selected' ).val().toLowerCase();
-					} else {
-						value = $this.val().toLowerCase();
-					}
-
-					_self.updateMap( field, value );
-				});
-
-			});
-
-			this.marker.$form.on( 'submit', function( e ) {
-				e.preventDefault();
-
-				_self.saveMarker( _self.marker.$form.formToObject() );
-			});
-
-			this.marker.$removeAll.on( 'click', function( e ) {
-				e.preventDefault();
-				_self.removeAllMarkers();
-			});
-
-			// preview events
-			this.$previewModal.on( 'shown.bs.modal', function() {
-				_self.preview();
-			});
-
-			this.$previewModal.on( 'hidden.bs.modal', function() {
-				_self.$previewModal.find( 'iframe' ).get(0).contentWindow.document.body.innerHTML = '';
-			});
-
-			// get code events
-			this.$getCodeModal.on( 'shown.bs.modal', function() {
-				_self.getCode();
-			});
-
-			return this;
-		},
-
-		// MAP FUNCTIONS
-		// -----------------------------------------------------------------------------
-		mapEvents: function() {
-			var _self = this;
-
-			google.maps.event.addDomListener( _self.map, 'resize', function() {
-				google.maps.event.trigger( _self.map, 'resize' );
-			});
-
-			google.maps.event.addListener( this.map, 'center_changed', function() {
-				var coords = _self.map.getCenter();
-				_self.updateControl( 'latlng', {
-					lat: roundNumber( coords.lat(), 6 ),
-					lng: roundNumber( coords.lng(), 6 )
-				});
-			});
-
-			google.maps.event.addListener( this.map, 'zoom_changed', function() {
-				_self.updateControl( 'zoomlevel', _self.map.getZoom() );
-			});
-
-			google.maps.event.addListener( this.map, 'maptypeid_changed', function() {
-				_self.updateControl( 'maptype', _self.map.getMapTypeId() );
-			});
-
-			return this;
-		},
-
-		updateMap: function( prop, value ) {
-			var updateFn;
-
-			updateFn = this.updateMapProperty[ prop ];
-
-			if ( $.isFunction( updateFn ) ) {
-				updateFn.apply( this, [ value ] );
-			} else {
-				console.info( 'missing update function for', prop );
-			}
-
-			return this;
-		},
-
-		updateMapProperty: {
-
-			latlng: function() {
-				var lat,
-					lng;
-
-				lat = this.$wrapper.find('[data-builder-field][name="latitude"]').val();
-				lng = this.$wrapper.find('[data-builder-field][name="longitude"]').val();
-
-				if ( lat.length > 0 && lng.length > 0 ) {
-					this.map.setCenter( new google.maps.LatLng( lat, lng ) );
-				}
-
-				return this;
-			},
-
-			zoomlevel: function( value ) {
-				var value = arguments[ 0 ];
-
-				this.map.setZoom( parseInt( value, 10 ) );
-
-				return this;
-			},
-
-			maptypecontrol: function( value ) {
-				var options;
-
-				options	= {};
-
-				if ( value === 'false' ){
-					options.mapTypeControl = false;
-				} else {
-					options = {
-						mapTypeControl: true,
-						mapTypeControlOptions: {
-							style: google.maps.MapTypeControlStyle[ value.toUpperCase() ]
-						}
-					};
-				}
-
-				this.map.setOptions( options );
-
-				return this;
-			},
-
-			zoomcontrol: function( value ) {
-				var options;
-
-				options	= {};
-
-				if ( value === 'false' ){
-					options.zoomControl = false;
-				} else {
-					options = {
-						zoomControl: true,
-						zoomControlOptions: {
-							style: google.maps.ZoomControlStyle[ value.toUpperCase() ]
-						}
-					};
-				}
-
-				this.map.setOptions( options );
-
-				return this;
-			},
-
-			scalecontrol: function( value ) {
-				var options;
-
-				options	= {};
-
-				options.scaleControl = value !== 'false';
-
-				this.map.setOptions( options );
-
-				return this;
-			},
-
-			streetviewcontrol: function( value ) {
-				var options;
-
-				options	= {};
-
-				options.streetViewControl = value !== 'false';
-
-				this.map.setOptions( options );
-
-				return this;
-			},
-
-			pancontrol: function( value ) {
-				var options;
-
-				options	= {};
-
-				options.panControl = value !== 'false';
-
-				this.map.setOptions( options );
-
-				return this;
-			},
-
-			overviewcontrol: function( value ) {
-				var options;
-
-				options	= {};
-
-				if ( value === 'false' ){
-					options.overviewMapControl = false;
-				} else {
-					options = {
-						overviewMapControl: true,
-						overviewMapControlOptions: {
-							opened: value === 'opened'
-						}
-					};
-				}
-
-				this.map.setOptions( options );
-
-				return this;
-			},
-
-			draggablecontrol: function( value ) {
-				var options;
-
-				options	= {};
-
-				options.draggable = value !== 'false';
-
-				this.map.setOptions( options );
-
-				return this;
-			},
-
-			clicktozoomcontrol: function( value ) {
-				var options;
-
-				options	= {};
-
-				options.disableDoubleClickZoom = value === 'false';
-
-				this.map.setOptions( options );
-
-				return this;
-			},
-
-			scrollwheelcontrol: function( value ) {
-				var options;
-
-				options	= {};
-
-				options.scrollwheel = value !== 'false';
-
-				this.map.setOptions( options );
-
-				return this;
-			},
-
-			maptype: function( value ) {
-				var options,
-					mapStyles,
-					mapType;
-
-				mapStyles = this.$wrapper.find( '[data-builder-field="maptheme"]' ).children( 'option' ).filter( ':selected' ).data( 'json' );
-				mapType =  google.maps.MapTypeId[ value.toUpperCase() ];
-
-				options	= {
-					mapTypeId: mapType
-				};
-
-				if ( $.inArray( google.maps.MapTypeId[ value.toUpperCase() ], [ 'terrain', 'roadmap' ]) > -1 && !!mapStyles ) {
-					options.styles = eval( mapStyles );
-				} else {
-					options.styles = false;
-					this.updateControl( 'maptheme' );
-				}
-
-				this.map.setOptions( options );
-			},
-
-			maptheme: function( value ) {
-				var json,
-					mapType,
-					options;
-
-				mapType = google.maps.MapTypeId[ this.map.getMapTypeId() === 'terrain' ? 'TERRAIN' : 'ROADMAP' ];
-				options = {};
-				json = this.$wrapper.find( '[data-builder-field="maptheme"]' ).children( 'option' ).filter( ':selected' ).data( 'json' );
-
-				if ( !json ) {
-					options = {
-						mapTypeId: mapType,
-						styles: false
-					};
-				} else {
-					options = {
-						mapTypeId: mapType,
-						styles: eval( json )
-					};
-				}
-
-				this.map.setOptions( options );
-			}
-
-		},
-
-		// CONTROLS FUNCTIONS
-		// -----------------------------------------------------------------------------
-		updateControl: function( prop ) {
-			var updateFn;
-
-			updateFn = this.updateControlValue[ prop ];
-
-			if ( $.isFunction( updateFn ) ) {
-				updateFn.apply( this );
-			} else {
-				console.info( 'missing update function for', prop );
-			}
-
-			return this;
-		},
-
-		updateControlValue: {
-
-			latlng: function() {
-				var center = this.map.getCenter();
-
-				this.$wrapper.find('[data-builder-field][name="latitude"]').val( roundNumber( center.lat() , 6 ) );
-				this.$wrapper.find('[data-builder-field][name="longitude"]').val( roundNumber( center.lng() , 6 ) );
-			},
-
-			zoomlevel: function() {
-				var $control,
-					level;
-
-				level = this.map.getZoom();
-
-				$control = this.$wrapper.find('[data-builder-field="zoomlevel"]');
-
-				$control
-					.children( 'option[value="' + level + '"]' )
-					.prop( 'selected', true );
-
-				if ( $control.hasClass( 'select2-offscreen' ) ) {
-					$control.select2( 'val', level );
-				}
-			},
-
-			maptype: function() {
-				var $control,
-					mapType;
-
-				mapType = this.map.getMapTypeId();
-				$control = this.$wrapper.find('[data-builder-field="maptype"]');
-
-				$control
-					.children( 'option[value="' + mapType + '"]' )
-					.prop( 'selected', true );
-
-				if ( $control.hasClass( 'select2-offscreen' ) ) {
-					$control.select2( 'val', mapType );
-				}
-			},
-
-			maptheme: function() {
-				var $control;
-
-				$control = this.$wrapper.find('[data-builder-field="maptheme"]');
-
-				$control
-					.children( 'option[value="false"]' )
-					.prop( 'selected', true );
-
-				if ( $control.hasClass( 'select2-offscreen' ) ) {
-					$control.select2( 'val', 'false' );
-				}
-			}
-
-		},
-
-		// MARKERS FUNCTIONS
-		// -----------------------------------------------------------------------------
-		editMarker: function( marker ) {
-			this.currentMarker = marker;
-
-			this.marker.$form
-				.find( '#MarkerLocation' ).val( marker.location );
-
-			this.marker.$form
-				.find( '#MarkerTitle' ).val( marker.title );
-
-			this.marker.$form
-				.find( '#MarkerDescription' ).val( marker.description );
-
-			this.marker.$modal.modal( 'show' );
-		},
-
-		removeMarker: function( marker ) {
-			var i;
-
-			marker._instance.setMap( null );
-			marker._$html.remove();
-
-			for( i = 0; i < this.markers.length; i++ ) {
-				if ( marker === this.markers[ i ] ) {
-					this.markers.splice( i, 1 );
-					break;
-				}
-			}
-
-			if ( this.markers.length === 0 ) {
-				this.marker.$list.addClass( 'hidden' );
-			}
-		},
-
-		saveMarker: function( marker ) {
-			this._geocode( marker );
-		},
-
-		removeAllMarkers: function() {
-			var i = 0,
-				l,
-				marker;
-
-			l = this.markers.length;
-
-			for( ; i < l; i++ ) {
-				marker = this.markers[ i ];
-
-				marker._instance.setMap( null );
-				marker._$html.remove();
-			}
-
-			this.markers = [];
-			this.marker.$list.addClass( 'hidden' );
-		},
-
-		_geocode: function( marker ) {
-			var _self = this,
-				status;
-
-			this.geocoder.geocode({ address: marker.location }, function( response, status ) {
-				_self._onGeocodeResult( marker, response, status );
-			});
-		},
-
-		_onGeocodeResult: function( marker, response, status ) {
-			var result;
-
-			if ( !response || status !== google.maps.GeocoderStatus.OK ) {
-				if ( status == google.maps.GeocoderStatus.ZERO_RESULTS ) {
-					// show notification
-				} else {
-					timeouts++;
-					if ( timeouts > 3 ) {
-						// show notification reached limit of requests
-					}
-				}
-			} else {
-				timeouts = 0;
-
-				if ( this.currentMarker ) {
-					this.removeMarker( this.currentMarker );
-					this.currentMarker = null;
-				}
-
-				// grab first result of the list
-				result = response[ 0 ];
-
-				// get lat & lng and set to marker
-				marker.lat = Math.round( result.geometry.location.lat() * 1000000 ) / 1000000;
-				marker.lng = Math.round( result.geometry.location.lng() * 1000000 ) / 1000000;
-
-				var opts = {
-					position: new google.maps.LatLng( marker.lat, marker.lng ),
-					map: this.map
-				};
-
-				if ( marker.title.length > 0 ) {
-					opts.title = marker.title;
-				}
-
-				if ( marker.description.length > 0 ) {
-					opts.desc = marker.description;
-				}
-
-				marker.position = opts.position;
-				marker._instance = new google.maps.Marker( opts );
-
-				if ( !!marker.title || !!marker.description  ) {
-					this._bindMarkerClick( marker );
-				}
-
-				this.markers.push( marker );
-
-				// append to markers list
-				this._appendMarkerToList( marker );
-
-				// hide modal and reset form
-				this.marker.$form.get(0).reset();
-				this.marker.$modal.modal( 'hide' );
-			}
-		},
-
-		_appendMarkerToList: function( marker ) {
-			var _self = this,
-				html;
-
-			html = [
-				'<li>',
-					'<p>{location}</p>',
-					'<a href="#" class="location-action location-center"><i class="fa fa-map-marker"></i></a>',
-					'<a href="#" class="location-action location-edit"><i class="fa fa-edit"></i></a>',
-					'<a href="#" class="location-action location-remove text-danger"><i class="fa fa-times"></i></a>',
-				'</li>'
-			].join('');
-
-			html = html.replace( /\{location\}/, !!marker.title ? marker.title : marker.location );
-
-			marker._$html = $( html );
-
-			// events
-			marker._$html.find( '.location-center' )
-				.on( 'click', function( e ) {
-					_self.map.setCenter( marker.position );
-				});
-
-			marker._$html.find( '.location-remove' )
-				.on( 'click', function( e ) {
-					e.preventDefault();
-					_self.removeMarker( marker );
-				});
-
-			marker._$html.find( '.location-edit' )
-				.on( 'click', function( e ) {
-					e.preventDefault();
-					_self.editMarker( marker );
-				});
-
-			this.marker.$list
-				.append( marker._$html )
-				.removeClass( 'hidden' );
-		},
-
-		_bindMarkerClick: function( marker ) {
-			var _self = this,
-				html;
-
-			html = [
-				'<div style="background-color: #FFF; color: #000; padding: 5px; width: 150px;">',
-					'{title}',
-					'{description}',
-				'</div>'
-			].join('');
-
-			html = html.replace(/\{title\}/, !!marker.title ?  ("<h4>" + marker.title + "</h4>") : "" );
-			html = html.replace(/\{description\}/, !!marker.description ?  ("<p>" + marker.description + "</p>") : "" );
-
-			marker._infoWindow = new google.maps.InfoWindow({ content: html });
-
-			google.maps.event.addListener( marker._instance, 'click', function() {
-
-				if ( marker._infoWindow.isOpened ) {
-					marker._infoWindow.close();
-					marker._infoWindow.isOpened = false;
-				} else {
-					marker._infoWindow.open( _self.map, this );
-					marker._infoWindow.isOpened = true;
-				}
-
-			});
-		},
-
-		preview: function() {
-			var customScript,
-				googleScript,
-				iframe,
-				previewHtml;
-
-			previewHtml = [
-				'<style>',
-					'html, body { margin: 0; padding: 0; }',
-				'</style>',
-				'<div id="' + this.$wrapper.find('[data-builder-field="mapid"]').val() + '" style="width: 100%; height: 100%;"></div>'
-			];
-
-			iframe = this.$previewModal.find( 'iframe' ).get(0).contentWindow.document;
-
-			iframe.body.innerHTML = previewHtml.join('');
-
-			customScript = iframe.createElement( 'script' );
-			customScript.type = 'text/javascript';
-			customScript.text = "window.initialize = function() { " + this.generate() + " init(); }; ";
-			iframe.body.appendChild( customScript );
-
-			googleScript = iframe.createElement( 'script' );
-			googleScript.type = 'text/javascript';
-			googleScript.text = 'function loadScript() { var script = document.createElement("script"); script.type = "text/javascript"; script.src = "http://maps.googleapis.com/maps/api/js?key=&sensor=&callback=initialize"; document.body.appendChild(script); } loadScript()';
-			iframe.body.appendChild( googleScript );
-		},
-
-		getCode: function() {
-			this.$getCodeModal.find('.modal-body pre').html( this.generate().replace( /</g, '&lt;' ).replace( />/g, '&gt;' ) );
-		},
-
-		// GENERATE CODE
-		// -----------------------------------------------------------------------------
-		generate: function() {
-			var i,
-				work;
-
-			var output = [
-				'    google.maps.event.addDomListener(window, "load", init);',
-				'    var map;',
-				'    function init() {',
-				'        var mapOptions = {',
-				'            center: new google.maps.LatLng({lat}, {lng}),',
-				'            zoom: {zoom},',
-				'            zoomControl: {zoomControl},',
-				'            {zoomControlOptions}',
-				'            disableDoubleClickZoom: {disableDoubleClickZoom},',
-				'            mapTypeControl: {mapTypeControl},',
-				'            {mapTypeControlOptions}',
-				'            scaleControl: {scaleControl},',
-				'            scrollwheel: {scrollwheel},',
-				'            panControl: {panControl},',
-				'            streetViewControl: {streetViewControl},',
-				'            draggable : {draggable},',
-				'            overviewMapControl: {overviewMapControl},',
-				'            {overviewMapControlOptions}',
-				'            mapTypeId: google.maps.MapTypeId.{mapTypeId}{styles}',
-				'        };',
-				'',
-				'        var mapElement = document.getElementById("{mapid}");',
-				'        var map = new google.maps.Map(mapElement, mapOptions);',
-				'        {locations}',
-				'    }'
-			];
-
-			output = output.join("\r\n");
-
-			var zoomControl			= this.$wrapper.find('[data-builder-field="zoomcontrol"] option:selected').val() !== 'false';
-			var mapTypeControl		= this.$wrapper.find('[data-builder-field="maptypecontrol"] option:selected').val() !== 'false';
-			var overviewMapControl	= this.$wrapper.find('[data-builder-field="overviewcontrol"] option:selected').val().toLowerCase();
-			var $themeControl		= this.$wrapper.find('[data-builder-field="maptheme"] option:selected').filter( ':selected' );
-
-			output = output
-						.replace( /\{mapid\}/, this.$wrapper.find('[data-builder-field="mapid"]').val() )
-						.replace( /\{lat\}/, this.$wrapper.find('[data-builder-field][name="latitude"]').val() )
-						.replace( /\{lng\}/, this.$wrapper.find('[data-builder-field][name="longitude"]').val() )
-						.replace( /\{zoom\}/, this.$wrapper.find('[data-builder-field="zoomlevel"] option:selected').val() )
-						.replace( /\{zoomControl\}/, zoomControl )
-						.replace( /\{disableDoubleClickZoom\}/, this.$wrapper.find('[data-builder-field="clicktozoomcontrol"] option:selected').val() === 'false' )
-						.replace( /\{mapTypeControl\}/, mapTypeControl )
-						.replace( /\{scaleControl\}/, this.$wrapper.find('[data-builder-field="scalecontrol"] option:selected').val() !== 'false' )
-						.replace( /\{scrollwheel\}/, this.$wrapper.find('[data-builder-field="scrollwheelcontrol"] option:selected').val() !== 'false' )
-						.replace( /\{panControl\}/, this.$wrapper.find('[data-builder-field="pancontrol"] option:selected').val() !== 'false' )
-						.replace( /\{streetViewControl\}/, this.$wrapper.find('[data-builder-field="streetviewcontrol"] option:selected').val() !== 'false' )
-						.replace( /\{draggable\}/, this.$wrapper.find('[data-builder-field="draggablecontrol"] option:selected').val() !== 'false' )
-						.replace( /\{overviewMapControl\}/, overviewMapControl !== 'false' )
-						.replace( /\{mapTypeId\}/, this.$wrapper.find('[data-builder-field="maptype"] option:selected').val().toUpperCase() );
-
-			if ( zoomControl ) {
-				work = {
-					zoomControlOptions: {
-						style: this.$wrapper.find('[data-builder-field="maptypecontrol"] option:selected').val().toUpperCase()
-					}
-				};
-				output = output.replace( /\{zoomControlOptions\}/, "zoomControlOptions: {\r\n                style: google.maps.ZoomControlStyle." + this.$wrapper.find('[data-builder-field="zoomcontrol"] option:selected').val().toUpperCase() + "\r\n\            },");
-			} else {
-				output = output.replace( /\{zoomControlOptions\}/, '' );
-			}
-
-			if ( mapTypeControl ) {
-				work = {
-					zoomControlOptions: {
-						style: this.$wrapper.find('[data-builder-field="maptypecontrol"] option:selected').val().toUpperCase()
-					}
-				};
-				output = output.replace( /\{mapTypeControlOptions\}/, "mapTypeControlOptions: {\r\n                style: google.maps.MapTypeControlStyle." + this.$wrapper.find('[data-builder-field="maptypecontrol"] option:selected').val().toUpperCase() + "\r\n\            },");
-			} else {
-				output = output.replace( /\{mapTypeControlOptions\}/, '' );
-			}
-
-			if ( overviewMapControl !== 'false' ) {
-				output = output.replace( /\{overviewMapControlOptions\}/, "overviewMapControlOptions: {\r\n                opened: " + (overviewMapControl === 'opened') + "\r\n\            },");
-			} else {
-				output = output.replace( /\{overviewMapControlOptions\}/, '' );
-			}
-
-			if ( $themeControl.val() !== 'false' ) {
-				output = output.replace( /\{styles\}/, ',\r\n            styles: ' + $themeControl.data( 'json' ).replace(/\r\n/g, '') );
-			} else {
-				output = output.replace( /\{styles\}/, '' );
-			}
-
-			if ( this.markers.length > 0 ) {
-				var work = [ 'var locations = [' ];
-				var m,
-					object;
-
-				for( i = 0; i < this.markers.length; i++ ) {
-					m = this.markers[ i ];
-					object = '';
-
-					object += '            { lat: ' + m.lat + ', lng: ' + m.lng;
-
-					if ( !!m.title ) {
-						object += ', title: "' + m.title + '"';
-					}
-
-					if ( !!m.description ) {
-						object += ', description: "' + m.description + '"';
-					}
-
-					object += ' }';
-
-					if ( i + 1 < this.markers.length ) {
-						object += ',';
-					}
-
-					work.push( object );
-				}
-
-				work.push( '        ];\r\n' )
-
-				work.push( '        var opts = {};' )
-				work.push( '        for (var i = 0; i < locations.length; i++) {' );
-				work.push( '            opts.position = new google.maps.LatLng( locations[ i ].lat, locations[ i ].lng );' );
-				work.push( '            opts.map = map;' );
-				work.push( '            if ( !!locations[ i ] .title ) { opts.title = locations[ i ].title; }');
-				work.push( '            if ( !!locations[ i ] .description ) { opts.description = locations[ i ].description; }');
-				work.push( '            marker = new google.maps.Marker( opts );' );
-				work.push( '' );
-				work.push( '            (function() {' );
-				work.push( '                var html = [' );
-				work.push( '                	\'<div style="background-color: #FFF; color: #000; padding: 5px; width: 150px;">\',' );
-				work.push( '                		\'{title}\',' );
-				work.push( '                		\'{description}\',' );
-				work.push( '                	\'</div>\'' );
-				work.push( '                ].join(\'\');' );
-
-				work.push( '' );
-				work.push( '                html = html.replace(/\{title\}/, !!opts.title ?  ("<h4>" + opts.title + "</h4>") : "" );' );
-				work.push( '                html = html.replace(/\{description\}/, !!opts.description ?  ("<p>" + opts.description + "</p>") : "" );' );
-
-				work.push( '                var infoWindow = new google.maps.InfoWindow({ content: html });' );
-
-				work.push( '                google.maps.event.addListener( marker, \'click\', function() {' );
-				work.push( '                	if ( infoWindow.isOpened ) {' );
-				work.push( '                		infoWindow.close();' );
-				work.push( '                		infoWindow.isOpened = false;' );
-				work.push( '                	} else {' );
-				work.push( '                		infoWindow.open( map, this );' );
-				work.push( '                		infoWindow.isOpened = true;' );
-				work.push( '                	}' );
-				work.push( '                });' );
-				work.push( '            })();' )
-				work.push( '        }');
-
-				output = output.replace( /\{locations\}/, work.join('\r\n') );
-			} else {
-				output = output.replace( /\{locations\}/, '' );
-			}
-
-			console.log( output );
-
-			return output;
-		}
-	};
-
-	// expose
-	$.extend( true, theme, {
-		Maps: {
-			GMapBuilder: GMapBuilder
-		}
-	});
-
-	// jQuery plugin
-	$.fn.themeGMapBuilder = function( opts ) {
-		return this.map(function() {
-			var $this = $( this ),
-				instance;
-
-			instance = $this.data( instanceName );
-
-			if ( instance ) {
-				return instance;
-			} else {
-				return (new GMapBuilder( $this, opts ));
-			}
-		});
-	};
-
-	// auto initialize
-	$(function() {
-		$('[data-theme-gmap-builder]').each(function() {
-			var $this = $( this );
-
-			window.builder = $this.themeGMapBuilder();
-		});
-	});
-
-}).apply(this, [ window.theme, jQuery ]);
+};
 
 // Animate
 (function(theme, $) {
@@ -2769,12 +48,13 @@ window.theme = {};
 	PluginAnimate.defaults = {
 		accX: 0,
 		accY: -150,
-		delay: 1
+		delay: 1,
+		duration: '1s'
 	};
 
 	PluginAnimate.prototype = {
 		initialize: function($el, opts) {
-			if ( $el.data( instanceName ) ) {
+			if ($el.data(instanceName)) {
 				return this;
 			}
 
@@ -2805,27 +85,34 @@ window.theme = {};
 		build: function() {
 			var self = this,
 				$el = this.options.wrapper,
-				delay = 0;
+				delay = 0,
+				duration = '1s';
 
-			$el.addClass('appear-animation');
+			$el.addClass('appear-animation animated');
 
-			if(!$('html').hasClass('no-csstransitions') && $(window).width() > 767) {
+			if (!$('html').hasClass('no-csstransitions') && $(window).width() > 767) {
 
 				$el.appear(function() {
 
-					delay = ($el.attr('data-appear-animation-delay') ? $el.attr('data-appear-animation-delay') : self.options.delay);
+					$el.one('animation:show', function(ev) {
+						delay = ($el.attr('data-appear-animation-delay') ? $el.attr('data-appear-animation-delay') : self.options.delay);
+						duration = ($el.attr('data-appear-animation-duration') ? $el.attr('data-appear-animation-duration') : self.options.duration);
 
-					if(delay > 1) {
-						$el.css('animation-delay', delay + 'ms');
-					}
+						if (duration != '1s') {
+							$el.css('animation-duration', duration);
+						}
 
-					$el.addClass($el.attr('data-appear-animation'));
+						setTimeout(function() {
+							$el.addClass($el.attr('data-appear-animation') + ' appear-animation-visible');
+						}, delay);
+					});
 
-					setTimeout(function() {
-						$el.addClass('appear-animation-visible');
-					}, delay);
+					$el.trigger('animation:show');
 
-				}, {accX: self.options.accX, accY: self.options.accY});
+				}, {
+					accX: self.options.accX,
+					accY: self.options.accY
+				});
 
 			} else {
 
@@ -2856,14 +143,13 @@ window.theme = {};
 		});
 	};
 
-}).apply(this, [ window.theme, jQuery ]);
+}).apply(this, [window.theme, jQuery]);
 
 // Carousel
 (function(theme, $) {
 
 	theme = theme || {};
 
-	var initialized = false;
 	var instanceName = '__carousel';
 
 	var PluginCarousel = function($el, opts) {
@@ -2871,16 +157,30 @@ window.theme = {};
 	};
 
 	PluginCarousel.defaults = {
-		itemsDesktop: false,
-		itemsDesktopSmall: false,
-		itemsTablet: false,
-		itemsTabletSmall: false,
-		itemsMobile: false
+		loop: true,
+		responsive: {
+			0: {
+				items: 1
+			},
+			479: {
+				items: 1
+			},
+			768: {
+				items: 2
+			},
+			979: {
+				items: 3
+			},
+			1199: {
+				items: 4
+			}
+		},
+		navText: []
 	};
 
 	PluginCarousel.prototype = {
 		initialize: function($el, opts) {
-			if ( $el.data( instanceName ) ) {
+			if ($el.data(instanceName)) {
 				return this;
 			}
 
@@ -2909,7 +209,58 @@ window.theme = {};
 		},
 
 		build: function() {
-			this.options.wrapper.owlCarousel(this.options).addClass("owl-carousel-init");
+			if (!($.isFunction($.fn.owlCarousel))) {
+				return this;
+			}
+
+			var self = this,
+				$el = this.options.wrapper;
+
+			// Add Theme Class
+			$el.addClass('owl-theme');
+
+			// Force RTL according to HTML dir attribute
+			if ($('html').attr('dir') == 'rtl') {
+				this.options = $.extend(true, {}, this.options, {
+					rtl: true
+				});
+			}
+
+			if (this.options.items == 1) {
+				this.options.responsive = {}
+			}
+
+			if (this.options.items > 4) {
+				this.options = $.extend(true, {}, this.options, {
+					responsive: {
+						1199: {
+							items: this.options.items
+						}
+					}
+				});
+			}
+
+			// Auto Height Fixes
+			if (this.options.autoHeight) {
+				var itemsHeight = [];
+
+				$el.find('.owl-item').each(function(){
+					if( $(this).hasClass('active') ) {
+						itemsHeight.push( $(this).height() );
+					}
+				});
+
+				$(window).afterResize(function() {
+					$el.find('.owl-stage-outer').height( Math.max.apply(null, itemsHeight) );
+				});
+
+				$(window).on('load', function() {
+					$el.find('.owl-stage-outer').height( Math.max.apply(null, itemsHeight) );
+				});
+			}
+
+			// Initialize OwlCarousel
+			$el.owlCarousel(this.options).addClass('owl-carousel-init');
 
 			return this;
 		}
@@ -2934,7 +285,7 @@ window.theme = {};
 		});
 	}
 
-}).apply(this, [ window.theme, jQuery ]);
+}).apply(this, [window.theme, jQuery]);
 
 // Chart Circular
 (function(theme, $) {
@@ -2967,7 +318,7 @@ window.theme = {};
 
 	PluginChartCircular.prototype = {
 		initialize: function($el, opts) {
-			if ( $el.data( instanceName ) ) {
+			if ($el.data(instanceName)) {
 				return this;
 			}
 
@@ -2996,15 +347,14 @@ window.theme = {};
 		},
 
 		build: function() {
+			if (!($.isFunction($.fn.appear)) || !($.isFunction($.fn.easyPieChart))) {
+				return this;
+			}
+
 			var self = this,
 				$el = this.options.wrapper,
 				value = ($el.attr('data-percent') ? $el.attr('data-percent') : 0),
-				percentEl = $el.find('.percent'),
-				shouldAnimate,
-				data;
-
-			shouldAnimate = $.isFunction($.fn[ 'appear' ]) && ( typeof $.browser !== 'undefined' && !$.browser.mobile );
-			data = { accX: self.options.accX, accY: self.options.accY };
+				percentEl = $el.find('.percent');
 
 			$.extend(true, self.options, {
 				onStep: function(from, to, currentValue) {
@@ -3012,32 +362,31 @@ window.theme = {};
 				}
 			});
 
-			$el.attr('data-percent', (shouldAnimate ? 0 : value) );
+			$el.attr('data-percent', 0);
 
-			$el.easyPieChart( this.options );
+			$el.appear(function() {
 
-			if ( shouldAnimate ) {
-				$el.appear(function() {
-					setTimeout(function() {
-						$el.data('easyPieChart').update(value);
-						$el.attr('data-percent', value);
+				$el.easyPieChart(self.options);
 
-					}, self.options.delay);
-				}, data);
-			} else {
-				$el.data('easyPieChart').update(value);
-				$el.attr('data-percent', value);
-			}
+				setTimeout(function() {
+
+					$el.data('easyPieChart').update(value);
+					$el.attr('data-percent', value);
+
+				}, self.options.delay);
+
+			}, {
+				accX: self.options.accX,
+				accY: self.options.accY
+			});
 
 			return this;
 		}
 	};
 
 	// expose to scope
-	$.extend(true, theme, {
-		Chart: {
-			PluginChartCircular: PluginChartCircular
-		}
+	$.extend(theme, {
+		PluginChartCircular: PluginChartCircular
 	});
 
 	// jquery plugin
@@ -3054,7 +403,198 @@ window.theme = {};
 		});
 	}
 
-}).apply(this, [ window.theme, jQuery ]);
+}).apply(this, [window.theme, jQuery]);
+
+// Counter
+(function(theme, $) {
+
+	theme = theme || {};
+
+	var instanceName = '__counter';
+
+	var PluginCounter = function($el, opts) {
+		return this.initialize($el, opts);
+	};
+
+	PluginCounter.defaults = {
+		accX: 0,
+		accY: 0,
+		speed: 3000,
+		refreshInterval: 100,
+		decimals: 0,
+		onUpdate: null,
+		onComplete: null
+	};
+
+	PluginCounter.prototype = {
+		initialize: function($el, opts) {
+			if ($el.data(instanceName)) {
+				return this;
+			}
+
+			this.$el = $el;
+
+			this
+				.setData()
+				.setOptions(opts)
+				.build();
+
+			return this;
+		},
+
+		setData: function() {
+			this.$el.data(instanceName, this);
+
+			return this;
+		},
+
+		setOptions: function(opts) {
+			this.options = $.extend(true, {}, PluginCounter.defaults, opts, {
+				wrapper: this.$el
+			});
+
+			return this;
+		},
+
+		build: function() {
+			if (!($.isFunction($.fn.countTo))) {
+				return this;
+			}
+
+			var self = this,
+				$el = this.options.wrapper;
+
+			$.extend(self.options, {
+				onComplete: function() {
+					if ($el.data('append')) {
+						$el.html($el.html() + $el.data('append'));
+					}
+
+					if ($el.data('prepend')) {
+						$el.html($el.data('prepend') + $el.html());
+					}
+				}
+			});
+
+			$el.appear(function() {
+
+				$el.countTo(self.options);
+
+			}, {
+				accX: self.options.accX,
+				accY: self.options.accY
+			});
+
+			return this;
+		}
+	};
+
+	// expose to scope
+	$.extend(theme, {
+		PluginCounter: PluginCounter
+	});
+
+	// jquery plugin
+	$.fn.themePluginCounter = function(opts) {
+		return this.map(function() {
+			var $this = $(this);
+
+			if ($this.data(instanceName)) {
+				return $this.data(instanceName);
+			} else {
+				return new PluginCounter($this, opts);
+			}
+
+		});
+	}
+
+}).apply(this, [window.theme, jQuery]);
+
+// Lazy Load
+(function(theme, $) {
+
+	theme = theme || {};
+
+	var instanceName = '__lazyload';
+
+	var PluginLazyLoad = function($el, opts) {
+		return this.initialize($el, opts);
+	};
+
+	PluginLazyLoad.defaults = {
+		effect: 'show',
+		appearEffect: '',
+		appear: function(elements_left, settings) {
+			
+		},
+		load: function(elements_left, settings) {
+			$(this).addClass($.trim('lazy-load-loaded ' + settings.appearEffect));
+		}
+	};
+
+	PluginLazyLoad.prototype = {
+		initialize: function($el, opts) {
+			if ($el.data(instanceName)) {
+				return this;
+			}
+
+			this.$el = $el;
+
+			this
+				.setData()
+				.setOptions(opts)
+				.build();
+
+			return this;
+		},
+
+		setData: function() {
+			this.$el.data(instanceName, this);
+
+			return this;
+		},
+
+		setOptions: function(opts) {
+			this.options = $.extend(true, {}, PluginLazyLoad.defaults, opts, {
+				wrapper: this.$el
+			});
+
+			return this;
+		},
+
+		build: function() {
+			if (!($.isFunction($.fn.lazyload))) {
+				return this;
+			}
+
+			var self = this;
+
+			self.options.wrapper.lazyload(this.options);
+
+			return this;
+		}
+	};
+
+	// expose to scope
+	$.extend(theme, {
+		PluginLazyLoad: PluginLazyLoad
+	});
+
+	// jquery plugin
+	$.fn.themePluginLazyLoad = function(opts) {
+		return this.map(function() {
+			var $this = $(this);
+
+			if ($this.data(instanceName)) {
+				return $this.data(instanceName);
+			} else {
+				return new PluginLazyLoad($this, opts);
+			}
+
+		});
+	}
+
+}).apply(this, [window.theme, jQuery]);
 
 // Lightbox
 (function(theme, $) {
@@ -3080,12 +620,20 @@ window.theme = {};
 		},
 		ajax: {
 			tError: '<a href="%url%">The content</a> could not be loaded.' // Error message when ajax request failed
+		},
+		callbacks: {
+			open: function() {
+				$('html').addClass('lightbox-opened');
+			},
+			close: function() {
+				$('html').removeClass('lightbox-opened');
+			}
 		}
 	};
 
 	PluginLightbox.prototype = {
 		initialize: function($el, opts) {
-			if ( $el.data( instanceName ) ) {
+			if ($el.data(instanceName)) {
 				return this;
 			}
 
@@ -3114,6 +662,10 @@ window.theme = {};
 		},
 
 		build: function() {
+			if (!($.isFunction($.fn.magnificPopup))) {
+				return this;
+			}
+
 			this.options.wrapper.magnificPopup(this.options);
 
 			return this;
@@ -3127,7 +679,7 @@ window.theme = {};
 
 	// jquery plugin
 	$.fn.themePluginLightbox = function(opts) {
-		return this.each(function() {
+		return this.map(function() {
 			var $this = $(this);
 
 			if ($this.data(instanceName)) {
@@ -3139,38 +691,255 @@ window.theme = {};
 		});
 	}
 
-}).apply(this, [ window.theme, jQuery ]);
+}).apply(this, [window.theme, jQuery]);
 
-// Portlets
+// Loading Overlay
+(function(theme, $) {
+
+	'use strict';
+
+	theme = theme || {};
+
+	var loadingOverlayTemplate = [
+		'<div class="loading-overlay">',
+			'<div class="bounce-loader"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>',
+		'</div>'
+	].join('');
+
+	var LoadingOverlay = function( $wrapper, options ) {
+		return this.initialize( $wrapper, options );
+	};
+
+	LoadingOverlay.prototype = {
+
+		options: {
+			css: {}
+		},
+
+		initialize: function( $wrapper, options ) {
+			this.$wrapper = $wrapper;
+
+			this
+				.setVars()
+				.setOptions( options )
+				.build()
+				.events();
+
+			this.$wrapper.data( 'loadingOverlay', this );
+		},
+
+		setVars: function() {
+			this.$overlay = this.$wrapper.find('.loading-overlay');
+
+			return this;
+		},
+
+		setOptions: function( options ) {
+			if ( !this.$overlay.get(0) ) {
+				this.matchProperties();
+			}
+			this.options     = $.extend( true, {}, this.options, options );
+			this.loaderClass = this.getLoaderClass( this.options.css.backgroundColor );
+
+			return this;
+		},
+
+		build: function() {
+			if ( !this.$overlay.closest(document.documentElement).get(0) ) {
+				if ( !this.$cachedOverlay ) {
+					this.$overlay = $( loadingOverlayTemplate ).clone();
+
+					if ( this.options.css ) {
+						this.$overlay.css( this.options.css );
+						this.$overlay.find( '.loader' ).addClass( this.loaderClass );
+					}
+				} else {
+					this.$overlay = this.$cachedOverlay.clone();
+				}
+
+				this.$wrapper.append( this.$overlay );
+			}
+
+			if ( !this.$cachedOverlay ) {
+				this.$cachedOverlay = this.$overlay.clone();
+			}
+
+			return this;
+		},
+
+		events: function() {
+			var _self = this;
+
+			if ( this.options.startShowing ) {
+				_self.show();
+			}
+
+			if ( this.$wrapper.is('body') || this.options.hideOnWindowLoad ) {
+				$( window ).on( 'load error', function() {
+					_self.hide();
+				});
+			}
+
+			if ( this.options.listenOn ) {
+				$( this.options.listenOn )
+					.on( 'loading-overlay:show beforeSend.ic', function( e ) {
+						e.stopPropagation();
+						_self.show();
+					})
+					.on( 'loading-overlay:hide complete.ic', function( e ) {
+						e.stopPropagation();
+						_self.hide();
+					});
+			}
+
+			this.$wrapper
+				.on( 'loading-overlay:show beforeSend.ic', function( e ) {
+					if ( e.target === _self.$wrapper.get(0) ) {
+						e.stopPropagation();
+						_self.show();
+						return true;
+					}
+					return false;
+				})
+				.on( 'loading-overlay:hide complete.ic', function( e ) {
+					if ( e.target === _self.$wrapper.get(0) ) {
+						e.stopPropagation();
+						_self.hide();
+						return true;
+					}
+					return false;
+				});
+
+			return this;
+		},
+
+		show: function() {
+			this.build();
+
+			this.position = this.$wrapper.css( 'position' ).toLowerCase();
+			if ( this.position != 'relative' || this.position != 'absolute' || this.position != 'fixed' ) {
+				this.$wrapper.css({
+					position: 'relative'
+				});
+			}
+			this.$wrapper.addClass( 'loading-overlay-showing' );
+		},
+
+		hide: function() {
+			var _self = this;
+
+			this.$wrapper.removeClass( 'loading-overlay-showing' );
+			setTimeout(function() {
+				if ( this.position != 'relative' || this.position != 'absolute' || this.position != 'fixed' ) {
+					_self.$wrapper.css({ position: '' });
+				}
+			}, 500);
+		},
+
+		matchProperties: function() {
+			var i,
+				l,
+				properties;
+
+			properties = [
+				'backgroundColor',
+				'borderRadius'
+			];
+
+			l = properties.length;
+
+			for( i = 0; i < l; i++ ) {
+				var obj = {};
+				obj[ properties[ i ] ] = this.$wrapper.css( properties[ i ] );
+
+				$.extend( this.options.css, obj );
+			}
+		},
+
+		getLoaderClass: function( backgroundColor ) {
+			if ( !backgroundColor || backgroundColor === 'transparent' || backgroundColor === 'inherit' ) {
+				return 'black';
+			}
+
+			var hexColor,
+				r,
+				g,
+				b,
+				yiq;
+
+			var colorToHex = function( color ){
+				var hex,
+					rgb;
+
+				if( color.indexOf('#') >- 1 ){
+					hex = color.replace('#', '');
+				} else {
+					rgb = color.match(/\d+/g);
+					hex = ('0' + parseInt(rgb[0], 10).toString(16)).slice(-2) + ('0' + parseInt(rgb[1], 10).toString(16)).slice(-2) + ('0' + parseInt(rgb[2], 10).toString(16)).slice(-2);
+				}
+
+				if ( hex.length === 3 ) {
+					hex = hex + hex;
+				}
+
+				return hex;
+			};
+
+			hexColor = colorToHex( backgroundColor );
+
+			r = parseInt( hexColor.substr( 0, 2), 16 );
+			g = parseInt( hexColor.substr( 2, 2), 16 );
+			b = parseInt( hexColor.substr( 4, 2), 16 );
+			yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+
+			return ( yiq >= 128 ) ? 'black' : 'white';
+		}
+
+	};
+
+	// expose to scope
+	$.extend(theme, {
+		LoadingOverlay: LoadingOverlay
+	});
+
+	// expose as a jquery plugin
+	$.fn.loadingOverlay = function( opts ) {
+		return this.each(function() {
+			var $this = $( this );
+
+			var loadingOverlay = $this.data( 'loadingOverlay' );
+			if ( loadingOverlay ) {
+				return loadingOverlay;
+			} else {
+				var options = opts || $this.data( 'loading-overlay-options' ) || {};
+				return new LoadingOverlay( $this, options );
+			}
+		});
+	}
+
+	// auto init
+	$('[data-loading-overlay]').loadingOverlay();
+
+}).apply(this, [window.theme, jQuery]);
+
+// Masonry
 (function(theme, $) {
 
 	theme = theme || {};
 
-	var instanceName = '__portlet',
-		storageOrderKey = '__portletOrder',
-		storageStateKey = '__portletState';
+	var instanceName = '__masonry';
 
-	var PluginPortlet = function($el, opts) {
+	var PluginMasonry = function($el, opts) {
 		return this.initialize($el, opts);
 	};
 
-	PluginPortlet.defaults = {
-		connectWith: '[data-plugin-portlet]',
-		items: '[data-portlet-item]',
-		handle: '.portlet-handler',
-		opacity: 0.7,
-		placeholder: 'portlet-placeholder',
-		cancel: 'portlet-cancel',
-		forcePlaceholderSize: true,
-		forceHelperSize: true,
-		tolerance: 'pointer',
-		helper: 'original',
-		revert: 200
+	PluginMasonry.defaults = {
+		itemSelector: 'li'
 	};
 
-	PluginPortlet.prototype = {
+	PluginMasonry.prototype = {
 		initialize: function($el, opts) {
-			if ( $el.data( instanceName ) ) {
+			if ($el.data(instanceName)) {
 				return this;
 			}
 
@@ -3191,189 +960,127 @@ window.theme = {};
 		},
 
 		setOptions: function(opts) {
-			var _self = this;
-
-			this.options = $.extend(true, {}, PluginPortlet.defaults, opts, {
-				wrapper: this.$el,
-				update: _self.onUpdate,
-				create: _self.onLoad
+			this.options = $.extend(true, {}, PluginMasonry.defaults, opts, {
+				wrapper: this.$el
 			});
-
-			return this;
-		},
-
-		onUpdate: function(event, ui) {
-			var key = storageOrderKey,
-				data = store.get(key),
-				$this = $(this),
-				porletId = $this.prop('id');
-
-			if (!data) {
-				data = {};
-			}
-
-			if (!!porletId) {
-				data[porletId] = $this.sortable('toArray');
-				store.set(key, data);
-			}
-		},
-
-		onLoad: function(event, ui) {
-			var key = storageOrderKey,
-				data = store.get(key),
-				$this = $(this),
-				porletId = $this.prop('id'),
-				portlet = $('#' + porletId);
-
-			if (!!data) {
-				var panels = data[porletId];
-
-				if (!!panels) {
-					$.each(panels, function(index, panelId) {
-						$('#' + panelId).appendTo(portlet);
-					});
-				}
-			}
-		},
-
-		saveState: function( panel ) {
-			var key = storageStateKey,
-				data = store.get(key),
-				panelId = panel.prop('id');
-
-			if (!data) {
-				data = {};
-			}
-
-			if (!panelId) {
-				return this;
-			}
-
-			var collapse = panel.find('.panel-actions').children('a.fa-caret-up, a.fa-caret-down'),
-				isCollapsed = !!collapse.hasClass('fa-caret-up'),
-				isRemoved = !panel.closest('body').get(0);
-
-			if (isRemoved) {
-				data[panelId] = 'removed';
-			} else if (isCollapsed) {
-				data[panelId] = 'collapsed';
-			} else {
-				delete data[panelId];
-			}
-
-			store.set(key, data);
-			return this;
-		},
-
-		loadState: function() {
-			var key = storageStateKey,
-				data = store.get(key);
-
-			if (!!data) {
-				$.each(data, function(panelId, state) {
-					var panel = $('#' + panelId);
-					if (!panel.data('portlet-state-loaded')) {
-						if (state == 'collapsed') {
-							panel.find('.panel-actions a.fa-caret-down').trigger('click');
-						} else if (state == 'removed') {
-							panel.find('.panel-actions a.fa-times').trigger('click');
-						}
-						panel.data('portlet-state-loaded', true);
-					}
-				});
-			}
 
 			return this;
 		},
 
 		build: function() {
-			var _self = this;
-
-			if ( $.isFunction( $.fn.sortable ) ) {
-				this.$el.sortable( this.options );
-				this.$el.find('[data-portlet-item]').each(function() {
-					_self.events( $(this) );
-				});
+			if (!($.isFunction($.fn.isotope))) {
+				return this;
 			}
 
-			var portlet = this.$el;
-			portlet.css('min-height', 150);
+			var self = this,
+				$window = $(window);
+
+			self.$loader = false;
+
+			if (self.options.wrapper.parents('.masonry-loader').get(0)) {
+				self.$loader = self.options.wrapper.parents('.masonry-loader');
+				self.createLoader();
+			}
+
+			self.options.wrapper.one('layoutComplete', function(event, laidOutItems) {
+				self.removeLoader();
+			});
+
+			self.options.wrapper.waitForImages(function() {
+				self.options.wrapper.isotope(this.options);
+			});
+
+			setTimeout(function() {
+				self.removeLoader();
+			}, 3000);
 
 			return this;
 		},
 
-		events: function($el) {
-			var _self = this,
-				portlet = $el.closest('[data-plugin-portlet]');
+		createLoader: function() {
+			var self = this;
 
-			this.loadState();
+			var loaderTemplate = [
+				'<div class="bounce-loader">',
+					'<div class="bounce1"></div>',
+					'<div class="bounce2"></div>',
+					'<div class="bounce3"></div>',
+				'</div>'
+			].join('');
 
-			$el.find('.panel-actions').on( 'click', 'a.fa-caret-up, a.fa-caret-down, a.fa-times', function( e ) {
-				setTimeout(function() {
-					_self.saveState( $el );
-				}, 250);
-			});
+			self.$loader.append(loaderTemplate);
 
 			return this;
+		},
+
+		removeLoader: function() {
+
+			var self = this;
+
+			if (self.$loader) {
+
+				self.$loader.removeClass('masonry-loader-showing');
+
+				setTimeout(function() {
+					self.$loader.addClass('masonry-loader-loaded');
+				}, 300);
+
+			}
+
 		}
 	};
 
 	// expose to scope
 	$.extend(theme, {
-		PluginPortlet: PluginPortlet
+		PluginMasonry: PluginMasonry
 	});
 
 	// jquery plugin
-	$.fn.themePluginPortlet = function(opts) {
+	$.fn.themePluginMasonry = function(opts) {
 		return this.map(function() {
 			var $this = $(this);
 
 			if ($this.data(instanceName)) {
 				return $this.data(instanceName);
 			} else {
-				return new PluginPortlet($this, opts);
+				return new PluginMasonry($this, opts);
 			}
 
 		});
 	}
 
-}).apply(this, [ window.theme, jQuery ]);
+}).apply(this, [window.theme, jQuery]);
 
-// Slider
+// Match Height
 (function(theme, $) {
 
 	theme = theme || {};
 
-	var instanceName = '__slider';
+	var instanceName = '__matchHeight';
 
-	var PluginSlider = function($el, opts) {
+	var PluginMatchHeight = function($el, opts) {
 		return this.initialize($el, opts);
 	};
 
-	PluginSlider.defaults = {
-
+	PluginMatchHeight.defaults = {
+		byRow: true,
+		property: 'height',
+		target: null,
+		remove: false
 	};
 
-	PluginSlider.prototype = {
+	PluginMatchHeight.prototype = {
 		initialize: function($el, opts) {
-			if ( $el.data( instanceName ) ) {
+			if ($el.data(instanceName)) {
 				return this;
 			}
 
 			this.$el = $el;
 
 			this
-				.setVars()
 				.setData()
 				.setOptions(opts)
 				.build();
-
-			return this;
-		},
-
-		setVars: function() {
-			var $output = $( this.$el.data('plugin-slider-output') );
-			this.$output = $output.get(0) ? $output : null;
 
 			return this;
 		},
@@ -3385,53 +1092,839 @@ window.theme = {};
 		},
 
 		setOptions: function(opts) {
-			var _self = this;
-			this.options = $.extend( true, {}, PluginSlider.defaults, opts );
-
-			if ( this.$output ) {
-				$.extend( this.options, {
-					slide: function( event, ui ) {
-						_self.onSlide( event, ui );
-					}
-				});
-			}
+			this.options = $.extend(true, {}, PluginMatchHeight.defaults, opts, {
+				wrapper: this.$el
+			});
 
 			return this;
 		},
 
 		build: function() {
-			this.$el.slider( this.options );
-
-			return this;
-		},
-
-		onSlide: function( event, ui ) {
-			if ( !ui.values ) {
-				this.$output.val( ui.value );
-			} else {
-				this.$output.val( ui.values[ 0 ] + '/' + ui.values[ 1 ] );
+			if (!($.isFunction($.fn.matchHeight))) {
+				return this;
 			}
 
-			this.$output.trigger('change');
+			var self = this;
+
+			self.options.wrapper.matchHeight(self.options);
+
+			return this;
 		}
+
 	};
 
 	// expose to scope
 	$.extend(theme, {
-		PluginSlider: PluginSlider
+		PluginMatchHeight: PluginMatchHeight
 	});
 
 	// jquery plugin
-	$.fn.themePluginSlider = function(opts) {
-		return this.each(function() {
+	$.fn.themePluginMatchHeight = function(opts) {
+		return this.map(function() {
 			var $this = $(this);
 
 			if ($this.data(instanceName)) {
 				return $this.data(instanceName);
 			} else {
-				return new PluginSlider($this, opts);
+				return new PluginMatchHeight($this, opts);
 			}
 
+		});
+	}
+
+}).apply(this, [window.theme, jQuery]);
+
+// Parallax
+(function(theme, $) {
+
+	theme = theme || {};
+
+	var instanceName = '__parallax';
+
+	var PluginParallax = function($el, opts) {
+		return this.initialize($el, opts);
+	};
+
+	PluginParallax.defaults = {
+		speed: 1.5,
+		horizontalPosition: '50%',
+		offset: 0
+	};
+
+	PluginParallax.prototype = {
+		initialize: function($el, opts) {
+			if ($el.data(instanceName)) {
+				return this;
+			}
+
+			this.$el = $el;
+
+			this
+				.setData()
+				.setOptions(opts)
+				.build();
+
+			return this;
+		},
+
+		setData: function() {
+			this.$el.data(instanceName, this);
+
+			return this;
+		},
+
+		setOptions: function(opts) {
+			this.options = $.extend(true, {}, PluginParallax.defaults, opts, {
+				wrapper: this.$el
+			});
+
+			return this;
+		},
+
+		build: function() {
+			var self = this,
+				$window = $(window),
+				offset,
+				yPos,
+				bgpos;
+
+			self.options.wrapper.css('background-image', 'url(' + self.options.wrapper.data('image-src') + ')');
+
+			if (!$.browser.mobile) {
+
+				$window.on('scroll resize', function() {
+					offset = self.options.wrapper.offset();
+					yPos = -($window.scrollTop() - offset.top) / self.options.speed + (self.options.offset);
+					bgpos = self.options.horizontalPosition + ' ' + yPos + 'px';
+					self.options.wrapper.css('background-position', bgpos);
+				});
+
+				$window.trigger('scroll');
+
+			} else {
+				self.options.wrapper.addClass('parallax-disabled');
+			}
+
+			return this;
+		}
+	};
+
+	// expose to scope
+	$.extend(theme, {
+		PluginParallax: PluginParallax
+	});
+
+	// jquery plugin
+	$.fn.themePluginParallax = function(opts) {
+		return this.map(function() {
+			var $this = $(this);
+
+			if ($this.data(instanceName)) {
+				return $this.data(instanceName);
+			} else {
+				return new PluginParallax($this, opts);
+			}
+
+		});
+	}
+
+}).apply(this, [window.theme, jQuery]);
+
+// Progress Bar
+(function(theme, $) {
+
+	theme = theme || {};
+
+	var instanceName = '__progressBar';
+
+	var PluginProgressBar = function($el, opts) {
+		return this.initialize($el, opts);
+	};
+
+	PluginProgressBar.defaults = {
+		accX: 0,
+		accY: -50,
+		delay: 1
+	};
+
+	PluginProgressBar.prototype = {
+		initialize: function($el, opts) {
+			if ($el.data(instanceName)) {
+				return this;
+			}
+
+			this.$el = $el;
+
+			this
+				.setData()
+				.setOptions(opts)
+				.build();
+
+			return this;
+		},
+
+		setData: function() {
+			this.$el.data(instanceName, this);
+
+			return this;
+		},
+
+		setOptions: function(opts) {
+			this.options = $.extend(true, {}, PluginProgressBar.defaults, opts, {
+				wrapper: this.$el
+			});
+
+			return this;
+		},
+
+		build: function() {
+			if (!($.isFunction($.fn.appear))) {
+				return this;
+			}
+
+			var self = this,
+				$el = this.options.wrapper,
+				delay = 1;
+
+			$el.appear(function() {
+
+				delay = ($el.attr('data-appear-animation-delay') ? $el.attr('data-appear-animation-delay') : self.options.delay);
+
+				$el.addClass($el.attr('data-appear-animation'));
+
+				setTimeout(function() {
+
+					$el.animate({
+						width: $el.attr('data-appear-progress-animation')
+					}, 1500, 'easeOutQuad', function() {
+						$el.find('.progress-bar-tooltip').animate({
+							opacity: 1
+						}, 500, 'easeOutQuad');
+					});
+
+				}, delay);
+
+			}, {
+				accX: self.options.accX,
+				accY: self.options.accY
+			});
+
+			return this;
+		}
+	};
+
+	// expose to scope
+	$.extend(theme, {
+		PluginProgressBar: PluginProgressBar
+	});
+
+	// jquery plugin
+	$.fn.themePluginProgressBar = function(opts) {
+		return this.map(function() {
+			var $this = $(this);
+
+			if ($this.data(instanceName)) {
+				return $this.data(instanceName);
+			} else {
+				return new PluginProgressBar($this, opts);
+			}
+
+		});
+	}
+
+}).apply(this, [window.theme, jQuery]);
+
+// Revolution Slider
+(function(theme, $) {
+
+	theme = theme || {};
+
+	var instanceName = '__revolution';
+
+	var PluginRevolutionSlider = function($el, opts) {
+		return this.initialize($el, opts);
+	};
+
+	PluginRevolutionSlider.defaults = {
+		sliderType: 'standard',
+		sliderLayout: 'fullwidth',
+		delay: 9000,
+		gridwidth: 1170,
+		gridheight: 500,
+		spinner: 'spinner3',
+		disableProgressBar: 'on',
+		parallax: {
+			type: 'off',
+			bgparallax: 'off'
+		},
+		navigation: {
+			keyboardNavigation: 'off',
+			keyboard_direction: 'horizontal',
+			mouseScrollNavigation: 'off',
+			onHoverStop: 'off',
+			touch: {
+				touchenabled: 'on',
+				swipe_threshold: 75,
+				swipe_min_touches: 1,
+				swipe_direction: 'horizontal',
+				drag_block_vertical: false
+			},
+			arrows: {
+				enable: true,
+				hide_onmobile: false,
+				hide_under: 0,
+				hide_onleave: true,
+				hide_delay: 200,
+				hide_delay_mobile: 1200,
+				left: {
+					h_align: 'left',
+					v_align: 'center',
+					h_offset: 30,
+					v_offset: 0
+				},
+				right: {
+					h_align: 'right',
+					v_align: 'center',
+					h_offset: 30,
+					v_offset: 0
+				}
+			}
+		}
+	};
+
+	PluginRevolutionSlider.prototype = {
+		initialize: function($el, opts) {
+			if ($el.data(instanceName)) {
+				return this;
+			}
+
+			this.$el = $el;
+
+			this
+				.setData()
+				.setOptions(opts)
+				.build()
+				.events();
+
+			return this;
+		},
+
+		setData: function() {
+			this.$el.data(instanceName, this);
+
+			return this;
+		},
+
+		setOptions: function(opts) {
+			this.options = $.extend(true, {}, PluginRevolutionSlider.defaults, opts, {
+				wrapper: this.$el
+			});
+
+			return this;
+		},
+
+		build: function() {
+			if (!($.isFunction($.fn.revolution))) {
+				return this;
+			}
+
+			// Single Slider Class
+			if(this.options.wrapper.find('> ul > li').length == 1) {
+				this.options.wrapper.addClass('slider-single-slide');
+			}
+
+			this.options.wrapper.revolution(this.options);
+
+			return this;
+		},
+
+		events: function() {
+
+			return this;
+		}
+	};
+
+	// expose to scope
+	$.extend(theme, {
+		PluginRevolutionSlider: PluginRevolutionSlider
+	});
+
+	// jquery plugin
+	$.fn.themePluginRevolutionSlider = function(opts) {
+		return this.map(function() {
+			var $this = $(this);
+
+			if ($this.data(instanceName)) {
+				return $this.data(instanceName);
+			} else {
+				return new PluginRevolutionSlider($this, opts);
+			}
+
+		});
+	}
+
+}).apply(this, [window.theme, jQuery]);
+
+// Scroll to Top
+(function(theme, $) {
+
+	theme = theme || {};
+
+	$.extend(theme, {
+
+		PluginScrollToTop: {
+
+			defaults: {
+				wrapper: $('body'),
+				offset: 150,
+				buttonClass: 'scroll-to-top',
+				iconClass: 'fa fa-chevron-up',
+				delay: 1000,
+				visibleMobile: false,
+				label: false,
+				easing: 'easeOutBack'
+			},
+
+			initialize: function(opts) {
+				initialized = true;
+
+				this
+					.setOptions(opts)
+					.build()
+					.events();
+
+				return this;
+			},
+
+			setOptions: function(opts) {
+				this.options = $.extend(true, {}, this.defaults, opts);
+
+				return this;
+			},
+
+			build: function() {
+				var self = this,
+					$el;
+
+				// Base HTML Markup
+				$el = $('<a />')
+					.addClass(self.options.buttonClass)
+					.attr({
+						'href': '#',
+					})
+					.append(
+						$('<i />')
+						.addClass(self.options.iconClass)
+				);
+
+				// Visible Mobile
+				if (!self.options.visibleMobile) {
+					$el.addClass('hidden-mobile');
+				}
+
+				// Label
+				if (self.options.label) {
+					$el.append(
+						$('<span />').html(self.options.label)
+					);
+				}
+
+				this.options.wrapper.append($el);
+
+				this.$el = $el;
+
+				return this;
+			},
+
+			events: function() {
+				var self = this,
+					_isScrolling = false;
+
+				// Click Element Action
+				self.$el.on('click', function(e) {
+					e.preventDefault();
+					$('body, html').animate({
+						scrollTop: 0
+					}, self.options.delay, self.options.easing);
+					return false;
+				});
+
+				// Show/Hide Button on Window Scroll event.
+				$(window).scroll(function() {
+
+					if (!_isScrolling) {
+
+						_isScrolling = true;
+
+						if ($(window).scrollTop() > self.options.offset) {
+
+							self.$el.stop(true, true).addClass('visible');
+							_isScrolling = false;
+
+						} else {
+
+							self.$el.stop(true, true).removeClass('visible');
+							_isScrolling = false;
+
+						}
+
+					}
+
+				});
+
+				return this;
+			}
+
+		}
+
+	});
+
+}).apply(this, [window.theme, jQuery]);
+
+// Sort
+(function(theme, $) {
+
+	theme = theme || {};
+
+	var instanceName = '__sort';
+
+	var PluginSort = function($el, opts) {
+		return this.initialize($el, opts);
+	};
+
+	PluginSort.defaults = {
+		useHash: true,
+		itemSelector: '.isotope-item',
+		layoutMode: 'masonry',
+		filter: '*',
+		hiddenStyle: {
+			opacity: 0
+		},
+		visibleStyle: {
+			opacity: 1
+		},
+		stagger: 30,
+		isOriginLeft: ($('html').attr('dir') == 'rtl' ? false : true)
+	};
+
+	PluginSort.prototype = {
+		initialize: function($el, opts) {
+			if ($el.data(instanceName)) {
+				return this;
+			}
+
+			this.$el = $el;
+
+			this
+				.setData()
+				.setOptions(opts)
+				.build();
+
+			return this;
+		},
+
+		setData: function() {
+			this.$el.data(instanceName, this);
+
+			return this;
+		},
+
+		setOptions: function(opts) {
+			this.options = $.extend(true, {}, PluginSort.defaults, opts, {
+				wrapper: this.$el
+			});
+
+			return this;
+		},
+
+		build: function() {
+			if (!($.isFunction($.fn.isotope))) {
+				return this;
+			}
+
+			var self = this,
+				$source = this.options.wrapper,
+				$destination = $('.sort-destination[data-sort-id="' + $source.attr('data-sort-id') + '"]'),
+				$window = $(window);
+
+			if ($destination.get(0)) {
+
+				self.$source = $source;
+				self.$destination = $destination;
+				self.$loader = false;
+
+				self.setParagraphHeight($destination);
+
+				if (self.$destination.parents('.sort-destination-loader').get(0)) {
+					self.$loader = self.$destination.parents('.sort-destination-loader');
+					self.createLoader();
+				}
+
+				$destination.attr('data-filter', '*');
+
+				$destination.one('layoutComplete', function(event, laidOutItems) {
+					self.removeLoader();
+				});
+
+				$destination.waitForImages(function() {
+					$destination.isotope(self.options);
+					self.events();
+				});
+
+				setTimeout(function() {
+					self.removeLoader();
+				}, 3000);
+
+			}
+
+			return this;
+		},
+
+		events: function() {
+			var self = this,
+				filter = null,
+				$window = $(window);
+
+			self.$source.find('a').click(function(e) {
+				e.preventDefault();
+
+				filter = $(this).parent().data('option-value');
+
+				self.setFilter(filter);
+
+				if (e.originalEvent) {
+					self.$source.trigger('filtered');
+				}
+
+				return this;
+			});
+
+			self.$destination.trigger('filtered');
+			self.$source.trigger('filtered');
+
+			if (self.options.useHash) {
+				self.hashEvents();
+			}
+
+			$window.on('resize', function() {
+				setTimeout(function() {
+					self.$destination.isotope('layout');
+				}, 300);
+			});
+
+			setTimeout(function() {
+				$window.trigger('resize');
+			}, 300);
+
+			return this;
+		},
+
+		setFilter: function(filter) {
+			var self = this,
+				page = false,
+				currentFilter = filter;
+
+			self.$source.find('li.active').removeClass('active');
+			self.$source.find('li[data-option-value="' + filter + '"]').addClass('active');
+
+			self.options.filter = currentFilter;
+
+			if (self.$destination.attr('data-current-page')) {
+				currentFilter = currentFilter + '[data-page-rel=' + self.$destination.attr('data-current-page') + ']';
+			}
+
+			self.$destination.attr('data-filter', filter).isotope({
+				filter: currentFilter
+			}).one('arrangeComplete', function( event, filteredItems ) {
+				
+				if (self.options.useHash) {
+					if (window.location.hash != '' || self.options.filter.replace('.', '') != '*') {
+						window.location.hash = self.options.filter.replace('.', '');
+					}
+				}
+				
+				$(window).trigger('scroll');
+
+			}).trigger('filtered');
+
+			return this;
+		},
+
+		hashEvents: function() {
+			var self = this,
+				hash = null,
+				hashFilter = null,
+				initHashFilter = '.' + location.hash.replace('#', '');
+
+			if (initHashFilter != '.' && initHashFilter != '.*') {
+				self.setFilter(initHashFilter);
+			}
+
+			$(window).on('hashchange', function(e) {
+
+				hashFilter = '.' + location.hash.replace('#', '');
+				hash = (hashFilter == '.' || hashFilter == '.*' ? '*' : hashFilter);
+
+				self.setFilter(hash);
+
+			});
+
+			return this;
+		},
+
+		setParagraphHeight: function() {
+			var self = this,
+				minParagraphHeight = 0,
+				paragraphs = $('span.thumb-info-caption p', self.$destination);
+
+			paragraphs.each(function() {
+				if ($(this).height() > minParagraphHeight) {
+					minParagraphHeight = ($(this).height() + 10);
+				}
+			});
+
+			paragraphs.height(minParagraphHeight);
+
+			return this;
+		},
+
+		createLoader: function() {
+			var self = this;
+
+			var loaderTemplate = [
+				'<div class="bounce-loader">',
+					'<div class="bounce1"></div>',
+					'<div class="bounce2"></div>',
+					'<div class="bounce3"></div>',
+				'</div>'
+			].join('');
+
+			self.$loader.append(loaderTemplate);
+
+			return this;
+		},
+
+		removeLoader: function() {
+
+			var self = this;
+
+			if (self.$loader) {
+
+				self.$loader.removeClass('sort-destination-loader-showing');
+
+				setTimeout(function() {
+					self.$loader.addClass('sort-destination-loader-loaded');
+				}, 300);
+
+			}
+
+		}
+
+	};
+
+	// expose to scope
+	$.extend(theme, {
+		PluginSort: PluginSort
+	});
+
+	// jquery plugin
+	$.fn.themePluginSort = function(opts) {
+		return this.map(function() {
+			var $this = $(this);
+
+			if ($this.data(instanceName)) {
+				return $this.data(instanceName);
+			} else {
+				return new PluginSort($this, opts);
+			}
+
+		});
+	}
+
+}).apply(this, [window.theme, jQuery]);
+
+// Sticky
+(function(theme, $) {
+	
+	theme = theme || {};
+	
+	var instanceName = '__sticky';
+
+	var PluginSticky = function($el, opts) {
+		return this.initialize($el, opts);
+	};
+
+	PluginSticky.defaults = {
+		minWidth: 991,
+		activeClass: 'sticky-active'
+	};
+
+	PluginSticky.prototype = {
+		initialize: function($el, opts) {
+			if ( $el.data( instanceName ) ) {
+				return this;
+			}
+
+			this.$el = $el;
+
+			this
+				.setData()
+				.setOptions(opts)
+				.build();
+
+			return this;
+		},
+
+		setData: function() {
+			this.$el.data(instanceName, this);
+
+			return this;
+		},
+
+		setOptions: function(opts) {
+			this.options = $.extend(true, {}, PluginSticky.defaults, opts, {
+				wrapper: this.$el
+			});
+
+			return this;
+		},
+
+		build: function() {
+			if (!($.isFunction($.fn.pin))) {
+				return this;
+			}
+
+			var self = this,
+				$window = $(window);
+			
+			self.options.wrapper.pin(self.options);
+
+			$window.afterResize(function() {
+				self.options.wrapper.removeAttr('style').removeData('pin');
+				self.options.wrapper.pin(self.options);
+				$window.trigger('scroll');
+			});
+			
+			return this;
+		}
+	};
+
+	// expose to scope
+	$.extend(theme, {
+		PluginSticky: PluginSticky
+	});
+
+	// jquery plugin
+	$.fn.themePluginSticky = function(opts) {
+		return this.map(function() {
+			var $this = $(this);
+
+			if ($this.data(instanceName)) {
+				return $this.data(instanceName);
+			} else {
+				return new PluginSticky($this, opts);
+			}
+			
 		});
 	}
 
@@ -3450,13 +1943,12 @@ window.theme = {};
 
 	PluginToggle.defaults = {
 		duration: 350,
-		isAccordion: false,
-		addIcons: true
+		isAccordion: false
 	};
 
 	PluginToggle.prototype = {
 		initialize: function($el, opts) {
-			if ( $el.data( instanceName ) ) {
+			if ($el.data(instanceName)) {
 				return this;
 			}
 
@@ -3493,14 +1985,7 @@ window.theme = {};
 			$items.each(function() {
 				$el = $(this);
 
-				if(self.options.addIcons) {
-					$el.find('> label').prepend(
-						$('<i />').addClass('fa fa-plus'),
-						$('<i />').addClass('fa fa-minus')
-					);
-				}
-
-				if($el.hasClass('active')) {
+				if ($el.hasClass('active')) {
 					$el.find('> p').addClass('preview-active');
 					$el.find('> .toggle-content').slideDown(self.options.duration);
 				}
@@ -3508,8 +1993,8 @@ window.theme = {};
 				self.events($el);
 			});
 
-			if(self.options.isAccordion) {
-				self.options.duration = self.options.duration/2;
+			if (self.options.isAccordion) {
+				self.options.duration = self.options.duration / 2;
 			}
 
 			return this;
@@ -3529,10 +2014,10 @@ window.theme = {};
 					previewPar = null,
 					closeElement = null;
 
-				if(self.options.isAccordion && typeof(e.originalEvent) != 'undefined') {
+				if (self.options.isAccordion && typeof(e.originalEvent) != 'undefined') {
 					closeElement = parentWrapper.find('.toggle.active > label');
 
-					if(closeElement[0] == $this[0]) {
+					if (closeElement[0] == $this[0]) {
 						return;
 					}
 				}
@@ -3540,7 +2025,7 @@ window.theme = {};
 				parentSection.toggleClass('active');
 
 				// Preview Paragraph
-				if(parentSection.find('> p').get(0)) {
+				if (parentSection.find('> p').get(0)) {
 
 					previewPar = parentSection.find('> p');
 					previewParCurrentHeight = previewPar.css('height');
@@ -3553,7 +2038,7 @@ window.theme = {};
 				// Content
 				toggleContent = parentSection.find('> .toggle-content');
 
-				if(parentSection.hasClass('active')) {
+				if (parentSection.hasClass('active')) {
 
 					$(previewPar).animate({
 						height: previewParAnimateHeight
@@ -3562,7 +2047,7 @@ window.theme = {};
 					});
 
 					toggleContent.slideDown(self.options.duration, function() {
-						if(closeElement) {
+						if (closeElement) {
 							closeElement.trigger('click');
 						}
 					});
@@ -3602,25 +2087,28 @@ window.theme = {};
 		});
 	}
 
-}).apply(this, [ window.theme, jQuery ]);
+}).apply(this, [window.theme, jQuery]);
 
-// Widget - Todo
+// Tweets
 (function(theme, $) {
 
 	theme = theme || {};
 
-	var instanceName = '__widgetTodoList';
+	var instanceName = '__tweets';
 
-	var WidgetTodoList = function($el, opts) {
+	var PluginTweets = function($el, opts) {
 		return this.initialize($el, opts);
 	};
 
-	WidgetTodoList.defaults = {
+	PluginTweets.defaults = {
+		username: null,
+		count: 2,
+		URL: 'php/twitter-feed.php'
 	};
 
-	WidgetTodoList.prototype = {
+	PluginTweets.prototype = {
 		initialize: function($el, opts) {
-			if ( $el.data( instanceName ) ) {
+			if ($el.data(instanceName)) {
 				return this;
 			}
 
@@ -3629,8 +2117,7 @@ window.theme = {};
 			this
 				.setData()
 				.setOptions(opts)
-				.build()
-				.events();
+				.build();
 
 			return this;
 		},
@@ -3642,108 +2129,207 @@ window.theme = {};
 		},
 
 		setOptions: function(opts) {
-			this.options = $.extend( true, {}, WidgetTodoList.defaults, opts );
+			this.options = $.extend(true, {}, PluginTweets.defaults, opts, {
+				wrapper: this.$el
+			});
 
 			return this;
-		},
-
-		check: function( input, label ) {
-			if ( input.is(':checked') ) {
-				label.addClass('line-through');
-			} else {
-				label.removeClass('line-through');
-			}
 		},
 
 		build: function() {
-			var _self = this,
-				$check = this.$el.find('.todo-check');
+			if (this.options.username == null || this.options.username == '') {
+				return this;
+			}
 
-			$check.each(function () {
-				var label = $(this).closest('li').find('.todo-label');
-				_self.check( $(this), label );
+			var self = this,
+				$wrapper = this.options.wrapper;
+
+			$.ajax({
+				type: 'GET',
+				data: {
+					twitter_screen_name: self.options.username,
+					tweets_to_display: self.options.count
+				},
+				url: self.options.URL,
+			}).done(function(html) {
+				$wrapper.html(html).find('a').attr('target','_blank');
 			});
 
 			return this;
-		},
+		}
+	};
 
-		events: function() {
-			var _self = this,
-				$remove = this.$el.find( '.todo-remove' ),
-				$check = this.$el.find('.todo-check'),
-				$window = $( window );
+	// expose to scope
+	$.extend(theme, {
+		PluginTweets: PluginTweets
+	});
 
-			$remove.on('click.widget-todo-list', function( ev ) {
-				ev.preventDefault();
-				$(this).closest("li").remove();
-			});
+	// jquery plugin
+	$.fn.themePluginTweets = function(opts) {
+		return this.map(function() {
+			var $this = $(this);
 
-			$check.on('change', function () {
-				var label = $(this).closest('li').find('.todo-label');
-				_self.check( $(this), label );
-			});
+			if ($this.data(instanceName)) {
+				return $this.data(instanceName);
+			} else {
+				return new PluginTweets($this, opts);
+			}
 
-			if ( $.isFunction( $.fn.sortable ) ) {
-				this.$el.sortable({
-					sort: function(event, ui) {
-						var top = event.pageY - _self.$el.offset().top - (ui.helper.outerHeight(true) / 2);
-						ui.helper.css({'top' : top + 'px'});
-				    }
+		});
+	}
+
+}).apply(this, [window.theme, jQuery]);
+
+// Validation
+(function(theme, $) {
+
+	theme = theme || {};
+
+	$.extend(theme, {
+
+		PluginValidation: {
+
+			defaults: {
+				validator: {
+					highlight: function(element) {
+						$(element)
+							.parent()
+							.removeClass('has-success')
+							.addClass('has-error');
+					},
+					success: function(element) {
+						$(element)
+							.parent()
+							.removeClass('has-error')
+							.addClass('has-success')
+							.find('label.error')
+							.remove();
+					},
+					errorPlacement: function(error, element) {
+						if (element.attr('type') == 'radio' || element.attr('type') == 'checkbox') {
+							error.appendTo(element.parent().parent());
+						} else {
+							error.insertAfter(element);
+						}
+					}
+				},
+				validateCaptchaURL: 'php/contact-form-verify-captcha.php',
+				refreshCaptchaURL: 'php/contact-form-refresh-captcha.php'
+			},
+
+			initialize: function(opts) {
+				initialized = true;
+
+				this
+					.setOptions(opts)
+					.build();
+
+				return this;
+			},
+
+			setOptions: function(opts) {
+				this.options = $.extend(true, {}, this.defaults, opts);
+
+				return this;
+			},
+
+			build: function() {
+				var self = this;
+
+				if (!($.isFunction($.validator))) {
+					return this;
+				}
+
+				self.addMethods();
+				self.setMessageGroups();
+
+				$.validator.setDefaults(self.options.validator);
+
+				return this;
+			},
+
+			addMethods: function() {
+				var self = this;
+
+				$.validator.addMethod('captcha', function(value, element, params) {
+					var captchaValid = false;
+
+					$.ajax({
+						url: self.options.validateCaptchaURL,
+						type: 'POST',
+						async: false,
+						dataType: 'json',
+						data: {
+							captcha: $.trim(value)
+						},
+						success: function(data) {
+							if (data.response == 'success') {
+								captchaValid = true;
+							}
+						}
+					});
+
+					if (captchaValid) {
+						return true;
+					}
+
+				}, '');
+
+				// Refresh Captcha
+				$('#refreshCaptcha').on('click', function(e) {
+					e.preventDefault();
+					$.get(self.options.refreshCaptchaURL, function(url) {
+						$('#captcha-image').attr('src', url);
+					});					
 				});
+
+			},
+
+			setMessageGroups: function() {
+
+				$('.checkbox-group[data-msg-required], .radio-group[data-msg-required]').each(function() {
+					var message = $(this).data('msg-required');
+					$(this).find('input').attr('data-msg-required', message);
+				});
+
 			}
 
-			return this;
 		}
-	};
 
-	// expose to scope
-	$.extend(theme, {
-		WidgetTodoList: WidgetTodoList
 	});
 
-	// jquery plugin
-	$.fn.themePluginWidgetTodoList = function(opts) {
-		return this.each(function() {
-			var $this = $(this);
+}).apply(this, [window.theme, jQuery]);
 
-			if ($this.data(instanceName)) {
-				return $this.data(instanceName);
-			} else {
-				return new WidgetTodoList($this, opts);
-			}
-
-		});
-	}
-
-}).apply(this, [ window.theme, jQuery ]);
-
-// Widget - Toggle
+// Video Background
 (function(theme, $) {
 
 	theme = theme || {};
 
-	var instanceName = '__widgetToggleExpand';
+	var instanceName = '__videobackground';
 
-	var WidgetToggleExpand = function($el, opts) {
+	var PluginVideoBackground = function($el, opts) {
 		return this.initialize($el, opts);
 	};
 
-	WidgetToggleExpand.defaults = {
+	PluginVideoBackground.defaults = {
+		overlay: true,
+		volume: 1,
+		playbackRate: 1,
+		muted: true,
+		loop: true,
+		autoplay: true,
+		position: '50% 50%',
+		posterType: 'detect'
 	};
 
-	WidgetToggleExpand.prototype = {
+	PluginVideoBackground.prototype = {
 		initialize: function($el, opts) {
-			if ( $el.data( instanceName ) ) {
-				return this;
-			}
-
 			this.$el = $el;
 
 			this
 				.setData()
 				.setOptions(opts)
-				.build()
-				.events();
+				.build();
 
 			return this;
 		},
@@ -3755,67 +2341,58 @@ window.theme = {};
 		},
 
 		setOptions: function(opts) {
-			this.options = $.extend( true, {}, WidgetToggleExpand.defaults, opts );
+			this.options = $.extend(true, {}, PluginVideoBackground.defaults, opts, {
+				path: this.$el.data('video-path'),
+				wrapper: this.$el
+			});
 
 			return this;
 		},
 
 		build: function() {
+
+			if (!($.isFunction($.fn.vide)) || (!this.options.path)) {
+				return this;
+			}
+
+			if (this.options.overlay) {
+				this.options.wrapper.prepend(
+					$('<div />').addClass('video-overlay')
+				);
+			}
+
+			this.options.wrapper.vide(this.options.path, this.options);
+
 			return this;
-		},
-
-		events: function() {
-			var _self = this,
-				$toggler = this.$el.find( '.widget-toggle' );
-
-			$toggler.on('click.widget-toggler', function() {
-				_self.$el.hasClass('widget-collapsed') ? _self.expand( _self.$el ) : _self.collapse( _self.$el );
-			});
-
-			return this;
-		},
-
-		expand: function( content ) {
-			content.children( '.widget-content-expanded' ).slideDown( 'fast', function() {
-				$(this).css( 'display', '' );
-				content.removeClass( 'widget-collapsed' );
-			});
-		},
-
-		collapse: function( content ) {
-			content.children('.widget-content-expanded' ).slideUp( 'fast', function() {
-				content.addClass( 'widget-collapsed' );
-				$(this).css( 'display', '' );
-			});
 		}
 	};
 
 	// expose to scope
 	$.extend(theme, {
-		WidgetToggleExpand: WidgetToggleExpand
+		PluginVideoBackground: PluginVideoBackground
 	});
 
 	// jquery plugin
-	$.fn.themePluginWidgetToggleExpand = function(opts) {
-		return this.each(function() {
+	$.fn.themePluginVideoBackground = function(opts) {
+		return this.map(function() {
 			var $this = $(this);
 
 			if ($this.data(instanceName)) {
 				return $this.data(instanceName);
 			} else {
-				return new WidgetToggleExpand($this, opts);
+				return new PluginVideoBackground($this, opts);
 			}
 
 		});
 	}
 
-}).apply(this, [ window.theme, jQuery ]);
+}).apply(this, [window.theme, jQuery]);
 
 // Word Rotate
 (function(theme, $) {
-
+	
 	theme = theme || {};
-
+	
 	var instanceName = '__wordRotate';
 
 	var PluginWordRotate = function($el, opts) {
@@ -3823,7 +2400,8 @@ window.theme = {};
 	};
 
 	PluginWordRotate.defaults = {
-		delay: 2000
+		delay: 2000,
+		animDelay: 300
 	};
 
 	PluginWordRotate.prototype = {
@@ -3857,30 +2435,38 @@ window.theme = {};
 		},
 
 		build: function() {
-			var $el = this.options.wrapper,
+			var self = this,
+				$el = this.options.wrapper,
 				itemsWrapper = $el.find(".word-rotate-items"),
 				items = itemsWrapper.find("> span"),
 				firstItem = items.eq(0),
 				firstItemClone = firstItem.clone(),
-				itemHeight = firstItem.height(),
 				currentItem = 1,
-				currentTop = 0;
+				currentTop = 0,
+				itemWidth = 0;
 
-			itemsWrapper.append(firstItemClone);
+			itemsWrapper
+				.width(firstItem.width() + "px")
+				.append(firstItemClone);
 
-			$el
-				.height(itemHeight)
+			$el				
 				.addClass("active");
 
 			setInterval(function() {
 
-				currentTop = (currentItem * itemHeight);
+				currentTop = (currentItem * $el.height());
+				currentItem++;
+
+				if(currentItem <= items.length) {
+					itemWidth = items.eq(currentItem-1).width();
+				} else {
+					itemWidth = items.eq(0).width();
+				}
 
 				itemsWrapper.animate({
-					top: -(currentTop) + "px"
-				}, 300, function() {
-
-					currentItem++;
+					top: -(currentTop) + "px",
+					width: itemWidth + "px"
+				}, self.options.animDelay, "easeOutQuad", function() {
 
 					if(currentItem > items.length) {
 
@@ -3891,7 +2477,7 @@ window.theme = {};
 
 				});
 
-			}, this.options.delay);
+			}, self.options.delay);
 
 			return this;
 		}
@@ -3904,7 +2490,7 @@ window.theme = {};
 
 	// jquery plugin
 	$.fn.themePluginWordRotate = function(opts) {
-		return this.each(function() {
+		return this.map(function() {
 			var $this = $(this);
 
 			if ($this.data(instanceName)) {
@@ -3912,91 +2498,620 @@ window.theme = {};
 			} else {
 				return new PluginWordRotate($this, opts);
 			}
-
+			
 		});
 	}
 
 }).apply(this, [ window.theme, jQuery ]);
 
-// Data Tables - Config
-(function($) {
+// Account
+(function(theme, $) {
 
-	'use strict';
+	theme = theme || {};
 
-	// we overwrite initialize of all datatables here
-	// because we want to use select2, give search input a bootstrap look
-	// keep in mind if you overwrite this fnInitComplete somewhere,
-	// you should run the code inside this function to keep functionality.
-	//
-	// there's no better way to do this at this time :(
-	if ( $.isFunction( $.fn[ 'dataTable' ] ) ) {
+	var initialized = false;
 
-		$.extend(true, $.fn.dataTable.defaults, {
-			sDom: "<'row datatables-header form-inline'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>r><'table-responsive't><'row datatables-footer'<'col-sm-12 col-md-6'i><'col-sm-12 col-md-6'p>>",
-			oLanguage: {
-				sLengthMenu: '_MENU_ records per page',
-				sProcessing: '<i class="fa fa-spinner fa-spin"></i> Loading'
+	$.extend(theme, {
+
+		Account: {
+
+			defaults: {
+				wrapper: $('#headerAccount')
 			},
-			fnInitComplete: function( settings, json ) {
-				// select 2
-				if ( $.isFunction( $.fn[ 'select2' ] ) ) {
-					$('.dataTables_length select', settings.nTableWrapper).select2({
-						minimumResultsForSearch: -1
+
+			initialize: function($wrapper, opts) {
+				if (initialized) {
+					return this;
+				}
+
+				initialized = true;
+				this.$wrapper = ($wrapper || this.defaults.wrapper);
+
+				this
+					.setOptions(opts)
+					.events();
+
+				return this;
+			},
+
+			setOptions: function(opts) {
+				this.options = $.extend(true, {}, this.defaults, opts, theme.fn.getOptions(this.$wrapper.data('plugin-options')));
+
+				return this;
+			},
+
+			events: function() {
+				var self = this;
+
+				self.$wrapper.find('input').on('focus', function() {
+					self.$wrapper.addClass('open');
+
+					$(document).mouseup(function(e) {
+						if (!self.$wrapper.is(e.target) && self.$wrapper.has(e.target).length === 0) {
+							self.$wrapper.removeClass('open');
+						}
 					});
-				}
+				});
 
-				var options = $( 'table', settings.nTableWrapper ).data( 'plugin-options' ) || {};
+				$('#headerSignUp').on('click', function(e) {
+					e.preventDefault();
+					self.$wrapper.addClass('signup').removeClass('signin').removeClass('recover');
+					self.$wrapper.find('.signup-form input:first').focus();
+				});
 
-				// search
-				var $search = $('.dataTables_filter input', settings.nTableWrapper);
+				$('#headerSignIn').on('click', function(e) {
+					e.preventDefault();
+					self.$wrapper.addClass('signin').removeClass('signup').removeClass('recover');
+					self.$wrapper.find('.signin-form input:first').focus();
+				});
 
-				$search
-					.attr({
-						placeholder: typeof options.searchPlaceholder !== 'undefined' ? options.searchPlaceholder : 'Search'
-					})
-					.addClass('form-control');
+				$('#headerRecover').on('click', function(e) {
+					e.preventDefault();
+					self.$wrapper.addClass('recover').removeClass('signup').removeClass('signin');
+					self.$wrapper.find('.recover-form input:first').focus();
+				});
 
-				if ( $.isFunction( $.fn.placeholder ) ) {
-					$search.placeholder();
-				}
+				$('#headerRecoverCancel').on('click', function(e) {
+					e.preventDefault();
+					self.$wrapper.addClass('signin').removeClass('signup').removeClass('recover');
+					self.$wrapper.find('.signin-form input:first').focus();
+				});
 			}
-		});
 
-	}
+		}
 
-}).apply( this, [ jQuery ]);
+	});
 
-// Notifications - Config
-(function($) {
+}).apply(this, [window.theme, jQuery]);
 
-	'use strict';
+// Nav
+(function(theme, $) {
 
-	// use font awesome icons if available
-	if ( typeof PNotify != 'undefined' ) {
-		PNotify.prototype.options.styling = "fontawesome";
+	theme = theme || {};
 
-		$.extend(true, PNotify.prototype.options, {
-			shadow: false,
-			stack: {
-				spacing1: 15,
-	        	spacing2: 15
-        	}
-		});
+	var initialized = false;
 
-		$.extend(PNotify.styling.fontawesome, {
-			// classes
-			container: "notification",
-			notice: "notification-warning",
-			info: "notification-info",
-			success: "notification-success",
-			error: "notification-danger",
+	$.extend(theme, {
 
-			// icons
-			notice_icon: "fa fa-exclamation",
-			info_icon: "fa fa-info",
-			success_icon: "fa fa-check",
-			error_icon: "fa fa-times"
-		});
-	}
+		Nav: {
 
-}).apply(this, [jQuery]);
+			defaults: {
+				wrapper: $('#mainNav'),
+				scrollDelay: 600,
+				scrollAnimation: 'easeOutQuad'
+			},
+
+			initialize: function($wrapper, opts) {
+				if (initialized) {
+					return this;
+				}
+
+				initialized = true;
+				this.$wrapper = ($wrapper || this.defaults.wrapper);
+
+				this
+					.setOptions(opts)
+					.build()
+					.events();
+
+				return this;
+			},
+
+			setOptions: function(opts) {
+				this.options = $.extend(true, {}, this.defaults, opts, theme.fn.getOptions(this.$wrapper.data('plugin-options')));
+
+				return this;
+			},
+
+			build: function() {
+				var self = this,
+					$html = $('html'),
+					$header = $('#header'),
+					thumbInfoPreview;
+
+				// Add Arrows
+				$header.find('.dropdown-toggle, .dropdown-submenu > a').append($('<i />').addClass('fa fa-caret-down'));
+
+				// Preview Thumbs
+				self.$wrapper.find('a[data-thumb-preview]').each(function() {
+					thumbInfoPreview = $('<span />').addClass('thumb-info thumb-info-preview')
+											.append($('<span />').addClass('thumb-info-wrapper')
+												.append($('<span />').addClass('thumb-info-image').css('background-image', 'url(' + $(this).data('thumb-preview') + ')')
+										   )
+									   );
+
+					$(this).append(thumbInfoPreview);
+				});
+
+				// Side Header Right (Reverse Dropdown)
+				if($html.hasClass('side-header-right')) {
+					$header.find('.dropdown').addClass('dropdown-reverse');
+				}
+
+				return this;
+			},
+
+			events: function() {
+				var self = this,
+					$header = $('#header'),
+					$window = $(window);
+
+				$header.find('a[href="#"]').on('click', function(e) {
+					e.preventDefault();
+				});
+
+				// Mobile Arrows
+				$header.find('.dropdown-toggle[href="#"], .dropdown-submenu a[href="#"], .dropdown-toggle[href!="#"] .fa-caret-down, .dropdown-submenu a[href!="#"] .fa-caret-down').on('click', function(e) {
+					e.preventDefault();
+					if ($window.width() < 992) {
+						$(this).closest('li').toggleClass('opened');
+					}
+				});
+
+				// Touch Devices with normal resolutions
+				if('ontouchstart' in document.documentElement) {
+					$header.find('.dropdown-toggle:not([href="#"]), .dropdown-submenu > a:not([href="#"])')
+						.on('touchstart click', function(e) {
+							if($window.width() > 991) {
+
+								e.stopPropagation();
+								e.preventDefault();
+
+								if(e.handled !== true) {
+
+									var li = $(this).closest('li');
+
+									if(li.hasClass('tapped')) {
+										location.href = $(this).attr('href');
+									}
+
+									li.addClass('tapped');
+
+									e.handled = true;
+								} else {
+									return false;
+								}
+
+								return false;
+
+							}
+						})
+						.on('blur', function(e) {
+							$(this).closest('li').removeClass('tapped');
+						});
+
+				}
+
+				// Collapse Nav
+				$header.find('[data-collapse-nav]').on('click', function(e) {
+					$(this).parents('.collapse').removeClass('in');
+				});
+
+				// Anchors Position
+				$('[data-hash]').each(function() {
+
+					var target = $(this).attr('href'),
+						offset = ($(this).is("[data-hash-offset]") ? $(this).data('hash-offset') : 0);
+
+					if($(target).get(0)) {
+						$(this).on('click', function(e) {
+							e.preventDefault();
+
+							// Close Collapse if Opened
+							$(this).parents('.collapse.in').removeClass('in');
+
+							self.scrollToTarget(target, offset);
+
+							return;
+						});
+					}
+
+				});
+
+				return this;
+			},
+
+			scrollToTarget: function(target, offset) {
+				var self = this;
+
+				$('body').addClass('scrolling');
+
+				$('html, body').animate({
+					scrollTop: $(target).offset().top - offset
+				}, self.options.scrollDelay, self.options.scrollAnimation, function() {
+					$('body').removeClass('scrolling');
+				});
+
+				return this;
+
+			}
+
+		}
+
+	});
+
+}).apply(this, [window.theme, jQuery]);
+
+// Newsletter
+(function(theme, $) {
+
+	theme = theme || {};
+
+	var initialized = false;
+
+	$.extend(theme, {
+
+		Newsletter: {
+
+			defaults: {
+				wrapper: $('#newsletterForm')
+			},
+
+			initialize: function($wrapper, opts) {
+				if (initialized) {
+					return this;
+				}
+
+				initialized = true;
+				this.$wrapper = ($wrapper || this.defaults.wrapper);
+
+				this
+					.setOptions(opts)
+					.build();
+
+				return this;
+			},
+
+			setOptions: function(opts) {
+				this.options = $.extend(true, {}, this.defaults, opts, theme.fn.getOptions(this.$wrapper.data('plugin-options')));
+
+				return this;
+			},
+
+			build: function() {
+				if (!($.isFunction($.fn.validate))) {
+					return this;
+				}
+
+				var self = this,
+					$email = self.$wrapper.find('#newsletterEmail'),
+					$success = $('#newsletterSuccess'),
+					$error = $('#newsletterError');
+
+				self.$wrapper.validate({
+					submitHandler: function(form) {
+
+						$.ajax({
+							type: 'POST',
+							url: self.$wrapper.attr('action'),
+							data: {
+								'email': $email.val()
+							},
+							dataType: 'json',
+							success: function(data) {
+								if (data.response == 'success') {
+
+									$success.removeClass('hidden');
+									$error.addClass('hidden');
+
+									$email
+										.val('')
+										.blur()
+										.closest('.control-group')
+										.removeClass('success')
+										.removeClass('error');
+
+								} else {
+
+									$error.html(data.message);
+									$error.removeClass('hidden');
+									$success.addClass('hidden');
+
+									$email
+										.blur()
+										.closest('.control-group')
+										.removeClass('success')
+										.addClass('error');
+
+								}
+							}
+						});
+
+					},
+					rules: {
+						newsletterEmail: {
+							required: true,
+							email: true
+						}
+					},
+					errorPlacement: function(error, element) {
+
+					}
+				});
+
+				return this;
+			}
+
+		}
+
+	});
+
+}).apply(this, [window.theme, jQuery]);
+
+// Search
+(function(theme, $) {
+
+	theme = theme || {};
+
+	var initialized = false;
+
+	$.extend(theme, {
+
+		Search: {
+
+			defaults: {
+				wrapper: $('#searchForm')
+			},
+
+			initialize: function($wrapper, opts) {
+				if (initialized) {
+					return this;
+				}
+
+				initialized = true;
+				this.$wrapper = ($wrapper || this.defaults.wrapper);
+
+				this
+					.setOptions(opts)
+					.build();
+
+				return this;
+			},
+
+			setOptions: function(opts) {
+				this.options = $.extend(true, {}, this.defaults, opts, theme.fn.getOptions(this.$wrapper.data('plugin-options')));
+
+				return this;
+			},
+
+			build: function() {
+				if (!($.isFunction($.fn.validate))) {
+					return this;
+				}
+
+				this.$wrapper.validate({
+					errorPlacement: function(error, element) {}
+				});
+
+				return this;
+			}
+
+		}
+
+	});
+
+}).apply(this, [window.theme, jQuery]);
+
+// Sticky Header
+(function(theme, $) {
+
+	theme = theme || {};
+
+	var initialized = false;
+
+	$.extend(theme, {
+
+		StickyHeader: {
+
+			defaults: {
+				wrapper: $('#header'),
+				headerBody: $('#header .header-body'),
+				stickyEnabled: true,
+				stickyEnableOnBoxed: true,
+				stickyEnableOnMobile: true,
+				stickyStartAt: 0,
+				stickyStartAtElement: false,
+				stickySetTop: 0,
+				stickyChangeLogo: false,
+				stickyChangeLogoWrapper: true
+			},
+
+			initialize: function($wrapper, opts) {
+				if (initialized) {
+					return this;
+				}
+
+				initialized = true;
+				this.$wrapper = ($wrapper || this.defaults.wrapper);
+
+				this
+					.setOptions(opts)
+					.build()
+					.events();
+
+				return this;
+			},
+
+			setOptions: function(opts) {
+				this.options = $.extend(true, {}, this.defaults, opts, theme.fn.getOptions(this.$wrapper.data('plugin-options')));
+
+				return this;
+			},
+
+			build: function() {
+				if (!this.options.stickyEnableOnBoxed && $('html').hasClass('boxed') || !this.options.stickyEnabled) {
+					return this;
+				}
+
+				var self = this,
+					$html = $('html'),
+					$window = $(window),
+					sideHeader = $html.hasClass('side-header');
+
+				// HTML Classes
+				$html.addClass('sticky-header-enabled');
+
+				if (parseInt(self.options.stickySetTop) < 0) {
+					$html.addClass('sticky-header-negative');
+				}
+
+				// Set Start At
+				if(self.options.stickyStartAtElement) {
+
+					var $stickyStartAtElement = $(self.options.stickyStartAtElement);
+
+					$(window).on('scroll resize', function() {
+						self.options.stickyStartAt = $stickyStartAtElement.offset().top;
+					});
+
+					$(window).trigger('resize');
+				}
+
+				// Boxed
+				if($html.hasClass('boxed') && (parseInt(self.options.stickyStartAt) == 0) && $window.width() > 991) {
+					self.options.stickyStartAt = 30;
+				}
+
+				// Set Wrapper Min-Height
+				self.options.wrapper.css('min-height', self.options.wrapper.height());
+
+				// Check Sticky Header
+				self.checkStickyHeader = function() {
+					if ($window.scrollTop() >= parseInt(self.options.stickyStartAt)) {
+						self.activateStickyHeader();
+					} else {
+						self.deactivateStickyHeader();
+					}
+				};
+				
+				// Activate Sticky Header
+				self.activateStickyHeader = function() {
+
+					if ($window.width() < 992) {
+						if (!self.options.stickyEnableOnMobile) {
+							self.deactivateStickyHeader();
+							return;
+						}
+					} else {
+						if (sideHeader) {
+							self.deactivateStickyHeader();
+							return;
+						}
+					}
+
+					$html.addClass('sticky-header-active');
+
+					self.options.headerBody.css('top', self.options.stickySetTop);
+
+					if (self.options.stickyChangeLogo) {
+						self.changeLogo(true);
+					}
+
+					$.event.trigger({
+						type: 'stickyHeader.activate'
+					});
+				};
+
+				// Deactivate Sticky Header
+				self.deactivateStickyHeader = function() {
+
+					$html.removeClass('sticky-header-active');
+
+					self.options.headerBody.css('top', 0);
+
+					if (self.options.stickyChangeLogo) {
+						self.changeLogo(false);
+					}
+
+					$.event.trigger({
+						type: 'stickyHeader.deactivate'
+					});
+				};
+
+				// Always Sticky
+				if (parseInt(self.options.stickyStartAt) <= 0) {
+					self.activateStickyHeader();
+				}
+
+				// Set Logo
+				if (self.options.stickyChangeLogo) {
+
+					var $logoWrapper = self.options.wrapper.find('.header-logo'),
+						$logo = $logoWrapper.find('img'),
+						logoWidth = $logo.attr('width'),
+						logoHeight = $logo.attr('height'),
+						logoSmallTop = parseInt($logo.attr('data-sticky-top') ? $logo.attr('data-sticky-top') : 0),
+						logoSmallWidth = parseInt($logo.attr('data-sticky-width') ? $logo.attr('data-sticky-width') : 'auto'),
+						logoSmallHeight = parseInt($logo.attr('data-sticky-height') ? $logo.attr('data-sticky-height') : 'auto');
+
+					if (self.options.stickyChangeLogoWrapper) {
+						$logoWrapper.css({
+							'width': $logo.outerWidth(true),
+							'height': $logo.outerHeight(true)
+						});
+					}
+
+					self.changeLogo = function(activate) {
+						if(activate) {
+							$logo.css({
+								'top': logoSmallTop,
+								'width': logoSmallWidth,
+								'height': logoSmallHeight
+							});
+						} else {
+							$logo.css({
+								'top': 0,
+								'width': logoWidth,
+								'height': logoHeight
+							});
+						}
+					}
+
+				}
+
+				return this;
+			},
+
+			events: function() {
+				var self = this;
+
+				if (!this.options.stickyEnableOnBoxed && $('body').hasClass('boxed') || !this.options.stickyEnabled) {
+					return this;
+				}
+
+				if (!self.options.alwaysStickyEnabled) {
+					$(window).on('scroll resize', function() {
+						self.checkStickyHeader();
+					});
+				} else {
+					self.activateStickyHeader();
+				}
+
+				return this;
+			}
+
+		}
+
+	});
+
+}).apply(this, [window.theme, jQuery]);
