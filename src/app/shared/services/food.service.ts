@@ -21,6 +21,10 @@ export class FoodService {
       this.foodArray.splice(index,1)
     }
   }
+  public add(food:Ifood){
+    this.foodArray.push(food);
+
+  }
 constructor() { }
 
 }

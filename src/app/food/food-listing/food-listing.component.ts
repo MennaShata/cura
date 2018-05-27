@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { Ifood } from './../../shared/models/interfaces/ifood';
 
 import { FoodService } from './../../shared/services/food.service';
@@ -14,12 +15,15 @@ export class FoodListingComponent implements OnInit {
   
  
 
-  constructor(private FoodService: FoodService) {
+  constructor(private FoodService: FoodService, private router: Router) {
    }
 
   ngOnInit() {  
       this.foodlist = this.FoodService.getFoodList();
     
   }
+  btnClick= function () {
+    this.router.navigate(['/addFood']);
+};
 
 }

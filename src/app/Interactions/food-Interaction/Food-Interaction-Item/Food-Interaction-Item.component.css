@@ -11,8 +11,26 @@
     color: #FFF;
     font-size: 40px;
     line-height: 110px;
+    margin-left:20%;
 }
-.item-centered {
+@media(max-width: 350px) {
+    .icon-featured {
+    display: inline-block;
+    font-size: 0;
+    margin: 15px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    color: #FFF;
+    font-size: 25px;
+    line-height: 70px;
+    margin-left:20%;
+}
+}
+/* .item-centered {
     display: flex;
     align-items: center;
-}
+} */
