@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Idisease } from '../../shared/models/interfaces/idisease';
 import { DiseaseServiceService } from '../../shared/services/disease-service.service';
+import { IDrugDisease } from '../../shared/models/interfaces/IDrugDisease';
+import {ForbiddenDrugsComponent} from '../../diseases/forbidden-drugs/forbidden-drugs.component';
+import {TreatedDrugsComponent} from '../../diseases/treated-drugs/treated-drugs.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-disease-details',
@@ -8,21 +12,16 @@ import { DiseaseServiceService } from '../../shared/services/disease-service.ser
   styleUrls: ['./disease-details.component.css']
 })
 export class DiseaseDetailsComponent implements OnInit {
-
-  constructor(private diseaseServiceService:DiseaseServiceService) { }
-  @Input() disease:Idisease;
-  bodyparts:string[];
-  treatedDrugs:string[];
-  forbiddenDrugs:string[];
-  
+  id:number;
+  public disease:Idisease;
+  // @Input() disease:Idisease;
+  //bodyparts:string[];
+  //public disease:Idisease;
+  constructor(private diseaseServiceService:DiseaseServiceService, private activatedRoute:ActivatedRoute) { }
   ngOnInit() {
-    this.bodyparts=this.diseaseServiceService.getDiseaseBodyParts(1);
-    this.disease=this.diseaseServiceService.getById(1);
-    this.treatedDrugs=this.diseaseServiceService.getTreatedDrugs(1);
-    this.forbiddenDrugs=this.diseaseServiceService.getForbiddenDrugs(1);    
+    // this.disease=this.diseaseServiceService.getById(1);    
+    // this.bodyparts=this.diseaseServiceService.getDiseaseBodyParts(1);
+    this.activatedRoute.params.subscribe((params)=>{this.id=params['id'];});
+    this.disease = this.diseaseServiceService.getById(this.id);
   }
-  getBodyParts(id:number){
-    return this.bodyparts;
-  } 
-
 }

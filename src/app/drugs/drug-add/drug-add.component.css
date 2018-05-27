@@ -1,0 +1,30 @@
+table {
+    table-layout: fixed;
+    word-break: break-all;
+}
+
+table td {
+    overflow: hidden;
+}
+
+.fa-times {
+    /* color: #0088cc; */
+    color:maroon;
+    font-size: 15px;
+}
+
+table {
+    counter-reset: tableCount;
+}
+
+.counterCell:before {
+    content: counter(tableCount);
+    counter-increment: tableCount;
+}
+
+#myDiv {
+    display: none;
+}
+.hidden{
+    display: none;
+}
