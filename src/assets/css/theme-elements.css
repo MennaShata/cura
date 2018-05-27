@@ -1213,8 +1213,8 @@ label.error#captcha-error {
 	transition: all 0.2s;
 	font-family: FontAwesome;
 	color: #FFF;
-	content: "View \f06e";
-	font-size: 20px;
+	content: "\f00e";
+	font-size: 30px;
 	height: 30px;
 	position: absolute;
 	top: 30%;

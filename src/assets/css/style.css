@@ -1,26 +1,61 @@
-.mt-sm , #addtolist{
+@media (min-width: 768px)
+{
+    .menumargin
+{
+    margin-left: 20%;
+}
+}
+
+.logo
+{
+width:50%;
+height:150%;
+}
+
+.footer
+{
+    background-color: #222222;
+    padding-bottom: 3.5%;
+    padding-top: 3.5%;    
+    color : white;
+}
+#beforefotter
+{
+    width:100%;
+    height:10px;
+    background-color: rgb(89, 150, 219);
+}
+
+.upbtn
+{
+    color: #2fd812;
+    background-color: #ffffff;
+    border: 2px solid #008fe2;
+}
+
+.downbtn
+{
+    color: #ff0505;
+    background-color: #ffffff;
+    border: 2px solid #008fe2;
+
+}
+
+.cart-table-wrap {
+    border: 1px solid #ececec;
+    border-radius: 7.98px;
+    background: #fff;
+    display: block;
+    padding: 30px;
+    margin-bottom: 50px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
+}
+.navbar-inverse .navbar-nav>li>a
+{
     
+    color : #008fe2; 
 }
-
-section.section, #pill-results
+.qbar
 {
-    padding: 15px;
-    margin-bottom: 0px;
-}
-.PopularInteraction
-{
-    top:15px;
-}
-
-.PopularInteraction .table>tbody>tr>td
-{
-  padding:20px;
-}
-.PopularInteraction .table>thead>tr>td
-{
-  padding:20px;
-}
-#interactionColor
-{
-    color:blue!important;
+    background-color : #f4f4f4;
 }

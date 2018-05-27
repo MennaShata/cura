@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DrugServiceService} from './../../shared/services/drug-service.service';
+import {DrugServiceService} from './../../shared/services/drug/drug-service.service';
 import {Idrug} from './../../shared/models/interfaces/Idrug';
 import { ActivatedRoute } from '@angular/router';
 
@@ -11,11 +11,11 @@ import { ActivatedRoute } from '@angular/router';
 export class DrugDetailsComponent implements OnInit {
   public drug:Idrug;
   id:number;
-  constructor(private c:DrugServiceService,private r:ActivatedRoute) { }
+  constructor(private drugService:DrugServiceService,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit() {
-    this.r.params.subscribe((params)=>{this.id=params['id'];});
-    this.drug = this.c.getById(this.id);
+    this.activatedRoute.params.subscribe((params)=>{this.id=params['id'];});
+    this.drug = this.drugService.getById(this.id);
   }
 
 }

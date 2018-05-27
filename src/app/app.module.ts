@@ -40,14 +40,19 @@ import { ActiveIngredientListingComponent } from './active-ingredients/active-in
 import { ActiveIngredientModule } from './active-ingredients/active-ingredient.module';
 import { SideEffectModule } from './side-effects/side-effect.module';
 import { SharedModule } from './shared/shared.module';
+import { DiseaseAddComponent } from './diseases/disease-add/disease-add.component';
+import { HomeComponent } from './Home/Home.component';
+
 
 
 const routes: Routes = [
+  {path :'', component : HomeComponent},
+  {path:'drug',children:[
+    { path: 'listing', component: DrugsComponent},
+    { path:'details/:id' , component :DrugDetailsComponent},
+    { path:'addDrug' , component:DrugAddComponent},
+  ]},
   { path:'pill/item', component: PillComponent},
-  { path: 'drug/listing', component: DrugsComponent},
-  { path:'drug/details/:id' , component :DrugDetailsComponent},
-  { path:'drug/addDrug' , component:DrugAddComponent},
-
   { path: 'food', component: FoodItemComponent},
   { path: 'food/add', component: FoodAddComponent},
   { path: 'sideeffectlisting', component: SideEffectListingComponent},
@@ -65,9 +70,11 @@ const routes: Routes = [
   { path:'interactions/foodinteraction/page/:id', component: SingleFoodInteractionComponent},
   
   { path:'interactions/foodinteraction/page', component: SingleFoodInteractionComponent},
-  {path:'diseaseDetails', component:DiseaseDetailsComponent},
-  { path:"diseaseComponent" ,component:DiseaseComponentComponent}
-
+  // {path:'diseaseDetails', component:DiseaseDetailsComponent},
+  { path:"diseaseComponent" ,component:DiseaseComponentComponent},
+  { path:"diseaseListing" ,component:DiseaseLisingComponent},
+  { path:'diseaseDetails/:id' , component :DiseaseDetailsComponent},
+  { path:'diseaseAdd' , component :DiseaseAddComponent}
 ];
 
 @NgModule({
@@ -77,7 +84,7 @@ const routes: Routes = [
     FoodItemComponent,
     FoodAddComponent,
     FoodInteractionItemComponent,
-    
+    DiseaseAddComponent,
     FoodListingComponent,
     FoodInteractionsListingComponent,
     SingleFoodInteractionComponent,
@@ -88,8 +95,10 @@ const routes: Routes = [
     ForbiddenDrugsComponent,
     TreatedDrugsComponent,
     OneTreatedDrugComponent,
-    OneForbiddenDrugComponent
-  ],
+    OneForbiddenDrugComponent,
+    HomeComponent,
+    DiseaseAddComponent
+],
   imports: [
     BrowserModule,
     DrugsModule,
