@@ -16,7 +16,7 @@ import { PillComponent } from './pill/pill.component';
 import { PillItemComponent } from './pill/pill-item/pill-item.component';
 
 import { SideEffectItemComponent } from './side-effects/side-effect-item/side-effect-item.component';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { DiseaseSmallItemComponent } from './diseases/disease-small-item/disease-small-item.component';
 import { DiseaseLisingComponent } from './diseases/disease-lising/disease-lising.component';
 import { DiseaseComponentComponent } from './diseases/disease-component/disease-component.component';
@@ -74,7 +74,8 @@ const routes: Routes = [
   { path:"diseaseComponent" ,component:DiseaseComponentComponent},
   { path:"diseaseListing" ,component:DiseaseLisingComponent},
   { path:'diseaseDetails/:id' , component :DiseaseDetailsComponent},
-  { path:'diseaseAdd' , component :DiseaseAddComponent}
+  { path:'diseaseAdd' , component :DiseaseAddComponent},
+  { path:'addFood' , component :FoodAddComponent},
 ];
 
 @NgModule({
@@ -97,7 +98,8 @@ const routes: Routes = [
     OneTreatedDrugComponent,
     OneForbiddenDrugComponent,
     HomeComponent,
-    DiseaseAddComponent
+    DiseaseAddComponent,
+    FoodAddComponent
 ],
   imports: [
     BrowserModule,
@@ -108,6 +110,7 @@ const routes: Routes = [
     ActiveIngredientModule,
     SideEffectModule,
     SharedModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
