@@ -1,4 +1,4 @@
-article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+/* article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
     display: block;
 }
 * {
@@ -70,4 +70,4 @@ ul, menu, dir {
      .modal-header:before, .modal-header:after, .modal-footer:before, .modal-footer:after {
     display: table;
     content: " ";
-}
+} */
