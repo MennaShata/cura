@@ -16,7 +16,7 @@ import { PillComponent } from './pill/pill.component';
 import { PillItemComponent } from './pill/pill-item/pill-item.component';
 
 import { SideEffectItemComponent } from './side-effects/side-effect-item/side-effect-item.component';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { DiseaseSmallItemComponent } from './diseases/disease-small-item/disease-small-item.component';
 import { DiseaseLisingComponent } from './diseases/disease-lising/disease-lising.component';
 import { DiseaseComponentComponent } from './diseases/disease-component/disease-component.component';
@@ -108,6 +108,7 @@ const routes: Routes = [
     ActiveIngredientModule,
     SideEffectModule,
     SharedModule,
+    [ReactiveFormsModule],
     RouterModule.forRoot(routes)
   ],
   providers: [
