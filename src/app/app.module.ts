@@ -74,7 +74,8 @@ const routes: Routes = [
   { path:"diseaseComponent" ,component:DiseaseComponentComponent},
   { path:"diseaseListing" ,component:DiseaseLisingComponent},
   { path:'diseaseDetails/:id' , component :DiseaseDetailsComponent},
-  { path:'diseaseAdd' , component :DiseaseAddComponent}
+  { path:'diseaseAdd' , component :DiseaseAddComponent},
+  { path:'addFood' , component :FoodAddComponent},
 ];
 
 @NgModule({
@@ -97,7 +98,8 @@ const routes: Routes = [
     OneTreatedDrugComponent,
     OneForbiddenDrugComponent,
     HomeComponent,
-    DiseaseAddComponent
+    DiseaseAddComponent,
+    FoodAddComponent
 ],
   imports: [
     BrowserModule,
@@ -109,6 +111,7 @@ const routes: Routes = [
     SideEffectModule,
     SharedModule,
     [ReactiveFormsModule],
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
