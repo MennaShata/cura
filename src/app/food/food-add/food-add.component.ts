@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FoodService } from './../../shared/services/food.service';
+import { Ifood } from './../../shared/models/interfaces/ifood';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-food-add',
@@ -6,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./food-add.component.css']
 })
 export class FoodAddComponent implements OnInit {
+  food:Ifood;
 
-  constructor() { }
+  constructor(private FoodService: FoodService) { }
 
   ngOnInit() {
+  }
+  addFood(form){
+    this.food = form.value;
+    this.FoodService.add(this.food);
   }
 
 }

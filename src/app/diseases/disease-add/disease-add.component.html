@@ -1,3 +1,142 @@
-<p>
-  disease-add works!
-</p>
+<form [formGroup]="myForm" (ngSubmit)="addDisease()">
+  <div class="col-md-6">
+    <a class="btn btn-borders btn-sm btn-primary custom-button text-uppercase" data-toggle="modal" data-target="#defaultModal">
+      <i class="fa fa-plus" style="font-size:17px;color:#3aabdd;"></i>
+    </a>
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-sm-12 col-md-offset-1">
+          <div class="featured-box featured-box-primary align-left mt-xlg">
+            <div class="box-content">
+              <h4 class="heading-primary text-uppercase mb-md">add disease :</h4>
+
+              <div class="form-group">
+                <label class="col-sm-4 control-label" for="w1-username">Name : </label>
+                <div class="col-sm-8">
+                  <input name="name" formControlName="name" type="text" class="form-control input-sm" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4 control-label" for="w1-username">Description : </label>
+                <div class="col-sm-8">
+                  <input name="descripton" formControlName="descripton" type="text" class="form-control input-sm">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4  control-label">Body Parts :</label>
+                <div class="col-sm-8">
+                    <!-- [(ngModel)]="disease.bodyParts" -->
+                  <select name="bodyParts" formControlName="bodyParts" multiple data-plugin-selectTwo class="form-control populate">
+                    <!-- <option *ngFor="let bp of disease.bodyParts,let i=index">{{disease.bodyParts}}</option> -->
+                    <option value="HI">heart</option>
+                    <option value="CA">leg</option>
+                    <option value="NV">arm</option>
+                    <option value="OR">face </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4  control-label">Treated drugs : </label>
+                <div class="col-sm-8">
+                  <select name="treatedDrugs" formControlName="treatedDrugs" multiple data-plugin-selectTwo class="form-control populate">
+                    <option value="AK">kitofan </option>
+                    <option value="HI">panadol</option>
+                    <option value="CA">paracitamole</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-4  control-label">Forbidden drugs : </label>
+                <div class="col-sm-8">
+                  <select name="forbiddenDrugs" formControlName="forbiddenDrugs" multiple data-plugin-selectTwo class="form-control populate">
+                    <option value="AK">kitofan </option>
+                    <option value="HI">panadol</option>
+                    <option value="CA">paracitamole</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="">
+                <button type="button" class="btn btn-tertiary mr-xs mb-sm">Cancel</button>
+                <button type="submit" class="btn btn-tertiary mr-xs mb-sm">Add</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- <form #myForm=ngForm ng-submit="addDisease(myForm)">
+<div class="col-md-6">
+  <a class="btn btn-borders btn-sm btn-primary custom-button text-uppercase" data-toggle="modal" data-target="#defaultModal">
+    <i class="fa fa-plus" style="font-size:17px;color:#3aabdd;"></i>
+  </a>
+  <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog" >
+    <div class="modal-dialog">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-sm-12 col-md-offset-1">
+            <div class="featured-box featured-box-primary align-left mt-xlg">
+              <div class="box-content">
+                <h4 class="heading-primary text-uppercase mb-md">add disease :</h4>
+
+                <div class="form-group">
+                  <label class="col-sm-4 control-label" for="w1-username">Name : </label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control input-sm" name="username" id="w1-username" required [(ngModel)]="disease.name">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label" for="w1-username">Description : </label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control input-sm" name="username" id="w1-username" required [(ngModel)]="disease.descripton">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4  control-label">Body Parts :</label>
+                  <div class="col-sm-8">
+                    <select multiple data-plugin-selectTwo class="form-control populate" [(ngModel)]="disease.bodyParts">
+                      <option value="AK">eye </option>
+                      <option value="HI">heart</option>
+                      <option value="CA">leg</option>
+                      <option value="NV">arm</option>
+                      <option value="OR">face </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4  control-label">Treated drugs : </label>
+                  <div class="col-sm-8">
+                    <select multiple data-plugin-selectTwo class="form-control populate" [(ngModel)]="disease.treatedDrugs">
+                      <option value="AK">kitofan </option>
+                      <option value="HI">panadol</option>
+                      <option value="CA">paracitamole</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4  control-label">Forbidden drugs : </label>
+                  <div class="col-sm-8">
+                    <select multiple data-plugin-selectTwo class="form-control populate" [(ngModel)]="disease.forbiddenDrugs">
+                      <option value="AK">kitofan </option>
+                      <option value="HI">panadol</option>
+                      <option value="CA">paracitamole</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="">
+                  <button type="button" class="btn btn-tertiary mr-xs mb-sm">Cancel</button>
+                  <button type="button" class="btn btn-tertiary mr-xs mb-sm" >Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</form> -->

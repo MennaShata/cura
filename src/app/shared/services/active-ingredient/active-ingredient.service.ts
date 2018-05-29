@@ -7,26 +7,33 @@ import { fail } from 'assert';
 })
 export class ActiveIngredientService {
 
-  arr:Iactiveingredient[] = 
-  [
-    {id:1 , name: "para", description:"ay kalam"},
-    {id:2 , name: "paracetamol",description:"ay kalam"},
-    {id:3 , name: "para3",description:"ay kalam"}
-  ];
-  activeing:Iactiveingredient;
-constructor() { }
+  activeIngredients: Iactiveingredient[] =
+    [
+      { id: 1, name: "para", description: "ay kalam" },
+      { id: 2, name: "paracetamol", description: "ay kalam" },
+      { id: 3, name: "para3", description: "ay kalam" }
+    ];
+  activeing: Iactiveingredient;
+  constructor() { }
 
-  getAll(){
-    return this.arr ;
+  getAll() {
+    return this.activeIngredients;
   }
 
-  getById(id){
-    for(let i=0 ;i< this.arr.length ; i++){
-      if(this.arr[i].id == id){
-        this.activeing = this.arr[i];
+  getById(id) {
+    for (let i = 0; i < this.activeIngredients.length; i++) {
+      if (this.activeIngredients[i].id == id) {
+        this.activeing = this.activeIngredients[i];
       }
     }
-    return this.activeing ;
+    return this.activeing;
   }
 
+  Delete(id) {
+    let index = this.activeIngredients.findIndex(a => a.id === id);
+    if (index > -1) {
+      this.activeIngredients.splice(index, 1);
+    }
+
+  }
 }
