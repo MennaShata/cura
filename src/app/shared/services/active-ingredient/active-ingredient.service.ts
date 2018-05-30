@@ -36,4 +36,7 @@ export class ActiveIngredientService {
     }
 
   }
+  Add(activeIngredientitem){
+    this.activeIngredients.push(activeIngredientitem)
+  }
 }

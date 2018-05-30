@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms/src/model';
+import { Iactiveingredient } from 'src/app/shared/models/interfaces/iactiveingredient';
 
 @Component({
   selector: 'app-active-ingredient-add',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActiveIngredientAddComponent implements OnInit {
 
+  activeingredient:Iactiveingredient;
+  myForm:FormGroup;
   constructor() { }
 
   ngOnInit() {
+    this.myForm = new FormGroup({
+      name:new FormControl(),
+      description:new FormControl()
+    });
+  }
+
+  addActiveIngredient(){
   }
 
 }
