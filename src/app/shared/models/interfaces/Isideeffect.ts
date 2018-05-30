@@ -1,7 +1,7 @@
 export interface Isideeffect {
-    id:number;
+    id?:number;
     name:string;
     description:string;
     icon:string;
-    isDeleted:boolean;
+    isDeleted?:boolean;
 }

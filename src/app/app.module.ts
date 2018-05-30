@@ -42,6 +42,7 @@ import { SideEffectModule } from './side-effects/side-effect.module';
 import { SharedModule } from './shared/shared.module';
 import { DiseaseAddComponent } from './diseases/disease-add/disease-add.component';
 import { HomeComponent } from './Home/Home.component';
+import { SideEffectAddComponent } from './side-effects/side-effect-add/side-effect-add.component';
 
 
 
@@ -57,6 +58,7 @@ const routes: Routes = [
   { path: 'food/add', component: FoodAddComponent},
   { path: 'sideeffectlisting', component: SideEffectListingComponent},
   { path: 'sideeffectlisting2', component: SideEffectsComponent},
+  { path:'addsideeffect' , component:SideEffectAddComponent},
   { path: 'interactions/foodinteraction', component: FoodInteractionItemComponent},
   {path :'sideeffect', component:SideEffectItemComponent },
 
