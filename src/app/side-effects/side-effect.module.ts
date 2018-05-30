@@ -6,13 +6,19 @@ import { SideEffectItemComponent } from './side-effect-item/side-effect-item.com
 import { SideEffectsComponent } from './side-effects.component';
 import { SharedModule } from '../shared/shared.module';
 import { AppModule } from '../app.module';
+import { RouterModule, Routes ,ActivatedRoute} from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
+   RouterModule
+
   ],
   declarations: [
     SideEffectListingComponent,

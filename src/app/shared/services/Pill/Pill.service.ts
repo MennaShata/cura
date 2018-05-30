@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Ipill } from '../models/interfaces/Ipill';
+import { Ipill } from '../../models/interfaces/Ipill';
 
 @Injectable({
   providedIn: 'root'
@@ -50,4 +50,10 @@ export class PillService {
     return this.pills;
   }
 
+  Delete(id) {
+    let index = this.pills.findIndex(a => a.id === id);
+    if (index > -1) {
+      this.pills.splice(index, 1);
+    }
+  }
 }

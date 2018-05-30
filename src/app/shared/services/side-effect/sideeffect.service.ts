@@ -47,4 +47,7 @@ public Delete(id:number)
 
 
 }
+add(s:Isideeffect){
+  this.sideeffects.push(s);
+}
 }

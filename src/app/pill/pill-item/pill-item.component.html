@@ -9,7 +9,7 @@
                         <i class="fa fa-edit">
                         </i>
                     </button>
-                    <button type="button" class="btn-danger primary btn-xs btn-borders">
+                    <button type="button" class="btn-danger primary btn-xs btn-borders" (click)="deletePill(pill.id)">
                         <i class="fa fa-trash">
                         </i>
                     </button>
@@ -41,37 +41,37 @@
 
 
                     <div class="row col-sm-12">
-                        <div class="col-sm-3">
+                        <div class="col-sm-2 detailMargin">
                             <strong>Side1: </strong>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4 detailMargin">
                                 {{pill.frontImprint}}
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-2 detailMargin">
                             <strong>Color: </strong>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4 detailMargin">
                                 {{pill.color}}
                         </div>
 
                     </div>
 
                     <div class="row col-sm-12">
-                        <div class="col-sm-3">
+                        <div class="col-sm-2 detailMargin">
                             <strong>Side2: </strong>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4 detailMargin">
                                 {{pill.backImprint}}
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-2 detailMargin ">
                             <strong>Shape: </strong>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-3 detailMargin" style="margin-left:2%;">
                                 {{pill.shape}}
                         </div>
                     </div>
 
-                    <a href="/drug/listing" class="row col-sm-12 center mt-md" style="margin:0; margin-left: 35%;">
+                    <a href="/drug/listing" class="row col-sm-12 center mt-md" style="margin:0;">
                         <input type="button" value="Details" id="loadingButton" data-loading-text="Loading..." class="btn btn-primary  mb-xl" style="font-size: 1.5rem; ">
                     </a>
 

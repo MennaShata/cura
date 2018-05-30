@@ -16,7 +16,7 @@ import { PillComponent } from './pill/pill.component';
 import { PillItemComponent } from './pill/pill-item/pill-item.component';
 
 import { SideEffectItemComponent } from './side-effects/side-effect-item/side-effect-item.component';
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { FormsModule ,ReactiveFormsModule }   from '@angular/forms';
 import { DiseaseSmallItemComponent } from './diseases/disease-small-item/disease-small-item.component';
 import { DiseaseLisingComponent } from './diseases/disease-lising/disease-lising.component';
 import { DiseaseComponentComponent } from './diseases/disease-component/disease-component.component';
@@ -42,6 +42,7 @@ import { SideEffectModule } from './side-effects/side-effect.module';
 import { SharedModule } from './shared/shared.module';
 import { DiseaseAddComponent } from './diseases/disease-add/disease-add.component';
 import { HomeComponent } from './Home/Home.component';
+import { SideEffectAddComponent } from './side-effects/side-effect-add/side-effect-add.component';
 
 
 
@@ -51,12 +52,14 @@ const routes: Routes = [
     { path: 'listing', component: DrugsComponent},
     { path:'details/:id' , component :DrugDetailsComponent},
     { path:'addDrug' , component:DrugAddComponent},
+    { path:'editDrug/:id' , component:DrugAddComponent},
   ]},
   { path:'pill/item', component: PillComponent},
   { path: 'food', component: FoodItemComponent},
   { path: 'food/add', component: FoodAddComponent},
   { path: 'sideeffectlisting', component: SideEffectListingComponent},
   { path: 'sideeffectlisting2', component: SideEffectsComponent},
+  { path:'addsideeffect' , component:SideEffectAddComponent},
   { path: 'interactions/foodinteraction', component: FoodInteractionItemComponent},
   {path :'sideeffect', component:SideEffectItemComponent },
 
@@ -105,11 +108,13 @@ const routes: Routes = [
     BrowserModule,
     DrugsModule,
     FormsModule,
+    ReactiveFormsModule,
     PillModule,
     RouterModule,
     ActiveIngredientModule,
     SideEffectModule,
     SharedModule,
+    [ReactiveFormsModule],
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
