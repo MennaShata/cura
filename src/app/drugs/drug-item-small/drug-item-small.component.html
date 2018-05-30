@@ -4,11 +4,12 @@
             <div class="box-content" style="padding-top:18px ">
                 <div class="row drug-buttons ">
                     <div class="col-md-3 offset-md-9 col-xs-3 offset-xs-10" style="padding-right:0px">
-
-                        <button type="button" class="btn-borders btn-primary btn-info primary btn-xs" >
+                          <a [routerLink]="['/drug/editDrug',drugs.id]">
+                        <button type="button" class="btn-borders btn-primary btn-info primary btn-xs"  >
                             <i class="fa fa-edit">
                             </i>
                         </button>
+                    </a>
                         <button type="button" class="btn-danger primary btn-xs btn-borders" (click)="deleteDrug(drugs.id)">
                             <i class="fa fa-trash">
                             </i>
