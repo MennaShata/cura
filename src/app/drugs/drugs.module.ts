@@ -6,7 +6,7 @@ import { DrugListingComponent } from './drug-listing/drug-listing.component';
 import { DrugAddComponent } from './drug-add/drug-add.component';
 import { DrugItemSmallComponent } from './drug-item-small/drug-item-small.component';
 import { AppModule } from '../app.module';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule ,ReactiveFormsModule}   from '@angular/forms';
 import { RouterModule, Routes ,ActivatedRoute} from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 
@@ -15,6 +15,7 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     [FormsModule],
+    [ReactiveFormsModule],
     RouterModule,
     SharedModule
 

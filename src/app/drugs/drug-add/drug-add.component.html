@@ -1,329 +1,228 @@
-<div class="container">
+<form [formGroup]="myForm" (ngSubmit)='onSubmit()'>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="featured-boxes">
+          <div class="row">
+            <div class="col-sm-10 col-md-offset-1">
+              <div class="featured-box featured-box-primary align-left mt-xlg">
+                <div class="box-content">
+                  <h4 class="heading-primary text-uppercase mb-md">{{title}}</h4>
 
-  <div class="row">
-    <div class="col-md-12">
-
-      <div class="featured-boxes">
-        <div class="row">
-          <div class="col-sm-10 col-md-offset-1">
-            <div class="featured-box featured-box-primary align-left mt-xlg">
-              <div class="box-content">
-                <h4 class="heading-primary text-uppercase mb-md">Drug Insert</h4>
-
-                <div class="form-group">
-                  <label class="col-sm-2 control-label" for="w1-username">Trade Name</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control input-sm" name="username" id="w1-username" required>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-sm-2 control-label" for="w1-username">Company</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control input-sm" name="username" id="w1-username" required>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-sm-2  control-label">Active Ingrediates</label>
-                  <div class="col-sm-10">
-                    <select multiple data-plugin-selectTwo class="form-control populate">
-                      <option value="AK">Cellmen </option>
-                      <option value="HI">Cellap</option>
-                      <option value="CA">Cellmen</option>
-                      <option value="NV">Cellap</option>
-                      <option value="OR">Cellmen </option>
-                      <option value="WA">Cellap</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-sm-2 control-label" for="w1-username">Usage</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control input-sm" name="username" id="w1-username" required>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-sm-2 control-label" for="w1-username">Dosage</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control input-sm" name="username" id="w1-username" required>
-                  </div>
-                </div>
-
-
-                <div class="form-group">
-                  <label class="col-sm-3 control-label" style="margin-top:10px;">Pregnency Warning</label>
-
-                  <div class="col-sm-3" style="margin-left:-70px;">
-                    <div class="radio">
-                      <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""> Yes
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-sm-3 ">
-                    <div class="radio">
-                      <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""> No
-                      </label>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="w1-username">Trade Name</label>
+                    <div class="col-sm-10">
+                      <input 
+                      type="text" 
+                      class="form-control input-sm" 
+                      name="tradeName" 
+                      id="w1-username" 
+                      placeholder="Enter Trade Name" 
+                      formControlName="tradeName">
                     </div>
                   </div>
 
-                </div>
-
-
-
-                <div class="form-group">
-                  <label class="col-sm-3 control-label" style="margin-top:10px;">Children Warning</label>
-
-                  <div class="col-sm-3" style="margin-left:-70px;">
-                    <div class="radio">
-                      <label>
-                        <input type="radio" name="optionsRadios1" id="optionsRadios1" value="option1" checked=""> Yes
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-sm-3 ">
-                    <div class="radio">
-                      <label>
-                        <input type="radio" name="optionsRadios1" id="optionsRadios1" value="option1" checked=""> No
-                      </label>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="w1-username">Company</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control input-sm" name="company" id="w1-username" placeholder="Enter Company" formControlName="company">
                     </div>
                   </div>
 
-                </div>
-
-
-
-                <div class="form-group">
-                  <label class="col-sm-2 control-label" for="w1-username">Warning</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control input-sm" name="username" id="w1-username" required>
+                  <div class="form-group">
+                    <label class="col-sm-2  control-label">Active Ingrediates</label>
+                    <div class="col-sm-10">
+                      <select multiple data-plugin-selectTwo class="form-control populate" formControlName="activeIngredient" name="activeIngredient">
+                        <option [value]="activeIngredient" *ngFor="let activeIngredient of activeIngredients" >{{activeIngredient}} </option>
+                      </select>
+                    </div>
                   </div>
-                </div>
 
-
-                <div class="form-group">
-                  <label class="col-sm-2  control-label">Type</label>
-                  <div class="col-sm-10">
-                    <select multiple data-plugin-selectTwo class="form-control populate">
-                      <option value="AK">Tablets </option>
-                      <option value="HI">capsules</option>
-                      <option value="CA">softgels</option>
-                      <option value="NV">liquids</option>
-                      <option value="OR">chewables </option>
-                      <option value="WA">powders</option>
-                    </select>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="w1-username">Usage</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control input-sm" name="usage" id="w1-username" placeholder="Enter Usgae" formControlName="usage" required>
+                    </div>
                   </div>
-                </div>
 
-                <div class="form-group">
-                  <label class="col-sm-2 control-label" for="w1-username">Text On One Side</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control input-sm" name="username" id="textOnOneSide">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="w1-username">Dosage</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control input-sm" name="dosage" id="w1-username" placeholder="Enter Dosage" formControlName="dosage" required>
+                    </div>
                   </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-sm-2 control-label" for="w1-username">Text On Other Side</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control input-sm" name="username" id="textOnOtherSide">
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Shape</label>
-                  <div class="col-sm-10">
-                    <select data-plugin-selectTwo class="form-control populate" id="dropDownShape">
-                      <option value="AK">Round</option>
-                      <option value="HI">Oblong</option>
-                      <option value="CA">Oval</option>
-                      <option value="NV">Square</option>
-                      <option value="OR">Rectangle </option>
-                      <option value="WA">Diamond</option>
-                      <option value="WA">Other</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Color</label>
-                  <div class="col-sm-10">
-                    <select data-plugin-selectTwo class="form-control populate" id="dropDownColor">
-
-                      <option value="AK">White</option>
-                      <option value="HI">Off White</option>
-                      <option value="AK">Orange</option>
-                      <option value="HI">Yellow</option>
-                      <option value="CA">Gray</option>
-                      <option value="NV">Green</option>
-                      <option value="OR">Tan</option>
-                      <option value="WA">Brown</option>
-                      <option value="AK">Red</option>
-                      <option value="HI">Pink</option>
-                      <option value="AK">Peach</option>
-                      <option value="HI">Gold</option>
-                      <option value="CA">Blue</option>
-                      <option value="NV">Purple</option>
-                      <option value="CA">Lavander</option>
-                      <option value="NV">Multi Color</option>
 
 
-                    </select>
-                  </div>
-                </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label" style="margin-top:10px;">Pregnency Warning</label>
 
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Strength</label>
-                  <div class="col-sm-5">
-                    <div data-plugin-spinner>
-                      <div class="input-group input-small">
-                        <input id="strengthText" type="text" class="spinner-input form-control">
-                        <div class="spinner-buttons input-group-btn btn-group-vertical">
-                          <button type="button" class="btn spinner-up btn-xs btn-default">
-                            <i class="fa fa-angle-up"></i>
-                          </button>
-                          <button type="button" class="btn spinner-down btn-xs btn-default">
-                            <i class="fa fa-angle-down"></i>
-                          </button>
-                        </div>
+                    <div class="col-sm-3" style="margin-left:-70px;">
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="pregnancyWarning" [value]=true formControlName="pregnancyWarning"> Yes
+                        </label>
                       </div>
                     </div>
-                  </div>
-                  <div class="col-sm-5">
-                    <select id="dropDownUnit" data-plugin-selectTwo class="form-control populate">
-                      <option value="AK">gram </option>
-                      <option value="AK">mg</option>
+                    <div class="col-sm-3 ">
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="pregnancyWarning" [value]=false formControlName="pregnancyWarning"> No
+                        </label>
+                      </div>
+                    </div>
 
-                    </select>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Upload Drug Logo</label>
-                  <div class="col-sm-10">
-                    <div class="fileupload fileupload-new" data-provides="fileupload">
-                      <div class="input-append">
-                        <div class="uneditable-input">
-                          <i class="fa fa-file fileupload-exists"></i>
-                          <span class="fileupload-preview"></span>
-                        </div>
-                        <span class="btn btn-default btn-file">
-                          <span class="fileupload-exists">Change</span>
-                          <span class="fileupload-new">Select Image</span>
-                          <input type="file" />
+
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label" style="margin-top:10px;">Children Warning</label>
+
+                    <div class="col-sm-3" style="margin-left:-70px;">
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="childernWarning" [value]=true checked="" formControlName="childernWarning"> Yes
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 ">
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="childernWarning" [value]=false checked="" formControlName="childernWarning"> No
+                        </label>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="w1-username">Warning</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control input-sm" name="warning" id="w1-username" placeholder="Enter Warning" formControlName="warning">
+                    </div>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label class="col-sm-2  control-label">Type</label>
+                    <div class="col-sm-10">
+                      <select multiple data-plugin-selectTwo class="form-control populate" formControlName="type" (change)='callType()' name="type">
+                        <option [value]="type" *ngFor="let type of types">{{type}}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group" *ngIf="pill">
+                    <label class="col-sm-2 control-label" for="w1-username">Text On One Side</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control input-sm" name="textOnSide" id="textOnOneSide" placeholder="Enter Text On One Side" formControlName="textOnSide">
+                    </div>
+                  </div>
+
+                  <div class="form-group" *ngIf="pill">
+                    <label class="col-sm-2 control-label" for="w1-username">Text On Other Side</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control input-sm" name="textOnOther" id="textOnOtherSide" placeholder="Enter Text On Other Side" formControlName="textOnOther">
+                    </div>
+                  </div>
+
+                  <div class="form-group" *ngIf="pill">
+                    <label class="col-sm-2 control-label">Shape</label>
+                    <div class="col-sm-10">
+                      <select data-plugin-selectTwo class="form-control populate" id="dropDownShape" formControlName="shape" name="shape">
+                        <option [value]="shape" *ngFor="let shape of shapes">{{shape}}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group" *ngIf="pill">
+                    <label class="col-sm-2 control-label">Color</label>
+                    <div class="col-sm-10">
+                      <select data-plugin-selectTwo class="form-control populate" id="dropDownColor" formControlName="color" name="color">
+                        <option [value]="color" *ngFor="let color of colors" >{{color}}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Strength</label>
+                    <div class="col-sm-5">
+                            <input id="strengthText" type="number" class="spinner-input form-control" formControlName="strength" name="strength">
+                    </div>
+                    <div class="col-sm-5">
+                      <select id="dropDownUnit" data-plugin-selectTwo class="form-control populate"  formControlName="strengthUnit" name="strengthUnit">
+                        <option [value]="strengthUnit" *ngFor="let strengthUnit of strengthUnits">{{strengthUnit}}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-md-2 control-label">Approval History</label>
+                    <div class="col-md-7">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
                         </span>
-                        <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
+                        <input type="date" class="form-control datepicker input-sm" name="approvalHistory" id="date" placeholder="__/__/____" formControlName="approvalHistory">
                       </div>
                     </div>
                   </div>
-                </div>
 
-
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Upload Pill Image</label>
-                  <div class="col-sm-10">
-                    <div class="fileupload fileupload-new" data-provides="fileupload">
-                      <div class="input-append">
-                        <div class="uneditable-input">
-                          <i class="fa fa-file fileupload-exists"></i>
-                          <span class="fileupload-preview"></span>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Upload Drug Logo</label>
+                    <div class="col-sm-10">
+                      <div class="fileupload fileupload-new" data-provides="fileupload">
+                        <div class="input-append">
+                          <div class="uneditable-input">
+                            <i class="fa fa-file fileupload-exists"></i>
+                            <span class="fileupload-preview"></span>
+                          </div>
+                          <span class="btn btn-default btn-file">
+                            <span class="fileupload-exists">Change</span>
+                            <span class="fileupload-new">Select Image</span>
+                            <input type="file" formControlName="drugLogo" name="drugLogo"/>
+                          </span>
+                          <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
                         </div>
-                        <span class="btn btn-default btn-file">
-                          <span class="fileupload-exists">Change</span>
-                          <span class="fileupload-new">Select Image</span>
-                          <input type="file" />
-                        </span>
-                        <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="row">
+
+
+                  <div class="form-group" *ngIf="pill">
+                    <label class="col-sm-2 control-label">Upload Pill Image</label>
+                    <div class="col-sm-10">
+                      <div class="fileupload fileupload-new" data-provides="fileupload">
+                        <div class="input-append">
+                          <div class="uneditable-input">
+                            <i class="fa fa-file fileupload-exists"></i>
+                            <span class="fileupload-preview"></span>
+                          </div>
+                          <span class="btn btn-default btn-file">
+                            <span class="fileupload-exists">Change</span>
+                            <span class="fileupload-new">Select Image</span>
+                            <input type="file" formControlName="pillImage" name="pillImage"/>
+                          </span>
+                          <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
                     <div class="col-md-6">
                       <span class="remember-box checkbox"></span>
-  
+
                     </div>
                     <div class="col-md-6">
-                      <input type="submit" value="Add" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
+                      <input type="submit" value="Add" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading..."/>
                     </div>
                   </div>
-
-                <button class="btn btn-primary mr-xs mb-sm" id="addType"> Add Type
-                  <i class="fa fa-plus-circle"></i>
-                </button>
-
-                <div id="myDiv">
-                  <h4>Type List</h4>
-
-                  <table class="table table-hover" id="mytable">
-                    <col width="50">
-                    <col width="80">
-                    <col width="100">
-                    <col width="130">
-                    <col width="100">
-                    <col width="100">
-                    <col width="100">
-                    <col width="50">
-
-                    <thead>
-                      <tr>
-                        <th>
-                          #
-                        </th>
-                        <th>
-                          type
-                        </th>
-                        <th>
-                          text on one side
-                        </th>
-                        <th>
-                          text on other side
-                        </th>
-                        <th>
-                          color
-                        </th>
-                        <th>
-                          shape
-                        </th>
-                        <th>
-                          strength
-                        </th>
-                        <th>
-
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="hidden">
-                        <td></td>
-
-
-                        <td class="insertedType">
-
-                        </td>
-                        <td class="insertedText1">
-
-                        </td>
-                        <td class="insertedText2">
-
-                        </td>
-                        <td class="insertedColor">
-
-                        </td>
-                        <td class="insertedShape">
-
-                        </td>
-                        <td class="insertedStrenght">
-
-                        </td>
-                        <td>
-
-                        </td>
-                      </tr>
-
-                    </tbody>
-                
-
-              
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
