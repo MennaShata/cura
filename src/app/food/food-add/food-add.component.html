@@ -1,10 +1,10 @@
-<form #foodForm="ngForm" ng-submit="addFood(foodForm)">
+<form [formGroup]="form" (ngSubmit)="addFood()">
 <div class="col-md-6">
   <a class="btn btn-borders btn-sm btn-primary custom-button text-uppercase" data-toggle="modal" data-target="#defaultModal">
     <i class="fa fa-plus" style="font-size:17px;color:#3aabdd;"></i>
   </a>
-  <div class="modal fade" id="defaultModal">
-    <div class="modal-dialog">
+  <!-- <div class="modal fade" id="defaultModal"> -->
+    <!-- <div class="modal-dialog"> -->
       <div class="col-md-12">
         <div class="row">
           <div class="col-sm-12 col-md-offset-1">
@@ -15,19 +15,33 @@
                 <div class="form-group">
                   <label class="col-sm-4 control-label" for="w1-username">Food Name: </label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control input-sm" name="username" id="w1-username" required [(ngModel)]="food.name">
+                    <input 
+                    formControlName="foodname" 
+                    type="text" class="form-control input-sm" 
+                    name="foodname" 
+                    id="w1-foodname" 
+                    required>
+                    <div *ngIf="foodname.touched && foodname.invalid" class="alert alert-danger">Food Name is required</div>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-4  control-label">Food Icon :</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control input-sm" name="username" id="w1-username" required [(ngModel)]="food.icon">
+                    <input 
+                    formControlName="foodicon"
+                    type="text" 
+                    class="form-control input-sm" 
+                    name="foodicon" 
+                    id="w1-foodicon" 
+                    required>
+                    <div *ngIf="foodicon.touched && foodicon.invalid" class="alert alert-danger">Food Icon is required</div>
+
                   </div>
                 </div>
 
                 <div class="">
                   <button type="button" class="btn btn-tertiary mr-xs mb-sm">Cancel</button>
-                  <button type="button" class="btn btn-tertiary mr-xs mb-sm">Add</button>
+                  <button type="submit" class="btn btn-tertiary mr-xs mb-sm">Add</button>
                 </div>
               </div>
             </div>
@@ -35,6 +49,6 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
+  <!-- </div> -->
+<!-- </div> -->
 </form>
