@@ -24,5 +24,10 @@ constructor() {
  {
   return this.shapes
  }
-
+ public getName(id:number):string{
+  const index = this.shapes.findIndex(a=>a.id ==id);
+  if(index >-1){
+    return this.shapes[index].name;
+  }
+}
 }
