@@ -11,19 +11,22 @@ import { Component, OnInit} from '@angular/core';
 export class FoodAddComponent implements OnInit {
   constructor(private FoodService: FoodService) { }
   public food:Ifood;
-  form = new FormGroup({
-    foodname: new FormControl('', Validators.required),
-    foodicon: new FormControl('', Validators.required)
-  });
+  form: FormGroup;
+  
+  
+
+
+  ngOnInit() {
+    this.form = new FormGroup({
+      foodname: new FormControl('', Validators.required),
+      foodicon: new FormControl('', Validators.required)
+    });
+  }
   get foodname(){
     return this.form.get('foodname');
   }
   get foodicon(){
     return this.form.get('foodicon');
-  }
-
-
-  ngOnInit() {
   }
   addFood(){
     this.food = {

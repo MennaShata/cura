@@ -32,10 +32,11 @@ export class FoodService {
     this.foodArray.push(food);
 
   }
-  public save(food:Ifood){
-    const oldFood = this.getById(food.id);
-    oldFood.icon = food.icon;
-    oldFood.name = food.name
+  public save(newFood:Ifood){
+    debugger;
+    const oldFood = this.getById(newFood.id);
+    oldFood.icon = newFood.icon;
+    oldFood.name = newFood.name
   }
 constructor() { }
 

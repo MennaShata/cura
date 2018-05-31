@@ -1,3 +1,4 @@
+import { FoodEditComponent } from './food/food-edit/food-edit.component';
 import { FoodListingComponent } from './food/food-listing/food-listing.component';
 import { FoodInteractionItemComponent } from './Interactions/Food-Interaction/Food-Interaction-Item/Food-Interaction-Item.component';
 import { FoodAddComponent } from './food/food-add/food-add.component';
@@ -79,6 +80,7 @@ const routes: Routes = [
   { path:'diseaseDetails/:id' , component :DiseaseDetailsComponent},
   { path:'diseaseAdd' , component :DiseaseAddComponent},
   { path:'addFood' , component :FoodAddComponent},
+  { path:'editFood/:id' , component :FoodEditComponent}
 ];
 
 @NgModule({
@@ -102,7 +104,8 @@ const routes: Routes = [
     OneForbiddenDrugComponent,
     HomeComponent,
     DiseaseAddComponent,
-    FoodAddComponent
+    FoodAddComponent,
+    FoodEditComponent
 ],
   imports: [
     BrowserModule,
