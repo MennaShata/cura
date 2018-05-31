@@ -16,17 +16,22 @@ export class ActiveIngredientAddComponent implements OnInit {
   myForm:FormGroup;
   id:number;
   constructor(private ActiveIngredientService:ActiveIngredientService,private ar:ActivatedRoute) {
-    
+
    }
 
   ngOnInit() {
-
+    this.title="Add Active Ingredient"
     this.ar.params.subscribe((params)=>{this.id=params['id'];});
 
     this.myForm = new FormGroup({
       name:new FormControl(),
       description:new FormControl()
     });
+    if(this.id){
+      this.title="Edit Active Ingredient";
+      this.activeingredient = this.ActiveIngredientService.getById(this.id);
+      
+    }
   }
 
   onSubmit(){

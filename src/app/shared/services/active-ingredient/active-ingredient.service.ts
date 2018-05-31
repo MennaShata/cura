@@ -14,6 +14,7 @@ export class ActiveIngredientService {
       { id: 3, name: "para3", description: "ay kalam" }
     ];
   activeing: Iactiveingredient;
+
   constructor() { }
 
   getAll() {
@@ -36,7 +37,14 @@ export class ActiveIngredientService {
     }
 
   }
+  
   Add(activeIngredientitem){
     this.activeIngredients.push(activeIngredientitem)
+  }
+
+  update(activeIngredient:Iactiveingredient){
+    const oldactiveing = this.getById(activeIngredient.id);
+    oldactiveing.name = activeIngredient.name;
+    oldactiveing.description = activeIngredient.description;
   }
 }
