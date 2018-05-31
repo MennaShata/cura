@@ -73,4 +73,7 @@ export class DiseaseServiceService {
   add(d:Idisease){
     this.diseases.push(d);
   }
+  edit(id:number){
+    //this.diseases.find();
+  }
 }

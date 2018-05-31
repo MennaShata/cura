@@ -1,7 +1,7 @@
 import { IDrugDisease } from "./IDrugDisease";
 
 export interface Idisease {
-    id:number;
+    id?:number;
     name:string,
     descripton:string,
     bodyParts:string[] ,
