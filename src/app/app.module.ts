@@ -36,8 +36,10 @@ import { OneForbiddenDrugComponent } from './diseases/one-forbidden-drug/one-for
 import { ActiveIngredientService } from './shared/services/active-ingredient/active-ingredient.service';
 import { ActiveIngredientDetailsComponent } from './active-ingredients/active-ingredient-details/active-ingredient-details.component';
 import { ActiveIngrediantItemComponent } from './active-ingredients/active-ingrediant-item/active-ingrediant-item.component';
+import { ActiveIngredientAddComponent } from 'src/app/active-ingredients/active-ingredient-add/active-ingredient-add.component';
 import { ActiveIngredientListingComponent } from './active-ingredients/active-ingredient-listing/active-ingredient-listing.component';
 import { ActiveIngredientModule } from './active-ingredients/active-ingredient.module';
+
 import { SideEffectModule } from './side-effects/side-effect.module';
 import { SharedModule } from './shared/shared.module';
 import { DiseaseAddComponent } from './diseases/disease-add/disease-add.component';
@@ -63,9 +65,12 @@ const routes: Routes = [
   { path: 'interactions/foodinteraction', component: FoodInteractionItemComponent},
   {path :'sideeffect', component:SideEffectItemComponent },
 
-  { path:'activeingredient', component: ActiveIngrediantItemComponent},
-  { path:'activeingredient/listing', component: ActiveIngredientListingComponent},  
-  { path:'activeingredient/details/:id' , component :ActiveIngredientDetailsComponent},
+  {path:'activeingredient',children:[
+    { path:'listing', component: ActiveIngredientListingComponent},
+    { path:'details/:id' , component :ActiveIngredientDetailsComponent},
+    { path:'addActiveIngredient' , component:ActiveIngredientAddComponent},
+    { path:'editActiveIngredient/:id' , component:ActiveIngredientAddComponent},
+  ]},
 
   { path:'food/foodlist', component: FoodListingComponent},
   { path:'interactions/foodinteraction/listing', component: FoodInteractionsListingComponent},

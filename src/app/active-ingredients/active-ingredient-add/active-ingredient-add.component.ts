@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { FormControl } from '@angular/forms/src/model';
+import { FormGroup, FormControl} from '@angular/forms';
 import { Iactiveingredient } from 'src/app/shared/models/interfaces/iactiveingredient';
+import { ActiveIngredientService } from 'src/app/shared/services/active-ingredient/active-ingredient.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-active-ingredient-add',
@@ -10,18 +11,26 @@ import { Iactiveingredient } from 'src/app/shared/models/interfaces/iactiveingre
 })
 export class ActiveIngredientAddComponent implements OnInit {
 
+  title='';
   activeingredient:Iactiveingredient;
   myForm:FormGroup;
-  constructor() { }
+  id:number;
+  constructor(private ActiveIngredientService:ActiveIngredientService,private ar:ActivatedRoute) {
+    
+   }
 
   ngOnInit() {
+
+    this.ar.params.subscribe((params)=>{this.id=params['id'];});
+
     this.myForm = new FormGroup({
       name:new FormControl(),
       description:new FormControl()
     });
   }
 
-  addActiveIngredient(){
+  onSubmit(){
+
   }
 
 }
