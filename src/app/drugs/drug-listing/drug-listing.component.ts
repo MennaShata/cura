@@ -18,6 +18,7 @@ export class DrugListingComponent implements OnInit {
   }
 
   ngOnInit() {
+    debugger;
     this.drugService.getAllDrug().subscribe(
       
       (data)=>{this.drugs=data}

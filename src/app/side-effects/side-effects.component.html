@@ -4,7 +4,7 @@
     <div class="row">
       <app-search class="col-xs-8 col-xs-offset-2"></app-search>
       <div class="col-xs-2 mt-xlg" style="font-size:xx-large;color:#008fe2;">
-        <a href="#">
+        <a [routerLink]="['/addsideeffect']">
           <i class="fa fa-plus-circle"></i>
         </a>
       </div>
@@ -13,6 +13,7 @@
     <br>
 
     <app-side-effect-listing></app-side-effect-listing>
+    
 
   </div>
 </div>
