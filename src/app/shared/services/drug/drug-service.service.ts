@@ -15,11 +15,11 @@ export class DrugServiceService {
      id:0,
      image:'../../../assets/images/panadol1.jpg',
      drugName:'panadol',
-     drugTypeName:['Drink'],
+     drugTypeName:3,
      drugTypeImage:'../../../assets/images/drugBottle.PNG',
-     activeIngredient:['Paracetamol','Paracetamol'],
+     activeIngredient:[3,4],
      strength:500,
-     strengthUnit:'mg',
+     strengthUnit:1,
      usage:'This drug is used to treat mild to moderate pain (from headaches, menstrual periods, toothaches, backaches, osteoarthritis, or cold/flu aches and pains) and to reduce fever.',
      dosage:'The Usual Dose For Adults Is One Or Two 500MG Tablets Up To 4 Times In 24 Hours.',
      company:'GSK',
@@ -32,11 +32,11 @@ export class DrugServiceService {
      id:1,
     image:'../../../assets/images/panadol1.jpg',
     drugName:'panadol',
-    drugTypeName:['pill '],
+    drugTypeName:0,
     drugTypeImage:'../../../assets/images/drugBottle.PNG',
-    activeIngredient:['Paracetamol','Paracetamol2'],
+    activeIngredient:[0,1],
     strength:200,
-    strengthUnit:'mg',
+    strengthUnit:1,
     usage:'mosakn',
     dosage:'5mg' ,
     company:'GSK',
@@ -44,19 +44,19 @@ export class DrugServiceService {
     childernWarning:false,
     warning:'The total maximum dose of paracetamol for an adult is eight 500mg tablets in 24 hours. Wait at least 4 hours between doses.',
     approvalHistory:' 08/12/2010',
-    color:'white',
-    shape:'Round',
+    color:0,
+    shape:0,
     pillImage:'../../../assets/images/panadol-pill.jpg',
    },
    {
      id:2,
     image:'../../../assets/images/aspirin.jpg',
     drugName:'asprin',
-    drugTypeName:['pill '],
+    drugTypeName:0,
     drugTypeImage:'../../../assets/images/drugBottle.PNG',
-    activeIngredient:['Paracetamol','Paracetamol2'],
+    activeIngredient:[1,2],
     strength:200,
-    strengthUnit:'mg',
+    strengthUnit:1,
     usage:'mosakn',
     dosage:'10mg' ,
     company:'GSK',
@@ -64,8 +64,8 @@ export class DrugServiceService {
     childernWarning:false,
     warning:'The total maximum dose of paracetamol for an adult is eight 500mg tablets in 24 hours. Wait at least 4 hours between doses.',
     approvalHistory:' 02/10/2005',
-    color:'Yellow',
-    shape:'Round',
+    color:3,
+    shape:0,
     pillImage:'../../../assets/images/panadol-pill.jpg'
    }
   ];
@@ -106,6 +106,7 @@ drugDelete(id){
 
 add(drug:Idrug){
   if(drug){
+    debugger;
     drug.id = this.drugs.length;
     this.drugs.push(drug);
   }
@@ -113,6 +114,7 @@ add(drug:Idrug){
 }
 
 save(drug:Idrug){
+  debugger;
   const oldDrug = this.getById(drug.id);
   oldDrug.image = drug.image;
   oldDrug.drugName = drug.drugName;
@@ -128,6 +130,12 @@ save(drug:Idrug){
   oldDrug.drugTypeImage = drug.drugTypeImage;
   oldDrug.strength = drug.strength;
   oldDrug.strengthUnit = drug.strengthUnit;
+  oldDrug.textOnSide = drug.textOnSide;
+  oldDrug.textOnOtherSide = drug.textOnOtherSide;
+  oldDrug.pillImage = drug.pillImage;
+  oldDrug.color = drug.color;
+  oldDrug.shape = drug.shape;
+
 }
 
 
