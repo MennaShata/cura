@@ -50,4 +50,13 @@ public Delete(id:number)
 add(s:Isideeffect){
   this.sideeffects.push(s);
 }
+
+getById(id){
+  const index = this.sideeffects.findIndex(a=>a.id ==id);
+  if(index >-1){
+    return this.sideeffects[index];
+  }
+  
+}
+
 }
