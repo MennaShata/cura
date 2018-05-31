@@ -16,8 +16,8 @@ export class DiseaseSmallItemComponent implements OnInit {
   deleteDisease(id:number){
     this.diseaseServiceService.delete(id);
   }
-  editDisease(id:number){
-    this.diseaseServiceService.edit(id);    
-  }
+  // editDisease(id:number){
+  //   this.diseaseServiceService.update(this.disease);    
+  // }
 
 }

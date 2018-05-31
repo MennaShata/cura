@@ -43,6 +43,7 @@ import { SharedModule } from './shared/shared.module';
 import { DiseaseAddComponent } from './diseases/disease-add/disease-add.component';
 import { HomeComponent } from './Home/Home.component';
 import { SideEffectAddComponent } from './side-effects/side-effect-add/side-effect-add.component';
+import { DiseaseEditComponent } from './diseases/disease-edit/disease-edit.component';
 
 
 
@@ -76,6 +77,9 @@ const routes: Routes = [
   // {path:'diseaseDetails', component:DiseaseDetailsComponent},
   { path:"diseaseComponent" ,component:DiseaseComponentComponent},
   { path:"diseaseListing" ,component:DiseaseLisingComponent},
+  // { path:"diseaseEdit" ,component:DiseaseEditComponent},
+  { path:"diseaseEdit/:id" ,component:DiseaseEditComponent},
+  
   { path:'diseaseDetails/:id' , component :DiseaseDetailsComponent},
   { path:'diseaseAdd' , component :DiseaseAddComponent},
   { path:'addFood' , component :FoodAddComponent},
@@ -102,7 +106,8 @@ const routes: Routes = [
     OneForbiddenDrugComponent,
     HomeComponent,
     DiseaseAddComponent,
-    FoodAddComponent
+    FoodAddComponent,
+    DiseaseEditComponent
 ],
   imports: [
     BrowserModule,
