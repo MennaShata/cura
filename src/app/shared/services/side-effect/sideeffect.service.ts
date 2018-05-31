@@ -58,5 +58,9 @@ getById(id){
   }
   
 }
-
+save(sideeffect:Isideeffect){
+  const old= this.getById(sideeffect.id);
+  old.name = sideeffect.name;
+  old.description=sideeffect.description;
+}
 }
