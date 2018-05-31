@@ -8,11 +8,12 @@ import { fail } from 'assert';
 export class ActiveIngredientService {
 
   activeIngredients: Iactiveingredient[] =
-    [
-      { id: 1, name: "para", description: "ay kalam" },
-      { id: 2, name: "paracetamol", description: "ay kalam" },
-      { id: 3, name: "para3", description: "ay kalam" }
-    ];
+    [{ id: 0, name: 'paracetamol' },
+    { id: 1, name: 'dextromethorphan' },
+    { id: 2, name: 'acetylsalicylic acid' },
+    { id: 3, name: 'Acetaminophen' },
+    { id: 4, name: 'Dextromethorphan' },
+    { id: 5, name: 'Diphenhydramine' }];
   activeing: Iactiveingredient;
 
   constructor() { }
@@ -37,14 +38,21 @@ export class ActiveIngredientService {
     }
 
   }
-  
-  Add(activeIngredientitem){
+
+  Add(activeIngredientitem) {
     this.activeIngredients.push(activeIngredientitem)
   }
 
-  update(activeIngredient:Iactiveingredient){
+  update(activeIngredient: Iactiveingredient) {
     const oldactiveing = this.getById(activeIngredient.id);
     oldactiveing.name = activeIngredient.name;
     oldactiveing.description = activeIngredient.description;
+
+  }
+  public getName(id: number): string {
+    const index = this.activeIngredients.findIndex(a => a.id === id);
+    if (index > -1) {
+      return this.activeIngredients[index].name;
+    }
   }
 }
