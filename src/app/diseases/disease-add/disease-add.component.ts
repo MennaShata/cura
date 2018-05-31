@@ -32,7 +32,7 @@ export class DiseaseAddComponent implements OnInit {
       treatedDrugs:this.myForm.get('treatedDrugs').value,
       forbiddenDrugs:this.myForm.get('forbiddenDrugs').value,
     }
-    console.log(this.disease);
+    //console.log(this.disease);
     this.diseaseServiceService.add(this.disease);
 
   }
