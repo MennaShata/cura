@@ -1614,7 +1614,7 @@ html[dir="rtl"] #header .header-search .btn-default {
 	margin: 0 0 35px 0;
 	min-height: 50px;
 	padding: 20px 0;
-	position: relative;
+	/*position: relative;*/
 	text-align: left;
 }
 
