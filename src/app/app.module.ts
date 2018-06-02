@@ -47,6 +47,7 @@ import { DiseaseAddComponent } from './diseases/disease-add/disease-add.componen
 import { HomeComponent } from './Home/Home.component';
 import { SideEffectAddComponent } from './side-effects/side-effect-add/side-effect-add.component';
 import { DiseaseEditComponent } from './diseases/disease-edit/disease-edit.component';
+import { PillEditComponent } from './pill/pill-edit/pill-edit.component';
 
 
 
@@ -58,7 +59,7 @@ const routes: Routes = [
     { path:'addDrug' , component:DrugAddComponent},
     { path:'editDrug/:id' , component:DrugAddComponent},
   ]},
-  { path:'pill/item', component: PillComponent},
+  
   { path: 'food', component: FoodItemComponent},
   { path: 'food/add', component: FoodAddComponent},
   { path: 'sideeffectlisting', component: SideEffectListingComponent},
@@ -76,7 +77,6 @@ const routes: Routes = [
 
   { path:'food/foodlist', component: FoodListingComponent},
   { path:'interactions/foodinteraction/listing', component: FoodInteractionsListingComponent},
-  { path:'pill/item', component: PillComponent},
   { path:'interactions/foodinteraction/page/:id', component: SingleFoodInteractionComponent},
   
   { path:'interactions/foodinteraction/page', component: SingleFoodInteractionComponent},
@@ -85,11 +85,20 @@ const routes: Routes = [
   { path:"diseaseListing" ,component:DiseaseLisingComponent},
   // { path:"diseaseEdit" ,component:DiseaseEditComponent},
   { path:"diseaseEdit/:id" ,component:DiseaseEditComponent},
+
   
   { path:'diseaseDetails/:id' , component :DiseaseDetailsComponent},
   { path:'diseaseAdd' , component :DiseaseAddComponent},
   { path:'addFood' , component :FoodAddComponent},
-  { path:'editFood/:id' , component :FoodEditComponent}
+  { path:'editFood/:id' , component :FoodEditComponent},
+
+  {path:'pill',children:[
+    { path:'pill/page', component: PillComponent},
+    { path:'listing', component: PillListingComponent},
+    { path:'details/:id' , component :DrugDetailsComponent},
+    { path:'addPill' , component: DrugAddComponent},
+    { path:'editPill/:id' , component: PillEditComponent},
+  ]},
 ];
 
 @NgModule({
