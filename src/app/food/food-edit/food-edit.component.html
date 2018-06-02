@@ -24,7 +24,7 @@
                       class="form-control input-sm" 
                       name="foodname" 
                       id="w1-foodname" 
-                      value = "{{food.name}}"
+                      value = "{{food?.name}}"
                       required>
                       <div 
                       *ngIf="foodName.touched && foodName.invalid" 
@@ -42,7 +42,7 @@
                       class="form-control input-sm" 
                       name="foodicon" 
                       id="w1-foodicon" 
-                      value = "{{food.icon}}"
+                      value = "{{food?.icon}}"
                       required>
                       <div *ngIf="foodIcon.touched && foodIcon.invalid" class="alert alert-danger">Food Icon is required</div>
   
@@ -69,6 +69,4 @@
       </div>
     <!-- </div> -->
   <!-- </div> -->
-  </form><p>
-  food-edit works!
-</p>
+  </form>

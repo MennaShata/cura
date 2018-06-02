@@ -17,11 +17,12 @@ export class FoodEditComponent implements OnInit {
   id:number;
 
   ngOnInit() {
-    this.ActivatedRoute.params.subscribe((params)=>{this.id=params['id']})
+    this.ActivatedRoute.params.subscribe((params)=>{this.id=params['id']});
+    this.food = this.FoodService.getById(this.id);
     this.form = new FormGroup({
       foodname: new FormControl('', Validators.required),
       foodicon: new FormControl('', Validators.required)
-    })
+    });
   }
   get foodName(){
     return this.form.get('foodname');
