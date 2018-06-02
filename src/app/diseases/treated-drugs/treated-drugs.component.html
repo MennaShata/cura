@@ -1,10 +1,15 @@
 <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-        <h4>Treated Drugs</h4>
-        <div class="owl-carousel owl-theme" data-plugin-options="{'responsive': {'0': {'items': 1}, '479': {'items': 1}, '768': {'items': 2}, '979': {'items': 3}, '1199': {'items': 3}}, 'loop': false, 'autoHeight': true, 'margin': 10}">
-            <div>
+        <div class="col-md-10 col-md-offset-1">
+                <h4>Treated Drugs</h4>
+            <div class="owl-carousel" id="carousel">
                     <app-one-treated-drug [tDrug]=i *ngFor="let i of treatedDrugs"></app-one-treated-drug>
+                   
             </div>
         </div>
     </div>
-</div>
+
+
+
+
+
+

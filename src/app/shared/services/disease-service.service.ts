@@ -12,33 +12,33 @@ export class DiseaseServiceService {
       name: 'cancer',
       descripton: 'bla bla bla',
       bodyParts: ['Eyes', 'Eyes'],
-      forbiddenDrugs: [{ name: 'panadol', type: 'drink', image: '' }],
-      treatedDrugs: [{ name: 'paracitamol', type: 'fsfs' , image: ''}]
+      forbiddenDrugs: [{ name: 'panadol', type: 'drink', image: '../../../assets/images/p.jpg' },{ name: 'kitofan', type: 'pill', image: '../../../assets/images/ke.gif' },{ name: 'asposide', type: 'drink', image: '../../../assets/images/aspo.jpg' },{ name: 'cataflam', type: 'pill', image: '../../../assets/images/ca.jpg' }],
+      treatedDrugs: [{ name: 'panadol', type: 'drink', image: '../../../assets/images/p.jpg' },{ name: 'kitofan', type: 'pill', image: '../../../assets/images/ke.gif' },{ name: 'asposide', type: 'drink', image: '../../../assets/images/aspo.jpg' },{ name: 'cataflam', type: 'pill', image: '../../../assets/images/ca.jpg' },{ name: 'panadol', type: 'drink', image: '../../../assets/images/p.jpg' },{ name: 'kitofan', type: 'pill', image: '../../../assets/images/ke.gif' },{ name: 'asposide', type: 'drink', image: '../../../assets/images/aspo.jpg' },{ name: 'cataflam', type: 'pill', image:'../../../assets/images/ca.jpg'}]
     },
     {
       id:1,
       name: 'flu',
       descripton: 'bla flu bla',
       bodyParts: ['Eyes', 'Leg'],
-      forbiddenDrugs: [{ name: 'panadol', type: 'drink', image: '' }],
-      treatedDrugs: [{ name: 'paracitamol', type: 'gfgfg' , image: ''}]
+      forbiddenDrugs: [{ name: 'panadol', type: 'drink', image: '../../../assets/images/p.jpg' },{ name: 'kitofan', type: 'pill', image: '../../../assets/images/ke.gif' },{ name: 'asposide', type: 'drink', image: '../../../assets/images/aspo.jpg' },{ name: 'cataflam', type: 'pill', image: '../../../assets/images/ca.jpg' }],
+      treatedDrugs: [{ name: 'panadol', type: 'drink', image: '../../../assets/images/p.jpg' },{ name: 'kitofan', type: 'pill', image: '../../../assets/images/ke.gif' },{ name: 'asposide', type: 'drink', image: '../../../assets/images/aspo.jpg' },{ name: 'cataflam', type: 'pill', image: '../../../assets/images/ca.jpg' },{ name: 'panadol', type: 'drink', image: '../../../assets/images/p.jpg' },{ name: 'kitofan', type: 'pill', image: '../../../assets/images/ke.gif' },{ name: 'asposide', type: 'drink', image: '../../../assets/images/aspo.jpg' },{ name: 'cataflam', type: 'pill', image:'../../../assets/images/ca.jpg'}]
     },
     {
       id:2,
       name: 'cold',
       descripton: 'bla blaaaaa bla',
       bodyParts: ['Heart', 'Eyes'],
-      forbiddenDrugs: [{ name: 'panadol', type: 'drink', image: '' }],
-      treatedDrugs: [{ name: 'paracitamol', type: 'bla bla' , image: ''}]
-    },
+      forbiddenDrugs: [{ name: 'panadol', type: 'drink', image: '../../../assets/images/p.jpg' },{ name: 'kitofan', type: 'pill', image: '../../../assets/images/ke.gif' },{ name: 'asposide', type: 'drink', image: '../../../assets/images/aspo.jpg' },{ name: 'cataflam', type: 'pill', image: '../../../assets/images/ca.jpg' }],
+      treatedDrugs: [{ name: 'panadol', type: 'drink', image: '../../../assets/images/p.jpg' },{ name: 'kitofan', type: 'pill', image: '../../../assets/images/ke.gif' },{ name: 'asposide', type: 'drink', image: '../../../assets/images/aspo.jpg' },{ name: 'cataflam', type: 'pill', image: '../../../assets/images/ca.jpg' },{ name: 'panadol', type: 'drink', image: '../../../assets/images/p.jpg' },{ name: 'kitofan', type: 'pill', image: '../../../assets/images/ke.gif' },{ name: 'asposide', type: 'drink', image: '../../../assets/images/aspo.jpg' },{ name: 'cataflam', type: 'pill', image:'../../../assets/images/ca.jpg'}]
+     },
     {
       id:3,
       name: 'heart attack',
       descripton: 'bla flu bla',
       bodyParts: ['Leg', 'Heart'],
-      forbiddenDrugs: [{ name: 'panadol', type: 'drink', image: '' }],
-      treatedDrugs: [{ name: 'paracitamol', type: 'papapa' , image: ''}]
-    } 
+      forbiddenDrugs: [{ name: 'panadol', type: 'drink', image: '../../../assets/images/p.jpg' },{ name: 'kitofan', type: 'pill', image: '../../../assets/images/ke.gif' },{ name: 'asposide', type: 'drink', image: '../../../assets/images/aspo.jpg' },{ name: 'cataflam', type: 'pill', image: '../../../assets/images/ca.jpg' },{ name: 'panadol', type: 'drink', image: '../../../assets/images/p.jpg' },{ name: 'kitofan', type: 'pill', image: '../../../assets/images/ke.gif' },{ name: 'asposide', type: 'drink', image: '../../../assets/images/aspo.jpg' },{ name: 'cataflam', type: 'pill', image:'../../../assets/images/ca.jpg'}],
+      treatedDrugs: [{ name: 'panadol', type: 'drink', image: '../../../assets/images/p.jpg' },{ name: 'kitofan', type: 'pill', image: '../../../assets/images/ke.gif' },{ name: 'asposide', type: 'drink', image: '../../../assets/images/aspo.jpg' },{ name: 'cataflam', type: 'pill', image: '../../../assets/images/ca.jpg' },{ name: 'panadol', type: 'drink', image: '../../../assets/images/p.jpg' },{ name: 'kitofan', type: 'pill', image: '../../../assets/images/ke.gif' },{ name: 'asposide', type: 'drink', image: '../../../assets/images/aspo.jpg' },{ name: 'cataflam', type: 'pill', image:'../../../assets/images/ca.jpg'}]
+     } 
      
     ];
   constructor() { }
