@@ -7,20 +7,21 @@ import { FoodDetailsComponent } from './food-details/food-details.component';
 import { FoodItemComponent } from './food-item/food-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FoodEditComponent } from './food-edit/food-edit.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   declarations: [
     FoodAddComponent,
     FoodListingComponent,
     FoodDetailsComponent,
-    FoodItemComponent,
-    
+    FoodItemComponent    
 ,
     FoodEditComponent
 ]

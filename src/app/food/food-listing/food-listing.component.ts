@@ -1,3 +1,4 @@
+
 import { Router, ActivatedRoute } from '@angular/router';
 import { Ifood } from './../../shared/models/interfaces/ifood';
 
@@ -12,9 +13,7 @@ import { Component, OnInit } from '@angular/core';
 export class FoodListingComponent implements OnInit {
   
   public foodlist: Ifood[];
-  
- 
-
+  name:string = '';
   constructor(private FoodService: FoodService, private router: Router) {
    }
 
