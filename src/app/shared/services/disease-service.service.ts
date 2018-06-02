@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Idisease } from '../models/interfaces/idisease';
+import { Idegree } from '../models/interfaces/Idegree';
 
 @Injectable({
   providedIn: 'root'
@@ -72,5 +73,13 @@ export class DiseaseServiceService {
 
   add(d:Idisease){
     this.diseases.push(d);
+  }
+  update(newDisease:Idisease){
+    const oldDisease=this.getById(newDisease.id);
+    oldDisease.name=newDisease.name;
+    oldDisease.bodyParts=newDisease.bodyParts;
+    oldDisease.descripton=newDisease.descripton;
+    oldDisease.treatedDrugs=newDisease.treatedDrugs;
+    oldDisease.forbiddenDrugs=newDisease.forbiddenDrugs;
   }
 }

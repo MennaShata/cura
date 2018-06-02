@@ -10,10 +10,13 @@ import { OneTreatedDrugComponent } from './one-treated-drug/one-treated-drug.com
 import { OneForbiddenDrugComponent } from './one-forbidden-drug/one-forbidden-drug.component';
 import { ForbiddenDrugsComponent } from './forbidden-drugs/forbidden-drugs.component';
 import { LatestNewsComponent } from '../shared/components/latest-news/latest-news.component';
+import { DiseaseEditComponent } from './disease-edit/disease-edit.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    [ReactiveFormsModule]
   ],
   declarations: [DiseaseAddComponent, DiseaseLisingComponent, DiseaseDetailsComponent,
     DiseaseSmallItemComponent
@@ -23,6 +26,8 @@ import { LatestNewsComponent } from '../shared/components/latest-news/latest-new
     OneForbiddenDrugComponent,
     ForbiddenDrugsComponent,
     DiseaseSmallItemComponent, LatestNewsComponent
+,
+    DiseaseEditComponent
 ]
 })
 export class DiseaseModule { }

@@ -5,10 +5,12 @@ import { ActiveIngredientListingComponent } from './active-ingredient-listing/ac
 import { ActiveIngrediantItemComponent } from './active-ingrediant-item/active-ingrediant-item.component';
 import { ActiveIngredientDetailsComponent } from './active-ingredient-details/active-ingredient-details.component';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     RouterModule
   ],
   declarations: [

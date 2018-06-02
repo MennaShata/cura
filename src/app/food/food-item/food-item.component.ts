@@ -14,6 +14,9 @@ export class FoodItemComponent implements OnInit {
   onDelete(id:number){
     this.FoodService.deleteFood(id);
   }
+  onUpdate(id:number){
+    
+  }
 
   ngOnInit() {
    

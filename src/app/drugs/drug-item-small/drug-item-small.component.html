@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="col-md-3 col-xs-3">
 
-                                    <h4 class="heading-primary mb-md">{{drugs.drugTypeName}} </h4>
+                                    <h4 class="heading-primary mb-md">{{drugType}} </h4>
                                 </div>
                             </div>
                         </div>
@@ -55,8 +55,8 @@
                                 </th>
                                 <td class="drugtypeinfopadding">
                                     <ul>
-                                        <li style="list-style-type: none;" *ngFor="let i of drugs.activeIngredient;let x=index" >
-                                         {{drugs.activeIngredient[x]}}
+                                        <li style="list-style-type: none;" *ngFor="let i of activeIngredient;let x=index" >
+                                         {{activeIngredient[x]}}
                                         </li>
                                     </ul>
 
@@ -70,7 +70,7 @@
 
                                     <ul>
                                         <li style="list-style-type: none;">
-                                            {{drugs.strength}} {{drugs.strengthUnit}}
+                                            {{drugs.strength}} {{strengthUnit}}
                                         </li>
                                     </ul>
                                 </td>
