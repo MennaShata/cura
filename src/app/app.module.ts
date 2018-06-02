@@ -93,7 +93,7 @@ const routes: Routes = [
   { path:'editFood/:id' , component :FoodEditComponent},
 
   {path:'pill',children:[
-    { path:'pill/page', component: PillComponent},
+    { path:'page', component: PillComponent},
     { path:'listing', component: PillListingComponent},
     { path:'details/:id' , component :DrugDetailsComponent},
     { path:'addPill' , component: DrugAddComponent},
