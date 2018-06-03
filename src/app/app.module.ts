@@ -99,7 +99,7 @@ const routes: Routes = [
     { path:'listing', component: PillListingComponent},
     { path:'details/:id' , component :DrugDetailsComponent},
     { path:'addPill' , component: DrugAddComponent},
-    { path:'editPill' , component: PillEditComponent},
+    { path:'editPill/:id' , component: PillEditComponent},
   ]},
 ];
 
