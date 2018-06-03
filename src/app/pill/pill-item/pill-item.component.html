@@ -5,10 +5,12 @@
             <div class="row drug-buttons">
                 <div class="col-md-offset-9 col-xs-offset-10">
 
+                <a [routerLink]="['/pill/editPill',pill.id]">
                     <button type="button" class="btn-borders btn-primary btn-info primary btn-xs" style="margin: 3px;">
                         <i class="fa fa-edit">
                         </i>
                     </button>
+                </a> 
                     <button type="button" class="btn-danger primary btn-xs btn-borders" (click)="deletePill(pill.id)">
                         <i class="fa fa-trash">
                         </i>
@@ -18,7 +20,6 @@
             <span class="thumb-info thumb-info-hide-wrapper-bg ">
 
                 <span class="thumb-info-wrapper">
-
 
                      <a [routerLink]="['/pill/details',pill.id]">
                         <img src={{pill.image}} class="img-responsive" alt="" style="height:180px; margin-bottom:10px">
@@ -71,7 +72,7 @@
                         </div>
                     </div>
 
-                    <a href="/drug/listing" class="row col-sm-12 center mt-md" style="margin:0;">
+                    <a [routerLink]="['/pill/details',pill.id]" class="row col-sm-12 center mt-md" style="margin:0;">
                         <input type="button" value="Details" id="loadingButton" data-loading-text="Loading..." class="btn btn-primary  mb-xl" style="font-size: 1.5rem; ">
                     </a>
 
