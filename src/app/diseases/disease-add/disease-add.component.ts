@@ -37,7 +37,7 @@ export class DiseaseAddComponent implements OnInit {
     }
     //console.log(this.disease);
     this.diseaseServiceService.add(this.disease);
-
+    this.myForm.reset();
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);

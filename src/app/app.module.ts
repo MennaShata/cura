@@ -1,3 +1,4 @@
+import { FoodEditComponent } from './food/food-edit/food-edit.component';
 import { FoodListingComponent } from './food/food-listing/food-listing.component';
 import { FoodInteractionItemComponent } from './Interactions/Food-Interaction/Food-Interaction-Item/Food-Interaction-Item.component';
 import { FoodAddComponent } from './food/food-add/food-add.component';
@@ -36,8 +37,10 @@ import { OneForbiddenDrugComponent } from './diseases/one-forbidden-drug/one-for
 import { ActiveIngredientService } from './shared/services/active-ingredient/active-ingredient.service';
 import { ActiveIngredientDetailsComponent } from './active-ingredients/active-ingredient-details/active-ingredient-details.component';
 import { ActiveIngrediantItemComponent } from './active-ingredients/active-ingrediant-item/active-ingrediant-item.component';
+import { ActiveIngredientAddComponent } from 'src/app/active-ingredients/active-ingredient-add/active-ingredient-add.component';
 import { ActiveIngredientListingComponent } from './active-ingredients/active-ingredient-listing/active-ingredient-listing.component';
 import { ActiveIngredientModule } from './active-ingredients/active-ingredient.module';
+
 import { SideEffectModule } from './side-effects/side-effect.module';
 import { SharedModule } from './shared/shared.module';
 import { DiseaseAddComponent } from './diseases/disease-add/disease-add.component';
@@ -45,6 +48,8 @@ import { HomeComponent } from './Home/Home.component';
 import { SideEffectAddComponent } from './side-effects/side-effect-add/side-effect-add.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { ModalModule } from 'ngx-bootstrap';
+import { DiseaseEditComponent } from './diseases/disease-edit/disease-edit.component';
+import { PillEditComponent } from './pill/pill-edit/pill-edit.component';
 
 
 
@@ -56,7 +61,7 @@ const routes: Routes = [
     { path:'addDrug' , component:DrugAddComponent},
     { path:'editDrug/:id' , component:DrugAddComponent},
   ]},
-  { path:'pill/item', component: PillComponent},
+  
   { path: 'food', component: FoodItemComponent},
   { path: 'food/add', component: FoodAddComponent},
   { path: 'sideeffectlisting', component: SideEffectListingComponent},
@@ -65,22 +70,37 @@ const routes: Routes = [
   { path: 'interactions/foodinteraction', component: FoodInteractionItemComponent},
   {path :'sideeffect', component:SideEffectItemComponent },
 
-  { path:'activeingredient', component: ActiveIngrediantItemComponent},
-  { path:'activeingredient/listing', component: ActiveIngredientListingComponent},  
-  { path:'activeingredient/details/:id' , component :ActiveIngredientDetailsComponent},
+  {path:'activeingredient',children:[
+    { path:'listing', component: ActiveIngredientListingComponent},
+    { path:'details/:id' , component :ActiveIngredientDetailsComponent},
+    { path:'addActiveIngredient' , component:ActiveIngredientAddComponent},
+    { path:'editActiveIngredient/:id' , component:ActiveIngredientAddComponent},
+  ]},
 
   { path:'food/foodlist', component: FoodListingComponent},
   { path:'interactions/foodinteraction/listing', component: FoodInteractionsListingComponent},
-  { path:'pill/item', component: PillComponent},
   { path:'interactions/foodinteraction/page/:id', component: SingleFoodInteractionComponent},
   
   { path:'interactions/foodinteraction/page', component: SingleFoodInteractionComponent},
   // {path:'diseaseDetails', component:DiseaseDetailsComponent},
   { path:"diseaseComponent" ,component:DiseaseComponentComponent},
   { path:"diseaseListing" ,component:DiseaseLisingComponent},
+  // { path:"diseaseEdit" ,component:DiseaseEditComponent},
+  { path:"diseaseEdit/:id" ,component:DiseaseEditComponent},
+
+  
   { path:'diseaseDetails/:id' , component :DiseaseDetailsComponent},
   { path:'diseaseAdd' , component :DiseaseAddComponent},
   { path:'addFood' , component :FoodAddComponent},
+  { path:'editFood/:id' , component :FoodEditComponent},
+
+  {path:'pill',children:[
+    { path:'page', component: PillComponent},
+    { path:'listing', component: PillListingComponent},
+    { path:'details/:id' , component :DrugDetailsComponent},
+    { path:'addPill' , component: DrugAddComponent},
+    { path:'editPill/:id' , component: PillEditComponent},
+  ]},
 ];
 
 @NgModule({
@@ -104,7 +124,9 @@ const routes: Routes = [
     OneForbiddenDrugComponent,
     HomeComponent,
     DiseaseAddComponent,
-    FoodAddComponent
+    FoodAddComponent,
+    DiseaseEditComponent,
+    FoodEditComponent
 ],
   imports: [
     ModalModule.forRoot(),

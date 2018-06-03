@@ -6,6 +6,7 @@ import { PillItemComponent } from './pill-item/pill-item.component';
 import { PillInfoComponent } from './pill-info/pill-info.component';
 import { PillSearchComponent } from './pill-search/pill-search.component';
 import { RouterModule} from '@angular/router';
+import { PillEditComponent } from './pill-edit/pill-edit.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { RouterModule} from '@angular/router';
     PillListingComponent,
     PillItemComponent,
     PillInfoComponent,
-    PillSearchComponent
+    PillSearchComponent,
+    PillEditComponent
 ]
 })
 export class PillModule { }

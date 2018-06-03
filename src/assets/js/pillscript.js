@@ -1,4 +1,5 @@
         var front = document.getElementById("Front");
+        console.log("sgasvgsavghs");
         var back = document.getElementById("Back");
         var inputDropColor = document.getElementById("Color");
         var inputDropShape = document.getElementById("Shape");

@@ -33,7 +33,7 @@
                     <label class="col-sm-2  control-label">Active Ingrediates</label>
                     <div class="col-sm-10">
                       <select multiple data-plugin-selectTwo class="form-control populate" formControlName="activeIngredient" name="activeIngredient">
-                        <option [value]="activeIngredient" *ngFor="let activeIngredient of activeIngredients" >{{activeIngredient}} </option>
+                        <option [value]="activeIngredient.id" *ngFor="let activeIngredient of activeIngredients">{{activeIngredient.name}} </option>
                       </select>
                     </div>
                   </div>
@@ -106,8 +106,8 @@
                   <div class="form-group">
                     <label class="col-sm-2  control-label">Type</label>
                     <div class="col-sm-10">
-                      <select multiple data-plugin-selectTwo class="form-control populate" formControlName="type" (change)='callType()' name="type">
-                        <option [value]="type" *ngFor="let type of types">{{type}}</option>
+                      <select multiple class="form-control populate" formControlName="type" (change)='callType()' name="type">
+                        <option [value]="type.id" *ngFor="let type of types">{{type.name}}</option>
                       </select>
                     </div>
                   </div>
@@ -130,7 +130,7 @@
                     <label class="col-sm-2 control-label">Shape</label>
                     <div class="col-sm-10">
                       <select data-plugin-selectTwo class="form-control populate" id="dropDownShape" formControlName="shape" name="shape">
-                        <option [value]="shape" *ngFor="let shape of shapes">{{shape}}</option>
+                        <option [value]="shape.id" *ngFor="let shape of shapes">{{shape.name}}</option>
                       </select>
                     </div>
                   </div>
@@ -139,7 +139,7 @@
                     <label class="col-sm-2 control-label">Color</label>
                     <div class="col-sm-10">
                       <select data-plugin-selectTwo class="form-control populate" id="dropDownColor" formControlName="color" name="color">
-                        <option [value]="color" *ngFor="let color of colors" >{{color}}</option>
+                        <option [value]="color.id" *ngFor="let color of colors" >{{color.name}}</option>
                       </select>
                     </div>
                   </div>
@@ -151,7 +151,7 @@
                     </div>
                     <div class="col-sm-5">
                       <select id="dropDownUnit" data-plugin-selectTwo class="form-control populate"  formControlName="strengthUnit" name="strengthUnit">
-                        <option [value]="strengthUnit" *ngFor="let strengthUnit of strengthUnits">{{strengthUnit}}</option>
+                        <option [value]="strengthUnit.id" *ngFor="let strengthUnit of strengthUnits">{{strengthUnit.name}}</option>
                       </select>
                     </div>
                   </div>
