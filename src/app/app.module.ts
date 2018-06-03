@@ -43,6 +43,8 @@ import { SharedModule } from './shared/shared.module';
 import { DiseaseAddComponent } from './diseases/disease-add/disease-add.component';
 import { HomeComponent } from './Home/Home.component';
 import { SideEffectAddComponent } from './side-effects/side-effect-add/side-effect-add.component';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { ModalModule } from 'ngx-bootstrap';
 
 
 
@@ -105,6 +107,7 @@ const routes: Routes = [
     FoodAddComponent
 ],
   imports: [
+    ModalModule.forRoot(),
     BrowserModule,
     DrugsModule,
     FormsModule,
@@ -120,7 +123,8 @@ const routes: Routes = [
   ],
   providers: [
     DiseaseServiceService,
-    ActiveIngredientService
+    ActiveIngredientService,
+    BsModalService
   ],
   bootstrap: [AppComponent]
 })
