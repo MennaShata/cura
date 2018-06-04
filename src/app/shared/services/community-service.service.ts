@@ -5,26 +5,29 @@ import { Icommunity } from '../models/interfaces/icommunity';
   providedIn: 'root'
 })
 export class CommunityServiceService {
-communities: Icommunity[] =[
-  {
-    title:'manage your diet',
-    body:'disease risk, its often tough to change your eating habits Whether.Once you know which foods to eat more of and which foods to limit', 
-    username:'asmaa', 
-    comments:['abc','dte']
-  },
-  {
-    title:'manage your diet',
-    body:'disease risk, its often tough to change your eating habits Whether.Once you know which foods to eat more of and which foods to limit',
-    username:'asmaa',
-     comments:['abc','dte']
-  },
-  {
-    title:'manage your diet',
-    body:'disease risk, its often tough to change your eating habits Whether.Once you know which foods to eat more of and which foods to limit',
-    username:'asmaa',
-    comments:['abc','dte']
-  }
-]
+  communities: Icommunity[] = [
+    {
+      name:'Cardiology',
+      users:['a','b','c'],
+      icon:''
+    },
+    {
+      name:'abciology',
+      users:['a','c'],
+      icon:''
+
+    },
+    {
+      name:'defiology',
+      users:['a','b','c','g'],
+      icon:''
+    },
+    {
+      name:'hghiology',
+      users:['a','b','c','g','','','',''],
+      icon:''
+    }
+  ]
 constructor() { }
 getAll(){
   return this.communities;
