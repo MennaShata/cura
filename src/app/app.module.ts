@@ -48,16 +48,20 @@ import { HomeComponent } from './Home/Home.component';
 import { SideEffectAddComponent } from './side-effects/side-effect-add/side-effect-add.component';
 import { DiseaseEditComponent } from './diseases/disease-edit/disease-edit.component';
 import { PillEditComponent } from './pill/pill-edit/pill-edit.component';
+import {DrugListingComponent} from './drugs/drug-listing/drug-listing.component';
+import { DrugInteractionComponent } from './Interactions/drug-interaction/drug-interaction.component';
+import { DrugInteractionModule } from './Interactions/drug-interaction/drug-interaction.module';
 
 
 
 const routes: Routes = [
   {path :'', component : HomeComponent},
   {path:'drug',children:[
-    { path: 'listing', component: DrugsComponent},
+    { path: 'listing', component: DrugListingComponent },
     { path:'details/:id' , component :DrugDetailsComponent},
     { path:'addDrug' , component:DrugAddComponent},
     { path:'editDrug/:id' , component:DrugAddComponent},
+    {path : 'interaction' , component:DrugInteractionComponent}
   ]},
   
   { path: 'food', component: FoodItemComponent},
@@ -124,11 +128,12 @@ const routes: Routes = [
     DiseaseAddComponent,
     FoodAddComponent,
     DiseaseEditComponent,
-    FoodEditComponent
+    FoodEditComponent,
 ],
   imports: [
     BrowserModule,
     DrugsModule,
+    DrugInteractionModule,
     FormsModule,
     ReactiveFormsModule,
     PillModule,

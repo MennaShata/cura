@@ -5,10 +5,11 @@ import { SharedComponent } from "./shared.component";
 import { SearchComponent } from "./search/search.component";
 import { FilterComponent } from "./filter/filter.component";
 import { FormsModule } from "@angular/forms";
+import {DrugPipe} from './pipes/drug.pipe';
 
 @NgModule({
   imports: [CommonModule, [FormsModule]],
-  declarations: [SharedComponent, SearchComponent, FilterComponent, FoodPipe],
-  exports: [SearchComponent, FilterComponent, FoodPipe]
+  declarations: [SharedComponent, SearchComponent, FilterComponent, FoodPipe,DrugPipe],
+  exports: [SearchComponent, FilterComponent, FoodPipe,DrugPipe]
 })
 export class SharedModule {}
