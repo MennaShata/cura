@@ -2,6 +2,8 @@ import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } 
 import { FoodService } from './../../shared/services/food.service';
 import { Ifood } from './../../shared/models/interfaces/ifood';
 import { Component, OnInit} from '@angular/core';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-food-add',
@@ -9,7 +11,7 @@ import { Component, OnInit} from '@angular/core';
   styleUrls: ['./food-add.component.css']
 })
 export class FoodAddComponent implements OnInit {
-  constructor(private FoodService: FoodService) { }
+  constructor(private FoodService: FoodService,public bsModalRef: BsModalRef) { }
   public food:Ifood;
   form: FormGroup;
   
