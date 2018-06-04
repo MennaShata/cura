@@ -14,6 +14,7 @@ export class FoodAddComponent implements OnInit {
   constructor(private FoodService: FoodService,public bsModalRef: BsModalRef) { }
   public food:Ifood;
   form: FormGroup;
+  flag: Boolean;
   
   
 
@@ -21,7 +22,7 @@ export class FoodAddComponent implements OnInit {
   ngOnInit() {
     this.form = new FormGroup({
       foodname: new FormControl('', Validators.required),
-      foodicon: new FormControl('', Validators.required)
+      foodicon: new FormControl('', Validators.required),
     });
   }
   get foodname(){
@@ -30,15 +31,27 @@ export class FoodAddComponent implements OnInit {
   get foodicon(){
     return this.form.get('foodicon');
   }
+ 
   addFood(){
-    this.food = {
-      name: this.foodname.value,
-      icon: this.foodicon.value
+    if(this.foodname.value != '' && this.foodicon.value != ''){
+      this.flag = true;
+        this.food = {
+              
+              name: this.foodname.value,
+              icon: this.foodicon.value
+            }
+            this.FoodService.add(this.food);   
+            this.form.reset();
 
-    }
+       }
+       else{
+         this.flag = false;
+       }
+    
     console.log(this.food)
-    this.FoodService.add(this.food);
+    
     console.log(this.FoodService.foodArray)
+    
   }
-
+  
 }

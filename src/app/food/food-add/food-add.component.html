@@ -9,6 +9,8 @@
                 <h4 class="heading-primary text-uppercase mb-md modal-header">Add Food: </h4>
 
                 <div class="form-group modal-body">
+                    <div *ngIf="flag == false" class="alert alert-danger">All fields are required</div>
+
                   <label class="col-sm-4 control-label" for="w1-username">Food Name: </label>
                   <div class="col-sm-8">
                     <input 
@@ -37,8 +39,7 @@
 
                 <div class="">
                   <button type="button" class="btn btn-tertiary mr-xs mb-sm" (click)="bsModalRef.hide()">Cancel</button>
-                  <button type="submit" class="btn btn-tertiary mr-xs mb-sm" (click)="bsModalRef.hide()"oo=8h 
-                  >Add</button>
+                  <button type="submit" class="btn btn-tertiary mr-xs mb-sm" oo=8h [disabled]='!form.valid' >Add</button>
                 </div>
               </div>
             </div>
