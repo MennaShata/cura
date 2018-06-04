@@ -13,7 +13,7 @@ export class CommunityListingComponent implements OnInit {
 
   ngOnInit() {
     this.communities=this.CommunityServiceService.getAll();
-    console.log(this.communities);
+   
   }
 
 }

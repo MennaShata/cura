@@ -48,17 +48,15 @@ import { SideEffectAddComponent } from './side-effects/side-effect-add/side-effe
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { ModalModule } from 'ngx-bootstrap';
 import { DiseaseEditComponent } from './diseases/disease-edit/disease-edit.component';
-import { CommunitiesComponent } from './communities/communities.component';
-import { AsideLeftComponent } from './communities/aside-left/aside-left.component';
-import { PostSmallItemComponent } from './communities/post-small-item/post-small-item.component';
-import { PostListingComponent } from './communities/post-listing/post-listing.component';
-import { CommunityListingComponent } from './communities/community-listing/community-listing.component';
-import { CommunitySmallItemComponent } from './communities/community-small-item/community-small-item.component';
-import { CommunityDetailsComponent } from './communities/community-details/community-details.component';
 import { PillEditComponent } from './pill/pill-edit/pill-edit.component';
 import {DrugListingComponent} from './drugs/drug-listing/drug-listing.component';
 import { DrugInteractionComponent } from './Interactions/drug-interaction/drug-interaction.component';
 import { DrugInteractionModule } from './Interactions/drug-interaction/drug-interaction.module';
+import { CommunitiesModule } from './communities/communities.module';
+import { PostListingComponent } from './communities/post-listing/post-listing.component';
+import { CommunitiesComponent } from './communities/communities.component';
+import { CommunityDetailsComponent } from './communities/community-details/community-details.component';
+import { CommunityListingComponent } from './communities/community-listing/community-listing.component';
 
 
 
@@ -140,15 +138,7 @@ const routes: Routes = [
     DiseaseAddComponent,
     FoodAddComponent,
     DiseaseEditComponent,
-    FoodEditComponent,
-    AsideLeftComponent,
-    PostSmallItemComponent,
-    PostListingComponent,
-    CommunityListingComponent,
-    CommunitySmallItemComponent,
-    CommunityDetailsComponent
-,
-    CommunitiesComponent
+    FoodEditComponent
 ],
   imports: [
     ModalModule.forRoot(),
@@ -162,6 +152,7 @@ const routes: Routes = [
     ActiveIngredientModule,
     SideEffectModule,
     SharedModule,
+    CommunitiesModule,
     [ReactiveFormsModule],
     ReactiveFormsModule,
     RouterModule.forRoot(routes)

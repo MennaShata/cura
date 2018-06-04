@@ -11,7 +11,7 @@ import { DrugPipe } from './pipes/drug.pipe';
 @NgModule({
   imports: [CommonModule, [FormsModule]],
   declarations: [SharedComponent, SearchComponent, FilterComponent, FoodPipe,DrugPipe,LatestNewsComponent],
-  exports: [SearchComponent, FilterComponent, FoodPipe,DrugPipe]
+  exports: [SearchComponent, FilterComponent, FoodPipe,DrugPipe,LatestNewsComponent]
 })
 
 
