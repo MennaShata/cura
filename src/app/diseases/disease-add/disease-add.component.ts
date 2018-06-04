@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,TemplateRef } from '@angular/core';
 import { DiseaseServiceService } from '../../shared/services/disease-service.service';
 import { Idisease } from '../../shared/models/interfaces/idisease';
 import { FormGroup, FormControl } from '@angular/forms';
 import {NgControl} from '@angular/forms';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-disease-add',
@@ -12,7 +14,8 @@ import {NgControl} from '@angular/forms';
 export class DiseaseAddComponent implements OnInit {
   disease:Idisease;
   myForm:FormGroup;
-  constructor(private diseaseServiceService:DiseaseServiceService) { }
+  modalRef: BsModalRef
+  constructor(private diseaseServiceService:DiseaseServiceService,private modalService: BsModalService) { }
 
   ngOnInit() {
     this.myForm=new FormGroup({
@@ -36,5 +39,7 @@ export class DiseaseAddComponent implements OnInit {
     this.diseaseServiceService.add(this.disease);
     this.myForm.reset();
   }
-
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
 }
