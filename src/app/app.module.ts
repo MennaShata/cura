@@ -28,7 +28,6 @@ import { SingleFoodInteractionComponent } from './Interactions/food-Interaction/
 import { DiseaseServiceService } from './shared/services/disease-service.service';
 import { SideEffectsComponent } from './side-effects/side-effects.component';
 import { DiseaseDetailsComponent } from './diseases/disease-details/disease-details.component';
-import { LatestNewsComponent } from './shared/components/latest-news/latest-news.component';
 import { ForbiddenDrugsComponent } from './diseases/forbidden-drugs/forbidden-drugs.component';
 import { TreatedDrugsComponent } from './diseases/treated-drugs/treated-drugs.component';
 import { OneTreatedDrugComponent } from './diseases/one-treated-drug/one-treated-drug.component';
@@ -47,6 +46,13 @@ import { DiseaseAddComponent } from './diseases/disease-add/disease-add.componen
 import { HomeComponent } from './Home/Home.component';
 import { SideEffectAddComponent } from './side-effects/side-effect-add/side-effect-add.component';
 import { DiseaseEditComponent } from './diseases/disease-edit/disease-edit.component';
+import { CommunitiesComponent } from './communities/communities.component';
+import { AsideLeftComponent } from './communities/aside-left/aside-left.component';
+import { PostSmallItemComponent } from './communities/post-small-item/post-small-item.component';
+import { PostListingComponent } from './communities/post-listing/post-listing.component';
+import { CommunityListingComponent } from './communities/community-listing/community-listing.component';
+import { CommunitySmallItemComponent } from './communities/community-small-item/community-small-item.component';
+import { CommunityDetailsComponent } from './communities/community-details/community-details.component';
 
 
 
@@ -88,6 +94,11 @@ const routes: Routes = [
   
   { path:'diseaseDetails/:id' , component :DiseaseDetailsComponent},
   { path:'diseaseAdd' , component :DiseaseAddComponent},
+  { path:'communityComponent' , component :CommunitiesComponent},
+  { path:'postListing' , component :PostListingComponent},
+  { path:'communityListing' , component :CommunityListingComponent},
+  { path:'communityDetails' , component :CommunityDetailsComponent},
+  
   { path:'addFood' , component :FoodAddComponent},
   { path:'editFood/:id' , component :FoodEditComponent}
 ];
@@ -106,7 +117,6 @@ const routes: Routes = [
     DiseaseComponentComponent,
     DiseaseLisingComponent,
     DiseaseDetailsComponent,
-    LatestNewsComponent,
     ForbiddenDrugsComponent,
     TreatedDrugsComponent,
     OneTreatedDrugComponent,
@@ -115,7 +125,15 @@ const routes: Routes = [
     DiseaseAddComponent,
     FoodAddComponent,
     DiseaseEditComponent,
-    FoodEditComponent
+    FoodEditComponent,
+    AsideLeftComponent,
+    PostSmallItemComponent,
+    PostListingComponent,
+    CommunityListingComponent,
+    CommunitySmallItemComponent,
+    CommunityDetailsComponent
+,
+    CommunitiesComponent
 ],
   imports: [
     BrowserModule,
