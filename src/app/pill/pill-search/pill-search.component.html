@@ -1,66 +1,71 @@
 <div class="col-sm-6 col-sm-pull-6">
-  <div class="featured-box featured-box-primary align-left mt-xlg">
+  <div class="featured-box featured-box-primary align-left mt-xlg" style="height: 376.312px;">
     <div class="box-content">
 
       <h4 class="heading-primary text-uppercase mb-md">Pill Identifier</h4>
 
       <form action="/" id="frmCalculateShipping" method="post">
 
-        <div class="row">
+        <div class="row searchMargin">
           <div class="form-group">
             <div class="col-md-6">
-              <label>Front Imprint</label>
+              <label>Text on one side</label>
 
-
-              <input type="text" value="" class="form-control">
+              <input type="text" value="" name="FrontImprint" class="form-control" id ="Front" onkeyup = "disableFunction()">
 
             </div>
             <div class="col-md-6">
-              <label>Back Imprint</label>
+              <label>Text on the other side</label>
 
-
-              <input type="text" value="" class="form-control">
-
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-
-          <div class="form-group">
-            <div class="col-md-12">
-              <label>Color</label>
-              <select class="form-control">
-                  <option value="">Select Color</option>
-                </select>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="form-group">
-            <div class="col-md-12">
-              <label>Shape</label>
-
-              <select class="form-control" id="shape">
-                <option value="" style="background-image:url(~/Images/6.jpg);"> Select Shape </option>
-              </select>
-
+              <input type="text" name="BackImprint" value="" class="form-control" id ="Back" placeholder = "If Available" onkeyup = "disableFunction()">
               
             </div>
           </div>
         </div>
 
-   
+        <div class="row searchMargin">
+
+          <div class="form-group">
+            <div class="col-md-12">
+              <label>Color</label>
+              <select class="form-control" name="Color" id="Color">
+                  <option value="">None Selected</option>
+                  <option>White</option> 
+                  <option>Red</option> 
+                  <option>Green</option>
+                </select>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row searchMargin">
+          <div class="form-group">
+            <div class="col-md-12">
+              <label>Shape</label>
+
+              <select class="form-control" name="Shape" id="Shape">
+                <option value="" style="background-image:url(~/Images/6.jpg);">None Selected</option>
+                  <option>Round</option>
+                  <option>Rectangle</option> 
+                  <option>Square</option> 
+                  <option>Oval</option>
+              </select>
+               
+            </div>
+          </div>
+        </div>
+
         <div class="row">
             <div class="col-md-12">
                
+              <button class="btn btn-primary pull-right mb-xl" type="submit" id="search_button" disabled>
+                <span>
+                    Search <i class="fa fa-search"></i>
+                </span>
+            </button>
 
-                <button class="btn btn-primary pull-right mb-xl" type="submit" id="search_button" disabled>
-                    <span>
-                        Search <i class="fa fa-search"></i>
-                    </span>
-                </button>
+
             </div>
        
         </div>
@@ -70,3 +75,4 @@
     </div>
   </div>
 </div>
+

@@ -1,8 +1,93 @@
-<div>
-    <div class="featured-boxes">
+<div class="container">
+    <div role="main" class="main shop">
         <div class="row">
-          <app-drug-item-small class="col-sm-4" [drugs]=x *ngFor="let x of drugs"></app-drug-item-small>
-        </div>
+            <div class="col-xs-8 col-xs-offset-2 mt-xlg">
+                <div class="input-group">
+                    <div class="input-group-btn search-panel">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="border-color: #ccc">
+                            <span id="search_concept">Filter by</span>
+                            <!-- <span class="caret"></span> -->
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#contains">Contains</a>
+                            </li>
+                            <li>
+                                <a href="#its_equal">It's equal</a>
+                            </li>
+                            <li>
+                                <a href="#greather_than">Greather than ></a>
+                            </li>
+                            <li>
+                                <a href="#less_than">
+                                    Less than >
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#all">Anything</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <input type="hidden" name="search_param" value="all" id="search_param">
+                    <input type="text" class="form-control" name="txtSearch" id="DrugName" placeholder="Search term..." [(ngModel)]="txtSearch"
+                    />
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary btn-md" style="background-color:#008fe2!important;">
+                            <span>
+                                <i class="fa fa-search" style="color:white"></i>
+                            </span>
+                        </button>
 
+                    </span>
+                </div>
+            </div>
+            <div class="col-xs-2 mt-xlg" style="font-size:xx-large;color:#008fe2;">
+                <a [routerLink]="['/drug/addDrug']">
+                    <i class="fa fa-plus-circle"></i>
+                </a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-2">
+                <aside class="sidebar" id="sidebar" data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
+
+                    <h4 class="heading-primary">
+                        <strong>Filter</strong> By
+                    </h4>
+
+                    <ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
+                        <li data-option-value="*" class="active">
+                            <a href="#">Show All</a>
+                        </li>
+                        <li data-option-value=".websites">
+                            <a href="#">Diseaes</a>
+                        </li>
+                        <li data-option-value=".logos">
+                            <a href="#">Active Ingredient</a>
+                        </li>
+                        <li data-option-value=".brands">
+                            <a href="#">Trade Name</a>
+                        </li>
+                        <li data-option-value=".medias">
+                            <a href="#">Other</a>
+                        </li>
+                    </ul>
+
+                </aside>
+            </div>
+            <div class="col-md-10">
+                <div class="featured-boxes">
+                    <div class="row">
+                        <div class="featured-boxes">
+                            <div class="row">
+                                <app-drug-item-small class="col-sm-4" [drugs]=x *ngFor="let x of drugs  | drug: txtSearch"></app-drug-item-small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
