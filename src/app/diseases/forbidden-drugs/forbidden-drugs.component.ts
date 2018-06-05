@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IDrugDisease } from '../../shared/models/interfaces/IDrugDisease';
 import { DiseaseServiceService } from '../../shared/services/disease-service.service';
+import { ActivatedRoute } from '@angular/router';
+import { Idisease } from '../../shared/models/interfaces/idisease';
 
 @Component({
   selector: 'app-forbidden-drugs',
@@ -9,10 +11,13 @@ import { DiseaseServiceService } from '../../shared/services/disease-service.ser
 })
 export class ForbiddenDrugsComponent implements OnInit {
   forbiddenDrugs:IDrugDisease[];
-  constructor(private diseaseServiceService:DiseaseServiceService) { }
+  id:number;
+ 
+  constructor(private diseaseServiceService:DiseaseServiceService, private activatedRoute:ActivatedRoute) { }
   
   ngOnInit() {
-    this.forbiddenDrugs=this.diseaseServiceService.getForbiddenDrugs(1);
+    this.activatedRoute.params.subscribe((params)=>{this.id=params['id'];});
+    this.forbiddenDrugs=this.diseaseServiceService.getForbiddenDrugs(this.id);
   }
 
 }

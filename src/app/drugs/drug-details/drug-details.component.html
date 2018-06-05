@@ -6,13 +6,13 @@
             <div class="col-md-12">
               <ul class="breadcrumb">
                 <li><a href="#">Home</a></li>
-                <li class="active">Panadol</li>
+                <li class="active">{{drug.drugName}}</li>
               </ul>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12">
-              <h1>Panadol (Pill)</h1>
+              <h1>{{drug.drugName}} ({{drugType}})</h1>
             </div>
           </div>
         </div>
@@ -37,7 +37,7 @@
               <div class="col-md-8">
                                <div class="row">
                  <div class="col-md-8">
-                <h2 class="mb-none">{{drug.drugName}} <strong>({{drug.drugTypeName}})</strong></h2>
+                <h2 class="mb-none">{{drug.drugName}} <strong>({{drugType}})</strong></h2>
                 <h4 class="heading-primary">Company:{{drug.company}}</h4>
                 </div>
                 <div class="col-md-4">
@@ -52,7 +52,7 @@
                 <p><strong style="color:black;">Dosage:</strong>{{drug.dosage}} </p>
   
                 <ul class="list list-icons">
-                  <li><i class="fa fa-check"></i> <strong style="color:black;">Strength:</strong><p style="display:inline;"> {{drug.strength}}{{drug.strengthUnit}}.</p></li>
+                  <li><i class="fa fa-check"></i> <strong style="color:black;">Strength:</strong><p style="display:inline;"> {{drug.strength}}{{strengthUnit}}.</p></li>
                   <li><i class="fa fa-check"></i> <strong style="color:black;">warning :</strong> <p style="display:inline;">{{drug.warning}}</p></li>
                   <li><i class="fa fa-check"></i> <strong style="color:black;">Approval History:</strong><p style="display:inline;">{{drug.approvalHistory}}</p></li>
                 </ul>

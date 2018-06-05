@@ -9,12 +9,9 @@ import {Idrug} from './../../shared/models/interfaces/Idrug';
 //, OnChanges
 export class DrugListingComponent implements OnInit {
   public drugs:Idrug[]=[];
+  public txtSearch:string='';
   
   constructor(private drugService:DrugServiceService) { 
-    // this.drugService.getAllDrug().subscribe(
-      
-    //   (data)=>{this.drugs=data}
-    // )
   }
 
   ngOnInit() {
@@ -25,33 +22,3 @@ export class DrugListingComponent implements OnInit {
     )
   }
 }
-//   ngOnChanges(){
-//   this.drugService.getAllDrug().subscribe(
-    
-//     (data)=>{this.drugs=data}
-//   )
-// } }
-
-// this.c.searchChanged.subscribe(
-    //  (value)=>{
-    //    debugger;
-    //    this.c.drugSearch(value);
-    //   }
-    // );
-  
-
-  //  searchListing(){
-  //   debugger;
-  //    this.c.getAllDrug().subscribe(
-  //      (data)=>this.drugs=data
-  //    );
-  //    debugger;
-  //  }  
-    
-
-  // drugSearch(e){
-  //   debugger;
-  //   this.drugs = this.c.drugSearch(e);
-  
-  // }
-

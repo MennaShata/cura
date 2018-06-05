@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DrugServiceService} from './../../shared/services/drug/drug-service.service';
+import {DrugTypeService} from './../../shared/services/drug-type/drug-type.service';
+import {StrengthService} from './../../shared/services/strength/strength.service';
 import {Idrug} from './../../shared/models/interfaces/Idrug';
 import { ActivatedRoute } from '@angular/router';
 
@@ -12,12 +14,16 @@ export class DrugDetailsComponent implements OnInit {
   public drug:Idrug;
   public pregnancyWarningSrc:string;
   public childernWarningSrc:string;
+  public drugType:string;
+  public strengthUnit:string;
   id:number;
-  constructor(private drugService:DrugServiceService,private activatedRoute:ActivatedRoute) { }
+  constructor(private drugService:DrugServiceService,private activatedRoute:ActivatedRoute,private drugTypeService:DrugTypeService,private strengthService:StrengthService) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params)=>{this.id=params['id'];});
     this.drug = this.drugService.getById(this.id);
+    this.drugType = this.drugTypeService.getName(this.drug.drugTypeName);
+    this.strengthUnit = this.strengthService.getName(this.drug.strengthUnit);
     if(this.drug.pregnancyWarning == true){
       this.pregnancyWarningSrc = '../../../assets/images/pregnancy-danager.jpg';
     }
