@@ -57,6 +57,7 @@ import { PostListingComponent } from './communities/post-listing/post-listing.co
 import { CommunitiesComponent } from './communities/communities.component';
 import { CommunityDetailsComponent } from './communities/community-details/community-details.component';
 import { CommunityListingComponent } from './communities/community-listing/community-listing.component';
+import { CommunityEditComponent } from './communities/community-edit/community-edit.component';
 
 
 
@@ -100,6 +101,8 @@ const routes: Routes = [
   { path:'diseaseDetails/:id' , component :DiseaseDetailsComponent},
   { path:'diseaseAdd' , component :DiseaseAddComponent},
   { path:'communityComponent' , component :CommunitiesComponent},
+  { path:'communityEdit' , component :CommunityEditComponent},
+  { path:'communityEdit/:id' , component :CommunityEditComponent},
   { path:'postListing' , component :PostListingComponent},
   { path:'communityListing' , component :CommunityListingComponent},
   { path:'communityDetails' , component :CommunityDetailsComponent},
