@@ -50,7 +50,7 @@ import { ModalModule } from 'ngx-bootstrap';
 import { DiseaseEditComponent } from './diseases/disease-edit/disease-edit.component';
 import { PillEditComponent } from './pill/pill-edit/pill-edit.component';
 import {DrugListingComponent} from './drugs/drug-listing/drug-listing.component';
-import { DrugInteractionComponent } from './Interactions/drug-interaction/drug-interaction.component';
+import { DrugInteractionListingComponent} from './Interactions/drug-interaction/drug-Interaction-Listing/drug-Interaction-Listing.component';
 import { DrugInteractionModule } from './Interactions/drug-interaction/drug-interaction.module';
 import { CommunitiesModule } from './communities/communities.module';
 import { PostListingComponent } from './communities/post-listing/post-listing.component';
@@ -61,6 +61,7 @@ import { CommunityEditComponent } from './communities/community-edit/community-e
 
 
 
+
 const routes: Routes = [
   {path :'', component : HomeComponent},
   {path:'drug',children:[
@@ -68,7 +69,7 @@ const routes: Routes = [
     { path:'details/:id' , component :DrugDetailsComponent},
     { path:'addDrug' , component:DrugAddComponent},
     { path:'editDrug/:id' , component:DrugAddComponent},
-    {path : 'interaction' , component:DrugInteractionComponent}
+    {path : 'interaction' , component:DrugInteractionListingComponent}
   ]},
   
   { path: 'food', component: FoodItemComponent},
@@ -122,32 +123,20 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    DiseaseSmallItemComponent,
     FoodItemComponent,
     FoodAddComponent,
-    FoodInteractionItemComponent,
-    DiseaseAddComponent,
     FoodListingComponent,
-    FoodInteractionsListingComponent,
     SingleFoodInteractionComponent,
-    DiseaseComponentComponent,
-    DiseaseLisingComponent,
-    DiseaseDetailsComponent,
-    ForbiddenDrugsComponent,
-    TreatedDrugsComponent,
-    OneTreatedDrugComponent,
-    OneForbiddenDrugComponent,
     HomeComponent,
-    DiseaseAddComponent,
     FoodAddComponent,
-    DiseaseEditComponent,
-    FoodEditComponent
+    FoodEditComponent,
 ],
   imports: [
     ModalModule.forRoot(),
     BrowserModule,
     DrugsModule,
     DrugInteractionModule,
+    DiseaseModule,
     FormsModule,
     ReactiveFormsModule,
     PillModule,

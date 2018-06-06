@@ -26,7 +26,11 @@ export class DrugServiceService {
      pregnancyWarning:true,
      childernWarning:true,
      warning:'The total maximum dose of paracetamol for an adult is eight 500mg tablets in 24 hours. Wait at least 4 hours between doses.',
-     approvalHistory:' 02/22/2017'
+     approvalHistory:' 02/22/2017',
+     disease:[0,1],
+     sideEffect:[1,2],
+     foodInteraction:[1,2]
+
    },
    {
      id:1,
@@ -47,6 +51,9 @@ export class DrugServiceService {
     color:0,
     shape:0,
     pillImage:'../../../assets/images/panadol-pill.jpg',
+    disease:[2,3],
+    sideEffect:[1,2],
+    foodInteraction:[1,2]
    },
    {
      id:2,
@@ -66,7 +73,10 @@ export class DrugServiceService {
     approvalHistory:' 02/10/2005',
     color:3,
     shape:0,
-    pillImage:'../../../assets/images/panadol-pill.jpg'
+    pillImage:'../../../assets/images/panadol-pill.jpg',
+    disease:[0,3],
+    sideEffect:[1,2],
+    foodInteraction:[1,2]
    }
   ];
   private temp:Idrug[];
