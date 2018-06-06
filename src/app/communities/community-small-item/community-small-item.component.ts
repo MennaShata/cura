@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Icommunity } from '../../shared/models/interfaces/icommunity';
+import { CommunityServiceService } from '../../shared/services/community-service.service';
 
 @Component({
   selector: 'app-community-small-item',
@@ -8,9 +9,12 @@ import { Icommunity } from '../../shared/models/interfaces/icommunity';
 })
 export class CommunitySmallItemComponent implements OnInit {
 @Input() community :Icommunity;
-  constructor() { }
+  constructor(private CommunityServiceService:CommunityServiceService) { }
 
   ngOnInit() {
+  }
+  delete(id:number){
+    this.CommunityServiceService.delete(id);
   }
 
 }

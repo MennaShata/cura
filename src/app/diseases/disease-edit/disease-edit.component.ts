@@ -39,7 +39,7 @@ export class DiseaseEditComponent implements OnInit {
       forbiddenDrugs:this.editForm.get('forbiddenDrugs').value
     }
     this.diseaseServiceService.update(this.disease);
-    this.route.navigate(['diseaseComponent']);
+    this.route.navigate(['communityEdit']);
   }
 
 }

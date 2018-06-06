@@ -1,0 +1,100 @@
+<div class="col-md-6">
+  <a (click)="openModal(template)" class="btn btn-borders btn-sm btn-primary custom-button text-uppercase" data-toggle="modal"
+    data-target="#defaultModal">
+    <i class="fa fa-plus" style="font-size:17px;color:#3aabdd;"></i>
+  </a>
+
+  <ng-template #template>
+    <form [formGroup]="myForm" (ngSubmit)="addCommunity()">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-sm-12 col-md-offset-1">
+            <div class="featured-box featured-box-primary align-left mt-xlg">
+              <div class="box-content">
+                <h4 class="heading-primary text-uppercase mb-md modal-header">add community :</h4>
+
+                <div class="form-group ">
+                  <label class="col-sm-3 control-label" for="w1-username">name : </label>
+                  <div class="col-sm-9">
+                    <input name="name" formControlName="name" type="text" class="form-control input-sm" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-3">users:</label>
+                    <div class="col-md-9">
+                      <select name="users" formControlName="users" multiple data-plugin-selectTwo class="form-control populate">
+                        <option value="HI">asmaa</option>
+                        <option value="CA">aya</option>
+                        <option value="NV">hala</option>
+                        <option value="OR">amany </option>
+                      </select>
+                    </div>
+                  </div>
+
+
+                  <div class="form-group">
+                      <label class=" control-label col-sm-3" >privacy:</label>
+                      <div class="col-md-9">
+                        <select data-plugin-selectTwo class="form-control populate" id="dropDownShape" formControlName="privacy" name="privacy">
+                          <option>public</option>
+                          <option>private</option>
+                          <option>close</option>
+                        </select>
+                      </div>
+                    </div>
+
+         
+                <div class="">
+                  <button type="button" class="btn btn-tertiary mr-xs mb-sm " (click)="modalRef.hide()">Cancel</button>
+                  <button type="submit" class="btn btn-tertiary mr-xs mb-sm">Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+</div>
+
+
+
+<!-- <a (click)="openModal(template)" class="btn btn-borders btn-sm btn-primary custom-button text-uppercase" data-toggle="modal"
+  data-target="#defaultModal">
+  <i class="fa fa-plus" style="font-size:17px;color:#3aabdd;"></i>
+</a>
+<ng-template #template>
+  <form [formGroup]="myForm" (ngSubmit)="addCommunity()">
+
+    <div class="box-content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="feature-box feature-box-style-5">
+            <div class="feature-box-icon">
+              <i class="fa fa-comments"></i>
+            </div>
+            <div class="row">
+              <input name="name" formControlName="name" type="text" class="form-control input-sm" placeholder="enter community name" required>
+
+              <div class="form-group">
+                  <label class=" control-label" for="w1-username">name: </label>
+                  <div class="">
+                    <input name="name" formControlName="name" type="text" class="form-control input-sm">
+                  </div>
+                </div>
+              <div class="btnSection">
+                <button type="button" class="btn btn-tertiary mr-xs mb-sm " (click)="modalRef.hide()">Cancel</button>
+                <button type="submit" class="btn btn-tertiary mr-xs mb-sm" [disabled]="!myForm.valid">Add</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </form>
+
+</ng-template> -->
+
