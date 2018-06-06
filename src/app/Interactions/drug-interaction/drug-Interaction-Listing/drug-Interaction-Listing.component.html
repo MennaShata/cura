@@ -1,63 +1,88 @@
-   <!--second component-->
-   <div >
-    <div class="featured-box featured-box-primary align-left mt-xlg">
-        <div class="box-content">
-            <div class="row">
-                <div class="col-md-5 col-xs-5">
-                    <div class="user-avatar">
-                        <div class="img-thumbnail">
-                            <img class="img-responsive" src="./../../../../assets/images/panadol1.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="row">
-                            <div class="col-md-3 col-xs-3">
-
-                                <h4 class="heading-primary mb-md"><strong>Panadol</strong> </h4>
-                            </div>
-                        </div>
-                </div>
-                <div class="col-md-2">
-                        <i class="fa fa-times-circle " id="interactionColor" style="font-size:30px;color:rgb(165, 11, 11);margin-top:45px;"></i>
-                </div>
-                <div class="col-md-5 col-xs-5">
-                        <div class="user-avatar">
-                                <div class="img-thumbnail">
-                                    <img class="img-responsive" src="./../../../../assets/images/panadol1.jpg" alt="">
-                                </div>
-                            </div>
-                    <div class="row">
-                        <div class="col-md-3 col-xs-3">
-
-                            <h4 class="heading-primary mb-md"><strong>Panadol</strong></h4>
-                        </div>
-                    </div>
-                </div>
-                <table class="cart-totals">
-                    <tbody>
-                        <tr class="cart-subtotal">
-                            <th>
-                                    <i class="fa fa-circle mr-xl" style="color : red"></i>
-                            </th>
-                            <th>
-                                    <strong style="color:black;">Major</strong>														
-
-                            </th>
-                        </tr>
-                        <tr class="shipping">
-                            <th>
-                               <strong style="color:black;">Description</strong>
-                            </th>
-                            <td>
-                                    Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol
-                                    Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol	
-                                    Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol
-                                    Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol	
-                                <input type="hidden" value="free_shipping" id="shipping_method" name="shipping_method">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
+<div class="body">
+    <!--header-->
+  <div role="main" class="main shop">
+      
+          <!--header2-->
+  <section class="page-header page-header-color page-header-primary page-header-float-breadcrumb" style="padding-bottom: 90px;">
+              <div class="container">
+                  <div>
+                      <div class="row"></div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-12">
+                          <h1 class="mt-xs">Interaction Checker</h1>
+                          <ul class="breadcrumb breadcrumb-valign-mid">
+                              <li>
+                                  <a href="#">Home</a>
+                              </li>
+                              <li class="active">Interaction Checker</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </section>
+          <!--drug form-->
+          <div class="container">
+              <div class="row">
+                  <div class="form-group">
+                      <div class="col-xs-3" style="margin-top:70px">
+                          <input type="text" placeholder="Drug Name" class="form-control" id="DrugName" [(ngModel)]="drugName" />
+  
+                      </div>
+                      <div>
+                          <button type="button col-xs-2 " class=" mb-xs mr-xs btn btn-primary pull-left" id="addtolist" style="margin-top:70px" (click)="addList()">
+                              <i class="fa fa-plus-square-o"></i> Add to list</button>
+                      </div>
+                      <!--drug list-->
+                      <div class="col-md-7 mt-xl pull-right hide"id="DrugList" *ngIf="drugList">
+                          <div class="col-md-10">
+                              <div class="row">
+                                  <div class="col-md-12">
+                                      <table class="table table-hover ">
+                                          <thead>
+                                              <tr>
+                                                  <th></th>
+                                                  <th>
+                                                      <strong>Drug List</strong>
+                                                  </th>
+                                              </tr>
+                                          </thead>
+                                          <tbody id="ListBody">
+                                          </tbody>
+  
+                                      </table>
+  
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-md-12">
+                                      <input type="submit" value="Check Interaction" id="loadingButton" data-loading-text="Loading..." class="btn btn-primary   mb-xl pull-right"
+                                       style="margin-left:3px;">
+  
+                                      <input type="submit" value="save the list" id="loadingButton" data-loading-text="Loading..." class="btn btn-primary pull-right mb-xl">
+                                  </div>
+  
+                              </div>
+                          </div>
+                      </div>
+                      <!--drug list-->
+                  </div>
+              </div>
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="featured-boxes">
+                      <div class="row">
+                       
+                        <!--drug listing-->
+                        <app-drug-interaction-item class="col-sm-4 col-md-4"></app-drug-interaction-item>
+                  </div>
+                  </div>
+              </div>
+  
+  
+              </div>
+          </div>
+      </div>
+  </div>
+  

@@ -12,22 +12,32 @@ import { ForbiddenDrugsComponent } from './forbidden-drugs/forbidden-drugs.compo
 import { LatestNewsComponent } from '../shared/components/latest-news/latest-news.component';
 import { DiseaseEditComponent } from './disease-edit/disease-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DiseaseComponentComponent } from './disease-component/disease-component.component';
+import { RouterModule, Routes ,ActivatedRoute} from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    [ReactiveFormsModule]
+    [ReactiveFormsModule],
+    RouterModule
   ],
+  
   declarations: [DiseaseAddComponent, DiseaseLisingComponent, DiseaseDetailsComponent,
-    DiseaseSmallItemComponent
-,
+    DiseaseSmallItemComponent,
     TreatedDrugsComponent,
     OneTreatedDrugComponent,
     OneForbiddenDrugComponent,
     ForbiddenDrugsComponent,
-    DiseaseSmallItemComponent, LatestNewsComponent
-,
-    DiseaseEditComponent
-]
+    DiseaseSmallItemComponent,
+     LatestNewsComponent,
+    DiseaseEditComponent,
+    DiseaseComponentComponent
+],
+exports : [
+    DiseaseSmallItemComponent,
+    DiseaseEditComponent,
+    DiseaseDetailsComponent
+
+  ]
 })
 export class DiseaseModule { }

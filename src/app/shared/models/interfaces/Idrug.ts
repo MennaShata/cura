@@ -3,6 +3,10 @@ import { Ishape } from "./ishape";
 import { IdrugType } from "./Idrug-type";
 import { Iactiveingredient } from "./iactiveingredient";
 import { IstrengthUnit } from "./Istrength-unit";
+import { Idisease } from "./idisease";
+import { Ifood } from "./ifood";
+import { IfoodInteraction } from "./ifoodInteraction";
+import { Isideeffect } from "./Isideeffect";
 
 export interface Idrug{
     id?:number;
@@ -25,6 +29,9 @@ export interface Idrug{
     pillImage?:string;
     textOnSide?:string;
     textOnOtherSide?:string;
+    disease?:number[];
+    foodInteraction?:number[];
+    sideEffect?:number[];
 
 
 }
