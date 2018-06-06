@@ -5,7 +5,7 @@ import { Ifood } from '../models/interfaces/ifood';
   name: 'food'
 })
 export class FoodPipe implements PipeTransform {
-
+  
   transform(foodArray: Ifood[], name: string): Ifood[] {
     if(foodArray != null && foodArray.length > 0){
       return foodArray.filter(f=> f.name.toLowerCase().indexOf(name.toLowerCase())>-1);

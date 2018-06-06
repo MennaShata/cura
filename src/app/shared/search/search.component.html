@@ -1,11 +1,12 @@
   <!-- <form #f="ngForm" (ngSubmit)="onSubmit(f)"> -->
   <div class=" mt-xlg">
       <div class="input-group">
-          <div class="input-group-btn search-panel">
+          <!-- <div class="input-group-btn search-panel">
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="border-color: #ccc">
                   <span id="search_concept">Filter by</span>
-                  <!-- <span class="caret"></span> -->
-              </button>
+                  
+                 <span class="caret"></span> </button> 
+               
               <ul class="dropdown-menu" role="menu">
                   <li>
                       <a href="#contains">Contains</a>
@@ -26,8 +27,7 @@
                       <a href="#all">Anything</a>
                   </li>
               </ul>
-          </div>
-          <input type="hidden" name="search_param" value="all" id="search_param">
+          </div> -->
           <input type="text" class="form-control" name="txtSearch" id="DrugName" placeholder="Search term..." (change)="onChange()" [(ngModel)]="drug" />
           <span class="input-group-btn">
               <button class="btn btn-primary btn-md">

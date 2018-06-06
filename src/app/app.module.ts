@@ -28,7 +28,6 @@ import { SingleFoodInteractionComponent } from './Interactions/food-Interaction/
 import { DiseaseServiceService } from './shared/services/disease-service.service';
 import { SideEffectsComponent } from './side-effects/side-effects.component';
 import { DiseaseDetailsComponent } from './diseases/disease-details/disease-details.component';
-import { LatestNewsComponent } from './shared/components/latest-news/latest-news.component';
 import { ForbiddenDrugsComponent } from './diseases/forbidden-drugs/forbidden-drugs.component';
 import { TreatedDrugsComponent } from './diseases/treated-drugs/treated-drugs.component';
 import { OneTreatedDrugComponent } from './diseases/one-treated-drug/one-treated-drug.component';
@@ -53,6 +52,11 @@ import { PillEditComponent } from './pill/pill-edit/pill-edit.component';
 import {DrugListingComponent} from './drugs/drug-listing/drug-listing.component';
 import { DrugInteractionListingComponent} from './Interactions/drug-interaction/drug-Interaction-Listing/drug-Interaction-Listing.component';
 import { DrugInteractionModule } from './Interactions/drug-interaction/drug-interaction.module';
+import { CommunitiesModule } from './communities/communities.module';
+import { PostListingComponent } from './communities/post-listing/post-listing.component';
+import { CommunitiesComponent } from './communities/communities.component';
+import { CommunityDetailsComponent } from './communities/community-details/community-details.component';
+import { CommunityListingComponent } from './communities/community-listing/community-listing.component';
 
 
 
@@ -96,6 +100,11 @@ const routes: Routes = [
   
   { path:'diseaseDetails/:id' , component :DiseaseDetailsComponent},
   { path:'diseaseAdd' , component :DiseaseAddComponent},
+  { path:'communityComponent' , component :CommunitiesComponent},
+  { path:'postListing' , component :PostListingComponent},
+  { path:'communityListing' , component :CommunityListingComponent},
+  { path:'communityDetails' , component :CommunityDetailsComponent},
+  
   { path:'addFood' , component :FoodAddComponent},
   { path:'editFood/:id' , component :FoodEditComponent},
 
@@ -132,6 +141,7 @@ const routes: Routes = [
     ActiveIngredientModule,
     SideEffectModule,
     SharedModule,
+    CommunitiesModule,
     [ReactiveFormsModule],
     ReactiveFormsModule,
     RouterModule.forRoot(routes)

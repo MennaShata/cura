@@ -9,7 +9,6 @@ import { DiseaseServiceService } from '../../shared/services/disease-service.ser
 })
 export class DiseaseSmallItemComponent implements OnInit {
   @Input() disease:Idisease;
-
   constructor(private diseaseServiceService:DiseaseServiceService) { }
 
   ngOnInit() {
