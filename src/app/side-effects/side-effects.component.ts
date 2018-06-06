@@ -11,6 +11,8 @@ import { SideEffectAddComponent } from './side-effect-add/side-effect-add.compon
 export class SideEffectsComponent implements OnInit {
   bsModalRef: BsModalRef;
   constructor(private modalService: BsModalService) { }
+
+  
   public openModalWithComponent() {
     this.bsModalRef = this.modalService.show(SideEffectAddComponent);
   }
