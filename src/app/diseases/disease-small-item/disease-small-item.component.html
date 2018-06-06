@@ -3,18 +3,17 @@
         <div class="col-md-4 col-md-offset-10" style="margin-top:-10px;">
             <a [routerLink]="['/diseaseEdit',disease.id]">
                 <button type="button" class="btn-borders btn-primary btn-info primary btn-xs">
-                        <i class="fa fa-edit">
-                        </i>
+                    <i class="fa fa-edit">
+                    </i>
                 </button>
             </a>
-        
+
             <a [routerLink]="['/diseaseDetails',disease.id]">
-            
+                <button type="button" class="btn-danger primary btn-xs btn-borders" (click)="deleteDisease(disease.id)">
+                    <i class="fa fa-trash">
+                    </i>
+                </button>
             </a>
-            <button type="button" class="btn-danger primary btn-xs btn-borders" (click)="deleteDisease(disease.id)">
-                <i class="fa fa-trash">
-                </i>
-            </button>
         </div>
 
 

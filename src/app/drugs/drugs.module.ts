@@ -9,15 +9,25 @@ import { AppModule } from '../app.module';
 import { FormsModule ,ReactiveFormsModule}   from '@angular/forms';
 import { RouterModule, Routes ,ActivatedRoute} from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { PaginationModule } from 'ngx-bootstrap';
+import { DiseaseModule } from '../diseases/disease.module';
+import {SideEffectModule} from './../side-effects/side-effect.module';
+import {ActiveIngredientModule} from './../active-ingredients/active-ingredient.module';
+import {FoodInteractionModule} from './../Interactions/food-Interaction/food-Interaction.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
+    DiseaseModule,
+    SideEffectModule,
+    ActiveIngredientModule,
+    FoodInteractionModule,
     [FormsModule],
     [ReactiveFormsModule],
     RouterModule,
-    SharedModule
+    SharedModule,
+    [PaginationModule.forRoot()]
 
   ],
   declarations: [DrugsComponent,

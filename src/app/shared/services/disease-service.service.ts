@@ -6,6 +6,7 @@ import { Idegree } from '../models/interfaces/Idegree';
   providedIn: 'root'
 })
 export class DiseaseServiceService {
+  private disease:Idisease;
   diseases: Idisease[] = [
     {
       id:0,
@@ -54,13 +55,15 @@ export class DiseaseServiceService {
   getTreatedDrugs(id: number) {
     return this.diseases[id].treatedDrugs;
   }
-  getById(id: number) {
-    for(let i=0;i<this.diseases.length;i++){
-      if(this.diseases[i].id==id){
-        return this.diseases[i];
+  getById(id) {
+    for (let i = 0; i < this.diseases.length; i++) {
+      if (this.diseases[i].id == id) {
+        this.disease= this.diseases[i];
       }
     }
+    return this.disease;
   }
+  
 
   delete(id:number){
     for(let i=0;i<this.diseases.length;i++){
