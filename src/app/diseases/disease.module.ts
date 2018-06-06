@@ -9,25 +9,35 @@ import { TreatedDrugsComponent } from './treated-drugs/treated-drugs.component';
 import { OneTreatedDrugComponent } from './one-treated-drug/one-treated-drug.component';
 import { OneForbiddenDrugComponent } from './one-forbidden-drug/one-forbidden-drug.component';
 import { ForbiddenDrugsComponent } from './forbidden-drugs/forbidden-drugs.component';
-import { LatestNewsComponent } from '../shared/components/latest-news/latest-news.component';
 import { DiseaseEditComponent } from './disease-edit/disease-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DiseaseComponentComponent } from './disease-component/disease-component.component';
+import { RouterModule, Routes ,ActivatedRoute} from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    [ReactiveFormsModule]
+    [ReactiveFormsModule],
+    RouterModule,
+    SharedModule
   ],
+  
   declarations: [DiseaseAddComponent, DiseaseLisingComponent, DiseaseDetailsComponent,
-    DiseaseSmallItemComponent
-,
+    DiseaseSmallItemComponent,
     TreatedDrugsComponent,
     OneTreatedDrugComponent,
     OneForbiddenDrugComponent,
     ForbiddenDrugsComponent,
-    DiseaseSmallItemComponent, LatestNewsComponent
-,
-    DiseaseEditComponent
-]
+    DiseaseSmallItemComponent,
+    DiseaseEditComponent,
+    DiseaseComponentComponent
+],
+exports : [
+    DiseaseSmallItemComponent,
+    DiseaseEditComponent,
+    DiseaseDetailsComponent
+
+  ]
 })
 export class DiseaseModule { }

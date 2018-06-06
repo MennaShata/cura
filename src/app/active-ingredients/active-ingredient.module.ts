@@ -18,6 +18,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     ActiveIngredientListingComponent,
     ActiveIngrediantItemComponent,
     ActiveIngredientDetailsComponent
+],
+exports:[
+  ActiveIngrediantItemComponent
 ]
 })
 export class ActiveIngredientModule { }

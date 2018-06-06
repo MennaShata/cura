@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IDrugDisease } from '../../shared/models/interfaces/IDrugDisease';
 import { DiseaseServiceService } from '../../shared/services/disease-service.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-treated-drugs',
@@ -9,10 +10,12 @@ import { DiseaseServiceService } from '../../shared/services/disease-service.ser
 })
 export class TreatedDrugsComponent implements OnInit {
   treatedDrugs:IDrugDisease[];
-  constructor(private diseaseServiceService:DiseaseServiceService) { }
+  id:number;
+  constructor(private diseaseServiceService:DiseaseServiceService, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit() {
-    this.treatedDrugs=this.diseaseServiceService.getTreatedDrugs[1];
+    this.activatedRoute.params.subscribe((params)=>{this.id=params['id'];});
+    this.treatedDrugs=this.diseaseServiceService.getTreatedDrugs(this.id);
 
   }
 

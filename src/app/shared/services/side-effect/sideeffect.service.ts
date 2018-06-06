@@ -14,7 +14,6 @@ constructor() {
       id:1,
       name : "soda3",
       description:"haza el dwa bigeb soda3 lma yta5d m3 el lban",
-      icon:"fa fa-user",
       isDeleted:false
 
   },
@@ -22,7 +21,6 @@ constructor() {
     id:2,
     name : "soda3 nsfi",
     description:"haza el dwa bigeb soda3 lma yta5d m3 el lban",
-    icon:"fa fa-user",
     isDeleted:false
 
 
@@ -62,6 +60,6 @@ save(sideeffect:Isideeffect){
   const old= this.getById(sideeffect.id);
   old.name = sideeffect.name;
   old.description=sideeffect.description;
-  old.icon=sideeffect.icon;
+
 }
 }

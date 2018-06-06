@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import {NgControl} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { NgControl } from '@angular/forms';
 import { Isideeffect } from '../../shared/models/interfaces/Isideeffect';
 import { SideeffectService } from '../../shared/services/side-effect/sideeffect.service';
+import { BsModalRef } from 'ngx-bootstrap';
 
 
 @Component({
@@ -11,24 +12,33 @@ import { SideeffectService } from '../../shared/services/side-effect/sideeffect.
   styleUrls: ['./side-effect-add.component.css']
 })
 export class SideEffectAddComponent implements OnInit {
-sideeffect:Isideeffect;
-myForm:FormGroup;
-  constructor(private sideeffectService:SideeffectService) { }
+  sideeffect: Isideeffect;
+  myForm: FormGroup;
+  flag: boolean;
+  constructor(private sideeffectService: SideeffectService, public bsModalRef: BsModalRef) { }
 
   ngOnInit() {
-    this.myForm=new FormGroup({
-      name:new FormControl(),
-      description:new FormControl(),
-      icon:new FormControl()
-      
+    this.myForm = new FormGroup({
+      name: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+
+
     });
   }
-public addsideeffect(){
-  this.sideeffect={
-    name:this.myForm.get('name').value,
-    description:this.myForm.get('description').value,
-    icon:this.myForm.get('icon').value
+  public addsideeffect() {
+
+    if (this.myForm.get('name').value != '' && this.myForm.get('description').value != '') {
+      this.flag = true;
+      this.sideeffect = {
+        name: this.myForm.get('name').value,
+        description: this.myForm.get('description').value,
+
+      }
+      this.sideeffectService.add(this.sideeffect)
+      this.myForm.reset();
+    }
+    else {
+      this.flag = false
+    }
   }
-  this.sideeffectService.add(this.sideeffect)
-}
 }
