@@ -60,6 +60,7 @@ import { CommunityListingComponent } from './communities/community-listing/commu
 import { LoginComponent } from './user/login/login.component';
 import { CommunityEditComponent } from './communities/community-edit/community-edit.component';
 import { UserModule } from './user/user.module';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
 
 
 
@@ -113,6 +114,7 @@ const routes: Routes = [
   { path:'addFood' , component :FoodAddComponent},
   { path:'editFood/:id' , component :FoodEditComponent},
   { path:'login' , component :LoginComponent},
+  { path:'signup' , component :SignUpComponent},
 
   {path:'pill',children:[
     { path:'page', component: PillComponent},
