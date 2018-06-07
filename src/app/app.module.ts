@@ -59,6 +59,7 @@ import { CommunityDetailsComponent } from './communities/community-details/commu
 import { CommunityListingComponent } from './communities/community-listing/community-listing.component';
 import { LoginComponent } from './user/login/login.component';
 import { CommunityEditComponent } from './communities/community-edit/community-edit.component';
+import { UserModule } from './user/user.module';
 
 
 
@@ -150,6 +151,7 @@ const routes: Routes = [
     [ReactiveFormsModule],
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
+    UserModule
   
   ],
   providers: [
