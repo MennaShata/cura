@@ -2,6 +2,7 @@ import { IfoodInteraction } from './../../../shared/models/interfaces/ifoodInter
 import { FoodInteractionService } from './../../../shared/services/foodInteraction.service';
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-Food-Interactions-Listing',
   templateUrl: './Food-Interactions-Listing.component.html',

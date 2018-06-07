@@ -2,10 +2,10 @@ export interface Ipill{
     id:number;
     name:string;
     image:string;
-    strength:string;
-    strengthUnit:string;
+    strength:number;
+    strengthUnit:number;
     backImprint:string;
     frontImprint:string;
-    color:string;
-    shape:string;
+    color:number;
+    shape:number;
 }

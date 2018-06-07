@@ -4,7 +4,7 @@
 
       <h4 class="heading-primary text-uppercase mb-md">Pill Identifier</h4>
 
-      <form action="/" id="frmCalculateShipping" method="post">
+      <form [formGroup]="searchForm"  (ngSubmit)="searchPill()">
 
         <div class="row searchMargin">
           <div class="form-group">
