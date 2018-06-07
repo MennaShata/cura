@@ -27,6 +27,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     SideEffectsComponent,
     
    
+],
+exports : [
+  SideEffectItemComponent
+
 ]
 })
 export class SideEffectModule { }

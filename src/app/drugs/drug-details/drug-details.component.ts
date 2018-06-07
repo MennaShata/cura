@@ -4,6 +4,14 @@ import {DrugTypeService} from './../../shared/services/drug-type/drug-type.servi
 import {StrengthService} from './../../shared/services/strength/strength.service';
 import {Idrug} from './../../shared/models/interfaces/Idrug';
 import { ActivatedRoute } from '@angular/router';
+import { DiseaseServiceService} from './../../shared/services/disease-service.service';
+import {FoodInteractionService} from './../../shared/services/foodInteraction.service';
+import {SideeffectService} from './../../shared/services/side-effect/sideeffect.service';
+import { Isideeffect } from '../../shared/models/interfaces/Isideeffect';
+import { Idisease } from '../../shared/models/interfaces/idisease';
+import { IfoodInteraction } from '../../shared/models/interfaces/ifoodInteraction';
+import { Iactiveingredient } from '../../shared/models/interfaces/iactiveingredient';
+import {ActiveIngredientService} from './../../shared/services/active-ingredient/active-ingredient.service';
 
 @Component({
   selector: 'app-drug-details',
@@ -17,9 +25,14 @@ export class DrugDetailsComponent implements OnInit {
   public drugType:string;
   public strengthUnit:string;
   id:number;
-  constructor(private drugService:DrugServiceService,private activatedRoute:ActivatedRoute,private drugTypeService:DrugTypeService,private strengthService:StrengthService) { }
+  public sideEffect:Isideeffect[]=[];
+  public disease:Idisease[]=[];
+  public foodInteraction:IfoodInteraction[]=[];
+  public activeIngredient:Iactiveingredient[]=[];
+  constructor(private drugService:DrugServiceService,private activatedRoute:ActivatedRoute,private drugTypeService:DrugTypeService,private strengthService:StrengthService,private sideEffectService:SideeffectService,private diseaseService:DiseaseServiceService,private foodInteractionService:FoodInteractionService,private activeIngredientService:ActiveIngredientService) { }
 
   ngOnInit() {
+    debugger;
     this.activatedRoute.params.subscribe((params)=>{this.id=params['id'];});
     this.drug = this.drugService.getById(this.id);
     this.drugType = this.drugTypeService.getName(this.drug.drugTypeName);
@@ -35,6 +48,19 @@ export class DrugDetailsComponent implements OnInit {
     }
     else{
       this.childernWarningSrc = '../../../assets/images/allowChildern.png';
+    }
+    
+    for(let i=0;i<this.drug.disease.length;i++){
+      this.disease[i] = this.diseaseService.getById(this.drug.disease[i]);
+    }
+    for(let i=0;i<this.drug.sideEffect.length;i++){
+      this.sideEffect[i] = this.sideEffectService.getById(this.drug.sideEffect[i]);
+    }
+    for(let i=0;i<this.drug.foodInteraction.length;i++){
+      this.foodInteraction[i] = this.foodInteractionService.getById(this.drug.foodInteraction[i]);
+    }
+    for(let i=0;i<this.drug.activeIngredient.length;i++){
+      this.activeIngredient[i] = this.activeIngredientService.getById(this.drug.activeIngredient[i]);
     }
   }
 
