@@ -1,11 +1,28 @@
-<div role="main" class="main shop">
-  <div class="container">
-    <div class="row"> <input
-      type="text"
-      name="search"
-      placeholder="Insert Food Name"
-      [(ngModel)]="name"
-      ></div>
+<div role="main" class="main shop container">
+  <div>
+    <div class="row"> 
+      
+      <div class=" mt-xlg">
+          <div class="input-group">
+              <input
+              type="text"
+              class="form-control"
+              name="search"
+              placeholder="Insert Food Name"
+              [(ngModel)]="name"
+              >              <span class="input-group-btn">
+                  <button class="btn btn-primary btn-md">
+                      <span>
+                          <i class="fa fa-search" style="color:white"></i>
+                      </span>
+                  </button>
+    
+              </span>
+          </div>
+      </div>
+    </div>
+      
+      </div>
     <div class="row">
       
      
@@ -26,4 +43,4 @@
     </div>
   </div>
 
-</div>
+

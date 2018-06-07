@@ -56,7 +56,8 @@ import { CommunitiesModule } from './communities/communities.module';
 import { PostListingComponent } from './communities/post-listing/post-listing.component';
 import { CommunitiesComponent } from './communities/communities.component';
 import { CommunityDetailsComponent } from './communities/community-details/community-details.component';
-import { CommunityListingComponent } from './communities/community-listing/community-listing.component';
+ import { CommunityListingComponent } from './communities/community-listing/community-listing.component';
+import { CarouselModule } from 'ngx-bootstrap';
 import { LoginComponent } from './user/login/login.component';
 import { CommunityEditComponent } from './communities/community-edit/community-edit.component';
 import { UserModule } from './user/user.module';
@@ -153,6 +154,7 @@ const routes: Routes = [
     [ReactiveFormsModule],
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
+    CarouselModule.forRoot(),
     UserModule
   
   ],
