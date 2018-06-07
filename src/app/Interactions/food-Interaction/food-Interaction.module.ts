@@ -9,7 +9,8 @@ import { FoodInteractionComponent } from "./food-Interaction.component";
   declarations: [
     FoodInteractionComponent,
     FoodInteractionsListingComponent,
-    FoodInteractionItemComponent
+    FoodInteractionItemComponent,
+    
   ]
 })
 export class FoodInteractionModule {}
