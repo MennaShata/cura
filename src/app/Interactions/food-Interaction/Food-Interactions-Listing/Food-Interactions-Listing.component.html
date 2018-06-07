@@ -1,13 +1,11 @@
 <section class="section our-services">
   <div class="container">
-    <carousel [noWrap]="noWrapSlides">
-      <slide>
+   
       <app-Food-Interaction-Item 
       *ngFor="let foodinteractionitem of foodInteractionList" 
       [foodInteraction]="foodinteractionitem"
       class="col-md-6">
       </app-Food-Interaction-Item>
-    </slide>
-    </carousel>
+  
   </div>
 </section>
