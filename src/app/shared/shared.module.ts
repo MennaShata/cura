@@ -8,7 +8,6 @@ import { LatestNewsComponent } from './components/latest-news/latest-news.compon
 import { FoodPipe } from './pipes/food.pipe';
 import { DrugPipe } from './pipes/drug.pipe';
 import { ListingCarouselComponent } from 'src/app/shared/components/listing-carousel/listing-carousel.component';
-import { CarouselSmallItemComponent } from 'src/app/shared/components/carousel-small-item/carousel-small-item.component';
 
 @NgModule({
   imports: [CommonModule, [FormsModule]],
@@ -19,8 +18,7 @@ import { CarouselSmallItemComponent } from 'src/app/shared/components/carousel-s
     FoodPipe,
     DrugPipe,
     LatestNewsComponent,
-    ListingCarouselComponent,
-    CarouselSmallItemComponent
+    ListingCarouselComponent
   ],
   exports: [
     SearchComponent, 

@@ -14,7 +14,8 @@ import { DiseaseEditComponent } from './disease-edit/disease-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DiseaseComponentComponent } from './disease-component/disease-component.component';
 import { RouterModule, Routes ,ActivatedRoute} from '@angular/router';
-import { SharedModule } from '../shared/shared.module';
+import {SharedModule} from './../shared/shared.module';
+
 
 @NgModule({
   imports: [
