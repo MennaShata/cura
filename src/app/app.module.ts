@@ -17,7 +17,7 @@ import { PillComponent } from './pill/pill.component';
 import { PillItemComponent } from './pill/pill-item/pill-item.component';
 
 import { SideEffectItemComponent } from './side-effects/side-effect-item/side-effect-item.component';
-import { FormsModule ,ReactiveFormsModule }   from '@angular/forms';
+import { FormsModule ,ReactiveFormsModule, FormGroup, FormControl }   from '@angular/forms';
 import { DiseaseSmallItemComponent } from './diseases/disease-small-item/disease-small-item.component';
 import { DiseaseLisingComponent } from './diseases/disease-lising/disease-lising.component';
 import { DiseaseComponentComponent } from './diseases/disease-component/disease-component.component';
@@ -58,6 +58,7 @@ import { CommunitiesComponent } from './communities/communities.component';
 import { CommunityDetailsComponent } from './communities/community-details/community-details.component';
 import { CommunityListingComponent } from './communities/community-listing/community-listing.component';
 import { LoginComponent } from './user/login/login.component';
+import { CommunityEditComponent } from './communities/community-edit/community-edit.component';
 
 
 
@@ -102,6 +103,8 @@ const routes: Routes = [
   { path:'diseaseDetails/:id' , component :DiseaseDetailsComponent},
   { path:'diseaseAdd' , component :DiseaseAddComponent},
   { path:'communityComponent' , component :CommunitiesComponent},
+  { path:'communityEdit' , component :CommunityEditComponent},
+  { path:'communityEdit/:id' , component :CommunityEditComponent},
   { path:'postListing' , component :PostListingComponent},
   { path:'communityListing' , component :CommunityListingComponent},
   { path:'communityDetails' , component :CommunityDetailsComponent},
@@ -146,7 +149,8 @@ const routes: Routes = [
     CommunitiesModule,
     [ReactiveFormsModule],
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+  
   ],
   providers: [
     DiseaseServiceService,

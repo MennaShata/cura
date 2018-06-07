@@ -1,18 +1,36 @@
     <div class="featured-box featured-box-primary featured-box-text-left feature-box-style-6">
         <div class="box-content">
-
             <div class="row">
                 <div class="col-md-12">
+
+                        <div class="col-md-4 col-md-offset-10" style="margin-top:-10px;">
+                                <a [routerLink]="['/communityEdit',community.id]">
+                                    <button type="button" class="btn-borders btn-primary btn-info primary btn-xs">
+                                            <i class="fa fa-edit">
+                                            </i>
+                                    </button>
+                                </a>
+                            
+                              
+                                <button type="button" class="btn-danger primary btn-xs btn-borders" (click)="delete(community.id)">
+                                    <i class="fa fa-trash">
+                                    </i>
+                                </button>
+                            </div>
+                    
+
+
+
                     <div class="feature-box feature-box-style-5">
                         <div class="feature-box-icon">
                             <i class="fa fa-comments"></i>
                         </div>
                         <div class="feature-box-info">
                             <h4 class="mb-sm">
-                                <a>{{community.name}} </a>({{community.users.length}} User)</h4>
-                            <strong class="mb-lg">Public Group</strong>
+                                <a>{{community.name}} </a>{{community.users.length}} User</h4>
+                            <strong class="mb-lg">{{community.privacy}} Group</strong>
                             <a class="drug-btn btn btn-borders btn-xs btn-primary custom-button text-uppercase  font-weight" data-toggle="modal" data-target="#defaultModal"
-                                style="margin-left:20px;">
+                                style="margin-left:5px;">
                                 <i></i>Join Group</a>
                         </div>
                     </div>
