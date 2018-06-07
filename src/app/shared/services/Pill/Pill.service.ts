@@ -8,7 +8,7 @@ import { DrugServiceService } from '../drug/drug-service.service';
 export class PillService {
   private pills: Ipill[];
 
-  constructor(private drugService : DrugServiceService) {
+  constructor(private drugService: DrugServiceService) {
     this.pills = [
       {
         id: 2,
@@ -43,7 +43,7 @@ export class PillService {
         frontImprint: "DYD",
         color: 3,
         shape: 7
-      },      
+      },
       {
         id: 1,
         name: "Panadol",
@@ -67,7 +67,7 @@ export class PillService {
         color: 3,
         shape: 4
 
-      },      
+      },
       {
         id: 1,
         name: "Alprazolam",
@@ -80,17 +80,17 @@ export class PillService {
         shape: 3
 
       }
-     
-     
+
+
     ]
   }
-  public getPillsList(){
+  public getPillsList() {
     return this.pills;
   }
 
-  public getById(id:number){
-    for(let i=0;i<this.pills.length;i++){
-      if(this.pills[i].id==id){
+  public getById(id: number) {
+    for (let i = 0; i < this.pills.length; i++) {
+      if (this.pills[i].id == id) {
         return this.pills[i];
       }
     }
@@ -103,16 +103,19 @@ export class PillService {
     }
   }
 
-  Update(newPill:Ipill)
-  {   
-    const oldPill= this.drugService.getById(newPill.id);
-    oldPill.drugName= newPill.name;
-    oldPill.textOnSide =newPill.backImprint;
+  Update(newPill: Ipill) {
+    const oldPill = this.drugService.getById(newPill.id);
+    oldPill.drugName = newPill.name;
+    oldPill.textOnSide = newPill.backImprint;
     oldPill.textOnOtherSide = newPill.frontImprint;
-    oldPill.strength= newPill.strength;
-    oldPill.strengthUnit= newPill.strengthUnit;
-    oldPill.color= newPill.color;
+    oldPill.strength = newPill.strength;
+    oldPill.strengthUnit = newPill.strengthUnit;
+    oldPill.color = newPill.color;
     oldPill.shape = newPill.shape;
     oldPill.pillImage = newPill.image;
-}
+  }
+
+  Search(searchPill: any) {
+    
+  }
 }
