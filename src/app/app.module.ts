@@ -57,6 +57,7 @@ import { PostListingComponent } from './communities/post-listing/post-listing.co
 import { CommunitiesComponent } from './communities/communities.component';
 import { CommunityDetailsComponent } from './communities/community-details/community-details.component';
 import { CommunityListingComponent } from './communities/community-listing/community-listing.component';
+import { LoginComponent } from './user/login/login.component';
 
 
 
@@ -107,6 +108,7 @@ const routes: Routes = [
   
   { path:'addFood' , component :FoodAddComponent},
   { path:'editFood/:id' , component :FoodEditComponent},
+  { path:'login' , component :LoginComponent},
 
   {path:'pill',children:[
     { path:'page', component: PillComponent},
