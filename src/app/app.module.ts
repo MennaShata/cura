@@ -57,6 +57,7 @@ import { PostListingComponent } from './communities/post-listing/post-listing.co
 import { CommunitiesComponent } from './communities/communities.component';
 import { CommunityDetailsComponent } from './communities/community-details/community-details.component';
 import { CommunityListingComponent } from './communities/community-listing/community-listing.component';
+import { DrugInteractionService } from './shared/services/drugInteraction/drugInteraction.service';
 
 
 
@@ -149,7 +150,7 @@ const routes: Routes = [
   providers: [
     DiseaseServiceService,
     ActiveIngredientService,
-    BsModalService
+    BsModalService,
   ],
   bootstrap: [AppComponent]
 })

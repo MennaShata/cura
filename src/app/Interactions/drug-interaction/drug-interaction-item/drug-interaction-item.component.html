@@ -6,13 +6,13 @@
                 <div class="col-md-5 col-xs-5">
                     <div class="user-avatar">
                         <div class="img-thumbnail">
-                            <img class="img-responsive" src="./../../../../assets/images/panadol1.jpg" alt="">
+                            <img class="img-responsive" [src]="drugInteract.drug1Image" alt="">
                         </div>
                     </div>
                     <div class="row">
                             <div class="col-md-3 col-xs-3">
 
-                                <h4 class="heading-primary mb-md"><strong>Panadol</strong> </h4>
+                                <h4 class="heading-primary mb-md"><strong>{{drugInteract.drug1Name}}</strong> </h4>
                             </div>
                         </div>
                 </div>
@@ -22,24 +22,25 @@
                 <div class="col-md-5 col-xs-5">
                         <div class="user-avatar">
                                 <div class="img-thumbnail">
-                                    <img class="img-responsive" src="./../../../../assets/images/panadol1.jpg" alt="">
+                                    <img class="img-responsive" [src]="drugInteract.drug2Image" alt="">
                                 </div>
                             </div>
                     <div class="row">
                         <div class="col-md-3 col-xs-3">
 
-                            <h4 class="heading-primary mb-md"><strong>Panadol</strong></h4>
+                            <h4 class="heading-primary mb-md"><strong>{{drugInteract.drug2Name}}</strong></h4>
                         </div>
                     </div>
                 </div>
                 <table class="cart-totals">
                     <tbody>
                         <tr class="cart-subtotal">
-                            <th>
-                                    <i class="fa fa-circle mr-xl" style="color : red"></i>
+                            <th [ngSwitch]="drugInteract.interactionDegree">
+                                    <i class="fa fa-circle mr-xl" style="color : red" *ngSwitchCase="'Major'"></i>
+                                    <i class="fa fa-circle mr-xl" style="color : yellow" *ngSwitchCase="'Minor'"></i>
                             </th>
                             <th>
-                                    <strong style="color:black;">Major</strong>														
+                                    <strong style="color:black;">{{drugInteract.interactionDegree}}</strong>														
 
                             </th>
                         </tr>
@@ -48,10 +49,7 @@
                                <strong style="color:black;">Description</strong>
                             </th>
                             <td>
-                                    Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol
-                                    Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol	
-                                    Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol
-                                    Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol Paracetamol	
+                                    {{drugInteract.description}}
                                 <input type="hidden" value="free_shipping" id="shipping_method" name="shipping_method">
                             </td>
                         </tr>
