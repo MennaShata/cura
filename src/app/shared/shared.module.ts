@@ -7,11 +7,12 @@ import { FormsModule }   from '@angular/forms';
 import { LatestNewsComponent } from './components/latest-news/latest-news.component';
 import { FoodPipe } from './pipes/food.pipe';
 import { DrugPipe } from './pipes/drug.pipe';
+import { HeaderTopComponent } from './components/header-top/header-top.component';
 
 @NgModule({
   imports: [CommonModule, [FormsModule]],
-  declarations: [SharedComponent, SearchComponent, FilterComponent, FoodPipe,DrugPipe,LatestNewsComponent],
-  exports: [SearchComponent, FilterComponent, FoodPipe,DrugPipe,LatestNewsComponent]
+  declarations: [SharedComponent, SearchComponent, FilterComponent, FoodPipe,DrugPipe,LatestNewsComponent,HeaderTopComponent],
+  exports: [SearchComponent, FilterComponent, FoodPipe,DrugPipe,LatestNewsComponent,HeaderTopComponent]
 })
 
 
