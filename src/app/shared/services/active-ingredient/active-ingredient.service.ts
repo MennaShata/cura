@@ -10,7 +10,7 @@ export class ActiveIngredientService {
   activeIngredients: Iactiveingredient[] =
     [
     { id: 0, name: 'paracetamol' , description :"is a medicine used to treat pain and fever. It is typically used for mild to moderate pain relief",drugs:[1,2] },
-    { id: 1, name: 'dextromethorphan',description:" is a drug of the morphinan class with sedative, dissociative, and stimulant properties (at higher doses).",drugs:[2,3] },
+    { id: 1, name: 'dextromethorphan',description:" is a drug of the morphinan class with sedative, dissociative, and stimulant properties (at higher doses).",drugs:[2,0] },
     { id: 2, name: 'acetylsalicylic acid' },
     { id: 3, name: 'Acetaminophen' },
     { id: 4, name: 'Dextromethorphan' },
