@@ -14,7 +14,7 @@ export class ActiveIngredientDetailsComponent implements OnInit {
 
   public ai:Iactiveingredient;
   id:number;
-  drugs:Idrug[];
+  drugs:Idrug[]=[];
   constructor(private ActiveIngredientService:ActiveIngredientService ,private ActivatedRoute:ActivatedRoute,private ds:DrugServiceService) { }
 
   ngOnInit() {
