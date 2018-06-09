@@ -89,8 +89,7 @@ dataChanged:Subject<Idrug[]>;
 constructor() { }
 // getAllDrug()
 // {
-//   debugger;
-//   return this.arr;
+//   return this.drugs.slice();
 // }
 
 getAllDrug():Observable<Idrug[]>
@@ -104,6 +103,13 @@ getById(id){
     return this.drugs[index];
   }
   
+}
+getAllDrugsName(){
+  let drugsName:string[]=[];
+  for(let i=0;i<this.drugs.length;i++){
+    drugsName.push(this.drugs[i].drugName);
+  }
+  return drugsName;
 }
 drugDelete(id){
   const index = this.drugs.findIndex(a=>a.id ===id);

@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { DrugInteractionComponent } from './drug-interaction.component';
 import { DrugInteractionListingComponent } from './drug-Interaction-Listing/drug-Interaction-Listing.component';
 import { DrugInteractionItemComponent } from './drug-interaction-item/drug-interaction-item.component';
+import { TypeaheadModule } from 'ngx-bootstrap';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { DrugInteractionItemComponent } from './drug-interaction-item/drug-inter
     CommonModule,
     [FormsModule],
     BrowserModule,
+    [TypeaheadModule.forRoot()]
   ],
   declarations: [
     DrugInteractionComponent,
