@@ -4,6 +4,10 @@ import { Iactiveingredient } from './../../shared/models/interfaces/iactiveingre
 import { ActiveIngredientService } from './../../shared/services/active-ingredient/active-ingredient.service';
 import { Idrug } from 'src/app/shared/models/interfaces/Idrug';
 import { DrugServiceService } from 'src/app/shared/services/drug/drug-service.service';
+import { IfoodInteraction } from 'src/app/shared/models/interfaces/ifoodInteraction';
+import { FoodInteractionService } from 'src/app/shared/services/foodInteraction.service';
+import { DiseaseServiceService } from 'src/app/shared/services/disease-service.service';
+import { Idisease } from 'src/app/shared/models/interfaces/idisease';
 
 @Component({
   selector: 'app-active-ingredient-details',
@@ -15,7 +19,9 @@ export class ActiveIngredientDetailsComponent implements OnInit {
   public ai:Iactiveingredient;
   id:number;
   drugs:Idrug[]=[];
-  constructor(private ActiveIngredientService:ActiveIngredientService ,private ActivatedRoute:ActivatedRoute,private ds:DrugServiceService) { }
+  foodinteractions:IfoodInteraction[]=[];
+  diseases:Idisease[]=[];
+  constructor(private ActiveIngredientService:ActiveIngredientService ,private ActivatedRoute:ActivatedRoute,private ds:DrugServiceService,private fis:FoodInteractionService,private diseaseservice:DiseaseServiceService) { }
 
   ngOnInit() {
     this.ActivatedRoute.params.subscribe((params)=>{this.id=params['id'];});
@@ -24,6 +30,13 @@ export class ActiveIngredientDetailsComponent implements OnInit {
     for(let i=0;i<this.ai.drugs.length;i++){
       this.drugs[i] = this.ds.getById(this.ai.drugs[i]);
     }
+    for(let i=0;i<this.ai.foodinteractions.length;i++){
+      this.foodinteractions[i] = this.fis.getById(this.ai.foodinteractions[i]);
+    }
+    for(let i=0;i<this.ai.diseases.length;i++){
+      this.diseases[i]= this.diseaseservice.getById(this.ai.diseases[i]);
+    }
+    
   }
 
 }

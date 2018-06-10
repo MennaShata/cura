@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <ul class="breadcrumb">
                     <li>
-                        <a href="#">Active Ingredients</a>
+                        <a [routerLink]="['/activeingredient/listing']">Active Ingredients</a>
                     </li>
                     <li class="active">{{ai.name}}</li>
                 </ul>
@@ -32,11 +32,19 @@
                 <p class="lead font-weight-normal mb-xlg ">{{ai.description}}</p>
             </div>
 
-            <!-- Interaction -->
+            <!-- Interactions -->
+
+
             <div class="mb-xlg">
                 <h3 class=" mb-sm">Warnings</h3>
+                <!-- food interactions -->
                 <div>
                     <h4>Food Interaction</h4>
+                    <h5> &nbsp; &nbsp; &nbsp; &nbsp; {{ai.name}} interacts with food containing the following elements :</h5>
+
+                </div>
+                <div>
+                    <app-food-interaction-carousel-listing [foodinteractions]=foodinteractions></app-food-interaction-carousel-listing>
                 </div>
                 <div>
                     <h4>Ingredients Interaction</h4>
@@ -52,15 +60,12 @@
                     </ul>
                 </div>
                 <div>
+                    <h3>Diseases interaction</h3>
                     <h4>You shouldn't take Acetaminophen if you have :</h4>
                     <ul style="list-style:none">
-                        <li>
-                            <i class="fa fa-circle" aria-hidden="true"></i>
-                            <a> Severe liver disease</a>
-                        </li>
-                        <li>
-                            <i class="fa fa-circle" aria-hidden="true"></i>
-                            <a> Severe liver disease</a>
+                        <li *ngFor="let d of diseases" disease=d>
+                                <h4> <i class="fa fa-circle" aria-hidden="true"></i>
+                            &nbsp; <a>{{d.name}} </a></h4>
                         </li>
                     </ul>
                 </div>
@@ -82,16 +87,16 @@
 
 
 
-        <div class=" col-lg-4 ">
+        <!-- <div class=" col-lg-4 ">
             <aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 0}}">
-                <h3 class="mt-sm mb-md">Related drugs</h3>
+                <h3 class="mt-sm mb-md">Similar active ingredients</h3>
                 <span class="thumb-info thumb-info-side-image thumb-info-no-zoom mb-sm">
                     <span class="thumb-info-side-image-wrapper">
                         <img src="img/projects/project-8.jpg" class="img-responsive" alt="" style="width: 200px;">
                     </span>
                     <span class="thumb-info-caption">
                         <span class="thumb-info-caption-text">
-                            <h5 class="text-uppercase mb-xs">Project Title</h5>
+                            <h5 class="text-uppercase mb-xs">name</h5>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         </span>
                     </span>
@@ -109,7 +114,7 @@
                     </span>
                 </span>
             </aside>
-        </div>
+        </div> -->
 
     </div>
 </div>

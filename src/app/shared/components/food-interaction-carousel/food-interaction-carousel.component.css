@@ -1,0 +1,10 @@
+.padded{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.featured-box-secondary .icon-featured{
+    background-color: #008fe2;
+}
+.featured-box-secondary .box-content{
+    border-top-color: #008fe2;
+}
