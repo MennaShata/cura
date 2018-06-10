@@ -1,114 +1,139 @@
 <div role="main" class="main">
-  
-  	<section class="page-header" style="padding-bottom: 100px;">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <ul class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">{{drug.drugName}}</li>
-              </ul>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <h1>{{drug.drugName}} ({{drugType}})</h1>
-            </div>
-          </div>
+
+  <section class="page-header" style="padding-bottom: 100px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="breadcrumb">
+            <li>
+              <a href="#">Home</a>
+            </li>
+            <li class="active">{{drug.drugName}}</li>
+          </ul>
         </div>
-      </section>
-  
-          <div class="container">
-            <div class="row">
-              <div class="col-md-4">
-                <div class="owl-carousel owl-theme" data-plugin-options="{'items': 1, 'margin': 10}">
-                  <div>
-                    <span class="img-thumbnail">
-                      <img alt="" height="300" class="img-responsive" src="{{drug.image}}">
-                    </span>
-                  </div>
-                  <!-- <div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h1>{{drug.drugName}} ({{drugType}})</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="owl-carousel owl-theme" data-plugin-options="{'items': 1, 'margin': 10}">
+          <div>
+            <span class="img-thumbnail">
+              <img alt="" height="300" class="img-responsive" src="{{drug.image}}">
+            </span>
+          </div>
+          <!-- <div>
                     <span class="img-thumbnail">
                       <img alt="" height="300" class="img-responsive" src="../../../assets/images/panadol-profile2.jpg">
                     </span>
                   </div> -->
-                </div>
-              </div>
-              <div class="col-md-8">
-                               <div class="row">
-                 <div class="col-md-8">
-                <h2 class="mb-none">{{drug.drugName}} <strong>({{drugType}})</strong></h2>
-                <h4 class="heading-primary">Company:{{drug.company}}</h4>
-                </div>
-                <div class="col-md-4">
-                <img src="{{pregnancyWarningSrc}}"/>
-                <img src="{{childernWarningSrc}}"/>
-                </div> 
-                </div>
-  
-                <hr class="solid">
-  
-                <p><strong style="color:black;">Usage:</strong>{{drug.usage}} </p>
-                <p><strong style="color:black;">Dosage:</strong>{{drug.dosage}} </p>
-  
-                <ul class="list list-icons">
-                  <li><i class="fa fa-check"></i> <strong style="color:black;">Strength:</strong><p style="display:inline;"> {{drug.strength}}{{strengthUnit}}.</p></li>
-                  <li><i class="fa fa-check"></i> <strong style="color:black;">warning :</strong> <p style="display:inline;">{{drug.warning}}</p></li>
-                  <li><i class="fa fa-check"></i> <strong style="color:black;">Approval History:</strong><p style="display:inline;">{{drug.approvalHistory}}</p></li>
-                </ul>
-  
-              </div>
-            </div>
-            </div>
-            <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-  
-                <h4 class="mt-xlg mb-none ">{{drug.drugName}}<strong>Disease</strong></h4>
-                  
-                <div class="row">
-  
-                  <app-disease-small-item class="col-md-4" [disease]=d *ngFor="let d of disease"></app-disease-small-item>
-  
-                </div>
-              </div>
-            </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-8">
+            <h2 class="mb-none">{{drug.drugName}}
+              <strong>({{drugType}})</strong>
+            </h2>
+            <h4 class="heading-primary">Company:{{drug.company}}</h4>
           </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-  
-                <h4 class="mt-xlg mb-none ">{{drug.drugName}}<strong>Side Effect</strong></h4>
-                <div class="row">
-                  <app-side-effect-item class="col-md-3 col-sm-6"  [sideeffect]="sideeffect1" *ngFor="let sideeffect1 of sideEffect"></app-side-effect-item> 
-                </div>
-              </div>
-            </div>
-          </div>
-          
-            <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-  
-                <h4 class="mt-xlg mb-none ">{{drug.drugName}}<strong>Active Ingredients</strong></h4>
-                <div class="row">
-                 <app-active-ingrediant-item class="col-lg-5" *ngFor="let ai of activeIngredient" [ai]=ai></app-active-ingrediant-item> 
-                </div>
-              </div>
-            </div>
-          </div>
-  
-          
-            <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-  
-                <h4 class="mt-xlg mb-none ">{{drug.drugName}}<strong>Food Interaction</strong></h4>
-                <div class="row">
-                    <app-Food-Interaction-Item  *ngFor="let foodinteractionitem of foodInteraction" 
-                    [foodInteraction] = "foodinteractionitem"  class="col-md-6"></app-Food-Interaction-Item>
-                </div>
-              </div>
-            </div>
+          <div class="col-md-4">
+            <img src="{{pregnancyWarningSrc}}" />
+            <img src="{{childernWarningSrc}}" />
           </div>
         </div>
+
+        <hr class="solid">
+
+        <p>
+          <strong style="color:black;">Usage:</strong>{{drug.usage}} </p>
+        <p>
+          <strong style="color:black;">Dosage:</strong>{{drug.dosage}} </p>
+
+        <ul class="list list-icons">
+          <li>
+            <i class="fa fa-check"></i>
+            <strong style="color:black;">Strength:</strong>
+            <p style="display:inline;"> {{drug.strength}}{{strengthUnit}}.</p>
+          </li>
+          <li>
+            <i class="fa fa-check"></i>
+            <strong style="color:black;">warning :</strong>
+            <p style="display:inline;">{{drug.warning}}</p>
+          </li>
+          <li>
+            <i class="fa fa-check"></i>
+            <strong style="color:black;">Approval History:</strong>
+            <p style="display:inline;">{{drug.approvalHistory}}</p>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <h4 class="mt-xlg mb-none ">{{drug.drugName}}
+          <strong>Disease</strong>
+        </h4>
+
+        <div class="row">
+
+          <app-disease-small-item class="col-md-4" [disease]=d *ngFor="let d of disease"></app-disease-small-item>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <h4 class="mt-xlg mb-none ">{{drug.drugName}}
+          <strong>Side Effect</strong>
+        </h4>
+        <div class="row">
+          <app-side-effect-item class="col-md-3 col-sm-6" [sideeffect]="sideeffect1" *ngFor="let sideeffect1 of sideEffect"></app-side-effect-item>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <h4 class="mt-xlg mb-none ">{{drug.drugName}}
+          <strong>Active Ingredients</strong>
+        </h4>
+        <div class="row">
+          <app-active-ingrediant-item class="col-lg-5" *ngFor="let ai of activeIngredient" [ai]=ai></app-active-ingrediant-item>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <h4 class="mt-xlg mb-none ">{{drug.drugName}}
+          <strong>Food Interaction</strong>
+        </h4>
+        <div class="row">
+          <app-Food-Interaction-Item *ngFor="let foodinteractionitem of foodInteraction" [foodInteraction]="foodinteractionitem" class="col-md-6"></app-Food-Interaction-Item>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

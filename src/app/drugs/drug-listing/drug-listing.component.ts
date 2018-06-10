@@ -19,5 +19,6 @@ export class DrugListingComponent implements OnInit {
       
       (data)=>{this.drugs=data}
     )
+  
   }
 }

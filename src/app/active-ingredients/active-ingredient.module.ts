@@ -6,12 +6,14 @@ import { ActiveIngrediantItemComponent } from './active-ingrediant-item/active-i
 import { ActiveIngredientDetailsComponent } from './active-ingredient-details/active-ingredient-details.component';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   declarations: [
     ActiveIngredientAddComponent,

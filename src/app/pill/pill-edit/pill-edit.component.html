@@ -59,12 +59,17 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Color</label>
                   <div class="col-sm-10">
-                    <select data-plugin-selectTwo class="form-control populate" id="dropDownColor" formControlName="colorName" name="colorName">
-                      <option [value]="color.id" *ngFor="let color of colors">{{color.name}}</option>
+                    <select data-plugin-selectTwo class="form-control populate" id="dropDownColor" formControlName="colorName" name="colorName" >
+                      <option ng-selected="true" [value]="color.id" *ngFor="let color of colors">{{color.name}}</option>
                     </select>
                   </div>
                 </div>
 
+
+                <select ng-model="sortorder" ng-init="sortorder='publish_date'">
+                  <option value="publish_date">Ascending</option>
+                  <option value="-publish_date">Descending</option>
+                </select>
 
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Upload Pill Image</label>

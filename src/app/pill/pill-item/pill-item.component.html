@@ -5,12 +5,12 @@
             <div class="row drug-buttons">
                 <div class="col-md-offset-9 col-xs-offset-10">
 
-                <a [routerLink]="['/pill/editPill',pill.id]">
-                    <button type="button" class="btn-borders btn-primary btn-info primary btn-xs" style="margin: 3px; padding: 0px 3px;">
-                        <i class="fa fa-edit">
-                        </i>
-                    </button>
-                </a> 
+                    <a [routerLink]="['/pill/editPill',pill.id]">
+                        <button type="button" class="btn-borders btn-primary btn-info primary btn-xs" style="margin: 3px; padding: 0px 3px;">
+                            <i class="fa fa-edit">
+                            </i>
+                        </button>
+                    </a>
                     <button type="button" class="btn-danger primary btn-xs btn-borders" (click)="deletePill(pill.id)" style="padding: 0px 3px; ">
                         <i class="fa fa-trash">
                         </i>
@@ -22,13 +22,13 @@
 
                 <span class="thumb-info-wrapper">
 
-                     <a [routerLink]="['/pill/details',pill.id]">
+                    <a [routerLink]="['/pill/details',pill.id]">
                         <img src={{pill.image}} class="img-responsive" alt="" style="height:130px; margin-bottom:10px">
-                    </a> 
+                    </a>
 
                     <span class="thumb-info-title">
                         <span class="thumb-info-inner">
-                                {{pill.name}}
+                            {{pill.name}}
                             <br>
                             <h6 style="font-size:small ; color:white; margin-bottom:0px">{{pill.strength}} {{strengthUnit.name}}</h6>
                         </span>
@@ -38,9 +38,9 @@
 
                 </span>
 
-                <div class="thumb-info-wrapper " >
+                <div class="thumb-info-wrapper ">
 
-<!--                     
+                    <!--                     
                     <table class="cart-totals" style="margin-left:5%; width:100%">
                         <tbody>
                             <tr class="cart-subtotal">
@@ -107,47 +107,47 @@
                     </table>   -->
 
                     <div class="row col-sm-12" style="padding-right: 0px;">
-                        <div class="col-sm-6 ">
+                        <span class="col-sm-6 ">
                             <strong>Imprint 1 : </strong>
-                        </div>
-                        <div class="col-sm-6 ">
-                                {{pill.frontImprint}}
-                        </div>
-                  
+                        </span>
+                        <span class="col-sm-6 ">
+                            {{pill.frontImprint}}
+                        </span>
+
 
                     </div>
 
 
                     <div class="row col-sm-12" style="padding-right: 0px;">
-                        <div class="col-sm-6 ">
+                        <span class="col-sm-6 ">
                             <strong>Imprint 2 : </strong>
-                        </div>
-                        <div class="col-sm-6 ">
-                                {{pill.backImprint}}
-                        </div>
+                        </span>
+                        <span class="col-sm-6 ">
+                            {{pill.backImprint}}
+                        </span>
                     </div>
 
 
-                    
+
 
                     <div class="row col-sm-12" style="padding-right: 0px;">
-                       
-                        <div class="col-sm-6 ">
+
+                        <span class="col-sm-6 ">
                             <strong>Shape : </strong>
-                        </div>
-                        <div class="col-sm-6 " >
-                                {{shape.name}}
-                        </div>
+                        </span>
+                        <span class="col-sm-6 ">
+                            {{shape.name}}
+                        </span>
                     </div>
 
 
                     <div class="row col-sm-12" style="padding-right: 0px;">
-                        <div class="col-sm-6 ">
+                        <span class="col-sm-6 ">
                             <strong>Color : </strong>
-                        </div>
-                        <div class="col-sm-6 ">
-                                {{color.name}}
-                        </div>
+                        </span>
+                        <span class="col-sm-6 ">
+                            {{color.name}}
+                        </span>
 
                     </div>
 
@@ -158,10 +158,10 @@
 
 
                 </div>
-                
-                
 
-        
+
+
+
             </div>
 
         </div>
