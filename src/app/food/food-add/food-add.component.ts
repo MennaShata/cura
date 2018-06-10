@@ -11,7 +11,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
   styleUrls: ['./food-add.component.css']
 })
 export class FoodAddComponent implements OnInit {
-  constructor(private FoodService: FoodService,public bsModalRef: BsModalRef) { }
+ 
+  constructor(private FoodService: FoodService) { }
   public food:Ifood;
   form: FormGroup;
   flag: Boolean;

@@ -1,3 +1,4 @@
+import { Observable, of } from 'rxjs';
 import { Ifood } from './../models/interfaces/ifood';
 import { Injectable } from '@angular/core';
 
@@ -11,18 +12,21 @@ export class FoodService {
     { id:2, name: 'Calcium', icon: 'fa fa-edit'},
     { id:3, name: 'Vitamen C', icon: 'fa fa-edit'},
     { id:4, name: 'Vitamen Z', icon: 'fa fa-edit'}
-]
-  public getFoodList(){
-    return this.foodArray;
+]; 
+  public getFoodList() : Observable<Ifood[]>{
+    debugger;
+    return of(this.foodArray);
   }
   public deleteFood(id:number){
-    const index = this.foodArray.findIndex(a=>a.id === id);
+    const index = this.foodArray.findIndex(a=>a.id == id);
     if(index > -1){
-      this.foodArray.splice(index,1)
+      debugger;
+      this.foodArray.splice(index,1);
     }
+    
   }
   public getById(id:number){
-    const index = this.foodArray.findIndex(a=>a.id ==id);
+    const index = this.foodArray.findIndex(a=>a.id == id);
     if(index >-1){
       return this.foodArray[index];
     }
@@ -38,6 +42,8 @@ export class FoodService {
     oldFood.icon = newFood.icon;
     oldFood.name = newFood.name
   }
-constructor() { }
+constructor() {
+ 
+ }
 
 }
