@@ -43,7 +43,6 @@ import { ActiveIngredientModule } from './active-ingredients/active-ingredient.m
 import { SideEffectModule } from './side-effects/side-effect.module';
 import { SharedModule } from './shared/shared.module';
 import { DiseaseAddComponent } from './diseases/disease-add/disease-add.component';
-import { HomeComponent } from './Home/Home.component';
 import { SideEffectAddComponent } from './side-effects/side-effect-add/side-effect-add.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { ModalModule } from 'ngx-bootstrap';
@@ -56,17 +55,21 @@ import { CommunitiesModule } from './communities/communities.module';
 import { PostListingComponent } from './communities/post-listing/post-listing.component';
 import { CommunitiesComponent } from './communities/communities.component';
 import { CommunityDetailsComponent } from './communities/community-details/community-details.component';
- import { CommunityListingComponent } from './communities/community-listing/community-listing.component';
+import { CommunityListingComponent } from './communities/community-listing/community-listing.component';
+import { DrugInteractionService } from './shared/services/drugInteraction/drugInteraction.service';
 import { CarouselModule } from 'ngx-bootstrap';
 import { LoginComponent } from './user/login/login.component';
 import { CommunityEditComponent } from './communities/community-edit/community-edit.component';
 import { UserModule } from './user/user.module';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
+import {HomePageModule} from './HomePage/HomePage.module';
+import { IndexComponent } from './HomePage/index/index.component';
 
 
 
 
 const routes: Routes = [
-  {path :'', component : HomeComponent},
+  {path :'', component : IndexComponent},
   {path:'drug',children:[
     { path: 'listing', component: DrugListingComponent },
     { path:'details/:id' , component :DrugDetailsComponent},
@@ -114,6 +117,7 @@ const routes: Routes = [
   { path:'addFood' , component :FoodAddComponent},
   { path:'editFood/:id' , component :FoodEditComponent},
   { path:'login' , component :LoginComponent},
+  { path:'signup' , component :SignUpComponent},
 
   {path:'pill',children:[
     { path:'page', component: PillComponent},
@@ -131,7 +135,6 @@ const routes: Routes = [
     FoodAddComponent,
     FoodListingComponent,
     SingleFoodInteractionComponent,
-    HomeComponent,
     FoodAddComponent,
     FoodEditComponent,
 ],
@@ -153,13 +156,14 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     CarouselModule.forRoot(),
-    UserModule
+    UserModule,
+    HomePageModule
   
   ],
   providers: [
     DiseaseServiceService,
     ActiveIngredientService,
-    BsModalService
+    BsModalService,
   ],
   bootstrap: [AppComponent]
 })

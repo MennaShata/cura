@@ -1,30 +1,46 @@
-<div class="container">
-<div class="row">
-    <div class="col-lg-8 ">
-        <h2 class="font-weight-bold mb-xs">Paracetamol</h2>
-        <p class="lead font-weight-normal">Alternate Name: acetaminophen</p>
-        <hr/>
-
-        <!-- description of the ingredient -->
-        <div>
-            <h3 class=" mb-sm">What is Acetaminophen?</h3>
-            <p class="lead font-weight-normal mb-xlg ">Acetaminophen is a pain reliever and a fever reducer. Acetaminophen is used to treat many conditions
-                such as headache, muscle aches, arthritis, backache, toothaches, colds, and fevers. Acetaminophen
-                may also be used for purposes not listed in this medication guide.</p>
-
-
-
-
-        </div>
-        <!-- Interaction -->
-        <div class="mb-xlg">
-            <h3 class=" mb-sm">Warnings</h3>
-            <div>
-                <h4>Food Interaction</h4>
+<section class="page-header" style="padding-bottom: 100px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="#">Active Ingredients</a>
+                    </li>
+                    <li class="active">{{ai.name}}</li>
+                </ul>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{{ai.name}}</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 ">
+            <!--
+            <h2 class="font-weight-bold mb-xs">{{ai.name}}</h2>
+             <p class="lead font-weight-normal">Alternate Name: acetaminophen</p> 
+            <hr/> -->
+
+            <!-- description of the ingredient -->
             <div>
-                <h4>Ingredients Interaction</h4>
-                <ul style="list-style:none">
+                <!-- <h3 class=" mb-sm">What is {{ai.name}}?</h3> -->
+                <p class="lead font-weight-normal mb-xlg ">{{ai.description}}</p>
+            </div>
+
+            <!-- Interaction -->
+            <div class="mb-xlg">
+                <h3 class=" mb-sm">Warnings</h3>
+                <div>
+                    <h4>Food Interaction</h4>
+                </div>
+                <div>
+                    <h4>Ingredients Interaction</h4>
+                    <ul style="list-style:none">
                         <li>
                             <i class="fa fa-circle" style="color:red" aria-hidden="true"></i>
                             <a> 13 </a>
@@ -34,272 +50,66 @@
                             <a> Madda f3ala tanya</a>
                         </li>
                     </ul>
+                </div>
+                <div>
+                    <h4>You shouldn't take Acetaminophen if you have :</h4>
+                    <ul style="list-style:none">
+                        <li>
+                            <i class="fa fa-circle" aria-hidden="true"></i>
+                            <a> Severe liver disease</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-circle" aria-hidden="true"></i>
+                            <a> Severe liver disease</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
+
+
+            <!-- side effects of the ingredient -->
+            <!-- <div>
+                <h3 class=" mb-sm">Side effects of Acetaminophen</h3>
+                <app-listing-carousel></app-listing-carousel>
+            </div> -->
+
+            <!-- drugs containing ingredient -->
             <div>
-                <h4>You shouldn't take Acetaminophen if you have :</h4>
-                <ul style="list-style:none">
-                    <li>
-                        <i class="fa fa-circle" aria-hidden="true"></i>
-                        <a> Severe liver disease</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-circle" aria-hidden="true"></i>
-                        <a> Severe liver disease</a>
-                    </li>
-                </ul>
+                <h3 class=" mb-sm">Famous drugs containing Acetaminophen</h3>
+                <app-listing-carousel [drugs]=drugs></app-listing-carousel>
             </div>
         </div>
 
 
-        <!-- side effects of the ingredient -->
-        <div>
-            <h3 class=" mb-sm">Side effects of Acetaminophen</h3>
-            <section class="team">
-                <div>
-                    <div class="row mt-xlg">
-                        <div class="col-md-12">
-                            <div id="porfolioAjaxBoxMedical" class="ajax-box ajax-box-init mb-lg">
 
-                                <div class="bounce-loader">
-                                    <div class="bounce1"></div>
-                                    <div class="bounce2"></div>
-                                    <div class="bounce3"></div>
-                                </div>
-
-                                <div class="ajax-box-content" id="porfolioAjaxBoxContentMedical"></div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="row mb-xlg">
-                        <div class="owl-carousel owl-theme nav-bottom rounded-nav pl-xs pr-xs" data-plugin-options="{'items': 4, 'loop': false, 'dots': false, 'nav': true}">
-                            <div class="pr-sm pl-sm">
-                                <a href="#" data-href="demo-medical-doctors-detail.html" data-ajax-on-page class="text-decoration-none">
-                                    <span class="thumb-info thumb-info-no-zoom thumb-info-hide-wrapper-bg">
-                                        <span class="thumb-info-wrapper m-none">
-                                            <img src="img/demos/medical/doctors/doctor-1.jpg" class="img-responsive" alt="">
-                                        </span>
-                                        <span class="thumb-info-caption p-md pt-xlg pb-xlg">
-                                            <span class="custom-thumb-info-title">
-                                                <span class="custom-thumb-info-type font-weight-light text-md">Cardiology</span>
-                                                <span class="custom-thumb-info-inner font-weight-semibold text-lg">John Doe</span>
-                                                <i class="icon-arrow-right-circle icons font-weight-semibold text-lg "></i>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="pr-sm pl-sm">
-                                <a href="#" data-href="demo-medical-doctors-detail.html" data-ajax-on-page class="text-decoration-none">
-                                    <span class="thumb-info thumb-info-no-zoom thumb-info-hide-wrapper-bg">
-                                        <span class="thumb-info-wrapper m-none">
-                                            <img src="img/demos/medical/doctors/doctor-2.jpg" class="img-responsive" alt="">
-                                        </span>
-                                        <span class="thumb-info-caption p-md pt-xlg pb-xlg">
-                                            <span class="custom-thumb-info-title">
-                                                <span class="custom-thumb-info-type font-weight-light text-md">Gastroenterology</span>
-                                                <span class="custom-thumb-info-inner font-weight-semibold text-lg">Robin Doe</span>
-                                                <i class="icon-arrow-right-circle icons font-weight-semibold text-lg "></i>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="pr-sm pl-sm">
-                                <a href="#" data-href="demo-medical-doctors-detail.html" data-ajax-on-page class="text-decoration-none">
-                                    <span class="thumb-info thumb-info-no-zoom thumb-info-hide-wrapper-bg">
-                                        <span class="thumb-info-wrapper m-none">
-                                            <img src="img/demos/medical/doctors/doctor-3.jpg" class="img-responsive" alt="">
-                                        </span>
-                                        <span class="thumb-info-caption p-md pt-xlg pb-xlg">
-                                            <span class="custom-thumb-info-title">
-                                                <span class="custom-thumb-info-type font-weight-light text-md">Pulmonology</span>
-                                                <span class="custom-thumb-info-inner font-weight-semibold text-lg">Jessica Doe</span>
-                                                <i class="icon-arrow-right-circle icons font-weight-semibold text-lg "></i>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="pr-sm pl-sm">
-                                <a href="#" data-href="demo-medical-doctors-detail.html" data-ajax-on-page class="text-decoration-none">
-                                    <span class="thumb-info thumb-info-no-zoom thumb-info-hide-wrapper-bg">
-                                        <span class="thumb-info-wrapper m-none">
-                                            <img src="img/demos/medical/doctors/doctor-4.jpg" class="img-responsive" alt="">
-                                        </span>
-                                        <span class="thumb-info-caption p-md pt-xlg pb-xlg">
-                                            <span class="custom-thumb-info-title">
-                                                <span class="custom-thumb-info-type font-weight-light text-md">Dental</span>
-                                                <span class="custom-thumb-info-inner font-weight-semibold text-lg">Rose Doe</span>
-                                                <i class="icon-arrow-right-circle icons font-weight-semibold text-lg "></i>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="pr-sm pl-sm">
-                                <a href="#" data-href="demo-medical-doctors-detail.html" data-ajax-on-page class="text-decoration-none">
-                                    <span class="thumb-info thumb-info-no-zoom thumb-info-hide-wrapper-bg">
-                                        <span class="thumb-info-wrapper m-none">
-                                            <img src="img/demos/medical/doctors/doctor-5.jpg" class="img-responsive" alt="">
-                                        </span>
-                                        <span class="thumb-info-caption p-md pt-xlg pb-xlg">
-                                            <span class="custom-thumb-info-title">
-                                                <span class="custom-thumb-info-type font-weight-light text-md">Gynecology</span>
-                                                <span class="custom-thumb-info-inner font-weight-semibold text-lg">Mary Ann Doe</span>
-                                                <i class="icon-arrow-right-circle icons font-weight-semibold text-lg "></i>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- drugs containing ingredient -->
-        <div>
-            <h3 class=" mb-sm">Famous drugs containing Acetaminophen</h3>
-            <section class="team">
-                <div>
-                    <div class="row mt-xlg">
-                        <div class="col-md-12">
-                            <div id="porfolioAjaxBoxMedical" class="ajax-box ajax-box-init mb-lg">
-
-                                <div class="bounce-loader">
-                                    <div class="bounce1"></div>
-                                    <div class="bounce2"></div>
-                                    <div class="bounce3"></div>
-                                </div>
-
-                                <div class="ajax-box-content" id="porfolioAjaxBoxContentMedical"></div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="row mb-xlg">
-                        <div class="owl-carousel owl-theme nav-bottom rounded-nav pl-xs pr-xs" data-plugin-options="{'items': 4, 'loop': false, 'dots': false, 'nav': true}">
-                            <div class="pr-sm pl-sm">
-                                <a href="#" data-href="demo-medical-doctors-detail.html" data-ajax-on-page class="text-decoration-none">
-                                    <span class="thumb-info thumb-info-no-zoom thumb-info-hide-wrapper-bg">
-                                        <span class="thumb-info-wrapper m-none">
-                                            <img src="img/demos/medical/doctors/doctor-1.jpg" class="img-responsive" alt="">
-                                        </span>
-                                        <span class="thumb-info-caption p-md pt-xlg pb-xlg">
-                                            <span class="custom-thumb-info-title">
-                                                <span class="custom-thumb-info-type font-weight-light text-md">Cardiology</span>
-                                                <span class="custom-thumb-info-inner font-weight-semibold text-lg">John Doe</span>
-                                                <i class="icon-arrow-right-circle icons font-weight-semibold text-lg "></i>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="pr-sm pl-sm">
-                                <a href="#" data-href="demo-medical-doctors-detail.html" data-ajax-on-page class="text-decoration-none">
-                                    <span class="thumb-info thumb-info-no-zoom thumb-info-hide-wrapper-bg">
-                                        <span class="thumb-info-wrapper m-none">
-                                            <img src="img/demos/medical/doctors/doctor-2.jpg" class="img-responsive" alt="">
-                                        </span>
-                                        <span class="thumb-info-caption p-md pt-xlg pb-xlg">
-                                            <span class="custom-thumb-info-title">
-                                                <span class="custom-thumb-info-type font-weight-light text-md">Gastroenterology</span>
-                                                <span class="custom-thumb-info-inner font-weight-semibold text-lg">Robin Doe</span>
-                                                <i class="icon-arrow-right-circle icons font-weight-semibold text-lg "></i>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="pr-sm pl-sm">
-                                <a href="#" data-href="demo-medical-doctors-detail.html" data-ajax-on-page class="text-decoration-none">
-                                    <span class="thumb-info thumb-info-no-zoom thumb-info-hide-wrapper-bg">
-                                        <span class="thumb-info-wrapper m-none">
-                                            <img src="img/demos/medical/doctors/doctor-3.jpg" class="img-responsive" alt="">
-                                        </span>
-                                        <span class="thumb-info-caption p-md pt-xlg pb-xlg">
-                                            <span class="custom-thumb-info-title">
-                                                <span class="custom-thumb-info-type font-weight-light text-md">Pulmonology</span>
-                                                <span class="custom-thumb-info-inner font-weight-semibold text-lg">Jessica Doe</span>
-                                                <i class="icon-arrow-right-circle icons font-weight-semibold text-lg "></i>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="pr-sm pl-sm">
-                                <a href="#" data-href="demo-medical-doctors-detail.html" data-ajax-on-page class="text-decoration-none">
-                                    <span class="thumb-info thumb-info-no-zoom thumb-info-hide-wrapper-bg">
-                                        <span class="thumb-info-wrapper m-none">
-                                            <img src="img/demos/medical/doctors/doctor-4.jpg" class="img-responsive" alt="">
-                                        </span>
-                                        <span class="thumb-info-caption p-md pt-xlg pb-xlg">
-                                            <span class="custom-thumb-info-title">
-                                                <span class="custom-thumb-info-type font-weight-light text-md">Dental</span>
-                                                <span class="custom-thumb-info-inner font-weight-semibold text-lg">Rose Doe</span>
-                                                <i class="icon-arrow-right-circle icons font-weight-semibold text-lg "></i>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="pr-sm pl-sm">
-                                <a href="#" data-href="demo-medical-doctors-detail.html" data-ajax-on-page class="text-decoration-none">
-                                    <span class="thumb-info thumb-info-no-zoom thumb-info-hide-wrapper-bg">
-                                        <span class="thumb-info-wrapper m-none">
-                                            <img src="img/demos/medical/doctors/doctor-5.jpg" class="img-responsive" alt="">
-                                        </span>
-                                        <span class="thumb-info-caption p-md pt-xlg pb-xlg">
-                                            <span class="custom-thumb-info-title">
-                                                <span class="custom-thumb-info-type font-weight-light text-md">Gynecology</span>
-                                                <span class="custom-thumb-info-inner font-weight-semibold text-lg">Mary Ann Doe</span>
-                                                <i class="icon-arrow-right-circle icons font-weight-semibold text-lg "></i>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-
-
-
-    <div class=" col-lg-4 ">
-        <aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 0}}">
-            <h3 class="mt-sm mb-md">Related drugs</h3>
-            <span class="thumb-info thumb-info-side-image thumb-info-no-zoom mb-sm">
-                <span class="thumb-info-side-image-wrapper">
-                    <img src="img/projects/project-8.jpg" class="img-responsive" alt="" style="width: 200px;">
-                </span>
-                <span class="thumb-info-caption">
-                    <span class="thumb-info-caption-text">
-                        <h5 class="text-uppercase mb-xs">Project Title</h5>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        <div class=" col-lg-4 ">
+            <aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 0}}">
+                <h3 class="mt-sm mb-md">Related drugs</h3>
+                <span class="thumb-info thumb-info-side-image thumb-info-no-zoom mb-sm">
+                    <span class="thumb-info-side-image-wrapper">
+                        <img src="img/projects/project-8.jpg" class="img-responsive" alt="" style="width: 200px;">
+                    </span>
+                    <span class="thumb-info-caption">
+                        <span class="thumb-info-caption-text">
+                            <h5 class="text-uppercase mb-xs">Project Title</h5>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </span>
                     </span>
                 </span>
-            </span>
 
-            <span class="thumb-info thumb-info-side-image thumb-info-no-zoom">
-                <span class="thumb-info-side-image-wrapper">
-                    <img src="img/projects/project-8.jpg" class="img-responsive" alt="" style="width: 200px;">
-                </span>
-                <span class="thumb-info-caption">
-                    <span class="thumb-info-caption-text">
-                        <h5 class="text-uppercase mb-xs">Project Title</h5>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                <span class="thumb-info thumb-info-side-image thumb-info-no-zoom">
+                    <span class="thumb-info-side-image-wrapper">
+                        <img src="img/projects/project-8.jpg" class="img-responsive" alt="" style="width: 200px;">
+                    </span>
+                    <span class="thumb-info-caption">
+                        <span class="thumb-info-caption-text">
+                            <h5 class="text-uppercase mb-xs">Project Title</h5>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </span>
                     </span>
                 </span>
-            </span>
-        </aside>
-    </div>
+            </aside>
+        </div>
 
-</div>
+    </div>
 </div>

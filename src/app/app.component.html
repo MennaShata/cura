@@ -1,50 +1,7 @@
 <div class="body">
     <header id="header" class="header-narrow" data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 35, 'stickySetTop': '-60px', 'stickyChangeLogo': false}">
         <div class="header-body">
-            <div class="header-top header-top header-top-style-3 header-top-custom">
-                <div class="container">
-                    <nav class="header-nav-top pull-right">
-                        <ul class="nav nav-pills">
-                            <li class=" col-lg-6 pull-left mt-md">
-                                <div class="input-group input-group-md ">
-                                    <input class="form-control" placeholder="Search..." name="s" id="s" type="text">
-                                    <span class="input-group-btn">
-                                        <button type="submit" class="btn btn-primary btn-md">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </span>
-                                </div>
-
-                            </li>
-                            <li class=" pull-right">
-
-                                <span class="ws-nowrap">
-                                    <a href="signIn.html">
-                                        <div class="col-md-12 btn btn-primary pull-right mt-sm ">
-                                            <i class="fa fa-sign-in" style="color:white"></i>
-                                            Login
-                                        </div>
-                                    </a>
-                                </span>
-
-                            </li>
-                            <li class=" pull-right">
-
-                                <span class="ws-nowrap">
-                                    <a href="signUp.html">
-                                        <div class="col-md-12 btn btn-primary pull-right mt-sm">
-                                            <i class="fa fa-user-plus" style="color:white"></i>
-                                            Register
-                                        </div>
-                                    </a>
-                                </span>
-
-                            </li>
-
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+           <app-header-top></app-header-top>
             <div class="header-container container">
                 <div class="header-row">
                     <div class="header-column">
@@ -64,23 +21,28 @@
                                     <nav>
                                         <ul class="nav nav-pills" id="mainNav">
                                             <li class="active dropdown-full-color dropdown-secondary">
-                                                <a href="Home.html">
+                                                <a [routerLink]="['/']">
                                                     Home
                                                 </a>
                                             </li>
 
                                             <li class="dropdown-full-color dropdown-secondary">
-                                                <a href="Drug Interaction.html">
+                                                <a [routerLink]="['/drug/interaction']">
                                                     Interaction Checker
                                                 </a>
                                             </li>
+                                            <li class="dropdown-full-color dropdown-secondary">
+                                                    <a [routerLink]="['/drug/listing']">
+                                                        Drug Search
+                                                    </a>
+                                                </li>
                                             <li class="dropdown-full-color dropdown-secondary">
                                                 <a href="news2.html">
                                                     News
                                                 </a>
                                             </li>
                                             <li class="dropdown-full-color dropdown-secondary">
-                                                <a href="pill identifier.html">
+                                                <a [routerLink]="['/pill/page']">
                                                     Pill Identifier
                                                 </a>
                                             </li>
