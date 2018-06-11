@@ -1,3 +1,4 @@
+import { Iuser } from './../../shared/models/interfaces/Iuser';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

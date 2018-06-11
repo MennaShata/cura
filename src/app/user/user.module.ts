@@ -5,14 +5,17 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
+
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [UserComponent,
     LoginComponent,
-    SignUpComponent,
-    UserProfileComponent
+    SignUpComponent
+,
+    UserProfileComponent,
+  
 ]
 })
 export class UserModule { }

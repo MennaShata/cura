@@ -16,6 +16,7 @@ export class FoodAddComponent implements OnInit {
   public food:Ifood;
   form: FormGroup;
   flag: Boolean;
+  BsModalRef: BsModalRef;
   
   
 

@@ -8,10 +8,10 @@ import { Injectable } from '@angular/core';
 export class FoodService {
 
   foodArray: Ifood[] = [
-    { id:1, name: 'potassium', icon: 'fa fa-edit'},
-    { id:2, name: 'Calcium', icon: 'fa fa-edit'},
-    { id:3, name: 'Vitamen C', icon: 'fa fa-edit'},
-    { id:4, name: 'Vitamen Z', icon: 'fa fa-edit'}
+    { id:1, name: 'potassium', icon: 'Po'},
+    { id:2, name: 'Calcium', icon: 'Ca'},
+    { id:3, name: 'Vitamen C', icon: 'C'},
+    { id:4, name: 'Vitamen Z', icon: 'Z'}
 ]; 
   public getFoodList() : Observable<Ifood[]>{
     debugger;
