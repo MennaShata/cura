@@ -11,13 +11,13 @@
             <div class="col-md-6">
               <label>Text on one side</label>
 
-              <input type="text" value="" name="FrontImprint" class="form-control" id ="Front" onkeyup = "disableFunction()">
+              <input type="text" name="FrontImprint" formControlName="FrontImprint" class="form-control" id ="Front" >
 
             </div>
             <div class="col-md-6">
               <label>Text on the other side</label>
 
-              <input type="text" name="BackImprint" value="" class="form-control" id ="Back" placeholder = "If Available" onkeyup = "disableFunction()">
+              <input type="text" name="BackImprint" formControlName="BackImprint" class="form-control" id ="Back" placeholder = "If Available" >
               
             </div>
           </div>
@@ -28,11 +28,9 @@
           <div class="form-group">
             <div class="col-md-12">
               <label>Color</label>
-              <select class="form-control" name="Color" id="Color">
-                  <option value="">None Selected</option>
-                  <option>White</option> 
-                  <option>Red</option> 
-                  <option>Green</option>
+              <select class="form-control" name="Color" formControlName="Color" id="Color" >
+                  <option [value]="0" [selected]=true >None Selected</option>
+                  <option  [value]="color.id" *ngFor="let color of colors">{{color.name}}</option>
                 </select>
 
             </div>
@@ -44,12 +42,9 @@
             <div class="col-md-12">
               <label>Shape</label>
 
-              <select class="form-control" name="Shape" id="Shape">
-                <option value="" style="background-image:url(~/Images/6.jpg);">None Selected</option>
-                  <option>Round</option>
-                  <option>Rectangle</option> 
-                  <option>Square</option> 
-                  <option>Oval</option>
+              <select class="form-control" name="Shape" formControlName="Shape" id="Shape">
+                <option [value]="0" [selected]=true >None Selected</option>
+                <option [value]="shape.id" *ngFor="let shape of shapes">{{shape.name}}</option>
               </select>
                
             </div>
@@ -59,7 +54,7 @@
         <div class="row">
             <div class="col-md-12">
                
-              <button class="btn btn-primary pull-right mb-xl" type="submit" id="search_button" disabled>
+              <button class="btn btn-primary pull-right mb-xl" type="submit" id="search_button" >
                 <span>
                     Search <i class="fa fa-search"></i>
                 </span>

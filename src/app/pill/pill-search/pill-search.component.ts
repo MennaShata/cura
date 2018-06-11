@@ -3,7 +3,7 @@ import { PillService } from '../../shared/services/pill/Pill.service';
 import { ColorService } from '../../shared/services/color/color.service';
 import { ShapeService } from '../../shared/services/shape/shape.service';
 import { FormControl } from '@angular/forms';
-import { FormGroup } from '@angular/forms';
+import { FormGroup,  Validators } from '@angular/forms';
 import { Ishape } from '../../shared/models/interfaces/ishape';
 import { Icolor } from '../../shared/models/interfaces/Icolor';
 import { Ipill } from '../../shared/models/interfaces/ipill';
@@ -15,38 +15,52 @@ import { Ipill } from '../../shared/models/interfaces/ipill';
 })
 export class PillSearchComponent implements OnInit {
 
+  color: number;
+  shape: number;
+  backImprint:string;
+  frontImprint: string;
   searchForm: FormGroup;
   shapes: Ishape[];
   colors: Icolor[];
   pill: any;
-
+  // public menuMessage: any ;
 
   constructor(private pillService: PillService, private colorService: ColorService, private shapeService: ShapeService) { }
 
   ngOnInit() {
-
+    // this.menuMessage = "countryCodeAFcountryNameAfghanistan";
     this.colors = this.colorService.getAll();
     this.shapes = this.shapeService.getAll();
+    
 
 
     this.searchForm = new FormGroup({
-      textOnSide: new FormControl(),
-      textOnOther: new FormControl(),
-      shapeName: new FormControl(),
-      colorName: new FormControl(),
+      FrontImprint: new FormControl(),
+      BackImprint: new FormControl(),
+      Shape: new FormControl(null),
+      Color: new FormControl(),
     });
-
-
+    //  debugger;
+    //  console.log(this.searchForm.controls['Shape']);
+    //  console.log((<FormGroup>this.searchForm).controls['Shape']);
+    //  this.searchForm.controls['Shape'].patchValue(this.default);
+    // (<FormGroup>this.searchForm).controls['Shape'].setValue(this.menuMessage, {onlySelf: true});
   }
    
   searchPill() {
-    this.pill = {
-      frontImprint: this.searchForm.get('textOnSide').value,
-      backImprint: this.searchForm.get('textOnOther').value,
-      shape: this.searchForm.get('shapeName').value,
-      color: this.searchForm.get('colorName').value
-    }
-    this.pillService.Search(this.pill);
+   console.log("ana gwa al ts lsa hro7 ll service");
+
+   console.log(this.searchForm.get('FrontImprint').value);
+   console.log(this.searchForm.get('BackImprint').value);
+   console.log(this.searchForm.get('Color').value);
+   console.log(this.searchForm.get('Shape').value);
+  
+      this.frontImprint = this.searchForm.get('FrontImprint').value;
+      this.backImprint = this.searchForm.get('BackImprint').value;
+      this.shape = this.searchForm.get('Shape').value;
+      this.color = this.searchForm.get('Color').value;
+    //debugger;
+    this.pillService.Search(this.frontImprint,this.backImprint,this.shape,this.color);
   }
 
 

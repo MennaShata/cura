@@ -9,3 +9,9 @@
     padding: 0 0 25px;
     position: relative;
 }
+.sidebar
+{
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+}

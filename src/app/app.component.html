@@ -21,23 +21,28 @@
                                     <nav>
                                         <ul class="nav nav-pills" id="mainNav">
                                             <li class="active dropdown-full-color dropdown-secondary">
-                                                <a href="Home.html">
+                                                <a [routerLink]="['/']">
                                                     Home
                                                 </a>
                                             </li>
 
                                             <li class="dropdown-full-color dropdown-secondary">
-                                                <a href="Drug Interaction.html">
+                                                <a [routerLink]="['/drug/interaction']">
                                                     Interaction Checker
                                                 </a>
                                             </li>
+                                            <li class="dropdown-full-color dropdown-secondary">
+                                                    <a [routerLink]="['/drug/listing']">
+                                                        Drug Search
+                                                    </a>
+                                                </li>
                                             <li class="dropdown-full-color dropdown-secondary">
                                                 <a href="news2.html">
                                                     News
                                                 </a>
                                             </li>
                                             <li class="dropdown-full-color dropdown-secondary">
-                                                <a href="pill identifier.html">
+                                                <a [routerLink]="['/pill/page']">
                                                     Pill Identifier
                                                 </a>
                                             </li>

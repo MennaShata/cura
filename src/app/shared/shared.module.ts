@@ -10,6 +10,8 @@ import { DrugPipe } from './pipes/drug.pipe';
 import { ListingCarouselComponent } from 'src/app/shared/components/listing-carousel/listing-carousel.component';
 import { CarouselSmallItemComponent } from 'src/app/shared/components/carousel-small-item/carousel-small-item.component';
 import { HeaderTopComponent } from 'src/app/shared/components/header-top/header-top.component';
+import { FoodInteractionCarouselListingComponent } from 'src/app/shared/components/food-interaction-carousel-listing/food-interaction-carousel-listing.component';
+import { FoodInteractionCarouselComponent } from 'src/app/shared/components/food-interaction-carousel/food-interaction-carousel.component';
 
 @NgModule({
   imports: [CommonModule, [FormsModule]],
@@ -22,7 +24,9 @@ import { HeaderTopComponent } from 'src/app/shared/components/header-top/header-
     LatestNewsComponent,
     ListingCarouselComponent,
     CarouselSmallItemComponent,
-    HeaderTopComponent
+    HeaderTopComponent,
+    FoodInteractionCarouselListingComponent,
+    FoodInteractionCarouselComponent
   ],
   exports: [
     SearchComponent, 
@@ -31,6 +35,7 @@ import { HeaderTopComponent } from 'src/app/shared/components/header-top/header-
     DrugPipe,
     LatestNewsComponent,
     ListingCarouselComponent,
+    FoodInteractionCarouselListingComponent,
     HeaderTopComponent]
 })
 

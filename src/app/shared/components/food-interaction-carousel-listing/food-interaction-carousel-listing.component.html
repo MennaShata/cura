@@ -1,0 +1,18 @@
+<section class="team">
+  <div>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="porfolioAjaxBoxMedical" class="ajax-box ajax-box-init ">
+          <div class="ajax-box-content" id="porfolioAjaxBoxContentMedical"></div>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="owl-carousel owl-theme nav-bottom rounded-nav pl-xs pr-xs mydiv " data-plugin-options="{'items': 4, 'loop': false, 'dots': false, 'nav': true}">
+        <app-food-interaction-carousel class="pr-sm pl-sm" *ngFor="let fi of foodinteractions" [foodInteraction]=fi></app-food-interaction-carousel>
+      </div>
+    </div>
+  </div>
+</section>

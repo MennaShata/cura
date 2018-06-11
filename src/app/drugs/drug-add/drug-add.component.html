@@ -75,7 +75,7 @@
                         </label>
                       </div>
                     </div>
-                    <!-- <div *ngIf="myForm.get('pregnancyWarning').touched && myForm.get('pregnancyWarning').invalid" style="color:red">Pregnancy Warning is required</div> -->
+                     <div *ngIf="myForm.get('pregnancyWarning').invalid" style="color:red">Pregnancy Warning is required</div> 
                   </div>
 
                   <div class="form-group">
@@ -95,7 +95,7 @@
                         </label>
                       </div>
                     </div>
-                    <!-- <div *ngIf="myForm.get('childernWarning').touched && myForm.get('childernWarning').invalid" style="color:red">Childern Warning is required</div> -->
+                    <div *ngIf="myForm.get('childernWarning').invalid" style="color:red">Childern Warning is required</div>
 
                   </div>
 

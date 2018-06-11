@@ -9,6 +9,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { FoodAddComponent } from '../food-add/food-add.component';
 
 
+
 @Component({
   selector: 'app-food-listing',
   templateUrl: './food-listing.component.html',
@@ -22,7 +23,7 @@ export class FoodListingComponent implements OnInit {
    }
 
   ngOnInit() {  
-      this.foodlist = this.FoodService.getFoodList();
+      this.FoodService.getFoodList().subscribe(res => {this.foodlist = res; debugger} );
     
   }
 //   btnClick= function () {
@@ -32,4 +33,5 @@ public openModalWithComponent() {
   /* this is how we open a Modal Component from another component */
   this.bsModalRef = this.modalService.show(FoodAddComponent, Object.assign({},{ class:'modal-lg'}));
 }
+
 }
