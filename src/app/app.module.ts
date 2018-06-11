@@ -17,7 +17,7 @@ import { PillComponent } from './pill/pill.component';
 import { PillItemComponent } from './pill/pill-item/pill-item.component';
 
 import { SideEffectItemComponent } from './side-effects/side-effect-item/side-effect-item.component';
-import { FormsModule ,ReactiveFormsModule }   from '@angular/forms';
+import { FormsModule ,ReactiveFormsModule, FormGroup, FormControl }   from '@angular/forms';
 import { DiseaseSmallItemComponent } from './diseases/disease-small-item/disease-small-item.component';
 import { DiseaseLisingComponent } from './diseases/disease-lising/disease-lising.component';
 import { DiseaseComponentComponent } from './diseases/disease-component/disease-component.component';
@@ -43,7 +43,6 @@ import { ActiveIngredientModule } from './active-ingredients/active-ingredient.m
 import { SideEffectModule } from './side-effects/side-effect.module';
 import { SharedModule } from './shared/shared.module';
 import { DiseaseAddComponent } from './diseases/disease-add/disease-add.component';
-import { HomeComponent } from './Home/Home.component';
 import { SideEffectAddComponent } from './side-effects/side-effect-add/side-effect-add.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { ModalModule } from 'ngx-bootstrap';
@@ -57,15 +56,22 @@ import { PostListingComponent } from './communities/post-listing/post-listing.co
 import { CommunitiesComponent } from './communities/communities.component';
 import { CommunityDetailsComponent } from './communities/community-details/community-details.component';
 import { CommunityListingComponent } from './communities/community-listing/community-listing.component';
+import { DrugInteractionService } from './shared/services/drugInteraction/drugInteraction.service';
+import { CarouselModule } from 'ngx-bootstrap';
+import { LoginComponent } from './user/login/login.component';
 import { CommunityEditComponent } from './communities/community-edit/community-edit.component';
 import { FoodInteractionModule } from './Interactions/food-Interaction/food-Interaction.module';
 import { CommunityAddComponent } from './communities/community-add/community-add.component';
+import { UserModule } from './user/user.module';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
+import {HomePageModule} from './HomePage/HomePage.module';
+import { IndexComponent } from './HomePage/index/index.component';
 
 
 
 
 const routes: Routes = [
-  {path :'', component : HomeComponent},
+  {path :'', component : IndexComponent},
   {path:'drug',children:[
     { path: 'listing', component: DrugListingComponent },
     { path:'details/:id' , component :DrugDetailsComponent},
@@ -116,6 +122,8 @@ const routes: Routes = [
 
   { path:'addFood' , component :FoodAddComponent},
   { path:'editFood/:id' , component :FoodEditComponent},
+  { path:'login' , component :LoginComponent},
+  { path:'signup' , component :SignUpComponent},
 
   {path:'pill',children:[
     { path:'page', component: PillComponent},
@@ -133,7 +141,6 @@ const routes: Routes = [
     FoodAddComponent,
     FoodListingComponent,
     SingleFoodInteractionComponent,
-    HomeComponent,
     FoodAddComponent,
     FoodEditComponent
 ],
@@ -154,12 +161,16 @@ const routes: Routes = [
     [ReactiveFormsModule],
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
-    FoodInteractionModule
+    FoodInteractionModule,
+    CarouselModule.forRoot(),
+    UserModule,
+    HomePageModule
+  
   ],
   providers: [
     DiseaseServiceService,
     ActiveIngredientService,
-    BsModalService
+    BsModalService,
   ],
   bootstrap: [AppComponent]
 })

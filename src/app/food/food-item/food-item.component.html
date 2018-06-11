@@ -2,15 +2,15 @@
   <div class="box-content" style="padding-top:18px">
     <div class="row drug-buttons ">
       <div class="col-md-offset-10 col-xs-offset-9">
-        <button type="button" class="btn-borders btn-primary btn-info primary btn-xs">
-          <a [routerLink]="['/editFood',food.id]">
+        <button type="button" class="btn-borders btn-primary btn-info primary btn-xs" (click)="openEditModalWithComponent(food.id)">
+          <!-- <a [routerLink]="['/editFood',food.id]"> -->
             <i class="fa fa-edit ">
             </i>
-          </a>
+          <!-- </a> -->
         </button>
-        <button type="button" class="btn-danger primary btn-xs btn-borders">
+        <button type="button" class="btn-danger primary btn-xs btn-borders" (click)="onDelete(food.id)">
           <a >
-            <i class="fa fa-trash" (click)="onDelete(food.id)">
+            <i class="fa fa-trash">
             </i>
           </a>
         </button>
@@ -18,12 +18,14 @@
     </div>
     <div class="row">
 
-      <div class="col-md-4 col-xs-4">
-        <i class="{{food.icon}}"></i>
+      <div class="col-md-2 col-xs-2 col-md-offset-3 col-xs-offset-3">
+          <i class="icon-featured pull-left mr-lg">{{food.icon}}</i>
       </div>
-      <div class="col-md-8 col-xs-8">
-        {{food.name}}
-      </div>
+    </div>
+    <div class="row foodName">
+      <strong>{{food.name}}</strong>
+            
+         
     </div>
   </div>
 </div>

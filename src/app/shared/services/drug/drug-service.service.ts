@@ -50,6 +50,8 @@ export class DrugServiceService {
     approvalHistory:' 08/12/2010',
     color:0,
     shape:0,
+    textOnSide:'23',
+    textOnOtherSide:'panadol',
     pillImage:'../../../assets/images/panadol-pill.jpg',
     disease:[2,3],
     sideEffect:[1,2],
@@ -73,6 +75,8 @@ export class DrugServiceService {
     approvalHistory:' 02/10/2005',
     color:3,
     shape:0,
+    textOnSide:'12',
+    textOnOtherSide:'asprin',
     pillImage:'../../../assets/images/panadol-pill.jpg',
     disease:[0,3],
     sideEffect:[1,2],
@@ -85,8 +89,7 @@ dataChanged:Subject<Idrug[]>;
 constructor() { }
 // getAllDrug()
 // {
-//   debugger;
-//   return this.arr;
+//   return this.drugs.slice();
 // }
 
 getAllDrug():Observable<Idrug[]>
@@ -100,6 +103,13 @@ getById(id){
     return this.drugs[index];
   }
   
+}
+getAllDrugsName(){
+  let drugsName:string[]=[];
+  for(let i=0;i<this.drugs.length;i++){
+    drugsName.push(this.drugs[i].drugName);
+  }
+  return drugsName;
 }
 drugDelete(id){
   const index = this.drugs.findIndex(a=>a.id ===id);

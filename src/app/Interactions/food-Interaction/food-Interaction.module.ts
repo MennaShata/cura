@@ -8,7 +8,7 @@ import { FoodInteractionComponent } from "./food-Interaction.component";
   imports: [CommonModule],
   declarations: [
     FoodInteractionComponent,
-    FoodInteractionsListingComponent,
+     FoodInteractionsListingComponent,
     FoodInteractionItemComponent
   ],
   exports:[

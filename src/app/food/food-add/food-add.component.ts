@@ -11,10 +11,12 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
   styleUrls: ['./food-add.component.css']
 })
 export class FoodAddComponent implements OnInit {
-  constructor(private FoodService: FoodService,public bsModalRef: BsModalRef) { }
+ 
+  constructor(private FoodService: FoodService) { }
   public food:Ifood;
   form: FormGroup;
   flag: Boolean;
+  BsModalRef: BsModalRef;
   
   
 
@@ -23,6 +25,7 @@ export class FoodAddComponent implements OnInit {
     this.form = new FormGroup({
       foodname: new FormControl('', Validators.required),
       foodicon: new FormControl('', Validators.required),
+      
     });
   }
   get foodname(){
@@ -31,9 +34,10 @@ export class FoodAddComponent implements OnInit {
   get foodicon(){
     return this.form.get('foodicon');
   }
+
  
   addFood(){
-    if(this.foodname.value != '' && this.foodicon.value != ''){
+    if(this.form.valid){
       this.flag = true;
         this.food = {
               
@@ -46,6 +50,12 @@ export class FoodAddComponent implements OnInit {
        }
        else{
          this.flag = false;
+         this.foodname.setErrors({
+           invalidFoodName:true
+         });
+         this.foodicon.setErrors({
+           invalidFoodIcon:true
+         });
        }
     
     console.log(this.food)
