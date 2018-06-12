@@ -1,4 +1,4 @@
-<div class="container">
+
   <form [formGroup]="editForm" (ngSubmit)="updatePill()">
     <div class="col-md-12">
 
@@ -65,12 +65,6 @@
                   </div>
                 </div>
 
-
-                <select ng-model="sortorder" ng-init="sortorder='publish_date'">
-                  <option value="publish_date">Ascending</option>
-                  <option value="-publish_date">Descending</option>
-                </select>
-
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Upload Pill Image</label>
                   <div class="col-sm-10">
@@ -92,7 +86,7 @@
                 </div>
 
                 <div class="">
-                  <button type="button" class="btn btn-tertiary mr-xs mb-sm">Cancel</button>
+                  <button type="button" class="btn btn-tertiary mr-xs mb-sm" (click)="bsModalRef.hide()">Cancel</button>
                   <button type="submit" class="btn btn-tertiary mr-xs mb-sm">Update</button>
                 </div>
               </div>
@@ -104,4 +98,4 @@
     <!-- </div>
   </div> -->
   </form>
-</div>
+

@@ -11,7 +11,7 @@ import { FoodAddComponent } from '../food-add/food-add.component';
 @Component({
   selector: 'app-food-listing',
   templateUrl: './food-listing.component.html',
-  styleUrls: ['./food-listing.component.css']
+  styleUrls: ['./food-listing.component.css'],
 })
 export class FoodListingComponent implements OnInit {
   bsModalRef: BsModalRef
@@ -21,8 +21,8 @@ export class FoodListingComponent implements OnInit {
    }
 
   ngOnInit() {  
-      this.FoodService.getFoodList().subscribe(res => {this.foodlist = res; debugger} );
-    
+      this.FoodService.getFoodList().subscribe(res => {this.foodlist = res} );
+  
   }
 //   btnClick= function () {
 //     this.router.navigate(['/addFood']);

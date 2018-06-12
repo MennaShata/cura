@@ -14,13 +14,11 @@ export class FoodService {
     { id:4, name: 'Vitamen Z', icon: 'Z'}
 ]; 
   public getFoodList() : Observable<Ifood[]>{
-    debugger;
     return of(this.foodArray);
   }
   public deleteFood(id:number){
     const index = this.foodArray.findIndex(a=>a.id == id);
     if(index > -1){
-      debugger;
       this.foodArray.splice(index,1);
     }
     
@@ -37,10 +35,10 @@ export class FoodService {
 
   }
   public save(newFood:Ifood){
-    debugger;
     const oldFood = this.getById(newFood.id);
     oldFood.icon = newFood.icon;
     oldFood.name = newFood.name
+    
   }
 constructor() {
  

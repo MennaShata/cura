@@ -8,6 +8,9 @@ import { StrengthService } from '../../shared/services/strength/strength.service
 import { Ishape } from '../../shared/models/interfaces/ishape';
 import { Icolor } from '../../shared/models/interfaces/Icolor';
 import { IstrengthUnit } from '../../shared/models/interfaces/Istrength-unit';
+import { BsModalService } from 'ngx-bootstrap';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { PillEditComponent } from '../pill-edit/pill-edit.component';
 
 @Component({
   selector: 'app-pill-item',
@@ -18,9 +21,10 @@ export class PillItemComponent implements OnInit {
   strengthUnit: IstrengthUnit;
   shape: Ishape;
   color: Icolor;
+  bsModalRef: BsModalRef;
 
   @Input() pill: Ipill;
-  constructor(private pillservice: PillService, private colorService: ColorService, private shapeService: ShapeService, private strengthService: StrengthService, ) { }
+  constructor(private pillservice: PillService, private colorService: ColorService, private shapeService: ShapeService, private strengthService: StrengthService,private modalService: BsModalService) { }
 
   deletePill(id: number) {
     this.pillservice.Delete(id);
@@ -30,6 +34,14 @@ export class PillItemComponent implements OnInit {
     this.strengthUnit = this.strengthService.getById(this.pill.strengthUnit);
     this.color = this.colorService.getById(this.pill.color);
     this.shape = this.shapeService.getById(this.pill.shape);
+    //console.log()
   }
 
+  public openModalWithComponent(_id: number) {
+    const initialState=
+    {
+      id  : _id 
+    }
+    this.bsModalRef = this.modalService.show(PillEditComponent, {initialState});
+  }
 }

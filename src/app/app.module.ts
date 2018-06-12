@@ -1,3 +1,5 @@
+import { FoodService } from './shared/services/food.service';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { FoodEditComponent } from './food/food-edit/food-edit.component';
 import { FoodListingComponent } from './food/food-listing/food-listing.component';
 import { FoodInteractionItemComponent } from './Interactions/Food-Interaction/Food-Interaction-Item/Food-Interaction-Item.component';
@@ -61,6 +63,13 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
 import {HomePageModule} from './HomePage/HomePage.module';
 import { IndexComponent } from './HomePage/index/index.component';
 import { PostDetailsComponent } from './communities/post-details/post-details.component';
+import { SideEffectEditComponent } from './side-effects/side-effect-edit/side-effect-edit.component';
+import { Http } from '@angular/http';
+
+
+import {MatSelectModule} from '@angular/material/select';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 const routes: Routes = [
   {path :'', component : IndexComponent},
@@ -74,11 +83,12 @@ const routes: Routes = [
   
   { path: 'food', component: FoodItemComponent},
   { path: 'food/add', component: FoodAddComponent},
-  { path: 'sideeffectlisting', component: SideEffectListingComponent},
-  { path: 'sideeffectlisting2', component: SideEffectsComponent},
+  { path: 'sideeffectlisting', component: SideEffectsComponent},
+  { path: 'sideeffectlisting2', component: SideEffectListingComponent},
   { path:'addsideeffect' , component:SideEffectAddComponent},
   { path: 'interactions/foodinteraction', component: FoodInteractionItemComponent},
   {path :'sideeffect', component:SideEffectItemComponent },
+  { path:'editsideeffect/:id' , component :SideEffectEditComponent},
 
   {path:'activeingredient',children:[
     { path:'listing', component: ActiveIngredientListingComponent},
@@ -113,6 +123,11 @@ const routes: Routes = [
     { path:'addPill' , component: DrugAddComponent},
     { path:'editPill/:id' , component: PillEditComponent},
   ]},
+  {path:'user',children:[
+    {path:'login', component: LoginComponent},
+    {path:'signup', component: SignUpComponent},
+    {path:'profile', component: UserProfileComponent}
+  ]}
 ];
 
 @NgModule({
@@ -139,19 +154,21 @@ const routes: Routes = [
     SideEffectModule,
     SharedModule,
     CommunitiesModule,
-    [ReactiveFormsModule],
-    ReactiveFormsModule,
     RouterModule.forRoot(routes),
     FoodInteractionModule,
     CarouselModule.forRoot(),
     UserModule,
-    HomePageModule
+    HomePageModule,
+    MatSelectModule,
+    BrowserAnimationsModule
   
   ],
   providers: [
     DiseaseServiceService,
     ActiveIngredientService,
     BsModalService,
+    FoodService,
+    
   ],
   bootstrap: [AppComponent]
 })

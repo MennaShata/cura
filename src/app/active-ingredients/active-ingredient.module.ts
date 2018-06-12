@@ -7,13 +7,16 @@ import { ActiveIngredientDetailsComponent } from './active-ingredient-details/ac
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
+import {MatSelectModule} from '@angular/material/select';
+
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    MatSelectModule
   ],
   declarations: [
     ActiveIngredientAddComponent,

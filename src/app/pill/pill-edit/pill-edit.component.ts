@@ -15,6 +15,8 @@ import { StrengthService } from '../../shared/services/strength/strength.service
 import { FormControl } from '@angular/forms';
 import { NgControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BsModalRef } from 'ngx-bootstrap';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-pill-edit',
@@ -23,23 +25,27 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class PillEditComponent implements OnInit {
   title = '';
-  id: number;
+  // id: number;
   shapes: Ishape[];
   colors: Icolor[];
   strengthUnits: IstrengthUnit[];
   editForm: FormGroup;
   drug: Idrug;
   pill: Ipill;
-  
+  //bsModalRef: BsModalRef;
+  @Input() id :  number ;
 
-  constructor(private pillService: PillService, private drugService: DrugServiceService, private colorService: ColorService, private shapeService: ShapeService, private strengthService: StrengthService, private activatedRoute: ActivatedRoute, private route: Router) { }
+  constructor(private pillService: PillService, private drugService: DrugServiceService, private colorService: ColorService, private shapeService: ShapeService, private strengthService: StrengthService, private activatedRoute: ActivatedRoute, private route: Router,  public bsModalRef: BsModalRef ) { }
 
   ngOnInit() {
+    if(this.id == undefined){
     this.activatedRoute.params.subscribe((params) => { this.id = params['id']; });
+    }
     this.title = 'Edit Pill';
-
+    debugger;
     this.drug = this.drugService.getById(this.id);
     this.pill = this.pillService.getById(this.id);
+    console.log("al pill gwa al edit aly hy bind beha");
     console.log(this.pill);
     this.strengthUnits = this.strengthService.getAll();
     this.colors = this.colorService.getAll();
@@ -86,7 +92,7 @@ export class PillEditComponent implements OnInit {
       image: this.editForm.get('pillImage').value
     }
     this.pillService.Update(this.pill);
-    this.route.navigate(['pill/page']);
+    //this.route.navigate(['pill/page']);
   }
 
 }
