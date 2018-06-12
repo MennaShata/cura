@@ -48,18 +48,16 @@ export class PillSearchComponent implements OnInit {
   }
    
   searchPill() {
-   console.log("ana gwa al ts lsa hro7 ll service");
-
-   console.log(this.searchForm.get('FrontImprint').value);
-   console.log(this.searchForm.get('BackImprint').value);
-   console.log(this.searchForm.get('Color').value);
-   console.log(this.searchForm.get('Shape').value);
-  
+  //  console.log("ana gwa al ts lsa hro7 ll service");
+  //  console.log(this.searchForm.get('FrontImprint').value);
+  //  console.log(this.searchForm.get('BackImaaprint').value);
+  //  console.log(this.searchForm.get('Color').value);
+  //  console.log(this.searchForm.get('Shape').value);
       this.frontImprint = this.searchForm.get('FrontImprint').value;
       this.backImprint = this.searchForm.get('BackImprint').value;
       this.shape = this.searchForm.get('Shape').value;
       this.color = this.searchForm.get('Color').value;
-    //debugger;
+    debugger;
     this.pillService.Search(this.frontImprint,this.backImprint,this.shape,this.color);
   }
 

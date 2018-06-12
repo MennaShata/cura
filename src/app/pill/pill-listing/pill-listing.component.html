@@ -1,4 +1,4 @@
-<div role="main" class="main">
+<div role="main" class="main" *ngIf="this.pillservice.listOfPills.length"  id="a">
 
     <section class="page-header section section-primary section-no-border section-center page-header-custom-background m-none">
         <div class="container">
@@ -21,7 +21,7 @@
             <div class="row">
                 <ul class="team-list " data-sort-id="team">
 
-                    <app-pill-item class="col-md-3" [pill]="pill" *ngFor="let pill of pills"></app-pill-item>
+                    <app-pill-item class="col-md-3" [pill]="i" *ngFor="let i of pills" ></app-pill-item>
 
                 </ul>
             </div>

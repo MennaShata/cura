@@ -9,7 +9,7 @@ import { DrugServiceService } from '../drug/drug-service.service';
 export class PillService {
   private oldPill: Ipill;
   private pills: Ipill[];
-  private listOfPills: Ipill[];
+   listOfPills: Ipill[]=[];
 
   constructor(private drugService: DrugServiceService) {
     this.pills = [
@@ -111,21 +111,22 @@ export class PillService {
     ]
   }
   public getPillsList() {
-    return this.pills;
+    debugger;
+    return this.listOfPills;
   }
 
   public getById(id: number) {
-    for (let i = 0; i < this.pills.length; i++) {
-      if (this.pills[i].id == id) {
-        return this.pills[i];
+    for (let i = 0; i < this.listOfPills.length; i++) {
+      if (this.listOfPills[i].id == id) {
+        return this.listOfPills[i];
       }
     }
   }
 
   Delete(id: number) {
-    let index = this.pills.findIndex(a => a.id === id);
+    let index = this.listOfPills.findIndex(a => a.id === id);
     if (index > -1) {
-      this.pills.splice(index, 1);
+      this.listOfPills.splice(index, 1);
     }
   }
 
@@ -232,6 +233,7 @@ export class PillService {
     {
       console.log("gwa step 12 .. no Back & Color & Shape");
       this.listOfPills = (this.pills).filter(pill => (pill.frontImprint == frontImprint) || (pill.backImprint == frontImprint));
+      debugger;
     }
     //13- no Front & Color & Shape
     else if ((frontImprint == null || frontImprint == "") && (backImprint != null && backImprint != "") && (color == null || color == 0) && (shape == null || shape == 0))
@@ -254,8 +256,7 @@ export class PillService {
     }
     console.log("ana 3rft al lista bta3t al pill 5las");
     console.log(this.listOfPills);
-    return this.listOfPills;
-
+    // return this.listOfPills;
   }
 
 
