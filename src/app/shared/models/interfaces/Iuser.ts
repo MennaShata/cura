@@ -11,5 +11,4 @@ export interface Iuser {
     image?: string;
     country?: string;
     city?: string;
-
 }   

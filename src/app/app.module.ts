@@ -72,6 +72,8 @@ import { SideEffectEditComponent } from './side-effects/side-effect-edit/side-ef
 import { Http } from '@angular/http';
 
 
+import {MatSelectModule} from '@angular/material/select';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 const routes: Routes = [
@@ -168,13 +170,13 @@ const routes: Routes = [
     SideEffectModule,
     SharedModule,
     CommunitiesModule,
-    [ReactiveFormsModule],
-    ReactiveFormsModule,
     RouterModule.forRoot(routes),
     FoodInteractionModule,
     CarouselModule.forRoot(),
     UserModule,
-    HomePageModule
+    HomePageModule,
+    MatSelectModule,
+    BrowserAnimationsModule
   
   ],
   providers: [
