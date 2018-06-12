@@ -77,7 +77,6 @@ export class DrugAddComponent implements OnInit{
     if(this.id){
       this.title = 'Edit Drug';
       this.drug = this.drugservice.getById(this.id);
-      debugger;
       this.drugActiveIngredient=[];
       for(let i=0;i<this.drug.activeIngredient.length;i++){
         this.drugActiveIngredient[i] = this.activeIngredientService.getById(this.drug.activeIngredient[i]);
@@ -107,13 +106,11 @@ export class DrugAddComponent implements OnInit{
             color : this.drugColor.id,
             strength : this.drug.strength,
             strengthUnit : this.drugStrengthUnit.id,
-            //approvalHistory : this.drug.approvalHistory,
-            //drugLogo : this.drug.image,
-            //pillImage : this.drug.pillImage
+            approvalHistory : this.drug.approvalHistory,
+            drugLogo : this.drug.image,
+            pillImage : this.drug.pillImage
           });
       }
-      debugger;
-     
       this.myForm.patchValue(
         {
        
@@ -129,8 +126,8 @@ export class DrugAddComponent implements OnInit{
           type : this.drugType.id,
           strength : this.drug.strength,
           strengthUnit : this.drugStrengthUnit.id,
-          //approvalHistory : this.drug.approvalHistory,
-          //drugLogo : this.drug.image
+          approvalHistory : this.drug.approvalHistory,
+          drugLogo : this.drug.image
         });
       }     
   }
