@@ -60,6 +60,8 @@ import { DrugInteractionService } from './shared/services/drugInteraction/drugIn
 import { CarouselModule } from 'ngx-bootstrap';
 import { LoginComponent } from './user/login/login.component';
 import { CommunityEditComponent } from './communities/community-edit/community-edit.component';
+import { FoodInteractionModule } from './Interactions/food-Interaction/food-Interaction.module';
+import { CommunityAddComponent } from './communities/community-add/community-add.component';
 import { UserModule } from './user/user.module';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import {HomePageModule} from './HomePage/HomePage.module';
@@ -98,22 +100,26 @@ const routes: Routes = [
   { path:'interactions/foodinteraction/page/:id', component: SingleFoodInteractionComponent},
   
   { path:'interactions/foodinteraction/page', component: SingleFoodInteractionComponent},
-  // {path:'diseaseDetails', component:DiseaseDetailsComponent},
-  { path:"diseaseComponent" ,component:DiseaseComponentComponent},
-  { path:"diseaseListing" ,component:DiseaseLisingComponent},
-  // { path:"diseaseEdit" ,component:DiseaseEditComponent},
-  { path:"diseaseEdit/:id" ,component:DiseaseEditComponent},
+ 
+  {path:'disease',children:[
+    { path: 'listing', component: DiseaseLisingComponent },
+    { path:"component" ,component:DiseaseComponentComponent},
+    { path:'details/:id' , component :DiseaseDetailsComponent},
+    { path:'add' , component:DiseaseAddComponent},
+    { path:'edit/:id' , component:DiseaseEditComponent},
+  ]},
 
   
-  { path:'diseaseDetails/:id' , component :DiseaseDetailsComponent},
-  { path:'diseaseAdd' , component :DiseaseAddComponent},
-  { path:'communityComponent' , component :CommunitiesComponent},
-  { path:'communityEdit' , component :CommunityEditComponent},
-  { path:'communityEdit/:id' , component :CommunityEditComponent},
+  {path:'community',children:[
+    { path: 'component', component: CommunitiesComponent },
+    { path:'details/:id' , component :CommunityDetailsComponent},
+    { path:'listing' , component:CommunityListingComponent},
+    { path:'edit/:id' , component:CommunityEditComponent},
+    { path:'add' , component:CommunityAddComponent},
+    
+  ]},
   { path:'postListing' , component :PostListingComponent},
-  { path:'communityListing' , component :CommunityListingComponent},
-  { path:'communityDetails' , component :CommunityDetailsComponent},
-  
+
   { path:'addFood' , component :FoodAddComponent},
   { path:'editFood/:id' , component :FoodEditComponent},
   { path:'login' , component :LoginComponent},
@@ -136,7 +142,7 @@ const routes: Routes = [
     FoodListingComponent,
     SingleFoodInteractionComponent,
     FoodAddComponent,
-    FoodEditComponent,
+    FoodEditComponent
 ],
   imports: [
     ModalModule.forRoot(),
@@ -155,6 +161,7 @@ const routes: Routes = [
     [ReactiveFormsModule],
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
+    FoodInteractionModule,
     CarouselModule.forRoot(),
     UserModule,
     HomePageModule
