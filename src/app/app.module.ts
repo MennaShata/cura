@@ -158,8 +158,6 @@ const routes: Routes = [
     SideEffectModule,
     SharedModule,
     CommunitiesModule,
-    [ReactiveFormsModule],
-    ReactiveFormsModule,
     RouterModule.forRoot(routes),
     FoodInteractionModule,
     CarouselModule.forRoot(),

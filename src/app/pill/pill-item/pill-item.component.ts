@@ -34,9 +34,14 @@ export class PillItemComponent implements OnInit {
     this.strengthUnit = this.strengthService.getById(this.pill.strengthUnit);
     this.color = this.colorService.getById(this.pill.color);
     this.shape = this.shapeService.getById(this.pill.shape);
+    //console.log()
   }
 
-  public openModalWithComponent() {
-    this.bsModalRef = this.modalService.show(PillEditComponent);
+  public openModalWithComponent(_id: number) {
+    const initialState=
+    {
+      id  : _id 
+    }
+    this.bsModalRef = this.modalService.show(PillEditComponent, {initialState});
   }
 }
