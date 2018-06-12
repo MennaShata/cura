@@ -64,8 +64,8 @@ import { UserModule } from './user/user.module';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import {HomePageModule} from './HomePage/HomePage.module';
 import { IndexComponent } from './HomePage/index/index.component';
-
-
+import {MatSelectModule} from '@angular/material/select';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 const routes: Routes = [
@@ -157,7 +157,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     CarouselModule.forRoot(),
     UserModule,
-    HomePageModule
+    HomePageModule,
+    MatSelectModule,
+    BrowserAnimationsModule
   
   ],
   providers: [
