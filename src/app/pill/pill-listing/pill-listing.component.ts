@@ -17,8 +17,9 @@ export class PillListingComponent implements OnInit {
   //   this.pills = this.pillservice.getPillsList();
   // }
   ngOnInit() {
+    console.log("hhhhhhhhh");
     console.log(this.pillservice.listOfPills);
-   this.pills=this.pillservice.listOfPills;
+   //this.pills=this.pillservice.listOfPills;
     // this.pills = this.pillservice.getPillsList();
   }
 }
