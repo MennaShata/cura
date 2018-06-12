@@ -1,3 +1,5 @@
+import { FoodService } from './shared/services/food.service';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { FoodEditComponent } from './food/food-edit/food-edit.component';
 import { FoodListingComponent } from './food/food-listing/food-listing.component';
 import { FoodInteractionItemComponent } from './Interactions/Food-Interaction/Food-Interaction-Item/Food-Interaction-Item.component';
@@ -126,6 +128,11 @@ const routes: Routes = [
     { path:'addPill' , component: DrugAddComponent},
     { path:'editPill/:id' , component: PillEditComponent},
   ]},
+  {path:'user',children:[
+    {path:'login', component: LoginComponent},
+    {path:'signup', component: SignUpComponent},
+    {path:'profile', component: UserProfileComponent}
+  ]}
 ];
 
 @NgModule({
@@ -164,6 +171,7 @@ const routes: Routes = [
     DiseaseServiceService,
     ActiveIngredientService,
     BsModalService,
+    FoodService
   ],
   bootstrap: [AppComponent]
 })

@@ -22,9 +22,13 @@ export class FoodItemComponent implements OnInit {
   onUpdate(id:number){
     
   }
-  public openEditModalWithComponent(id:number) {
+ 
+  public openEditModalWithComponent(_id:number) {
+    const initialState = {
+      id: _id
+    };
     /* this is how we open a Modal Component from another component */
-    this.bsModalRef = this.modalService.show(FoodEditComponent, Object.assign({},{ class:'modal-lg'},));
+    this.bsModalRef = this.modalService.show(FoodEditComponent,{initialState});
   }
 
   ngOnInit() {
