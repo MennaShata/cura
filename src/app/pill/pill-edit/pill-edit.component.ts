@@ -15,6 +15,7 @@ import { StrengthService } from '../../shared/services/strength/strength.service
 import { FormControl } from '@angular/forms';
 import { NgControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BsModalRef } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-pill-edit',
@@ -32,7 +33,7 @@ export class PillEditComponent implements OnInit {
   pill: Ipill;
   
 
-  constructor(private pillService: PillService, private drugService: DrugServiceService, private colorService: ColorService, private shapeService: ShapeService, private strengthService: StrengthService, private activatedRoute: ActivatedRoute, private route: Router) { }
+  constructor(private pillService: PillService, private drugService: DrugServiceService, private colorService: ColorService, private shapeService: ShapeService, private strengthService: StrengthService, private activatedRoute: ActivatedRoute, private route: Router ,  public bsModalRef: BsModalRef) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => { this.id = params['id']; });
