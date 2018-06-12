@@ -21,4 +21,7 @@ export class DrugListingComponent implements OnInit {
     )
   
   }
+  search(){
+    this.drugs = this.drugService.drugSearch(this.txtSearch);
+  }
 }
