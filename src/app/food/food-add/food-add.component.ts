@@ -18,9 +18,6 @@ export class FoodAddComponent implements OnInit {
   flag: Boolean;
   BsModalRef: BsModalRef;
   
-  
-
-
   ngOnInit() {
     this.form = new FormGroup({
       foodname: new FormControl('', Validators.required),
@@ -61,7 +58,7 @@ export class FoodAddComponent implements OnInit {
     console.log(this.food)
     
     console.log(this.FoodService.foodArray)
-    
+
   }
   
 }

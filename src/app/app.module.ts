@@ -52,23 +52,15 @@ import {DrugListingComponent} from './drugs/drug-listing/drug-listing.component'
 import { DrugInteractionListingComponent} from './Interactions/drug-interaction/drug-Interaction-Listing/drug-Interaction-Listing.component';
 import { DrugInteractionModule } from './Interactions/drug-interaction/drug-interaction.module';
 import { CommunitiesModule } from './communities/communities.module';
-import { PostListingComponent } from './communities/post-listing/post-listing.component';
-import { CommunitiesComponent } from './communities/communities.component';
-import { CommunityDetailsComponent } from './communities/community-details/community-details.component';
-import { CommunityListingComponent } from './communities/community-listing/community-listing.component';
 import { DrugInteractionService } from './shared/services/drugInteraction/drugInteraction.service';
 import { CarouselModule } from 'ngx-bootstrap';
 import { LoginComponent } from './user/login/login.component';
-import { CommunityEditComponent } from './communities/community-edit/community-edit.component';
 import { FoodInteractionModule } from './Interactions/food-Interaction/food-Interaction.module';
-import { CommunityAddComponent } from './communities/community-add/community-add.component';
 import { UserModule } from './user/user.module';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import {HomePageModule} from './HomePage/HomePage.module';
 import { IndexComponent } from './HomePage/index/index.component';
-
-
-
+import { PostDetailsComponent } from './communities/post-details/post-details.component';
 
 const routes: Routes = [
   {path :'', component : IndexComponent},
@@ -109,17 +101,6 @@ const routes: Routes = [
     { path:'edit/:id' , component:DiseaseEditComponent},
   ]},
 
-  
-  {path:'community',children:[
-    { path: 'component', component: CommunitiesComponent },
-    { path:'details/:id' , component :CommunityDetailsComponent},
-    { path:'listing' , component:CommunityListingComponent},
-    { path:'edit/:id' , component:CommunityEditComponent},
-    { path:'add' , component:CommunityAddComponent},
-    
-  ]},
-  { path:'postListing' , component :PostListingComponent},
-
   { path:'addFood' , component :FoodAddComponent},
   { path:'editFood/:id' , component :FoodEditComponent},
   { path:'login' , component :LoginComponent},
@@ -142,7 +123,7 @@ const routes: Routes = [
     FoodListingComponent,
     SingleFoodInteractionComponent,
     FoodAddComponent,
-    FoodEditComponent
+    FoodEditComponent,
 ],
   imports: [
     ModalModule.forRoot(),
