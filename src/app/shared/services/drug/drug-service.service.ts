@@ -83,9 +83,6 @@ export class DrugServiceService {
     foodInteraction:[1,2]
    }
   ];
-  private temp:Idrug[];
-@Output() searchChanged = new EventEmitter<string>();
-dataChanged:Subject<Idrug[]>;
 constructor() { }
 // getAllDrug()
 // {
@@ -184,10 +181,12 @@ drugSearch(e){
   // this.drugs = this.drugs.filter(function(ele){
   //   return ele.drugName == e;
   // })
-  const index = this.drugs.findIndex(a=>a.drugName===e);
+  const index = this.drugs.findIndex(a=>a.drugName==e);
   debugger;
+  console.log(this.drugs[index]);
   if(index >-1){
     this.drugs=[];
+    console.log(this.drugs);
     this.drugs.push(this.drugs[index]);
   }
   else{

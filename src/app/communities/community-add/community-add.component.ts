@@ -25,7 +25,6 @@ export class CommunityAddComponent implements OnInit {
     });
   }
   addCommunity(){
-    debugger;
     this.community={
       id:5,
       name: this.myForm.get('name').value,

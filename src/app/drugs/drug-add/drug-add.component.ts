@@ -23,6 +23,7 @@ import {StrengthService} from './../../shared/services/strength/strength.service
 export class DrugAddComponent implements OnInit{
  title='';
  id:number;
+ //values for dropdown list [add]
  activeIngredients:Iactiveingredient[];
  types:IdrugType[];
  shapes:Ishape[];
@@ -32,8 +33,9 @@ export class DrugAddComponent implements OnInit{
  myForm:FormGroup;
  drug:Idrug;
 
+ //drug values for edit
  drugActiveIngredient:Iactiveingredient[];
- drugTypes:IdrugType[];
+ drugType:IdrugType;
  drugColor:Icolor;
  drugShape:Ishape;
  drugStrengthUnit:IstrengthUnit;
@@ -43,7 +45,6 @@ export class DrugAddComponent implements OnInit{
   }
   
   ngOnInit() {
-    debugger;
     this.activeRoute.params.subscribe((params)=>{this.id=params['id'];});
     this.title='ADD Drug';
     this.activeIngredients=this.activeIngredientService.getAll();
@@ -72,61 +73,76 @@ export class DrugAddComponent implements OnInit{
       pillImage : new FormControl()
  
     });
+    //---------------Edit------------------
     if(this.id){
-      debugger;
       this.title = 'Edit Drug';
       this.drug = this.drugservice.getById(this.id);
-      // this.drugActiveIngredient=[];
-      // for(let i=0;i<this.drug.activeIngredient.length;i++){
-      //   this.drugActiveIngredient[i] = this.activeIngredientService.getById(this.drug.activeIngredient[i]);
-      // }
-      // this.drugStrengthUnit = this.strengthService.getById(this.drug.strengthUnit);
-      // this.drugTypes = [];
-      // this.drugTypes[0]=this.drugTypeService.getById(this.drug.drugTypeName);
-      // if(this.drugTypes[0].name=== 'Tablets'){
-      //    this.pill=true;
-        //  this.drugColor= this.colorService.getById(this.drug.color);
-        //  this.drugShape= this.shapeService.getById(this.drug.shape);
-     // }
-     for(let i=0;i<this.types.length;i++){
-      if(this.types[i].name=== 'Tablets'){
-          this.pill=true;
-     }}
+      debugger;
+      this.drugActiveIngredient=[];
+      for(let i=0;i<this.drug.activeIngredient.length;i++){
+        this.drugActiveIngredient[i] = this.activeIngredientService.getById(this.drug.activeIngredient[i]);
+      }
+      this.drugStrengthUnit = this.strengthService.getById(this.drug.strengthUnit);
+      this.drugType=this.drugTypeService.getById(this.drug.drugTypeName);
+      if(this.drugType.name=== 'Tablets'){
+         this.pill=true;
+         this.drugColor= this.colorService.getById(this.drug.color);
+         this.drugShape= this.shapeService.getById(this.drug.shape);
+         this.myForm.patchValue(
+          {
+         
+            id:this.id,
+            tradeName : this.drug.drugName,
+            company : this.drug.company,
+            activeIngredient : this.drugActiveIngredient,
+            usage : this.drug.usage,
+            dosage : this.drug.dosage,
+            pregnancyWarning : this.drug.pregnancyWarning,
+            childernWarning : this.drug.childernWarning,
+            warning : this.drug.warning,
+            type : this.drugType.id,
+            textOnSide : this.drug.textOnSide,
+            textOnOther : this.drug.textOnOtherSide,
+            shape : this.drugShape.id,
+            color : this.drugColor.id,
+            strength : this.drug.strength,
+            strengthUnit : this.drugStrengthUnit.id,
+            //approvalHistory : this.drug.approvalHistory,
+            //drugLogo : this.drug.image,
+            //pillImage : this.drug.pillImage
+          });
+      }
+      debugger;
+     
       this.myForm.patchValue(
         {
+       
           id:this.id,
           tradeName : this.drug.drugName,
           company : this.drug.company,
-          //activeIngredient : this.drugActiveIngredient,
+          activeIngredient : this.drugActiveIngredient,
           usage : this.drug.usage,
           dosage : this.drug.dosage,
           pregnancyWarning : this.drug.pregnancyWarning,
           childernWarning : this.drug.childernWarning,
           warning : this.drug.warning,
-          //type : this.drugTypes,
-          textOnSide : this.drug.textOnSide,
-          textOnOther : this.drug.textOnOtherSide,
-          shape : this.drugShape,
-          color : this.drugColor,
+          type : this.drugType.id,
           strength : this.drug.strength,
-          strengthUnit : this.drugStrengthUnit,
+          strengthUnit : this.drugStrengthUnit.id,
           //approvalHistory : this.drug.approvalHistory,
-          //drugLogo : this.drug.image,
-          //pillImage : this.drug.pillImage
-        }
-      );}     
+          //drugLogo : this.drug.image
+        });
+      }     
   }
   callType(){
-      for (let i in this.types) {
-      if(this.types[i].name === "Tablets")
+    debugger;
+    this.drugType = this.drugTypeService.getById(this.myForm.get('type').value);
+      if(this.drugType.name === "Tablets")
       {
         this.pill=true;
       }   
-   }
   }
   public onSubmit(){
-    debugger;
-    console.log(this.myForm.valid);
     if(this.myForm.valid)
     {
       this.drug = {
