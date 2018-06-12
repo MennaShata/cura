@@ -34,7 +34,7 @@
                   <div class="form-group">
                     <label class="col-sm-2  control-label">Active Ingrediates</label>
                     <div class="col-sm-10">
-                      <select multiple data-plugin-selectTwo class="form-control populate" formControlName="activeIngredient" name="activeIngredient">
+                      <select multiple class="form-control populate" formControlName="activeIngredient" name="activeIngredient">
                         <option [value]="activeIngredient.id" *ngFor="let activeIngredient of activeIngredients">{{activeIngredient.name}} </option>
                       </select>
                       <!-- <div *ngIf="myForm.get('activeIngredient').touched && myForm.get('activeIngredient').invalid" style="color:red">Active Ingredient is required</div> -->
@@ -136,7 +136,7 @@
                   <div class="form-group" *ngIf="pill">
                     <label class="col-sm-2 control-label">Shape</label>
                     <div class="col-sm-10">
-                      <select data-plugin-selectTwo class="form-control populate" id="dropDownShape" formControlName="shape" name="shape">
+                      <select class="form-control populate" id="dropDownShape" formControlName="shape" name="shape">
                         <option [value]="shape.id" *ngFor="let shape of shapes">{{shape.name}}</option>
                       </select>
                     </div>
@@ -145,7 +145,7 @@
                   <div class="form-group" *ngIf="pill">
                     <label class="col-sm-2 control-label">Color</label>
                     <div class="col-sm-10">
-                      <select data-plugin-selectTwo class="form-control populate" id="dropDownColor" formControlName="color" name="color">
+                      <select class="form-control populate" id="dropDownColor" formControlName="color" name="color">
                         <option [value]="color.id" *ngFor="let color of colors" >{{color.name}}</option>
                       </select>
                     </div>
@@ -158,7 +158,7 @@
                             <div *ngIf="myForm.get('strength').touched && myForm.get('strength').invalid" style="color:red">Strength is required</div>
                     </div>
                     <div class="col-sm-5">
-                      <select id="dropDownUnit" data-plugin-selectTwo class="form-control populate"  formControlName="strengthUnit" name="strengthUnit">
+                      <select id="dropDownUnit" class="form-control populate"  formControlName="strengthUnit" name="strengthUnit">
                         <option [value]="strengthUnit.id" *ngFor="let strengthUnit of strengthUnits">{{strengthUnit.name}}</option>
                       </select>
                       <!-- <div *ngIf="myForm.get('strengthUnit').touched && myForm.get('strengthUnit').invalid" style="color:red">Strength Unit is required</div> -->
@@ -187,10 +187,10 @@
                             <i class="fa fa-file fileupload-exists"></i>
                             <span class="fileupload-preview"></span>
                           </div>
-                          <span class="btn btn-default btn-file">
+                          <span class="btn btn-default btn-file" formControlName="drugLogo" name="drugLogo">
                             <span class="fileupload-exists">Change</span>
                             <span class="fileupload-new">Select Image</span>
-                            <input type="file" formControlName="drugLogo" name="drugLogo"/>
+                            <input type="file" />
                           </span>
                           <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
                         </div>

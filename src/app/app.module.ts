@@ -1,3 +1,5 @@
+import { FoodService } from './shared/services/food.service';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { FoodEditComponent } from './food/food-edit/food-edit.component';
 import { FoodListingComponent } from './food/food-listing/food-listing.component';
 import { FoodInteractionItemComponent } from './Interactions/Food-Interaction/Food-Interaction-Item/Food-Interaction-Item.component';
@@ -66,8 +68,8 @@ import { UserModule } from './user/user.module';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import {HomePageModule} from './HomePage/HomePage.module';
 import { IndexComponent } from './HomePage/index/index.component';
-
-
+import {MatSelectModule} from '@angular/material/select';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 const routes: Routes = [
@@ -132,6 +134,11 @@ const routes: Routes = [
     { path:'addPill' , component: DrugAddComponent},
     { path:'editPill/:id' , component: PillEditComponent},
   ]},
+  {path:'user',children:[
+    {path:'login', component: LoginComponent},
+    {path:'signup', component: SignUpComponent},
+    {path:'profile', component: UserProfileComponent}
+  ]}
 ];
 
 @NgModule({
@@ -162,13 +169,16 @@ const routes: Routes = [
     FoodInteractionModule,
     CarouselModule.forRoot(),
     UserModule,
-    HomePageModule
+    HomePageModule,
+    MatSelectModule,
+    BrowserAnimationsModule
   
   ],
   providers: [
     DiseaseServiceService,
     ActiveIngredientService,
     BsModalService,
+    FoodService
   ],
   bootstrap: [AppComponent]
 })

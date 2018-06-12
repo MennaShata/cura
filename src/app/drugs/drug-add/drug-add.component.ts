@@ -77,40 +77,59 @@ export class DrugAddComponent implements OnInit{
     if(this.id){
       this.title = 'Edit Drug';
       this.drug = this.drugservice.getById(this.id);
-      // this.drugActiveIngredient=[];
-      // for(let i=0;i<this.drug.activeIngredient.length;i++){
-      //   this.drugActiveIngredient[i] = this.activeIngredientService.getById(this.drug.activeIngredient[i]);
-      // }
+      this.drugActiveIngredient=[];
+      for(let i=0;i<this.drug.activeIngredient.length;i++){
+        this.drugActiveIngredient[i] = this.activeIngredientService.getById(this.drug.activeIngredient[i]);
+      }
       this.drugStrengthUnit = this.strengthService.getById(this.drug.strengthUnit);
       this.drugType=this.drugTypeService.getById(this.drug.drugTypeName);
       if(this.drugType.name=== 'Tablets'){
          this.pill=true;
          this.drugColor= this.colorService.getById(this.drug.color);
          this.drugShape= this.shapeService.getById(this.drug.shape);
+         this.myForm.patchValue(
+          {
+         
+            id:this.id,
+            tradeName : this.drug.drugName,
+            company : this.drug.company,
+            activeIngredient : this.drugActiveIngredient,
+            usage : this.drug.usage,
+            dosage : this.drug.dosage,
+            pregnancyWarning : this.drug.pregnancyWarning,
+            childernWarning : this.drug.childernWarning,
+            warning : this.drug.warning,
+            type : this.drugType.id,
+            textOnSide : this.drug.textOnSide,
+            textOnOther : this.drug.textOnOtherSide,
+            shape : this.drugShape.id,
+            color : this.drugColor.id,
+            strength : this.drug.strength,
+            strengthUnit : this.drugStrengthUnit.id,
+            approvalHistory : this.drug.approvalHistory,
+            drugLogo : this.drug.image,
+            pillImage : this.drug.pillImage
+          });
       }
       this.myForm.patchValue(
         {
+       
           id:this.id,
           tradeName : this.drug.drugName,
           company : this.drug.company,
-          //activeIngredient : this.drugActiveIngredient,
+          activeIngredient : this.drugActiveIngredient,
           usage : this.drug.usage,
           dosage : this.drug.dosage,
           pregnancyWarning : this.drug.pregnancyWarning,
           childernWarning : this.drug.childernWarning,
           warning : this.drug.warning,
-          type : this.drugType,
-          textOnSide : this.drug.textOnSide,
-          textOnOther : this.drug.textOnOtherSide,
-          shape : this.drugShape,
-          color : this.drugColor,
+          type : this.drugType.id,
           strength : this.drug.strength,
-          strengthUnit : this.drugStrengthUnit,
-          //approvalHistory : this.drug.approvalHistory,
-          //drugLogo : this.drug.image,
-          //pillImage : this.drug.pillImage
-        }
-      );}     
+          strengthUnit : this.drugStrengthUnit.id,
+          approvalHistory : this.drug.approvalHistory,
+          drugLogo : this.drug.image
+        });
+      }     
   }
   callType(){
     debugger;
