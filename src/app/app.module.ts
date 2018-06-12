@@ -68,6 +68,8 @@ import { UserModule } from './user/user.module';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import {HomePageModule} from './HomePage/HomePage.module';
 import { IndexComponent } from './HomePage/index/index.component';
+import { SideEffectEditComponent } from './side-effects/side-effect-edit/side-effect-edit.component';
+import { Http } from '@angular/http';
 
 
 
@@ -84,11 +86,12 @@ const routes: Routes = [
   
   { path: 'food', component: FoodItemComponent},
   { path: 'food/add', component: FoodAddComponent},
-  { path: 'sideeffectlisting', component: SideEffectListingComponent},
-  { path: 'sideeffectlisting2', component: SideEffectsComponent},
+  { path: 'sideeffectlisting', component: SideEffectsComponent},
+  { path: 'sideeffectlisting2', component: SideEffectListingComponent},
   { path:'addsideeffect' , component:SideEffectAddComponent},
   { path: 'interactions/foodinteraction', component: FoodInteractionItemComponent},
   {path :'sideeffect', component:SideEffectItemComponent },
+  { path:'editsideeffect/:id' , component :SideEffectEditComponent},
 
   {path:'activeingredient',children:[
     { path:'listing', component: ActiveIngredientListingComponent},
@@ -178,7 +181,8 @@ const routes: Routes = [
     DiseaseServiceService,
     ActiveIngredientService,
     BsModalService,
-    FoodService
+    FoodService,
+    
   ],
   bootstrap: [AppComponent]
 })

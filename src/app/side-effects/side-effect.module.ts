@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AppModule } from '../app.module';
 import { RouterModule, Routes ,ActivatedRoute} from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SideEffectEditComponent } from './side-effect-edit/side-effect-edit.component';
 
 
 
@@ -25,8 +26,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     SideEffectAddComponent,
     SideEffectItemComponent,
     SideEffectsComponent,
-    
+    SideEffectEditComponent
    
+,
+    SideEffectEditComponent
 ],
 exports : [
   SideEffectItemComponent
