@@ -11,13 +11,13 @@
             <div class="col-md-6">
               <label>Text on one side</label>
 
-              <input type="text" name="FrontImprint" formControlName="FrontImprint" class="form-control" id="Front">
+              <input type="text" name="FrontImprint" formControlName="FrontImprint" class="form-control" id="Front" (keyup)="onDataChanged()">
 
             </div>
             <div class="col-md-6">
               <label>Text on the other side</label>
 
-              <input type="text" name="BackImprint" formControlName="BackImprint" class="form-control" id="Back" placeholder="If Available">
+              <input type="text" name="BackImprint" formControlName="BackImprint" class="form-control" id="Back" placeholder="If Available" (keyup)="onDataChanged()">
 
             </div>
           </div>
@@ -28,7 +28,7 @@
           <div class="form-group">
             <div class="col-md-12">
               <label>Color</label>
-              <select class="form-control" name="Color" formControlName="Color" id="Color">
+              <select class="form-control" name="Color" formControlName="Color" id="Color" (change)="onDataChanged()">
                 <option [value]="0" [selected]=true>None Selected</option>
                 <option [value]="color.id" *ngFor="let color of colors">{{color.name}}</option>
               </select>
@@ -42,7 +42,7 @@
             <div class="col-md-12">
               <label>Shape</label>
 
-              <select class="form-control" name="Shape" formControlName="Shape" id="Shape">
+              <select class="form-control" name="Shape" formControlName="Shape" id="Shape"  (change)="onDataChanged()">
                 <option [value]="0" [selected]=true>None Selected</option>
                 <option [value]="shape.id" *ngFor="let shape of shapes">{{shape.name}}</option>
               </select>
@@ -54,7 +54,7 @@
         <div class="row">
           <div class="col-md-12">
 
-            <button class="btn btn-primary pull-right mb-xl" type="submit" id="search_button">
+            <button class="btn btn-primary pull-right mb-xl" [disabled] = "isDisabled" type="submit" id="search_button">
               <span>
                 Search
                 <i class="fa fa-search"></i>

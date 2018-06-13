@@ -27,6 +27,7 @@ export class PillItemComponent implements OnInit {
   constructor(private pillservice: PillService, private colorService: ColorService, private shapeService: ShapeService, private strengthService: StrengthService,private modalService: BsModalService) { }
 
   deletePill(id: number) {
+    console.log("ana gwa al delete ts");
     this.pillservice.Delete(id);
   }
 

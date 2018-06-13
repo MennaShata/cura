@@ -1,101 +1,88 @@
-
-  <form [formGroup]="editForm" (ngSubmit)="updatePill()">
-    <div class="col-md-12">
-
-      <div class="col-md-112">
-        <div class="row">
-          <div class="col-sm-10 col-md-offset-1">
-            <div class="featured-box featured-box-primary align-left mt-xlg">
-              <div class="box-content">
-                <h4 class="heading-primary text-uppercase mb-md">{{title}}</h4>
+<form [formGroup]="editForm" (ngSubmit)="updatePill()">
+  <div class="featured-box featured-box-primary align-left mt-xlg">
+    <div class="box-content modal-body">
+      <h4 class="heading-primary text-uppercase mb-md">{{title}}</h4>
 
 
-                <div class="form-group">
-                  <label class="col-sm-2 control-label" for="w1-username">Trade Name</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control input-sm" name="name" id="w1-username" placeholder="Enter Trade Name" formControlName="name"
-                      value="{{pill.name}}">
-                  </div>
-                </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="w1-username">Trade Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control input-sm" name="name" id="w1-username" placeholder="Enter Trade Name" formControlName="name"
+            value="{{pill.name}}">
+        </div>
+      </div>
 
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Strength</label>
-                  <div class="col-sm-5">
-                    <input id="strengthText" type="number" class="spinner-input form-control" formControlName="strength" name="strength">
-                  </div>
-                  <div class="col-sm-5">
-                    <select id="dropDownUnit" data-plugin-selectTwo class="form-control populate" formControlName="strengthUnitName" name="strengthUnitName">
-                      <option [value]="strengthUnit.id" *ngFor="let strengthUnit of strengthUnits">{{strengthUnit.name}}</option>
-                    </select>
-                  </div>
-                </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Strength</label>
+        <div class="col-sm-5">
+          <input id="strengthText" type="number" class="spinner-input form-control" formControlName="strength" name="strength">
+        </div>
+        <div class="col-sm-5">
+          <select id="dropDownUnit" data-plugin-selectTwo class="form-control populate" formControlName="strengthUnitName" name="strengthUnitName">
+            <option [value]="strengthUnit.id" *ngFor="let strengthUnit of strengthUnits">{{strengthUnit.name}}</option>
+          </select>
+        </div>
+      </div>
 
 
-                <div class="form-group">
-                  <label class="col-sm-2 control-label" for="w1-username">Text On One Side</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control input-sm" name="textOnSide" id="textOnOneSide" placeholder="Enter Text On One Side"
-                      formControlName="textOnSide">
-                  </div>
-                </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="w1-username">Text On One Side</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control input-sm" name="textOnSide" id="textOnOneSide" placeholder="Enter Text On One Side"
+            formControlName="textOnSide">
+        </div>
+      </div>
 
-                <div class="form-group">
-                  <label class="col-sm-2 control-label" for="w1-username">Text On Other Side</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control input-sm" name="textOnOther" id="textOnOtherSide" placeholder="Enter Text On Other Side"
-                      formControlName="textOnOther">
-                  </div>
-                </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="w1-username">Text On Other Side</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control input-sm" name="textOnOther" id="textOnOtherSide" placeholder="Enter Text On Other Side"
+            formControlName="textOnOther">
+        </div>
+      </div>
 
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Shape</label>
-                  <div class="col-sm-10">
-                    <select data-plugin-selectTwo class="form-control populate" id="dropDownShape" formControlName="shapeName" name="shapeName">
-                      <option [value]="shape.id" *ngFor="let shape of shapes">{{shape.name}}</option>
-                    </select>
-                  </div>
-                </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Shape</label>
+        <div class="col-sm-10">
+          <select data-plugin-selectTwo class="form-control populate" id="dropDownShape" formControlName="shapeName" name="shapeName">
+            <option [value]="shape.id" *ngFor="let shape of shapes">{{shape.name}}</option>
+          </select>
+        </div>
+      </div>
 
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Color</label>
-                  <div class="col-sm-10">
-                    <select data-plugin-selectTwo class="form-control populate" id="dropDownColor" formControlName="colorName" name="colorName" >
-                      <option ng-selected="true" [value]="color.id" *ngFor="let color of colors">{{color.name}}</option>
-                    </select>
-                  </div>
-                </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Color</label>
+        <div class="col-sm-10">
+          <select data-plugin-selectTwo class="form-control populate" id="dropDownColor" formControlName="colorName" name="colorName">
+            <option ng-selected="true" [value]="color.id" *ngFor="let color of colors">{{color.name}}</option>
+          </select>
+        </div>
+      </div>
 
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Upload Pill Image</label>
-                  <div class="col-sm-10">
-                    <div class="fileupload fileupload-new" data-provides="fileupload">
-                      <div class="input-append">
-                        <div class="uneditable-input">
-                          <i class="fa fa-file fileupload-exists"></i>
-                          <span class="fileupload-preview"></span>
-                        </div>
-                        <span class="btn btn-default btn-file">
-                          <span class="fileupload-exists">Change</span>
-                          <span class="fileupload-new">Select Image</span>
-                          <input type="file" formControlName="pillImage" name="pillImage" />
-                        </span>
-                        <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="">
-                  <button type="button" class="btn btn-tertiary mr-xs mb-sm" (click)="bsModalRef.hide()">Cancel</button>
-                  <button type="submit" class="btn btn-tertiary mr-xs mb-sm">Update</button>
-                </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Upload Pill Image</label>
+        <div class="col-sm-10">
+          <div class="fileupload fileupload-new" data-provides="fileupload">
+            <div class="input-append">
+              <div class="uneditable-input">
+                <i class="fa fa-file fileupload-exists"></i>
+                <span class="fileupload-preview"></span>
               </div>
+              <span class="btn btn-default btn-file">
+                <span class="fileupload-exists">Change</span>
+                <span class="fileupload-new">Select Image</span>
+                <input type="file" formControlName="pillImage" name="pillImage" />
+              </span>
+              <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- </div>
-  </div> -->
-  </form>
 
+      <div class="">
+        <button type="button" class="btn btn-tertiary mr-xs mb-sm" (click)="bsModalRef.hide()">Cancel</button>
+        <button type="submit" class="btn btn-tertiary mr-xs mb-sm">Update</button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -8,9 +8,9 @@ export class StrengthService {
   private strength: IstrengthUnit[]
   constructor() {
     this.strength = [
-      { id: 0, name: 'gram' },
-      { id: 1, name: 'mg' },
-      { id: 2, name: 'ml' }]
+      { id: 1, name: 'gram' },
+      { id: 2, name: 'mg' },
+      { id: 3, name: 'ml' }]
   };
 
   public strengthUnit: IstrengthUnit;
