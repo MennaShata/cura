@@ -10,22 +10,22 @@ export class ColorService {
 
   constructor() {
     this.colors = [
-      { id: 1, name: 'White' },
-      { id: 2, name: 'Orange' },
-      { id: 3, name: 'Yellow' },
-      { id: 4, name: 'Gray' },
-      { id: 5, name: 'Green' },
-      { id: 6, name: 'Tan' },
-      { id: 7, name: 'Brown' },
-      { id: 8, name: 'Red' },
-      { id: 9, name: 'Pink' },
-      { id: 10, name: 'Peach' },
-      { id: 11, name: 'Gold' },
-      { id: 12, name: 'Blue' },
-      { id: 13, name: 'Purple' },
-      { id: 14, name: 'Lavander' },
-      { id: 15, name: 'Multi Color' },
-      { id: 16, name: 'Off White' }];
+      { id: 0, name: 'White' },
+      { id: 1, name: 'Orange' },
+      { id: 2, name: 'Yellow' },
+      { id: 3, name: 'Gray' },
+      { id: 4, name: 'Green' },
+      { id: 5, name: 'Tan' },
+      { id: 6, name: 'Brown' },
+      { id: 7, name: 'Red' },
+      { id: 8, name: 'Pink' },
+      { id: 9, name: 'Peach' },
+      { id: 10, name: 'Gold' },
+      { id: 11, name: 'Blue' },
+      { id: 12, name: 'Purple' },
+      { id: 13, name: 'Lavander' },
+      { id: 14, name: 'Multi Color' },
+      { id: 15, name: 'Off White' }];
   }
   public getAll(): Icolor[] {
     return this.colors

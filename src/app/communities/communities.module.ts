@@ -12,6 +12,7 @@ import { CommunityAddComponent } from './community-add/community-add.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommunityEditComponent } from './community-edit/community-edit.component';
 import { RouterModule, Routes ,ActivatedRoute} from '@angular/router';
+import { PostDetailsComponent } from './post-details/post-details.component';
 
 
 @NgModule({
@@ -20,7 +21,17 @@ import { RouterModule, Routes ,ActivatedRoute} from '@angular/router';
     SharedModule,
     [ReactiveFormsModule],
     FormsModule,
-    RouterModule
+    RouterModule.forChild([
+      {path:'community',children:[
+        { path: 'component', component: CommunitiesComponent },
+        { path:'details/:id' , component :CommunityDetailsComponent},
+        { path:'listing' , component:CommunityListingComponent},
+        { path:'edit/:id' , component:CommunityEditComponent},
+        { path:'add' , component:CommunityAddComponent},
+        { path:'postDeatils' , component:PostDetailsComponent},
+      ]},
+      { path:'postListing' , component :PostListingComponent},
+    ])
   ],
   declarations: [CommunitiesComponent,
     CommunitySmallItemComponent,
@@ -32,7 +43,11 @@ import { RouterModule, Routes ,ActivatedRoute} from '@angular/router';
     CommunityListingComponent,
     CommunityDetailsComponent,
     CommunityAddComponent,
-    CommunityEditComponent
+    CommunityEditComponent,
+    PostDetailsComponent
+],
+exports :[
+  //PostDetailsComponent
 ]
 })
 export class CommunitiesModule { }

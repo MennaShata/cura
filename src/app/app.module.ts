@@ -58,16 +58,10 @@ import {DrugListingComponent} from './drugs/drug-listing/drug-listing.component'
 import { DrugInteractionListingComponent} from './Interactions/drug-interaction/drug-Interaction-Listing/drug-Interaction-Listing.component';
 import { DrugInteractionModule } from './Interactions/drug-interaction/drug-interaction.module';
 import { CommunitiesModule } from './communities/communities.module';
-import { PostListingComponent } from './communities/post-listing/post-listing.component';
-import { CommunitiesComponent } from './communities/communities.component';
-import { CommunityDetailsComponent } from './communities/community-details/community-details.component';
-import { CommunityListingComponent } from './communities/community-listing/community-listing.component';
 import { DrugInteractionService } from './shared/services/drugInteraction/drugInteraction.service';
 import { CarouselModule } from 'ngx-bootstrap';
 import { LoginComponent } from './user/login/login.component';
-import { CommunityEditComponent } from './communities/community-edit/community-edit.component';
 import { FoodInteractionModule } from './Interactions/food-Interaction/food-Interaction.module';
-import { CommunityAddComponent } from './communities/community-add/community-add.component';
 import { UserModule } from './user/user.module';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import {HomePageModule} from './HomePage/HomePage.module';
@@ -75,8 +69,13 @@ import { IndexComponent } from './HomePage/index/index.component';
 import { UserDiseaseItemComponent } from './user/user-disease/user-disease-item/user-disease-item.component';
 import { TabsModule } from 'ngx-bootstrap';
 
+import { PostDetailsComponent } from './communities/post-details/post-details.component';
+import { SideEffectEditComponent } from './side-effects/side-effect-edit/side-effect-edit.component';
+import { Http } from '@angular/http';
 
 
+import {MatSelectModule} from '@angular/material/select';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 const routes: Routes = [
@@ -91,11 +90,12 @@ const routes: Routes = [
   
   { path: 'food', component: FoodItemComponent},
   { path: 'food/add', component: FoodAddComponent},
-  { path: 'sideeffectlisting', component: SideEffectListingComponent},
-  { path: 'sideeffectlisting2', component: SideEffectsComponent},
+  { path: 'sideeffectlisting', component: SideEffectsComponent},
+  { path: 'sideeffectlisting2', component: SideEffectListingComponent},
   { path:'addsideeffect' , component:SideEffectAddComponent},
   { path: 'interactions/foodinteraction', component: FoodInteractionItemComponent},
   {path :'sideeffect', component:SideEffectItemComponent },
+  { path:'editsideeffect/:id' , component :SideEffectEditComponent},
 
   {path:'activeingredient',children:[
     { path:'listing', component: ActiveIngredientListingComponent},
@@ -117,17 +117,6 @@ const routes: Routes = [
     { path:'add' , component:DiseaseAddComponent},
     { path:'edit/:id' , component:DiseaseEditComponent},
   ]},
-
-  
-  {path:'community',children:[
-    { path: 'component', component: CommunitiesComponent },
-    { path:'details/:id' , component :CommunityDetailsComponent},
-    { path:'listing' , component:CommunityListingComponent},
-    { path:'edit/:id' , component:CommunityEditComponent},
-    { path:'add' , component:CommunityAddComponent},
-    
-  ]},
-  { path:'postListing' , component :PostListingComponent},
 
   { path:'addFood' , component :FoodAddComponent},
   { path:'editFood/:id' , component :FoodEditComponent},
@@ -184,21 +173,22 @@ const routes: Routes = [
     SideEffectModule,
     SharedModule,
     CommunitiesModule,
-    [ReactiveFormsModule],
-    ReactiveFormsModule,
     RouterModule.forRoot(routes),
     FoodInteractionModule,
     CarouselModule.forRoot(),
     UserModule,
     HomePageModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    MatSelectModule,
+    BrowserAnimationsModule
   
   ],
   providers: [
     DiseaseServiceService,
     ActiveIngredientService,
     BsModalService,
-    FoodService
+    FoodService,
+    
   ],
   bootstrap: [AppComponent]
 })

@@ -16,9 +16,13 @@ export class DrugListingComponent implements OnInit {
 
   ngOnInit() {
     this.drugService.getAllDrug().subscribe(
-      
       (data)=>{this.drugs=data}
     )
   
+  }
+  search(){
+    console.log(this.txtSearch);
+    this.drugs = this.drugService.drugSearch(this.txtSearch);
+
   }
 }

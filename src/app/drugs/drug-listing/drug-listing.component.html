@@ -30,8 +30,7 @@
                         </ul>
                     </div>
                     <input type="hidden" name="search_param" value="all" id="search_param">
-                    <input type="text" class="form-control" name="txtSearch" id="DrugName" placeholder="Search term..." [(ngModel)]="txtSearch"
-                    />
+                    <input type="text" class="form-control" name="txtSearch" id="DrugName" placeholder="Search term..." [(ngModel)]="txtSearch" (change)="search()"/>
                     <span class="input-group-btn">
                         <button class="btn btn-primary btn-md" style="background-color:#008fe2!important;">
                             <span>
@@ -83,7 +82,7 @@
                     <div class="row">
                         <div class="featured-boxes">
                             <div class="row">
-                                <app-drug-item-small class="col-sm-4" [drugs]=x *ngFor="let x of drugs  | drug: txtSearch"></app-drug-item-small>
+                                <app-drug-item-small class="col-sm-4" [drugs]=x *ngFor="let x of drugs"></app-drug-item-small>
                             </div>
                         </div>
                     </div>

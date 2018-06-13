@@ -5,12 +5,12 @@
             <div class="row drug-buttons">
                 <div class="col-md-offset-9 col-xs-offset-10">
 
-                    <a [routerLink]="['/pill/editPill',pill.id]">
-                        <button type="button" class="btn-borders btn-primary btn-info primary btn-xs" style="margin: 3px; padding: 0px 3px;" (click)="openModalWithComponent()">
-                            <i class="fa fa-edit">
-                            </i>
-                        </button>
-                    </a>
+                    <!-- <a [routerLink]="['/pill/editPill',pill.id]"> -->
+                    <button type="button" class="btn-borders btn-primary btn-info primary btn-xs" style="margin: 3px; padding: 0px 3px;" (click)="openModalWithComponent(pill.id)">
+                        <i class="fa fa-edit">
+                        </i>
+                    </button>
+                    <!-- </a> -->
                     <button type="button" class="btn-danger primary btn-xs btn-borders" (click)="deletePill(pill.id)" style="padding: 0px 3px; ">
                         <i class="fa fa-trash">
                         </i>
@@ -23,7 +23,7 @@
                 <span class="thumb-info-wrapper">
 
                     <a [routerLink]="['/pill/details',pill.id]">
-                        <img src={{pill.image}} class="img-responsive" alt="" style="height:130px; margin-bottom:10px">
+                        <img [src]="pill.image" class="img-responsive" alt="" style="height:130px; margin-bottom:10px">
                     </a>
 
                     <span class="thumb-info-title">
@@ -40,72 +40,6 @@
 
                 <div class="thumb-info-wrapper ">
 
-                    <!--                     
-                    <table class="cart-totals" style="margin-left:5%; width:100%">
-                        <tbody>
-                            <tr class="cart-subtotal">
-                                <th width="30%">
-                                    <strong>Imprint 1 : </strong>
-                                </th>
-                                <td class="drugtypeinfopadding " colspan="4" width="70%">
-                                    <ul>
-                                        <li style="list-style-type: none;">
-                                            {{pill.frontImprint}}hhhhhhhhhhhhhhhhhgg
-                                        </li>
-                                    </ul>
-    
-                                </td>
-                            </tr>
-                            <tr class="shipping">
-                                <th>
-                                    Imprint 2 :
-                                </th>
-                                <td class="drugtypeinfopadding">
-    
-                                    <ul>
-                                        <li style="list-style-type: none;">
-                                            {{pill.backImprint}}
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr class="total">
-                                <th>
-                                    <strong>Color :</strong>
-                                </th>
-                                <td class="drugtypeinfopadding">
-    
-                                    <ul>
-                                        <li style="list-style-type: none;">
-                                            {{color.name}}
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr class="cart-subtotal">
-                                <th>
-                                    <strong>Shape : </strong>
-                                </th>
-                                <td class="drugtypeinfopadding">
-                                    <ul>
-                                        <li style="list-style-type: none;">
-                                            {{shape.name}} 
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-    
-                            <tr class="cart-subtotal">
-                                <a [routerLink]="['/pill/details',pill.id]" class="row col-sm-12 mt-md" style="margin:0% 50%;">
-                                    <input type="button" value="Details" id="loadingButton" data-loading-text="Loading..." class="btn btn-primary  mb-xl" style="font-size: 1.5rem; ">
-                                </a>
-                            </tr>
-    
-                           
-    
-                        </tbody>
-                    </table>   -->
-
                     <div class="row col-sm-12" style="padding-right: 0px;">
                         <span class="col-sm-6 ">
                             <strong>Imprint 1 : </strong>
@@ -117,7 +51,6 @@
 
                     </div>
 
-
                     <div class="row col-sm-12" style="padding-right: 0px;">
                         <span class="col-sm-6 ">
                             <strong>Imprint 2 : </strong>
@@ -126,8 +59,6 @@
                             {{pill.backImprint}}
                         </span>
                     </div>
-
-
 
 
                     <div class="row col-sm-12" style="padding-right: 0px;">
@@ -156,11 +87,7 @@
                         <input type="button" value="Details" id="loadingButton" data-loading-text="Loading..." class="btn btn-primary  mb-xl" style="font-size: 1.5rem; ">
                     </a>
 
-
                 </div>
-
-
-
 
             </div>
 
