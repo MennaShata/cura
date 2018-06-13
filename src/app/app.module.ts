@@ -1,3 +1,7 @@
+import { UserDiseaseAddComponent } from './user/user-disease/user-disease-add/user-disease-add.component';
+import { UserDrugItemComponent } from './user/user-drug/user-drug-item/user-drug-item.component';
+import { UserDrugEditComponent } from './user/user-drug/user-drug-edit/user-drug-edit.component';
+import { UserDrugAddComponent } from './user/user-drug/user-drug-add/user-drug-add.component';
 import { FoodService } from './shared/services/food.service';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { FoodEditComponent } from './food/food-edit/food-edit.component';
@@ -54,20 +58,18 @@ import {DrugListingComponent} from './drugs/drug-listing/drug-listing.component'
 import { DrugInteractionListingComponent} from './Interactions/drug-interaction/drug-Interaction-Listing/drug-Interaction-Listing.component';
 import { DrugInteractionModule } from './Interactions/drug-interaction/drug-interaction.module';
 import { CommunitiesModule } from './communities/communities.module';
-import { PostListingComponent } from './communities/post-listing/post-listing.component';
-import { CommunitiesComponent } from './communities/communities.component';
-import { CommunityDetailsComponent } from './communities/community-details/community-details.component';
-import { CommunityListingComponent } from './communities/community-listing/community-listing.component';
 import { DrugInteractionService } from './shared/services/drugInteraction/drugInteraction.service';
 import { CarouselModule } from 'ngx-bootstrap';
 import { LoginComponent } from './user/login/login.component';
-import { CommunityEditComponent } from './communities/community-edit/community-edit.component';
 import { FoodInteractionModule } from './Interactions/food-Interaction/food-Interaction.module';
-import { CommunityAddComponent } from './communities/community-add/community-add.component';
 import { UserModule } from './user/user.module';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import {HomePageModule} from './HomePage/HomePage.module';
 import { IndexComponent } from './HomePage/index/index.component';
+import { UserDiseaseItemComponent } from './user/user-disease/user-disease-item/user-disease-item.component';
+import { TabsModule } from 'ngx-bootstrap';
+
+import { PostDetailsComponent } from './communities/post-details/post-details.component';
 import { SideEffectEditComponent } from './side-effects/side-effect-edit/side-effect-edit.component';
 import { Http } from '@angular/http';
 
@@ -116,17 +118,6 @@ const routes: Routes = [
     { path:'edit/:id' , component:DiseaseEditComponent},
   ]},
 
-  
-  {path:'community',children:[
-    { path: 'component', component: CommunitiesComponent },
-    { path:'details/:id' , component :CommunityDetailsComponent},
-    { path:'listing' , component:CommunityListingComponent},
-    { path:'edit/:id' , component:CommunityEditComponent},
-    { path:'add' , component:CommunityAddComponent},
-    
-  ]},
-  { path:'postListing' , component :PostListingComponent},
-
   { path:'addFood' , component :FoodAddComponent},
   { path:'editFood/:id' , component :FoodEditComponent},
   { path:'login' , component :LoginComponent},
@@ -142,7 +133,18 @@ const routes: Routes = [
   {path:'user',children:[
     {path:'login', component: LoginComponent},
     {path:'signup', component: SignUpComponent},
-    {path:'profile', component: UserProfileComponent}
+    {path:'profile', component: UserProfileComponent},
+    {path:'addDrug', component: UserDrugAddComponent},
+    {path:'editDrug', component: UserDrugEditComponent},
+    {path:'drugItem', component: UserDrugItemComponent},
+    {path:'diseaseItem', component: UserDiseaseItemComponent},
+    {path:'addDisease', component: UserDiseaseAddComponent},
+    {path:'editDisease', component: UserDrugEditComponent}
+
+
+
+
+
   ]}
 ];
 
@@ -154,7 +156,8 @@ const routes: Routes = [
     FoodListingComponent,
     SingleFoodInteractionComponent,
     FoodAddComponent,
-    FoodEditComponent
+    FoodEditComponent,
+  
 ],
   imports: [
     ModalModule.forRoot(),
@@ -175,6 +178,7 @@ const routes: Routes = [
     CarouselModule.forRoot(),
     UserModule,
     HomePageModule,
+    TabsModule.forRoot(),
     MatSelectModule,
     BrowserAnimationsModule
   

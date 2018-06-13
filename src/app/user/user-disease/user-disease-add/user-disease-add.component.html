@@ -1,3 +1,48 @@
-<p>
-  user-disease-add works!
-</p>
+<form >
+
+  <!-- <div class="modal fade" id="defaultModal"> -->
+    <!-- <div class="modal-dialog"> -->
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="featured-box featured-box-primary align-left mt-xlg">
+              <div class="box-content"> 
+                <h4 class="heading-primary text-uppercase mb-md modal-header">Add a disease to my list: </h4>
+
+                <div class="form-group modal-body">
+
+                  <label class="col-sm-1 control-label">Disease Name: </label>
+                  <div class="col-sm-11">
+                    <select data-plugin-selectTwo class="form-control populate" id="dropDownShape">
+                      <option>Heart Disease</option>
+                      <option>Diabetes</option>
+                      <option>Cancer</option>
+                    </select>
+                    <!-- <div *ngIf="foodname.errors" class="alert alert-danger">Food Name is required</div> -->
+                  </div>
+                </div>
+                <div class="form-group modal-body">
+                  <label class="col-sm-1 control-label">Years of Condition:</label>
+                  <div class="col-sm-3">
+                    <input 
+                    type="number" 
+                    class="form-control input-sm" 
+                    name="yearsOfCondition" 
+                    id="w1-yearsOfCondition" 
+                    >
+                    <!-- <div *ngIf="foodicon.errors" class="alert alert-danger">Food Icon is required</div> -->
+                  </div>
+                </div>
+
+                <div class="">
+                  <button type="button" class="btn btn-tertiary mr-xs mb-sm">Cancel</button>
+                  <button type="submit" class="btn btn-tertiary mr-xs mb-sm">Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <!-- </div> -->
+<!-- </div> -->
+</form>
