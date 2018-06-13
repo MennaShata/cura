@@ -1,3 +1,7 @@
+import { UserDiseaseAddComponent } from './user/user-disease/user-disease-add/user-disease-add.component';
+import { UserDrugItemComponent } from './user/user-drug/user-drug-item/user-drug-item.component';
+import { UserDrugEditComponent } from './user/user-drug/user-drug-edit/user-drug-edit.component';
+import { UserDrugAddComponent } from './user/user-drug/user-drug-add/user-drug-add.component';
 import { FoodService } from './shared/services/food.service';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { FoodEditComponent } from './food/food-edit/food-edit.component';
@@ -68,6 +72,9 @@ import { UserModule } from './user/user.module';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import {HomePageModule} from './HomePage/HomePage.module';
 import { IndexComponent } from './HomePage/index/index.component';
+import { UserDiseaseItemComponent } from './user/user-disease/user-disease-item/user-disease-item.component';
+import { TabsModule } from 'ngx-bootstrap';
+
 
 
 
@@ -137,7 +144,18 @@ const routes: Routes = [
   {path:'user',children:[
     {path:'login', component: LoginComponent},
     {path:'signup', component: SignUpComponent},
-    {path:'profile', component: UserProfileComponent}
+    {path:'profile', component: UserProfileComponent},
+    {path:'addDrug', component: UserDrugAddComponent},
+    {path:'editDrug', component: UserDrugEditComponent},
+    {path:'drugItem', component: UserDrugItemComponent},
+    {path:'diseaseItem', component: UserDiseaseItemComponent},
+    {path:'addDisease', component: UserDiseaseAddComponent},
+    {path:'editDisease', component: UserDrugEditComponent}
+
+
+
+
+
   ]}
 ];
 
@@ -149,7 +167,8 @@ const routes: Routes = [
     FoodListingComponent,
     SingleFoodInteractionComponent,
     FoodAddComponent,
-    FoodEditComponent
+    FoodEditComponent,
+  
 ],
   imports: [
     ModalModule.forRoot(),
@@ -171,7 +190,8 @@ const routes: Routes = [
     FoodInteractionModule,
     CarouselModule.forRoot(),
     UserModule,
-    HomePageModule
+    HomePageModule,
+    TabsModule.forRoot()
   
   ],
   providers: [
