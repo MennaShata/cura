@@ -22,7 +22,7 @@
 
                 <span class="thumb-info-wrapper">
 
-                    <a [routerLink]="['/pill/details',pill.id]">
+                    <a [routerLink]="['/pill/details',pill.id]" target="_blank">
                         <img [src]="pill.image" class="img-responsive" alt="" style="height:130px; margin-bottom:10px">
                     </a>
 
@@ -83,7 +83,7 @@
                     </div>
 
 
-                    <a [routerLink]="['/pill/details',pill.id]" class="row col-sm-12 center mt-md" style="margin:0;">
+                    <a [routerLink]="['/pill/details',pill.id]" class="row col-sm-12 center mt-md" style="margin:0;" target="_blank">
                         <input type="button" value="Details" id="loadingButton" data-loading-text="Loading..." class="btn btn-primary  mb-xl" style="font-size: 1.5rem; ">
                     </a>
 
