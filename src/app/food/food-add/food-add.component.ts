@@ -61,7 +61,7 @@ export class FoodAddComponent implements OnInit {
     console.log(this.food)
     
     console.log(this.FoodService.foodArray)
-    
+
   }
   
 }

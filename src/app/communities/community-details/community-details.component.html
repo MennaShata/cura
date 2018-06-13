@@ -1,6 +1,18 @@
 <div class="row">
+    <div class="col-md-6 col-md-offset-3 mt-xlg" style="font-size:xx-large;color:#008fe2;">
+           
+        <a (click)="openModalWithComponent()" data-toggle="modal" data-target="#defaultModal">
+                <button class="btn btn-xs btn-primary">add post</button>
+                <!-- <button class="btn btn-xs btn-primary">add photo+</button>
+                <button class="btn btn-xs btn-primary">add member+</button>
+                <button class="btn btn-xs btn-primary">leave</button> -->
+        </a>
+
+    </div>
+</div>
+<div class="row">
     <div class=" largeDiv">
-       
+
         <app-aside-left class="col-md-2 col-md-offset-1"></app-aside-left>
         <app-post-listing class="col-md-6"></app-post-listing>
         <app-latest-news class="col-md-3"></app-latest-news>

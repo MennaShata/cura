@@ -1,0 +1,14 @@
+/* .page-header {
+    min-height: 90px !important;
+} */
+.page-header h1 {
+    border-bottom: 5px solid #008fe2;
+    color: #fff;
+    display: inline-block;
+    font-size: 32px;
+    font-weight: 200;
+    line-height: 49px;
+    margin: 0 0 -25px;
+    padding: 0 0 25px;
+    position: relative;
+}
