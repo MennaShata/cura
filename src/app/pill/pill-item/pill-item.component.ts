@@ -31,13 +31,13 @@ export class PillItemComponent implements OnInit {
   }
 
   getStrengthUnit() {
-    return this.strengthService.getById(this.pill.strengthUnit).name;
+    return this.strengthService.getName(this.pill.strengthUnit);
   }
   getColor() {
-    return this.colorService.getById(this.pill.color).name;
+    return this.colorService.getName(this.pill.color);
   }
   getShape() {
-    return this.shapeService.getById(this.pill.shape).name;
+    return this.shapeService.getName(this.pill.shape);
   }
 
   ngOnInit() {
