@@ -71,7 +71,8 @@ export class PillSearchComponent implements OnInit {
       color: this.color
     };
     this.pillService.onSerch.next(pill);
-    window.scrollTo(1000, 1000)
+    
+    window.scrollTo(0, 600);
     //this.pillService.Search(this.frontImprint,this.backImprint,this.shape,this.color);
   }
 
