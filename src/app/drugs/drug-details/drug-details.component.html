@@ -132,7 +132,8 @@
           <strong>Food Interaction</strong>
         </h4>
         <div class="row">
-          <app-food-interaction-carousel  *ngFor="let foodinteractionitem of foodInteraction" [foodInteraction]="foodinteractionitem" class="col-md-3"></app-food-interaction-carousel>
+            
+            <app-food-interaction-carousel-listing [foodinteractions]=foodInteraction></app-food-interaction-carousel-listing>
           <!-- <app-Food-Interaction-Item *ngFor="let foodinteractionitem of foodInteraction" [foodInteraction]="foodinteractionitem" class="col-md-6"></app-Food-Interaction-Item> -->
         </div>
       </div>
