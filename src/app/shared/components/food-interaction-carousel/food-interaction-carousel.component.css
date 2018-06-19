@@ -14,3 +14,18 @@
 .featured-box-secondary .box-content{
     border-top: 1px solid #DFDFDF;    
 } */
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
