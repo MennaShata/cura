@@ -5,4 +5,5 @@ export interface Iactiveingredient {
     drugs?:number[],
     foodinteractions?:number[];
     diseases?:number[];
+    sideEffect?:number[];
 }

@@ -23,8 +23,9 @@
                     <div class="form-group mb-none">
                         <div class="row">
                             <div class="col-sm-6 mb-lg">
+                                <label>Password</label>
                                 <input name="pwd" type="password" class="form-control input-lg" #password="ngModel" [(ngModel)]="user.password" required minlength="3"/>                                
-                                <label [attr.data-error]="password.errors!=null?(password?.errors.required?'Required field!':'Minimun 3 characters needed'):''">Password</label>
+                                
                             </div>
                             <div class="col-sm-6 mb-lg">
                                 <label>Password Confirmation</label>

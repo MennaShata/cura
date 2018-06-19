@@ -37,7 +37,8 @@ import { OwlModule } from 'ngx-owl-carousel';
     LatestNewsComponent,
     ListingCarouselComponent,
     FoodInteractionCarouselListingComponent,
-    HeaderTopComponent]
+    HeaderTopComponent,
+    FoodInteractionCarouselComponent]
 })
 
 

@@ -8,8 +8,6 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { FoodAddComponent } from '../food-add/food-add.component';
 
-
-
 @Component({
   selector: 'app-food-listing',
   templateUrl: './food-listing.component.html',

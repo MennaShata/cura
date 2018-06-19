@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { DiseaseSmallItemComponent } from '../disease-small-item/disease-small-item.component';
 import { Idisease } from '../../shared/models/interfaces/idisease';
 import { DiseaseServiceService } from '../../shared/services/disease-service.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap';
+import { DiseaseAddComponent } from '../disease-add/disease-add.component';
 
 @Component({
   selector: 'app-disease-lising',
@@ -10,12 +12,22 @@ import { DiseaseServiceService } from '../../shared/services/disease-service.ser
 })
 export class DiseaseLisingComponent implements OnInit {
  diseases:Idisease[];
-  constructor( private diseaseServiceService:DiseaseServiceService) { }
+ bsModalRef: BsModalRef;
+ public txtSearch:string='';
+ 
+  constructor( private diseaseServiceService:DiseaseServiceService, private modalService: BsModalService) { }
 public getDiseases(){
   this.diseases=this.diseaseServiceService.getDiseases();
 }
   ngOnInit() {
     this.getDiseases();
   }
+  public openModalWithComponent() {
+    this.bsModalRef = this.modalService.show(DiseaseAddComponent);
+  }
+  search(){
+   // console.log(this.txtSearch);
+    this.diseases = this.diseaseServiceService.Search(this.txtSearch);
 
+  }
 }

@@ -5,30 +5,30 @@ import { IstrengthUnit } from '../../models/interfaces/Istrength-unit';
   providedIn: 'root'
 })
 export class StrengthService {
-  private strength:IstrengthUnit[]
-constructor() {
-  this.strength=[
-  {id:0,name:'gram'},
-  {id:1,name:'mg'},
-  {id:2,name:'ml'}]};
+  private strength: IstrengthUnit[]
+  constructor() {
+    this.strength = [
+      { id: 1, name: 'gram' },
+      { id: 2, name: 'mg' },
+      { id: 3, name: 'ml' }]
+  };
 
-public strengthUnit:IstrengthUnit;
- public getAll():IstrengthUnit[]
- {
-  return this.strength;
- }
- public getName(id:number):string{
-  const index = this.strength.findIndex(a=>a.id ==id);
-  if(index >-1){
-    return this.strength[index].name;
+  public strengthUnit: IstrengthUnit;
+  public getAll(): IstrengthUnit[] {
+    return this.strength;
   }
-}
-getById(id) {
-  for (let i = 0; i < this.strength.length; i++) {
-    if (this.strength[i].id == id) {
-      this.strengthUnit = this.strength[i];
+  public getName(id: number): string {
+    const index = this.strength.findIndex(a => a.id == id);
+    if (index > -1) {
+      return this.strength[index].name;
     }
   }
-  return this.strengthUnit;
-}
+  getById(id) {
+    const index = this.strength.findIndex((a) => a.id === id);
+    console.log(index);
+    if (index > -1) {
+      return this.strength[index];
+    }
+    return null;
+  }
 }

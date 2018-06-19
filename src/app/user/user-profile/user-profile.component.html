@@ -89,62 +89,43 @@
               <div>
                 <hr class="tall">
                 <div class="tabs">
-                  <ul class="nav nav-tabs nav-justified">
-                    <li class="active">
-                      <a href="#popular10" data-toggle="tab" class="text-center">
-                        <i class="fa fa-medkit"></i> My Drug List</a>
-                    </li>
-                    <li>
-                      <a href="#recent10" data-toggle="tab" class="text-center">
-                        <i class="fa fa-stethoscope"></i> My Disease List</a>
-                    </li>
-                    <li>
-                      <a href="#communities10" data-toggle="tab" class="text-center">
-                        <i class="fa fa-comments"></i> My Communities</a>
-                    </li>
-                    <li>
-                      <a href="#reviews10" data-toggle="tab" class="text-center">
-                        <i class="fa fa-star"></i> My Reviews</a>
-                    </li>
-
-                  </ul>
-                  <div class="tab-content">
-                    <div id="popular10" class="tab-pane active">
-                      <div class="row" data-appear-animation="fadeInUp" data-appear-animation-delay="300">
-
-                        <div class="row">
-                          <div class="col-md-offset-8 col-xs-offset-2 drug-btn">
-                            <div>
-                              <a class="btn btn-borders btn-primary custom-button text-uppercase mt-lg mb-lg font-weight-bold" data-toggle="modal" data-target="#largeModal">
-                                <i class="fa fa-plus"></i> Add a drug to my list</a>
-
-                            </div>
-                          </div>
-
+                  <tabset [justified]='true'>
+                    <tab>
+                      <ng-template tabHeading>
+                          <i class="fa fa-medkit"></i> My Drug List
+                      </ng-template>
+                      My Drug List
+                      <div>
+                          <a class="btn btn-borders btn-primary text-uppercase font-weight-bold">
+                            <i class="fa fa-plus"></i> Add a drug to my list</a>
                         </div>
-                      </div>
+                    </tab>
+                    <tab>
+                        <ng-template tabHeading>
+                            <i class="fa fa-stethoscope"></i> My Disease List
+                        </ng-template>
+                        My Disease List
+                        <div>
+                            <a class="btn btn-borders btn-primary text-uppercase font-weight-bold">
+                              <i class="fa fa-plus"></i> Add a disease to my list</a>
+                          </div>
+                      </tab>
+                      <tab>
+                          <ng-template tabHeading>
+                              <i class="fa fa-comments"></i> My Communities
+                          </ng-template>
+                          My Community List
+                        </tab>
+                        <tab>
+                            <ng-template tabHeading>
+                                <i class="fa fa-star"></i> My Reviews
+                            </ng-template>
+                            My Community List
+                          </tab>
+                    
 
-                    </div>
-                    <div id="recent10" class="tab-pane">
-                      <div class="row mt-lg">
-                        
-
-                      </div>
-
-                    </div>
-                    <div id="communities10" class="tab-pane">
-                      <div class="row" data-appear-animation="fadeInUp" data-appear-animation-delay="300">
-                     
-                      </div>
-                    </div>
-                    <div id="reviews10" class="tab-pane">
-                      <div class="row" data-appear-animation="fadeInUp" data-appear-animation-delay="300">
-                       
-
-                      </div>
-
-                    </div>
-                  </div>
+                  </tabset>
+                 
                 </div>
 
 

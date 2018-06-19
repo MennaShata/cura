@@ -1,3 +1,27 @@
+<div class="row searchDiv">
+    <div class="col-xs-8 col-xs-offset-1 mt-xlg">
+        <div class="input-group">
+            <input type="hidden" name="search_param" value="all" id="search_param">
+            <input type="text" class="form-control" name="txtSearch" placeholder="Search term..."/>
+            <span class="input-group-btn">
+                <button class="btn btn-primary btn-md" style="background-color:#008fe2!important;">
+                    <span>
+                        <i class="fa fa-search" style="color:white"></i>
+                    </span>
+                </button>
+
+            </span>
+        </div>
+    </div>
+    <div class="col-xs-2 mt-xlg" style="font-size:xx-large;color:#008fe2;">
+        <a (click)="openModalWithComponent()" data-toggle="modal"
+        data-target="#defaultModal">
+        <i class="fa fa-plus-circle"></i>
+      </a>
+   
+    </div>
+</div>
+
 <app-disease-small-item class="col-md-4" [disease]=d *ngFor="let d of diseases"></app-disease-small-item>
 
 

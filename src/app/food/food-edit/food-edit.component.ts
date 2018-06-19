@@ -41,21 +41,22 @@ export class FoodEditComponent implements OnInit {
     return this.form.get('foodicon');
   }
   updateFood(){
-    console.log(this.food)
-    console.log(this.form.valid)
+  
     // if(!this.foodName.touched && !this.foodIcon.touched){
     //   this.FoodService.save(this.food);
     // }
-    
+    if(this.foodName.value != '' && this.foodIcon.value != ''){
       this.food = {
-      id: this.id,
-      name: this.foodName.value,
-      icon: this.foodIcon.value
-      
-
+        id: this.id,
+        name: this.foodName.value,
+        icon: this.foodIcon.value
+        
+  
+      }
+      console.log(this.food)
+      this.FoodService.save(this.food);
     }
-    console.log(this.food)
-    this.FoodService.save(this.food);
+
     
    
     

@@ -1,3 +1,6 @@
+import { IUserDrug } from "./IUserDrug";
+import { IuserDisease } from "./IUserDisease";
+
 export interface Iuser {
     username:string
     email:string
@@ -11,4 +14,6 @@ export interface Iuser {
     image?: string;
     country?: string;
     city?: string;
+    druglist?: IUserDrug[]
+    diseaseList?: IuserDisease[]
 }   
