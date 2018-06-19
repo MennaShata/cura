@@ -16,8 +16,8 @@
                     </div>
 
                     <div class="form-group mb-lg">
-                        <label>E-mail Address</label>
-                        <input name="email" type="email" class=" form-control input-lg" #email="ngModel"[(ngModel)]="user.email"required/>
+                        <label data-error="Invalid Email!">E-mail Address</label>
+                        <input name="email" type="email" class=" form-control validate input-lg" #email="ngModel"[(ngModel)]="user.email"required [pattern]="emailPattern"/>
                     </div>
 
                     <div class="form-group mb-none">
@@ -29,7 +29,7 @@
                             </div>
                             <div class="col-sm-6 mb-lg">
                                 <label>Password Confirmation</label>
-                                <input name="pwd_confirm" type="password" class="form-control input-lg" #confirmPassword="ngModel" [(ngModel)]="user.password" required/>
+                                <input name="pwd_confirm" type="password" class="form-control input-lg" #confirmPassword="ngModel" [(ngModel)]="user.confirmPassword" required/>
                             </div>
                         </div>
                     </div>
