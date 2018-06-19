@@ -5,6 +5,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import {NgControl} from '@angular/forms';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-disease-add',
@@ -14,8 +15,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 export class DiseaseAddComponent implements OnInit {
   disease:Idisease;
   myForm:FormGroup;
-  modalRef: BsModalRef
-  constructor(private diseaseServiceService:DiseaseServiceService,private modalService: BsModalService) { }
+  modalRef:BsModalRef;
+  constructor(private diseaseServiceService:DiseaseServiceService,private modalService: BsModalService, private Router:Router) { }
 
   ngOnInit() {
     this.myForm=new FormGroup({
@@ -38,6 +39,8 @@ export class DiseaseAddComponent implements OnInit {
     //console.log(this.disease);
     this.diseaseServiceService.add(this.disease);
     this.myForm.reset();
+    this.Router.navigate(['disease/component']);
+
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);

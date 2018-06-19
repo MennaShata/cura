@@ -3,10 +3,11 @@ import { PillService } from '../../shared/services/pill/Pill.service';
 import { ColorService } from '../../shared/services/color/color.service';
 import { ShapeService } from '../../shared/services/shape/shape.service';
 import { FormControl } from '@angular/forms';
-import { FormGroup,  Validators } from '@angular/forms';
+import { FormGroup, Validators } from '@angular/forms';
 import { Ishape } from '../../shared/models/interfaces/ishape';
 import { Icolor } from '../../shared/models/interfaces/Icolor';
 import { Ipill } from '../../shared/models/interfaces/ipill';
+import { HelperFunctions } from '../../shared/classes/helper';
 
 @Component({
   selector: 'app-pill-search',
@@ -14,25 +15,23 @@ import { Ipill } from '../../shared/models/interfaces/ipill';
   styleUrls: ['./pill-search.component.css']
 })
 export class PillSearchComponent implements OnInit {
-
-  color: number;
-  shape: number;
-  backImprint:string;
+  isDisabled = true;
+  color: any;
+  shape: any;
+  backImprint: string;
   frontImprint: string;
   searchForm: FormGroup;
   shapes: Ishape[];
   colors: Icolor[];
   pill: any;
-  // public menuMessage: any ;
+
 
   constructor(private pillService: PillService, private colorService: ColorService, private shapeService: ShapeService) { }
 
   ngOnInit() {
-    // this.menuMessage = "countryCodeAFcountryNameAfghanistan";
+
     this.colors = this.colorService.getAll();
     this.shapes = this.shapeService.getAll();
-    
-
 
     this.searchForm = new FormGroup({
       FrontImprint: new FormControl(),
@@ -40,60 +39,45 @@ export class PillSearchComponent implements OnInit {
       Shape: new FormControl(null),
       Color: new FormControl(),
     });
-    //  debugger;
-    //  console.log(this.searchForm.controls['Shape']);
-    //  console.log((<FormGroup>this.searchForm).controls['Shape']);
-    //  this.searchForm.controls['Shape'].patchValue(this.default);
-    // (<FormGroup>this.searchForm).controls['Shape'].setValue(this.menuMessage, {onlySelf: true});
+
   }
-   
+
+  onDataChanged() {
+    this.frontImprint = this.searchForm.get('FrontImprint').value;
+    this.backImprint = this.searchForm.get('BackImprint').value;
+    this.shape = this.searchForm.get('Shape').value;
+    this.color = this.searchForm.get('Color').value;
+
+    if (!HelperFunctions.isNullOrEmpty(this.frontImprint) || !HelperFunctions.isNullOrEmpty(this.backImprint) || (!HelperFunctions.isNullOrEmpty(this.color) && this.color != 0) || (!HelperFunctions.isNullOrEmpty(this.shape) && this.shape != 0)) {
+      this.isDisabled = false;
+    }
+    else {
+      this.isDisabled = true;
+    }
+
+  }
+
   searchPill() {
-  //  console.log("ana gwa al ts lsa hro7 ll service");
-  //  console.log(this.searchForm.get('FrontImprint').value);
-  //  console.log(this.searchForm.get('BackImaaprint').value);
-  //  console.log(this.searchForm.get('Color').value);
-  //  console.log(this.searchForm.get('Shape').value);
-      this.frontImprint = this.searchForm.get('FrontImprint').value;
-      this.backImprint = this.searchForm.get('BackImprint').value;
-      this.shape = this.searchForm.get('Shape').value;
-      this.color = this.searchForm.get('Color').value;
-    debugger;
-    this.pillService.Search(this.frontImprint,this.backImprint,this.shape,this.color);
+
+    this.frontImprint = this.searchForm.get('FrontImprint').value;
+    this.backImprint = this.searchForm.get('BackImprint').value;
+    this.shape = this.searchForm.get('Shape').value;
+    this.color = this.searchForm.get('Color').value;
+
+    let pill: Ipill = {
+      frontImprint: this.frontImprint,
+      backImprint: this.backImprint,
+      shape: this.shape,
+      color: this.color
+    };
+    this.pillService.onSerch.next(pill);
+
+    if(this.pillService.Search(this.frontImprint, this.backImprint, this.shape, this.color).length > 0){
+      console.log("ana  3mlt scroll ok !!");
+      window.scrollTo(0, 600);
+    }
+   
+    //this.pillService.Search(this.frontImprint,this.backImprint,this.shape,this.color);
   }
-
-
-  // front = document.getElementById("Front");
-  // back = document.getElementById("Back");
-  // inputDropColor = document.getElementById("Color");
-  // inputDropShape = document.getElementById("Shape");
-
-  // disableFunction() {
-  //   if (this.front.value.length > 0 || back.value.length > 0) {
-  //     document.getElementById('search_button').disabled = false;
-
-  //   } else if (front.value.length == 0 && back.value.length == 0 && inputDropColor.options[inputDropColor.selectedIndex].text == "None Selected" && inputDropShape.options[inputDropShape.selectedIndex].text == "None Selected") {
-  //     document.getElementById('search_button').disabled = true;
-  //   }
-  // }
-
-  // inputDropColor.addEventListener('change', function() {
-  //   var strColor = inputDropColor.options[inputDropColor.selectedIndex].text;
-  //   if (strColor != "None Selected") {
-  //     document.getElementById('search_button').disabled = false;
-  //   }
-  //   if (strColor == "None Selected" && front.value.length == 0 && back.value.length == 0) {
-  //     document.getElementById('search_button').disabled = true;
-  //   }
-  // });
-
-  // inputDropShape.addEventListener('change', function() {
-  //   var strShape = inputDropShape.options[inputDropShape.selectedIndex].text;
-  //   if (strShape != "None Selected") {
-  //     document.getElementById('search_button').disabled = false;
-  //   }
-  //   if (strShape == "None Selected" && front.value.length == 0 && back.value.length == 0) {
-  //     document.getElementById('search_button').disabled = true;
-  //   }
-  // });
 
 }

@@ -11,13 +11,13 @@ export class ShapeService {
 constructor() {
   this.shapes=
   [ 
-  {id:0,name:'Round'},
-  {id:1,name:'Oblong'},
-  {id:2,name:'Oval'},
-  {id:3,name:'Square'},
-  {id:4,name:'Rectangle'},
-  {id:5,name:'Diamond'},
-  {id:6,name:'Other'}];
+  {id:1,name:'Round'},
+  {id:2,name:'Oblong'},
+  {id:3,name:'Oval'},
+  {id:4,name:'Square'},
+  {id:5,name:'Rectangle'},
+  {id:6,name:'Diamond'},
+  {id:7,name:'Other'}];
  }
  public getAll():Ishape[]
  {

@@ -16,6 +16,8 @@ import { FormControl } from '@angular/forms';
 import { NgControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap';
+import { Input } from '@angular/core';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-pill-edit',
@@ -23,24 +25,28 @@ import { BsModalRef } from 'ngx-bootstrap';
   styleUrls: ['./pill-edit.component.css']
 })
 export class PillEditComponent implements OnInit {
+
   title = '';
-  id: number;
+  // id: number;
   shapes: Ishape[];
   colors: Icolor[];
   strengthUnits: IstrengthUnit[];
   editForm: FormGroup;
   drug: Idrug;
   pill: Ipill;
-  
+  //bsModalRef: BsModalRef;
+  @Input() id :  number ;
 
-  constructor(private pillService: PillService, private drugService: DrugServiceService, private colorService: ColorService, private shapeService: ShapeService, private strengthService: StrengthService, private activatedRoute: ActivatedRoute, private route: Router ,  public bsModalRef: BsModalRef) { }
+  constructor(private pillService: PillService, private drugService: DrugServiceService, private colorService: ColorService, private shapeService: ShapeService, private strengthService: StrengthService, private activatedRoute: ActivatedRoute, private route: Router,  public bsModalRef: BsModalRef ) { }
 
   ngOnInit() {
+    if(this.id == undefined){
     this.activatedRoute.params.subscribe((params) => { this.id = params['id']; });
+    }
     this.title = 'Edit Pill';
-
     this.drug = this.drugService.getById(this.id);
     this.pill = this.pillService.getById(this.id);
+    console.log("al pill gwa al edit aly hy bind beha");
     console.log(this.pill);
     this.strengthUnits = this.strengthService.getAll();
     this.colors = this.colorService.getAll();
@@ -48,15 +54,16 @@ export class PillEditComponent implements OnInit {
 
 
     this.editForm = new FormGroup({
-      name: new FormControl(),
-      textOnSide: new FormControl(),
+      name: new FormControl('',Validators.required),
+      textOnSide: new FormControl('',Validators.required),
       textOnOther: new FormControl(),
-      shapeName: new FormControl(),
-      colorName: new FormControl(),
-      strength: new FormControl(),
-      strengthUnitName: new FormControl(),
+      shapeName: new FormControl('',Validators.required),
+      colorName: new FormControl('',Validators.required),
+      strength: new FormControl('',Validators.required),
+      strengthUnitName: new FormControl('',Validators.required),
       pillImage: new FormControl()
     });
+
 
     this.editForm.patchValue(
       {
@@ -65,16 +72,33 @@ export class PillEditComponent implements OnInit {
         textOnSide: this.pill.frontImprint,
         textOnOther: this.pill.backImprint,
         strength: this.pill.strength,
-        strengthUnitName: this.strengthService.getById(this.pill.strengthUnit),
-        colorName: this.colorService.getById(this.pill.color),
-        shapeName: this.shapeService.getById(this.pill.shape)
+        //strengthUnitName: this.strengthService.getById(this.pill.strengthUnit),
+        strengthUnitName: this.pill.strengthUnit,
+        //colorName: this.colorService.getById(this.pill.color),
+        colorName: this.pill.color,
+        //shapeName: this.shapeService.getById(this.pill.shape)
+        shapeName: this.pill.shape
+       
 
       }
     );
 
   }
 
+  whenCanceled()
+  {
+    this.bsModalRef.hide();
+  }
+
+  
+
   updatePill() {
+    console.log("ana  gwa al ts update");
+    debugger;
+    if(this.editForm.valid)
+    {
+      debugger;
+      console.log("ana  gwa al for update");
     this.pill = {
       id: this.id,
       name: this.editForm.get('name').value,
@@ -87,7 +111,9 @@ export class PillEditComponent implements OnInit {
       image: this.editForm.get('pillImage').value
     }
     this.pillService.Update(this.pill);
-    this.route.navigate(['pill/page']);
+    //this.route.navigate(['pill/page']);
+    this.bsModalRef.hide();
   }
+}
 
 }

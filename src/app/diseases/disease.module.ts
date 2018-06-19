@@ -25,7 +25,10 @@ import {SharedModule} from './../shared/shared.module';
     SharedModule
   ],
   
-  declarations: [DiseaseAddComponent, DiseaseLisingComponent, DiseaseDetailsComponent,
+  declarations: [
+    DiseaseAddComponent, 
+    DiseaseLisingComponent, 
+    DiseaseDetailsComponent,
     DiseaseSmallItemComponent,
     TreatedDrugsComponent,
     OneTreatedDrugComponent,
@@ -38,8 +41,7 @@ import {SharedModule} from './../shared/shared.module';
 exports : [
     DiseaseSmallItemComponent,
     DiseaseEditComponent,
-    DiseaseDetailsComponent
-
+    DiseaseDetailsComponent,
   ]
 })
 export class DiseaseModule { }

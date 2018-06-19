@@ -12,14 +12,10 @@ export class PillListingComponent implements OnInit {
   
   pills: Ipill[];
   constructor(public pillservice : PillService) { }
-  // public getPills()
-  // {
-  //   this.pills = this.pillservice.getPillsList();
-  // }
+
   ngOnInit() {
-    console.log("hhhhhhhhh");
-    console.log(this.pillservice.listOfPills);
-   //this.pills=this.pillservice.listOfPills;
-    // this.pills = this.pillservice.getPillsList();
+    this.pillservice.onSerch.subscribe(
+      (pill) => {this.pills = this.pillservice.Search(pill.frontImprint , pill.backImprint , pill.shape , pill.color) ; console.log(this.pills) }
+    )
   }
 }
