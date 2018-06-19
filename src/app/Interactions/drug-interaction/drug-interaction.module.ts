@@ -6,6 +6,7 @@ import { DrugInteractionComponent } from './drug-interaction.component';
 import { DrugInteractionListingComponent } from './drug-Interaction-Listing/drug-Interaction-Listing.component';
 import { DrugInteractionItemComponent } from './drug-interaction-item/drug-interaction-item.component';
 import { TypeaheadModule } from 'ngx-bootstrap';
+import { RouterModule, Routes ,ActivatedRoute} from '@angular/router';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { TypeaheadModule } from 'ngx-bootstrap';
     CommonModule,
     [FormsModule],
     BrowserModule,
-    [TypeaheadModule.forRoot()]
+    [TypeaheadModule.forRoot()],
+    RouterModule
   ],
   declarations: [
     DrugInteractionComponent,

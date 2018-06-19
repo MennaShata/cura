@@ -1,6 +1,12 @@
-html .page-header-color.page-header-primary {
+/* html .page-header-color.page-header-primary {
     background-color: #008fe2;
-}
+} */
 html .page-header-color.page-header-primary {
     background-color: #171717 !important;
+}
+.page-header {
+    border-bottom:0;
+}
+.page-header h1 {
+    padding: 0 0 42px !important;
 }
