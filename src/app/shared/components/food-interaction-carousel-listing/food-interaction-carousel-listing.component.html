@@ -1,4 +1,11 @@
-<section class="team">
+
+<owl-carousel [options]="{items: 3, dots: true, navigation: true}" 
+[items]="foodinteractions"
+[carouselClasses]="['owl-theme', 'row', 'sliding','nav-bottom', 'rounded-nav']">
+<app-food-interaction-carousel *ngFor="let f of foodinteractions" [foodInteraction]=f></app-food-interaction-carousel> 
+</owl-carousel>
+
+<!-- <section class="team">
   <div>
     <div class="row">
       <div class="col-md-12">
@@ -15,4 +22,4 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->

@@ -4,3 +4,44 @@
 .owl-nav{
     top:50px !important;
 }
+/*section{
+    display: block;
+}
+.ajax-box.ajax-box-init {
+    height: 0;
+}
+.ajax-box {
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+    position: relative;
+}
+.ajax-box .ajax-box-content {
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+    opacity: 1;
+    overflow: hidden;
+    height: auto;
+}
+.owl-carousel.owl-loaded {
+    display: block;
+}
+.owl-carousel {
+    margin-bottom: 20px;
+}
+.pr-xs {
+    padding-right: 5px !important;
+}
+.pl-xs {
+    padding-left: 5px !important;
+}
+.owl-carousel {
+    display: none;
+    width: 100%;
+    z-index: 1;
+}
+.owl-carousel, .owl-carousel .owl-item {
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+}*/

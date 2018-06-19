@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import {NgControl} from '@angular/forms';
 import { Idisease } from '../../shared/models/interfaces/idisease';
 import { DiseaseServiceService } from '../../shared/services/disease-service.service';
 import { ActivatedRoute ,Router} from '@angular/router';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 
 @Component({
@@ -12,15 +14,19 @@ import { ActivatedRoute ,Router} from '@angular/router';
   styleUrls: ['./disease-edit.component.css']
 })
 export class DiseaseEditComponent implements OnInit {
-  id:number;
+  @Input() id:number;
   disease:Idisease;
   editForm:FormGroup;
-  constructor(private diseaseServiceService:DiseaseServiceService,private activatedRoute:ActivatedRoute,private route:Router) { }
+  // modalRef:BsModalRef;
+  constructor(private diseaseServiceService:DiseaseServiceService,private activatedRoute:ActivatedRoute,private route:Router,public BsModalRef: BsModalRef) { }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe((params)=>{this.id=params['id'];});
+    if(this.id == undefined)
+    {
+      this.activatedRoute.params.subscribe((params)=>{this.id=params['id']});
+    }
+    // this.activatedRoute.params.subscribe((params)=>{this.id=params['id'];});
     this.disease = this.diseaseServiceService.getById(this.id);
-
     this.editForm=new FormGroup({
       name:new FormControl(),
       descripton:new FormControl(),
@@ -39,7 +45,13 @@ export class DiseaseEditComponent implements OnInit {
       forbiddenDrugs:this.editForm.get('forbiddenDrugs').value
     }
     this.diseaseServiceService.update(this.disease);
-    this.route.navigate(['communityEdit']);
+    this.route.navigate(['/disease/component']);
   }
-
+  // openModal(template: TemplateRef<any>) {
+  //   this.modalRef = this.modalService.show(template);
+  // }
+  closeModal(){
+      this.BsModalRef.hide();
+    
+  }
 }
