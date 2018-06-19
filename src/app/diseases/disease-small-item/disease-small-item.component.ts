@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Idisease } from '../../shared/models/interfaces/idisease';
 import { DiseaseServiceService } from '../../shared/services/disease-service.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap';
+import { DiseaseEditComponent } from '../disease-edit/disease-edit.component';
 
 @Component({
   selector: 'app-disease-small-item',
@@ -9,15 +11,19 @@ import { DiseaseServiceService } from '../../shared/services/disease-service.ser
 })
 export class DiseaseSmallItemComponent implements OnInit {
   @Input() disease:Idisease;
-  constructor(private diseaseServiceService:DiseaseServiceService) { }
+  bsModalRef: BsModalRef;
+  constructor(private diseaseServiceService:DiseaseServiceService,private modalService: BsModalService) { }
 
   ngOnInit() {
   }
   deleteDisease(id:number){
     this.diseaseServiceService.delete(id);
   }
-  // editDisease(id:number){
-  //   this.diseaseServiceService.update(this.disease);    
-  // }
-
+  public openEditModalWithComponent(_id:number) {
+    const initialState = {
+      id: _id
+    };
+    /* this is how we open a Modal Component from another component */
+    this.bsModalRef = this.modalService.show(DiseaseEditComponent,{initialState});
+  }
 }

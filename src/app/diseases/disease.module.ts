@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DiseaseComponentComponent } from './disease-component/disease-component.component';
 import { RouterModule, Routes ,ActivatedRoute} from '@angular/router';
 import {SharedModule} from './../shared/shared.module';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {SharedModule} from './../shared/shared.module';
     CommonModule,
     [ReactiveFormsModule],
     RouterModule,
-    SharedModule
+    SharedModule,
+    MatSelectModule
   ],
   
   declarations: [

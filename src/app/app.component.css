@@ -1,10 +1,12 @@
 .header-body {
-  top: 0;
+  top: 0px;
   left: 0;
 }
-
+.header-container{
+  padding:5px 0 !important;
+}
 #page-wrapper {
-  margin-top: 0px;
+  margin-top: 140px;
 }
 .header-body{
   
@@ -14,10 +16,14 @@
   border-bottom-width: 0px !important;
 }
 
-a{
+.dropdown-full-color a{
   color: #008fe2 !important; 
 }
-a:hover{
+.dropdown-full-color a:hover{
+  color: white !important; 
+  background-color: #008fe2 !important;
+}
+.dropdown-full-color a:active , .dropdown-full-color a:focus{
   color: white !important; 
   background-color: #008fe2 !important;
 }
