@@ -1,0 +1,23 @@
+<div class="featured-box featured-box-tertiary mt-sm ">
+  <div class="box-content">
+      
+
+
+      <div class="col-md-12">
+          <i class="fa fa-stethoscope" style="font-size:50px;color:#3aabdd;"></i>
+          <!-- <h2 class="mb-none" style="margin-top:20px;">{{disease.name}}</h2> -->
+          <h2 class="mb-none" style="margin-top:20px;">{{disease.name}}</h2>
+          <p>
+              {{disease.descripton}}
+          </p>
+          <!-- <p>
+                  {{disease.descripton}}
+          </p> -->
+      </div>
+      <!-- <a [routerLink]="['/diseaseDetails',disease.id]">know more </a> -->
+      <a [routerLink]="['/details',disease.id]">
+          <button class="btn btn-primary btn-tertiary">know more</button>
+      </a>
+
+  </div>
+</div>

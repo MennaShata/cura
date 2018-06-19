@@ -61,7 +61,7 @@ export class PillEditComponent implements OnInit {
       colorName: new FormControl('',Validators.required),
       strength: new FormControl('',Validators.required),
       strengthUnitName: new FormControl('',Validators.required),
-      pillImage: new FormControl()
+      pillImage: new FormControl('',Validators.required)
     });
 
 
@@ -77,7 +77,8 @@ export class PillEditComponent implements OnInit {
         //colorName: this.colorService.getById(this.pill.color),
         colorName: this.pill.color,
         //shapeName: this.shapeService.getById(this.pill.shape)
-        shapeName: this.pill.shape
+        shapeName: this.pill.shape,
+        pillImage: this.pill.image
        
 
       }
@@ -110,6 +111,7 @@ export class PillEditComponent implements OnInit {
       strengthUnit: this.editForm.get('strengthUnitName').value,
       image: this.editForm.get('pillImage').value
     }
+    console.log(this.pill.image);
     this.pillService.Update(this.pill);
     //this.route.navigate(['pill/page']);
     this.bsModalRef.hide();

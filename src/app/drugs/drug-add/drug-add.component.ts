@@ -24,6 +24,7 @@ import { BsDatepickerDirective } from 'ngx-bootstrap/datepicker';
 export class DrugAddComponent implements OnInit{
 
  title='';
+ btnName='';
  id:number;
  //values for dropdown list [add]
  activeIngredients:Iactiveingredient[];
@@ -48,6 +49,8 @@ export class DrugAddComponent implements OnInit{
   ngOnInit() {
     this.activeRoute.params.subscribe((params)=>{this.id=params['id'];});
     this.title='ADD Drug';
+    this.btnName ='ADD';
+    //this.activeIngredients=this.activeIngredientService.getAll();
     //this.activeIngredients=this.activeIngredientService.getAll();
     this.activeIngredientService.getAll().subscribe(
       (data)=>{this.activeIngredients=data}
@@ -73,13 +76,12 @@ export class DrugAddComponent implements OnInit{
       strength : new FormControl('',Validators.required),
       strengthUnit : new FormControl('',Validators.required),
       approvalHistory : new FormControl('',Validators.required),
-      drugLogo : new FormControl(''),
-      pillImage : new FormControl('')
  
     });
     //---------------Edit------------------
     if(this.id){
       this.title = 'Edit Drug';
+      this.btnName = 'Edit';
       this.drug = this.drugservice.getById(this.id);
       this.drugActiveIngredient=[];
       for(let i=0;i<this.drug.activeIngredient.length;i++){
@@ -103,7 +105,7 @@ export class DrugAddComponent implements OnInit{
           strength : this.drug.strength,
           strengthUnit : this.drugStrengthUnit.id,
           approvalHistory : this.drug.approvalHistory,
-          drugLogo : this.drug.image
+          //drugLogo : this.drug.image
         });
       }   
       if(this.drugType.name=== 'Tablets'){
@@ -131,7 +133,7 @@ export class DrugAddComponent implements OnInit{
             // strengthUnit : this.drugStrengthUnit.id,
             // approvalHistory : this.drug.approvalHistory,
             // drugLogo : this.drug.image,
-            pillImage : this.drug.pillImage
+           // pillImage : this.drug.pillImage
           });
       }
         
@@ -165,12 +167,12 @@ export class DrugAddComponent implements OnInit{
         strength : this.myForm.get('strength').value,
         strengthUnit : this.myForm.get('strengthUnit').value,
         approvalHistory : this.myForm.get('approvalHistory').value,
-        image : '',
+        image : './.."../../../assets/images/Pills-blue-icon.png',
         textOnSide : this.myForm.get('textOnSide').value,
         textOnOtherSide : this.myForm.get('textOnOther').value,
         shape:this.myForm.get('shape').value,
         color:this.myForm.get('color').value,
-        pillImage:''
+        pillImage:'./.."../../../assets/images/Pills-blue-icon.png'
         
       };
       if(this.id){

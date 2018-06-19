@@ -4,6 +4,7 @@ import { Idrug } from '../../models/interfaces/Idrug';
 import { DrugServiceService } from '../drug/drug-service.service';
 import { HelperFunctions } from '../../classes/helper';
 import { Subject } from 'rxjs/index';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class PillService {
   private oldPill: Ipill;
   private pills: Ipill[];
   onSerch = new Subject<Ipill>();
-  private listOfPills: Ipill[];
+   listOfPills: Ipill[]=[];
 
   constructor(private drugService: DrugServiceService) {
     this.pills = [
@@ -112,8 +113,8 @@ export class PillService {
     ]
   }
 
-  public getPillsList() {
-    return this.pills;
+  public getPillsList(){
+    return this.listOfPills;
   }
 
   public getById(id: number) {
@@ -147,7 +148,7 @@ export class PillService {
   }
 
   Search(frontImprint: any, backImprint: any, shape: any, color: any) {
-    this.listOfPills = this.pills.slice();
+    this.listOfPills = this.pills;
     // console.log(this.listOfPills);
     if (!HelperFunctions.isNullOrEmpty(frontImprint)) {
       this.listOfPills = this.listOfPills.filter(pill => pill.frontImprint == frontImprint || pill.backImprint == frontImprint);
@@ -161,8 +162,9 @@ export class PillService {
     if (!HelperFunctions.isNullOrEmpty(shape) && shape != 0) {
       this.listOfPills = this.listOfPills.filter(pill => pill.shape == shape);
     }
+    debugger;
     console.log(this.listOfPills);
-    return this.listOfPills;
+    // return this.listOfPills;
   }
 }
  

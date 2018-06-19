@@ -173,7 +173,7 @@
                              bsDatepicker
                              formControlName="approvalHistory"
                              placement="right"
-                             triggers="mouseenter:click"
+                             triggers="dblclick:click"
                              >
                     </div>
                       <!-- <div class="input-group col-md-6">
@@ -185,7 +185,7 @@
                       </div> -->
                   </div>
 
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label class="col-sm-2 control-label">Upload Drug Logo</label>
                     <div class="col-sm-10">
                       <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -203,7 +203,6 @@
                         </div>
                       </div>
                     </div>
-                    <!-- <div *ngIf="myForm.get('drugLogo').touched && myForm.get('drugLogo').invalid" style="color:red">Drug Logo is required</div> -->
                   </div>
 
 
@@ -225,15 +224,15 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div>-->
                   <div class="row">
                     <div class="col-md-6">
                       <span class="remember-box checkbox"></span>
 
-                    </div>
+                    </div> 
                     <div class="col-md-6">
                       <input type="button" value="Cancel" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading..." (click)="cancelForm()" />
-                      <input type="submit" value="Add" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading..." style="margin-right: 5px;"/>
+                      <input type="submit" [value]="btnName" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading..." style="margin-right: 5px;"/>
                     </div>
                   </div>
                 </div>
