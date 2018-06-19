@@ -32,7 +32,6 @@ export class DrugDetailsComponent implements OnInit {
   constructor(private drugService:DrugServiceService,private activatedRoute:ActivatedRoute,private drugTypeService:DrugTypeService,private strengthService:StrengthService,private sideEffectService:SideeffectService,private diseaseService:DiseaseServiceService,private foodInteractionService:FoodInteractionService,private activeIngredientService:ActiveIngredientService) { }
 
   ngOnInit() {
-    debugger;
     this.activatedRoute.params.subscribe((params)=>{this.id=params['id'];});
     this.drug = this.drugService.getById(this.id);
     this.drugType = this.drugTypeService.getName(this.drug.drugTypeName);
@@ -49,18 +48,17 @@ export class DrugDetailsComponent implements OnInit {
     else{
       this.childernWarningSrc = '../../../assets/images/allowChildern.png';
     }
-    
-    for(let i=0;i<this.drug.disease.length;i++){
-      this.disease[i] = this.diseaseService.getById(this.drug.disease[i]);
-    }
-    for(let i=0;i<this.drug.sideEffect.length;i++){
-      this.sideEffect[i] = this.sideEffectService.getById(this.drug.sideEffect[i]);
-    }
-    for(let i=0;i<this.drug.foodInteraction.length;i++){
-      this.foodInteraction[i] = this.foodInteractionService.getById(this.drug.foodInteraction[i]);
-    }
     for(let i=0;i<this.drug.activeIngredient.length;i++){
       this.activeIngredient[i] = this.activeIngredientService.getById(this.drug.activeIngredient[i]);
+      for(let j=0;j<this.activeIngredient[i].diseases.length;j++){
+        this.disease[j] = this.diseaseService.getById(this.activeIngredient[i].diseases[j]);
+      }
+      for(let j=0;j<this.activeIngredient[i].sideEffect.length;j++){
+      this.sideEffect[j] = this.sideEffectService.getById(this.activeIngredient[i].sideEffect[j]);
+      }
+      for(let j=0;j<this.activeIngredient[i].foodinteractions.length;j++){
+      this.foodInteraction[j] = this.foodInteractionService.getById(this.activeIngredient[i].foodinteractions[j]);
+      }
     }
   }
 

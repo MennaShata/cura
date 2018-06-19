@@ -4,5 +4,20 @@
 }
 
 #page-wrapper {
-  margin-top: 175px;
+  margin-top: 0px;
+}
+.header-body{
+  
+  border-top-width: 0px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  border-bottom-width: 0px !important;
+}
+
+a{
+  color: #008fe2 !important; 
+}
+a:hover{
+  color: white !important; 
+  background-color: #008fe2 !important;
 }

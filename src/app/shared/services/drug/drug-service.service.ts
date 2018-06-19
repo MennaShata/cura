@@ -12,7 +12,7 @@ import { Subject } from 'rxjs';
 export class DrugServiceService {
   private drugs: Idrug[] = [
     {
-      id: 0,
+      id: 1,
       image: '../../../assets/images/panadol1.jpg',
       drugName: 'panadol',
       drugTypeName: 3,
@@ -26,19 +26,19 @@ export class DrugServiceService {
       pregnancyWarning: true,
       childernWarning: true,
       warning: 'The total maximum dose of paracetamol for an adult is eight 500mg tablets in 24 hours. Wait at least 4 hours between doses.',
-      approvalHistory: '2017-12-01',
-      disease: [0, 1],
+      approvalHistory: 'Wed July 10 2010 02:11:01 GMT-0700 (Pacific Daylight Time) {}',
+      disease: [1, 2],
       sideEffect: [1, 2],
       foodInteraction: [1, 2]
 
     },
     {
-      id: 1,
+      id: 2,
       image: '../../../assets/images/panadol1.jpg',
       drugName: 'panadol',
       drugTypeName: 0,
       drugTypeImage: '../../../assets/images/drugBottle.PNG',
-      activeIngredient: [0, 1],
+      activeIngredient: [1, 2],
       strength: 200,
       strengthUnit: 1,
       usage: 'mosakn',
@@ -47,9 +47,9 @@ export class DrugServiceService {
       pregnancyWarning: true,
       childernWarning: false,
       warning: 'The total maximum dose of paracetamol for an adult is eight 500mg tablets in 24 hours. Wait at least 4 hours between doses.',
-      approvalHistory: '2010-08-01',
-      color: 0,
-      shape: 0,
+      approvalHistory: 'Mon Jun 11 2018 02:11:01 GMT-0700 (Pacific Daylight Time) {}',
+      color: 1,
+      shape: 1,
       textOnSide: '23',
       textOnOtherSide: 'panadol',
       pillImage: '../../../assets/images/panadol-pill.jpg',
@@ -58,7 +58,7 @@ export class DrugServiceService {
       foodInteraction: [1, 2]
     },
     {
-      id: 2,
+      id: 3,
       image: '../../../assets/images/aspirin.jpg',
       drugName: 'asprin',
       drugTypeName: 0,
@@ -72,22 +72,24 @@ export class DrugServiceService {
       pregnancyWarning: false,
       childernWarning: false,
       warning: 'The total maximum dose of paracetamol for an adult is eight 500mg tablets in 24 hours. Wait at least 4 hours between doses.',
-      approvalHistory: '2005-12-01',
+      approvalHistory: 'Sat May 10 2010 02:11:01 GMT-0700 (Pacific Daylight Time) {}',
       color: 3,
-      shape: 0,
+      shape: 1,
       textOnSide: '12',
       textOnOtherSide: 'asprin',
       pillImage: '../../../assets/images/panadol-pill.jpg',
-      disease: [0, 3],
+      disease: [1, 4],
       sideEffect: [1, 2],
       foodInteraction: [1, 2]
     }
   ];
+  private drugsDisplay:Idrug[]=this.drugs.slice();
   constructor() { }
   getAllDrug(): Observable<Idrug[]> {
-    return of(this.drugs);
+    return of(this.drugsDisplay);
   }
   getById(id) {
+    debugger;
     const index = this.drugs.findIndex(a => a.id == id);
     if (index > -1) {
       return this.drugs[index];
@@ -105,14 +107,15 @@ export class DrugServiceService {
     const index = this.drugs.findIndex(a => a.id === id);
     if (index > -1) {
       this.drugs.splice(index, 1);
+      this.drugsDisplay.splice(index,1);
     }
   }
 
   add(drug: Idrug) {
     if (drug) {
-      debugger;
-      drug.id = this.drugs.length;
+          drug.id = this.drugs.length+1;
       this.drugs.push(drug);
+      this.drugsDisplay = this.drugs;
     }
 
   }
@@ -142,14 +145,13 @@ export class DrugServiceService {
 
   }
   drugSearch(drugName) {
-    const index = this.drugs.findIndex(a => a.drugName == drugName);
-    if (index > -1) {
-      let drug = this.drugs[index];
-      this.drugs =[];
-      this.drugs.push(drug);
-      console.log(this.drugs);
-    }
-    
-      return this.drugs;
+    if(drugName !='' && drugName !=null && drugName.length > 1){
+      this.drugsDisplay=[];
+      this.drugsDisplay = this.drugs.filter(a=> a.drugName.toLowerCase().indexOf(drugName.toLowerCase())>-1);
+      }
+      else{
+        this.drugsDisplay = this.drugs;
+      }
+      return this.drugsDisplay;
   }
 }

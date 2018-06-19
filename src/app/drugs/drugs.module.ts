@@ -14,6 +14,10 @@ import { DiseaseModule } from '../diseases/disease.module';
 import {SideEffectModule} from './../side-effects/side-effect.module';
 import {ActiveIngredientModule} from './../active-ingredients/active-ingredient.module';
 import {FoodInteractionModule} from './../Interactions/food-Interaction/food-Interaction.module';
+import {MatSelectModule} from '@angular/material/select';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TypeaheadModule } from 'ngx-bootstrap';
+import {FoodInteractionCarouselComponent} from '../shared/components/food-interaction-carousel/food-interaction-carousel.component';
 
 
 @NgModule({
@@ -27,7 +31,10 @@ import {FoodInteractionModule} from './../Interactions/food-Interaction/food-Int
     [ReactiveFormsModule],
     RouterModule,
     SharedModule,
-    [PaginationModule.forRoot()]
+    [PaginationModule.forRoot()],
+    MatSelectModule,
+    [TypeaheadModule.forRoot()],
+    [BsDatepickerModule.forRoot()],
 
   ],
   declarations: [DrugsComponent,
