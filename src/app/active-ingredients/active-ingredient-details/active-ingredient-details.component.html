@@ -40,7 +40,7 @@
                 <!-- food interactions -->
                 <div>
                     <h4>Food Interaction</h4>
-                    <h5> &nbsp; &nbsp; &nbsp; &nbsp; {{ai.name}} interacts with food containing the following elements :</h5>
+                    <h5> &nbsp; {{ai.name}} interacts with food containing the following elements :</h5>
                 </div>
                 <div>
                     <app-food-interaction-carousel-listing [foodinteractions]=foodinteractions></app-food-interaction-carousel-listing>
@@ -63,8 +63,11 @@
                     <h4>You shouldn't take Acetaminophen if you have :</h4>
                     <ul style="list-style:none">
                         <li *ngFor="let d of diseases" disease=d>
-                                <h4> <i class="fa fa-circle" aria-hidden="true"></i>
-                            &nbsp; <a>{{d.name}} </a></h4>
+                            <h4>
+                                <i class="fa fa-circle" aria-hidden="true"></i>
+                                &nbsp;
+                                <a>{{d.name}} </a>
+                            </h4>
                         </li>
                     </ul>
                 </div>
@@ -78,6 +81,10 @@
             </div> -->
 
             <!-- drugs containing ingredient -->
+
+            
+
+
             <div>
                 <h3 class=" mb-sm">Famous drugs containing Acetaminophen</h3>
                 <app-listing-carousel [drugs]=drugs></app-listing-carousel>

@@ -64,7 +64,8 @@ export class ActiveIngredientAddComponent implements OnInit {
 
   onSubmit(){
     console.log(this.myForm.get('drugs'));
-    debugger;
+    console.log(this.aiDrugs = this.activeingredient.drugs);
+    
     this.activeingredient = {
       id : this.id,
       name : this.myForm.get('name').value,

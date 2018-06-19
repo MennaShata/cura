@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Iactiveingredient } from 'src/app/shared/models/interfaces/iactiveingredient';
 import { fail } from 'assert';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,8 @@ export class ActiveIngredientService {
 
   constructor() { }
 
-  getAll() {
-    return this.activeIngredients;
+  getAll():Observable<Iactiveingredient[]>  {
+    return of(this.activeIngredients);
   }
 
   getById(id) {
@@ -46,10 +47,11 @@ export class ActiveIngredientService {
   }
 
   update(activeIngredient: Iactiveingredient) {
+  
     const oldactiveing = this.getById(activeIngredient.id);
     oldactiveing.name = activeIngredient.name;
     oldactiveing.description = activeIngredient.description;
-
+    oldactiveing.drugs = activeIngredient.drugs;
   }
   public getName(id: number): string {
     const index = this.activeIngredients.findIndex(a => a.id === id);

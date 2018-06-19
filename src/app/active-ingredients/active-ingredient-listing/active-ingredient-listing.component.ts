@@ -13,7 +13,9 @@ export class ActiveIngredientListingComponent implements OnInit {
   constructor(private ActiveIngredientService:ActiveIngredientService) { }
 
   ngOnInit() {
-    this.ais = this.ActiveIngredientService.getAll();
+    this.ActiveIngredientService.getAll().subscribe(
+      (data)=>{this.ais=data}
+    )
   }
 
 }
