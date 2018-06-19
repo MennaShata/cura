@@ -9,6 +9,7 @@ import { AppModule } from '../app.module';
 import { RouterModule, Routes ,ActivatedRoute} from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SideEffectEditComponent } from './side-effect-edit/side-effect-edit.component';
+import { SideEffectWithoutComponent } from './side-effect-without/side-effect-without.component';
 
 
 
@@ -26,13 +27,17 @@ import { SideEffectEditComponent } from './side-effect-edit/side-effect-edit.com
     SideEffectAddComponent,
     SideEffectItemComponent,
     SideEffectsComponent,
-    SideEffectEditComponent
+    SideEffectEditComponent,
+    SideEffectWithoutComponent
    
 ,
     SideEffectEditComponent
+,
+    SideEffectWithoutComponent
 ],
 exports : [
-  SideEffectItemComponent
+  SideEffectItemComponent,
+  SideEffectWithoutComponent
 
 ]
 })

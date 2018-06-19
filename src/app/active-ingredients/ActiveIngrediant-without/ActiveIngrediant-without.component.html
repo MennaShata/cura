@@ -1,0 +1,20 @@
+<div class="featured-box featured-box-tertiary mt-sm ">
+  <div class="box-content">
+      <div >
+          
+          <!-- <h2 class="mb-none" style="margin-top:20px;">{{disease.name}}</h2> -->
+          <h2 class="mb-none" style="margin-top:20px;">{{ai.name}}</h2>
+          <p>
+              {{ai.description}}
+          </p>
+          <!-- <p>
+                  {{disease.descripton}}
+          </p> -->
+      </div>
+      <!-- <a [routerLink]="['/diseaseDetails',disease.id]">know more </a> -->
+      <a [routerLink]="['/activeingredient/details',ai.id]">
+          <button class="btn btn-primary btn-tertiary">know more</button>
+      </a>
+
+  </div>
+</div>

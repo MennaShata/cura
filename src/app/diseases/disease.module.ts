@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DiseaseComponentComponent } from './disease-component/disease-component.component';
 import { RouterModule, Routes ,ActivatedRoute} from '@angular/router';
 import {SharedModule} from './../shared/shared.module';
+import { DiseaseWithoutComponent } from './disease-without/disease-without.component';
 
 
 @NgModule({
@@ -36,12 +37,16 @@ import {SharedModule} from './../shared/shared.module';
     ForbiddenDrugsComponent,
     DiseaseSmallItemComponent,
     DiseaseEditComponent,
-    DiseaseComponentComponent
+    DiseaseComponentComponent,
+    DiseaseWithoutComponent
+,
+    DiseaseWithoutComponent
 ],
 exports : [
     DiseaseSmallItemComponent,
     DiseaseEditComponent,
     DiseaseDetailsComponent,
+    DiseaseWithoutComponent
   ]
 })
 export class DiseaseModule { }
