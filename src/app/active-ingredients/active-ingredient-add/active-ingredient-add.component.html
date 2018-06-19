@@ -44,7 +44,18 @@
                         </mat-select>
                       </mat-form-field>
                     </div>
+                   
                   </div>
+                  <div class="form-group">
+                  <label class="col-sm-2  control-label">food interactions</label>
+                  <div>
+                    <mat-form-field class="col-sm-10">
+                      <mat-select formControlName="foodinteractions" multiple>
+                        <mat-option *ngFor="let f of foodinteractions" [value]="f.id">{{f.foodName}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
                   <div class="row">
                     <div class="col-md-6">
                       <span class="remember-box checkbox"></span>
