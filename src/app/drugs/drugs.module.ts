@@ -18,7 +18,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TypeaheadModule } from 'ngx-bootstrap';
 import {FoodInteractionCarouselComponent} from '../shared/components/food-interaction-carousel/food-interaction-carousel.component';
-
+import { OwlModule } from 'ngx-owl-carousel';
 
 @NgModule({
   imports: [
@@ -35,6 +35,7 @@ import {FoodInteractionCarouselComponent} from '../shared/components/food-intera
     MatSelectModule,
     [TypeaheadModule.forRoot()],
     [BsDatepickerModule.forRoot()],
+    OwlModule
 
   ],
   declarations: [DrugsComponent,
