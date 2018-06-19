@@ -36,7 +36,8 @@
 
 
             <div class="mb-xlg">
-                <h2 class="font-weight-bold mb-sm">Warnings</h2>
+                <h2 class="font-weight-bold mb-sm">
+                    <i class="fa fa-exclamation-triangle"></i> &nbsp; Warnings </h2>
                 <!-- food interactions -->
                 <div>
                     <h3>Food Interaction</h3>
@@ -63,11 +64,12 @@
                     <h4>You shouldn't take Acetaminophen if you have :</h4>
                     <ul style="list-style:none">
                         <li *ngFor="let d of diseases" disease=d>
-                            <h4>
-                                <i class="fa fa-circle" aria-hidden="true"></i>
-                                &nbsp;
-                                <a [routerLink]="['/disease/details',d.id]">{{d.name}} </a>
-                            </h4>
+                            <a [routerLink]="['/disease/details',d.id]">
+                                <h4>
+                                    <i class="fa fa-circle" aria-hidden="true"></i>
+                                    &nbsp; {{d.name}}
+                                </h4>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -82,7 +84,7 @@
 
             <!-- drugs containing ingredient -->
 
-            
+
 
 
             <div>

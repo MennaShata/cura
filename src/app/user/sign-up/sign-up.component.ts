@@ -14,8 +14,10 @@ export class SignUpComponent implements OnInit {
   user: Iuser={
     username:'',
     email:'',
-    password:''
+    password:'',
+    confirmPassword:''
   }
+  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   constructor(public bsModalRef: BsModalRef) { }
 
   ngOnInit() {
@@ -30,7 +32,8 @@ resetForm(form?:NgForm)
   this.user={
     username:"",
     email:"",
-    password:""
+    password:"",
+    confirmPassword:""
   }
 }
 
