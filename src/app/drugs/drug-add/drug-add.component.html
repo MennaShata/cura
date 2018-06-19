@@ -18,6 +18,8 @@
                       name="tradeName" 
                       id="w1-username" 
                       placeholder="Enter Trade Name" 
+                      minlength="4"
+            
                       formControlName="tradeName" required>
                      <div *ngIf="myForm.get('tradeName').touched && myForm.get('tradeName').invalid" style="color:red">Trade Name is required</div>
                     </div>
@@ -152,7 +154,7 @@
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Strength</label>
                     <div class="col-sm-5">
-                            <input id="strengthText" type="number" class="spinner-input form-control" formControlName="strength" name="strength">
+                            <input id="strengthText" type="number" class="spinner-input form-control" formControlName="strength" name="strength" min=1 >
                             <div *ngIf="myForm.get('strength').touched && myForm.get('strength').invalid" style="color:red">Strength is required</div>
                     </div>
                     <div class="col-sm-5">
