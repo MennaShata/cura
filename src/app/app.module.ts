@@ -76,6 +76,7 @@ import { Http } from '@angular/http';
 
 import {MatSelectModule} from '@angular/material/select';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { OwlModule } from 'ngx-owl-carousel';
 import { AboutUsComponent } from './shared/components/aboutUs/aboutUs.component';
 import { QuestionAndAnswerComponent } from './shared/components/questionAndAnswer/questionAndAnswer.component';
 
@@ -185,7 +186,8 @@ const routes: Routes = [
     HomePageModule,
     TabsModule.forRoot(),
     MatSelectModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    OwlModule
   
   ],
   providers: [

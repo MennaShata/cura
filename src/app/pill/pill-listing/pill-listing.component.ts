@@ -11,11 +11,15 @@ import { PillService } from '../../shared/services/pill/Pill.service';
 export class PillListingComponent implements OnInit {
   
   pills: Ipill[];
-  constructor(public pillservice : PillService) { }
+  constructor(public pillService : PillService) { }
 
   ngOnInit() {
-    this.pillservice.onSerch.subscribe(
-      (pill) => {this.pills = this.pillservice.Search(pill.frontImprint , pill.backImprint , pill.shape , pill.color) ; console.log(this.pills) }
+    this.pillService.onSerch.subscribe(
+      () => {this.pills = this.pillService.listOfPills ; console.log(this.pills) }
     )
+    
+    // this.pillService.getPillsList().subscribe(res => {this.pills = res});
+    // console.log("ahahayyyyyyyyyyy");
+    // console.log(this.pills);
   }
 }

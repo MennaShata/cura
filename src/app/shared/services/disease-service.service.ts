@@ -85,4 +85,16 @@ export class DiseaseServiceService {
     oldDisease.treatedDrugs=newDisease.treatedDrugs;
     oldDisease.forbiddenDrugs=newDisease.forbiddenDrugs;
   }
+
+  Search(diseaseName) {
+    const index = this.diseases.findIndex(a => a.name == diseaseName);
+    if (index > -1) {
+      let disease = this.diseases[index];
+      this.diseases =[];
+      this.diseases.push(disease);
+      //console.log(this.diseases);
+    }
+    
+      return this.diseases;
+  }
 }

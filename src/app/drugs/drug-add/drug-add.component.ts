@@ -48,7 +48,10 @@ export class DrugAddComponent implements OnInit{
   ngOnInit() {
     this.activeRoute.params.subscribe((params)=>{this.id=params['id'];});
     this.title='ADD Drug';
-    this.activeIngredients=this.activeIngredientService.getAll();
+    //this.activeIngredients=this.activeIngredientService.getAll();
+    this.activeIngredientService.getAll().subscribe(
+      (data)=>{this.activeIngredients=data}
+    )
     this.types = this.drugTypeService.getAll();
     this.shapes= this.shapeService.getAll();
     this.colors=this.colorService.getAll();
