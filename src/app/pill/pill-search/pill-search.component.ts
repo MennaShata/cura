@@ -64,15 +64,16 @@ export class PillSearchComponent implements OnInit {
     this.shape = this.searchForm.get('Shape').value;
     this.color = this.searchForm.get('Color').value;
 
-    let pill: Ipill = {
-      frontImprint: this.frontImprint,
-      backImprint: this.backImprint,
-      shape: this.shape,
-      color: this.color
-    };
-    this.pillService.onSerch.next(pill);
+    // let pill: Ipill = {
+    //   frontImprint: this.frontImprint,
+    //   backImprint: this.backImprint,
+    //   shape: this.shape,
+    //   color: this.color
+    // };
+    this.pillService.Search(this.frontImprint , this.backImprint ,this.shape , this.color) ;
+    this.pillService.onSerch.next();
 
-    if(this.pillService.Search(this.frontImprint, this.backImprint, this.shape, this.color).length > 0){
+    if(this.pillService.listOfPills.length > 0){
       console.log("ana  3mlt scroll ok !!");
       window.scrollTo(0, 600);
     }

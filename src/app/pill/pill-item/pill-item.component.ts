@@ -22,12 +22,12 @@ export class PillItemComponent implements OnInit {
   bsModalRef: BsModalRef;
 
   @Input() pill: Ipill;
-  constructor(private pillservice: PillService, private colorService: ColorService, private shapeService: ShapeService, private strengthService: StrengthService, private modalService: BsModalService) { }
+  constructor(private pillService: PillService, private colorService: ColorService, private shapeService: ShapeService, private strengthService: StrengthService, private modalService: BsModalService) { }
 
 
   deletePill(id: number) {
     console.log("ana gwa al delete ts");
-    this.pillservice.Delete(id);
+    this.pillService.Delete(id);
   }
 
   getStrengthUnit() {
