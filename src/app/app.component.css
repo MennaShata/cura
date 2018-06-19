@@ -27,3 +27,6 @@
   color: white !important; 
   background-color: #008fe2 !important;
 }
+#header.header-narrow .header-logo img {
+  margin: 12px 12px 12px 25px;
+}
