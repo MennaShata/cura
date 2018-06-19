@@ -19,8 +19,8 @@ export class DrugItemSmallComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.drugs.usage = this.TrimMaxLength(this.drugs.usage,35);
-    this.drugs.dosage = this.TrimMaxLength(this.drugs.dosage,35);
+    this.drugs.usage = this.TrimMaxLength(this.drugs.usage,20);
+    this.drugs.dosage = this.TrimMaxLength(this.drugs.dosage,19);
     this.drugType = this.drugTypeService.getName(this.drugs.drugTypeName);
     this.strengthUnit = this.strengthService.getName(this.drugs.strengthUnit);
     for(let i=0;i<this.drugs.activeIngredient.length;i++){

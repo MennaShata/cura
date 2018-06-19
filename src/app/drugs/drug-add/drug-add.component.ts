@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Idrug} from './../../shared/models/interfaces/Idrug';
@@ -13,6 +13,7 @@ import {ColorService} from './../../shared/services/color/color.service';
 import {DrugTypeService} from './../../shared/services/drug-type/drug-type.service';
 import {ShapeService} from './../../shared/services/shape/shape.service';
 import {StrengthService} from './../../shared/services/strength/strength.service';
+import { BsDatepickerDirective } from 'ngx-bootstrap/datepicker';
 
 
 @Component({
@@ -21,6 +22,7 @@ import {StrengthService} from './../../shared/services/strength/strength.service
   styleUrls: ['./drug-add.component.css']
 })
 export class DrugAddComponent implements OnInit{
+
  title='';
  id:number;
  //values for dropdown list [add]
@@ -34,14 +36,13 @@ export class DrugAddComponent implements OnInit{
  drug:Idrug;
 
  //drug values for edit
- drugActiveIngredient:Iactiveingredient[];
+ drugActiveIngredient:number[];
  drugType:IdrugType;
  drugColor:Icolor;
  drugShape:Ishape;
  drugStrengthUnit:IstrengthUnit;
 
   constructor(private drugservice:DrugServiceService,private route:Router,private activeRoute :ActivatedRoute,private activeIngredientService:ActiveIngredientService,private colorService:ColorService,private shapeService:ShapeService,private strengthService:StrengthService,private drugTypeService:DrugTypeService) { 
- 
   }
   
   ngOnInit() {
@@ -55,22 +56,22 @@ export class DrugAddComponent implements OnInit{
     this.myForm = new FormGroup({
       tradeName : new FormControl('',Validators.required),
       company : new FormControl('',Validators.required),
-      activeIngredient: new FormControl(),
+      activeIngredient: new FormControl('',Validators.required),
       usage : new FormControl('',Validators.required),
       dosage : new FormControl('',Validators.required),
       pregnancyWarning : new FormControl('',Validators.required),
       childernWarning : new FormControl('',Validators.required),
       warning : new FormControl(),
-      type : new FormControl(),
+      type : new FormControl('',Validators.required),
       textOnSide : new FormControl(),
       textOnOther : new FormControl(),
       shape : new FormControl(),
       color : new FormControl(),
       strength : new FormControl('',Validators.required),
-      strengthUnit : new FormControl(),
-      approvalHistory : new FormControl(),
-      drugLogo : new FormControl(),
-      pillImage : new FormControl()
+      strengthUnit : new FormControl('',Validators.required),
+      approvalHistory : new FormControl('',Validators.required),
+      drugLogo : new FormControl(''),
+      pillImage : new FormControl('')
  
     });
     //---------------Edit------------------
@@ -79,38 +80,10 @@ export class DrugAddComponent implements OnInit{
       this.drug = this.drugservice.getById(this.id);
       this.drugActiveIngredient=[];
       for(let i=0;i<this.drug.activeIngredient.length;i++){
-        this.drugActiveIngredient[i] = this.activeIngredientService.getById(this.drug.activeIngredient[i]);
+        this.drugActiveIngredient[i] = this.activeIngredientService.getById(this.drug.activeIngredient[i]).id;
       }
       this.drugStrengthUnit = this.strengthService.getById(this.drug.strengthUnit);
       this.drugType=this.drugTypeService.getById(this.drug.drugTypeName);
-      if(this.drugType.name=== 'Tablets'){
-         this.pill=true;
-         this.drugColor= this.colorService.getById(this.drug.color);
-         this.drugShape= this.shapeService.getById(this.drug.shape);
-         this.myForm.patchValue(
-          {
-         
-            id:this.id,
-            tradeName : this.drug.drugName,
-            company : this.drug.company,
-            activeIngredient : this.drugActiveIngredient,
-            usage : this.drug.usage,
-            dosage : this.drug.dosage,
-            pregnancyWarning : this.drug.pregnancyWarning,
-            childernWarning : this.drug.childernWarning,
-            warning : this.drug.warning,
-            type : this.drugType.id,
-            textOnSide : this.drug.textOnSide,
-            textOnOther : this.drug.textOnOtherSide,
-            shape : this.drugShape.id,
-            color : this.drugColor.id,
-            strength : this.drug.strength,
-            strengthUnit : this.drugStrengthUnit.id,
-            approvalHistory : this.drug.approvalHistory,
-            drugLogo : this.drug.image,
-            pillImage : this.drug.pillImage
-          });
-      }
       this.myForm.patchValue(
         {
        
@@ -129,7 +102,36 @@ export class DrugAddComponent implements OnInit{
           approvalHistory : this.drug.approvalHistory,
           drugLogo : this.drug.image
         });
-      }     
+      }   
+      if(this.drugType.name=== 'Tablets'){
+         this.pill=true;
+         this.drugColor= this.colorService.getById(this.drug.color);
+         this.drugShape= this.shapeService.getById(this.drug.shape);
+         this.myForm.patchValue(
+          {
+         
+            // id:this.id,
+            // tradeName : this.drug.drugName,
+            // company : this.drug.company,
+            // activeIngredient : this.drugActiveIngredient,
+            // usage : this.drug.usage,
+            // dosage : this.drug.dosage,
+            // pregnancyWarning : this.drug.pregnancyWarning,
+            // childernWarning : this.drug.childernWarning,
+            // warning : this.drug.warning,
+            // type : this.drugType.id,
+            textOnSide : this.drug.textOnSide,
+            textOnOther : this.drug.textOnOtherSide,
+            shape : this.drugShape.id,
+            color : this.drugColor.id,
+            // strength : this.drug.strength,
+            // strengthUnit : this.drugStrengthUnit.id,
+            // approvalHistory : this.drug.approvalHistory,
+            // drugLogo : this.drug.image,
+            pillImage : this.drug.pillImage
+          });
+      }
+        
   }
   callType(){
     debugger;
@@ -138,6 +140,10 @@ export class DrugAddComponent implements OnInit{
       {
         this.pill=true;
       }   
+      else
+      {
+        this.pill=false;
+      }
   }
   public onSubmit(){
     if(this.myForm.valid)
@@ -155,7 +161,7 @@ export class DrugAddComponent implements OnInit{
         drugTypeName : this.myForm.get('type').value,      
         strength : this.myForm.get('strength').value,
         strengthUnit : this.myForm.get('strengthUnit').value,
-        approvalHistory : '',
+        approvalHistory : this.myForm.get('approvalHistory').value,
         image : '',
         textOnSide : this.myForm.get('textOnSide').value,
         textOnOtherSide : this.myForm.get('textOnOther').value,

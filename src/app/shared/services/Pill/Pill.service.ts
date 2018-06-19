@@ -12,7 +12,7 @@ export class PillService {
   private oldPill: Ipill;
   private pills: Ipill[];
   onSerch = new Subject<Ipill>();
-  private listOfPills : Ipill[];
+  private listOfPills: Ipill[];
 
   constructor(private drugService: DrugServiceService) {
     this.pills = [
@@ -134,44 +134,35 @@ export class PillService {
   }
 
   Update(newPill: Ipill) {
-    console.log(this.drugService.getById(newPill.id));
-
-    this.oldPill = this.getById(newPill.id);
-    this.oldPill.name = newPill.name;
-    this.oldPill.backImprint = newPill.backImprint;
-    this.oldPill.frontImprint = newPill.frontImprint;
-    this.oldPill.strength = newPill.strength;
-    this.oldPill.strengthUnit = newPill.strengthUnit;
-    this.oldPill.color = newPill.color;
-    this.oldPill.shape = newPill.shape;
-    this.oldPill.image = newPill.image;
+    let index = this.listOfPills.findIndex(a => a.id === newPill.id);
+    console.log(this.listOfPills[index]);
+    this.listOfPills[index].name = newPill.name;
+    this.listOfPills[index].backImprint = newPill.backImprint;
+    this.listOfPills[index].frontImprint = newPill.frontImprint;
+    this.listOfPills[index].strength = newPill.strength;
+    this.listOfPills[index].strengthUnit = newPill.strengthUnit;
+    this.listOfPills[index].color = newPill.color;
+    this.listOfPills[index].shape = newPill.shape;
+    this.listOfPills[index].image = newPill.image;
   }
 
   Search(frontImprint: any, backImprint: any, shape: any, color: any) {
-     this.listOfPills =  this.pills.slice();
-   console.log(this.listOfPills);
-   debugger;
-      if(!HelperFunctions.isNullOrEmpty(frontImprint))
-      {
-        console.log("1");
-        this.listOfPills = this.listOfPills.filter(pill => pill.frontImprint == frontImprint || pill.backImprint == frontImprint);
-      }
-      if(!HelperFunctions.isNullOrEmpty(backImprint))
-      {
-        console.log("2");
-        this.listOfPills = this.listOfPills.filter(pill => pill.backImprint == backImprint || pill.frontImprint == backImprint);
-      }
-      if(!HelperFunctions.isNullOrEmpty(color) && color != 0)
-      {
-        console.log("3");
-        this.listOfPills = this.listOfPills.filter(pill => pill.color == color);
-      }
-      if(!HelperFunctions.isNullOrEmpty(shape) && shape != 0)
-      {
-        console.log("4");
-        this.listOfPills = this.listOfPills.filter(pill => pill.shape == shape);
-      }
-      console.log(this.listOfPills);
+    this.listOfPills = this.pills.slice();
+    // console.log(this.listOfPills);
+    if (!HelperFunctions.isNullOrEmpty(frontImprint)) {
+      this.listOfPills = this.listOfPills.filter(pill => pill.frontImprint == frontImprint || pill.backImprint == frontImprint);
+    }
+    if (!HelperFunctions.isNullOrEmpty(backImprint)) {
+      this.listOfPills = this.listOfPills.filter(pill => pill.backImprint == backImprint || pill.frontImprint == backImprint);
+    }
+    if (!HelperFunctions.isNullOrEmpty(color) && color != 0) {
+      this.listOfPills = this.listOfPills.filter(pill => pill.color == color);
+    }
+    if (!HelperFunctions.isNullOrEmpty(shape) && shape != 0) {
+      this.listOfPills = this.listOfPills.filter(pill => pill.shape == shape);
+    }
+    console.log(this.listOfPills);
     return this.listOfPills;
   }
 }
+ 
