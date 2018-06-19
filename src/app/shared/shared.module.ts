@@ -12,9 +12,10 @@ import { CarouselSmallItemComponent } from 'src/app/shared/components/carousel-s
 import { HeaderTopComponent } from 'src/app/shared/components/header-top/header-top.component';
 import { FoodInteractionCarouselListingComponent } from 'src/app/shared/components/food-interaction-carousel-listing/food-interaction-carousel-listing.component';
 import { FoodInteractionCarouselComponent } from 'src/app/shared/components/food-interaction-carousel/food-interaction-carousel.component';
+import { OwlModule } from 'ngx-owl-carousel';
 
 @NgModule({
-  imports: [CommonModule, [FormsModule]],
+  imports: [CommonModule, [FormsModule],OwlModule],
   declarations: [
     SharedComponent,
     SearchComponent, 

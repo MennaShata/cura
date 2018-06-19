@@ -5,4 +5,11 @@
 .team .thumb-info .thumb-info-caption {
     position: relative;
     padding: 10px 0 !important;
+    
+}
+.custom-thumb-info-title{
+    color: black;
+}
+.custom-thumb-info-type{
+    display: block;
 }

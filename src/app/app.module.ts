@@ -70,6 +70,7 @@ import {HomePageModule} from './HomePage/HomePage.module';
 import { IndexComponent } from './HomePage/index/index.component';
 import {MatSelectModule} from '@angular/material/select';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { OwlModule } from 'ngx-owl-carousel';
 
 
 const routes: Routes = [
@@ -173,7 +174,8 @@ const routes: Routes = [
     UserModule,
     HomePageModule,
     MatSelectModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    OwlModule
   
   ],
   providers: [
