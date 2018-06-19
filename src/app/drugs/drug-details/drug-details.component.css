@@ -9,3 +9,8 @@
     padding: 0 0 25px;
     position: relative;
 }
+
+
+.page-header {
+ border-bottom:0px !important;
+}

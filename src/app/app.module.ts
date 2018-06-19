@@ -76,10 +76,14 @@ import { Http } from '@angular/http';
 
 import {MatSelectModule} from '@angular/material/select';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AboutUsComponent } from './shared/components/aboutUs/aboutUs.component';
+import { QuestionAndAnswerComponent } from './shared/components/questionAndAnswer/questionAndAnswer.component';
 
 
 const routes: Routes = [
   {path :'', component : IndexComponent},
+  {path:'aboutUs',component:AboutUsComponent},
+  {path:'questionAndAnswer',component:QuestionAndAnswerComponent},
   {path:'drug',children:[
     { path: 'listing', component: DrugListingComponent },
     { path:'details/:id' , component :DrugDetailsComponent},
@@ -157,7 +161,8 @@ const routes: Routes = [
     SingleFoodInteractionComponent,
     FoodAddComponent,
     FoodEditComponent,
-  
+    AboutUsComponent,
+    QuestionAndAnswerComponent    
 ],
   imports: [
     ModalModule.forRoot(),

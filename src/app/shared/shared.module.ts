@@ -36,7 +36,8 @@ import { FoodInteractionCarouselComponent } from 'src/app/shared/components/food
     LatestNewsComponent,
     ListingCarouselComponent,
     FoodInteractionCarouselListingComponent,
-    HeaderTopComponent]
+    HeaderTopComponent,
+    FoodInteractionCarouselComponent]
 })
 
 

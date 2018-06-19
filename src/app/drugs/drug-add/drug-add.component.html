@@ -33,12 +33,11 @@
 
                   <div class="form-group">
                     <label class="col-sm-2  control-label">Active Ingrediates</label>
-                    <div class="col-sm-10">
-                      <select multiple class="form-control populate" formControlName="activeIngredient" name="activeIngredient">
-                        <option [value]="activeIngredient.id" *ngFor="let activeIngredient of activeIngredients">{{activeIngredient.name}} </option>
-                      </select>
-                      <!-- <div *ngIf="myForm.get('activeIngredient').touched && myForm.get('activeIngredient').invalid" style="color:red">Active Ingredient is required</div> -->
-                    </div>
+                      <mat-form-field class="col-sm-10">
+                        <mat-select  formControlName="activeIngredient" multiple placeholder="Enter ActiveIngredient">
+                          <mat-option *ngFor="let activeIngredient of activeIngredients" [value]="activeIngredient.id">{{activeIngredient.name}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
                   </div>
 
                   <div class="form-group">
@@ -75,7 +74,7 @@
                         </label>
                       </div>
                     </div>
-                     <div *ngIf="myForm.get('pregnancyWarning').invalid" style="color:red">Pregnancy Warning is required</div> 
+                     <div *ngIf="myForm.get('pregnancyWarning').touched && myForm.get('pregnancyWarning').invalid" style="color:red">Pregnancy Warning is required</div> 
                   </div>
 
                   <div class="form-group">
@@ -95,7 +94,7 @@
                         </label>
                       </div>
                     </div>
-                    <div *ngIf="myForm.get('childernWarning').invalid" style="color:red">Childern Warning is required</div>
+                    <div *ngIf="myForm.get('childernWarning').touched && myForm.get('childernWarning').invalid" style="color:red">Childern Warning is required</div>
 
                   </div>
 
@@ -111,12 +110,11 @@
 
                   <div class="form-group">
                     <label class="col-sm-2  control-label">Type</label>
-                    <div class="col-sm-10">
-                      <select multiple class="form-control populate" formControlName="type" (change)='callType()' name="type">
-                        <option [value]="type.id" *ngFor="let type of types">{{type.name}}</option>
-                      </select>
-                      <!-- <div *ngIf="myForm.get('type').touched && myForm.get('type').invalid" style="color:red">Type is required</div> -->
-                    </div>
+                        <mat-form-field class="col-sm-10">
+                            <mat-select  formControlName="type" multiple (selectionChange)='callType()' placeholder="Enter Types">
+                              <mat-option *ngFor="let type of types" [value]="type.id">{{type.name}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
                   </div>
 
                   <div class="form-group" *ngIf="pill">
@@ -161,21 +159,30 @@
                       <select id="dropDownUnit" class="form-control populate"  formControlName="strengthUnit" name="strengthUnit">
                         <option [value]="strengthUnit.id" *ngFor="let strengthUnit of strengthUnits">{{strengthUnit.name}}</option>
                       </select>
-                      <!-- <div *ngIf="myForm.get('strengthUnit').touched && myForm.get('strengthUnit').invalid" style="color:red">Strength Unit is required</div> -->
+                     <div *ngIf="myForm.get('strengthUnit').touched && myForm.get('strengthUnit').invalid" style="color:red">Strength Unit is required</div> 
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label class="col-md-2 control-label">Approval History</label>
-                    <div class="col-md-7">
-                      <div class="input-group">
-                        <span class="input-group-addon">
+                    <div class="col-xs-12 col-12 col-md-4 form-group">
+                      <input type="text"
+                             placeholder="YYYY-MM-DD"
+                             class="form-control theme-blue"
+                             bsConfig="{containerClass :'theme-blue'}"
+                             bsDatepicker
+                             formControlName="approvalHistory"
+                             placement="right"
+                             triggers="mouseenter:click"
+                             >
+                    </div>
+                      <!-- <div class="input-group col-md-6">
+                        <span class=" input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </span>
                         <input type="date" class="form-control datepicker input-sm" name="approvalHistory" id="date" placeholder="__/__/____" formControlName="approvalHistory">
-                        <!-- <div *ngIf="myForm.get('approvalHistory').touched && myForm.get('approvalHistory').invalid" style="color:red">Approval History is required</div> -->
-                      </div>
-                    </div>
+                         <div *ngIf="myForm.get('approvalHistory').touched && myForm.get('approvalHistory').invalid" style="color:red">Approval History is required</div> 
+                      </div> -->
                   </div>
 
                   <div class="form-group">
@@ -187,10 +194,10 @@
                             <i class="fa fa-file fileupload-exists"></i>
                             <span class="fileupload-preview"></span>
                           </div>
-                          <span class="btn btn-default btn-file" formControlName="drugLogo" name="drugLogo">
+                          <span class="btn btn-default btn-file" >
                             <span class="fileupload-exists">Change</span>
                             <span class="fileupload-new">Select Image</span>
-                            <input type="file" />
+                            <input type="file" formControlName="drugLogo"/>
                           </span>
                           <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
                         </div>

@@ -3,7 +3,7 @@
 
         <div class="box-content" style=" border-radius:5px; padding: 10px 10px 0px;">
             <div class="row drug-buttons">
-                <div class="col-md-offset-9 col-xs-offset-10">
+                <div class="col-md-offset-9 col-xs-offset-8">
 
                     <!-- <a [routerLink]="['/pill/editPill',pill.id]"> -->
                     <button type="button" class="btn-borders btn-primary btn-info primary btn-xs" style="margin: 3px; padding: 0px 3px;" (click)="openModalWithComponent(pill.id)">
@@ -22,7 +22,7 @@
 
                 <span class="thumb-info-wrapper">
 
-                    <a [routerLink]="['/pill/details',pill.id]">
+                    <a [routerLink]="['/pill/details',pill.id]" target="_blank">
                         <img [src]="pill.image" class="img-responsive" alt="" style="height:130px; margin-bottom:10px">
                     </a>
 
@@ -30,7 +30,7 @@
                         <span class="thumb-info-inner">
                             {{pill.name}}
                             <br>
-                            <h6 style="font-size:small ; color:white; margin-bottom:0px">{{pill.strength}} {{strengthUnit.name}}</h6>
+                            <h6 style="font-size:small ; color:white; margin-bottom:0px">{{pill.strength}} {{getStrengthUnit()}}</h6>
                         </span>
 
                         <!-- <span class="thumb-info-type">GSK</span>-->
@@ -47,7 +47,6 @@
                         <span class="col-sm-6 ">
                             {{pill.frontImprint}}
                         </span>
-
 
                     </div>
 
@@ -67,7 +66,7 @@
                             <strong>Shape : </strong>
                         </span>
                         <span class="col-sm-6 ">
-                            {{shape.name}}
+                            {{getShape()}}
                         </span>
                     </div>
 
@@ -77,13 +76,14 @@
                             <strong>Color : </strong>
                         </span>
                         <span class="col-sm-6 ">
-                            {{color.name}}
+                            <!-- {{color.name}} -->
+                            {{getColor()}}
                         </span>
 
                     </div>
 
 
-                    <a [routerLink]="['/pill/details',pill.id]" class="row col-sm-12 center mt-md" style="margin:0;">
+                    <a [routerLink]="['/pill/details',pill.id]" class="row col-sm-12 center mt-md" style="margin:0;" target="_blank">
                         <input type="button" value="Details" id="loadingButton" data-loading-text="Loading..." class="btn btn-primary  mb-xl" style="font-size: 1.5rem; ">
                     </a>
 

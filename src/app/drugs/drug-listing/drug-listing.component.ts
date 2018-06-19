@@ -10,6 +10,7 @@ import {Idrug} from './../../shared/models/interfaces/Idrug';
 export class DrugListingComponent implements OnInit {
   public drugs:Idrug[]=[];
   public txtSearch:string='';
+  public allDrugsName:string[];
   
   constructor(private drugService:DrugServiceService) { 
   }
@@ -17,11 +18,10 @@ export class DrugListingComponent implements OnInit {
   ngOnInit() {
     this.drugService.getAllDrug().subscribe(
       (data)=>{this.drugs=data}
-    )
-  
+    );
+    this.allDrugsName = this.drugService.getAllDrugsName();
   }
   search(){
-    console.log(this.txtSearch);
     this.drugs = this.drugService.drugSearch(this.txtSearch);
 
   }

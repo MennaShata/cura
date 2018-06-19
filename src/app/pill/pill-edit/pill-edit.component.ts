@@ -17,6 +17,7 @@ import { NgControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap';
 import { Input } from '@angular/core';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-pill-edit',
@@ -24,6 +25,7 @@ import { Input } from '@angular/core';
   styleUrls: ['./pill-edit.component.css']
 })
 export class PillEditComponent implements OnInit {
+
   title = '';
   // id: number;
   shapes: Ishape[];
@@ -42,7 +44,6 @@ export class PillEditComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => { this.id = params['id']; });
     }
     this.title = 'Edit Pill';
-    debugger;
     this.drug = this.drugService.getById(this.id);
     this.pill = this.pillService.getById(this.id);
     console.log("al pill gwa al edit aly hy bind beha");
@@ -53,15 +54,16 @@ export class PillEditComponent implements OnInit {
 
 
     this.editForm = new FormGroup({
-      name: new FormControl(),
-      textOnSide: new FormControl(),
+      name: new FormControl('',Validators.required),
+      textOnSide: new FormControl('',Validators.required),
       textOnOther: new FormControl(),
-      shapeName: new FormControl(),
-      colorName: new FormControl(),
-      strength: new FormControl(),
-      strengthUnitName: new FormControl(),
+      shapeName: new FormControl('',Validators.required),
+      colorName: new FormControl('',Validators.required),
+      strength: new FormControl('',Validators.required),
+      strengthUnitName: new FormControl('',Validators.required),
       pillImage: new FormControl()
     });
+
 
     this.editForm.patchValue(
       {
@@ -70,16 +72,33 @@ export class PillEditComponent implements OnInit {
         textOnSide: this.pill.frontImprint,
         textOnOther: this.pill.backImprint,
         strength: this.pill.strength,
-        strengthUnitName: this.strengthService.getById(this.pill.strengthUnit),
-        colorName: this.colorService.getById(this.pill.color),
-        shapeName: this.shapeService.getById(this.pill.shape)
+        //strengthUnitName: this.strengthService.getById(this.pill.strengthUnit),
+        strengthUnitName: this.pill.strengthUnit,
+        //colorName: this.colorService.getById(this.pill.color),
+        colorName: this.pill.color,
+        //shapeName: this.shapeService.getById(this.pill.shape)
+        shapeName: this.pill.shape
+       
 
       }
     );
 
   }
 
+  whenCanceled()
+  {
+    this.bsModalRef.hide();
+  }
+
+  
+
   updatePill() {
+    console.log("ana  gwa al ts update");
+    debugger;
+    if(this.editForm.valid)
+    {
+      debugger;
+      console.log("ana  gwa al for update");
     this.pill = {
       id: this.id,
       name: this.editForm.get('name').value,
@@ -93,6 +112,8 @@ export class PillEditComponent implements OnInit {
     }
     this.pillService.Update(this.pill);
     //this.route.navigate(['pill/page']);
+    this.bsModalRef.hide();
   }
+}
 
 }
