@@ -11,19 +11,27 @@ import { DiseaseEditComponent } from '../disease-edit/disease-edit.component';
 })
 export class DiseaseSmallItemComponent implements OnInit {
   @Input() disease:Idisease;
-  bsModalRef: BsModalRef;
-  constructor(private diseaseServiceService:DiseaseServiceService,private modalService: BsModalService) { }
+  constructor(private DiseaseServiceService:DiseaseServiceService) { }
 
   ngOnInit() {
   }
-  deleteDisease(id:number){
-    this.diseaseServiceService.delete(id);
+  delete(id){
+    this.DiseaseServiceService.delete(id);
   }
-  public openEditModalWithComponent(_id:number) {
-    const initialState = {
-      id: _id
-    };
-    /* this is how we open a Modal Component from another component */
-    this.bsModalRef = this.modalService.show(DiseaseEditComponent,{initialState});
-  }
+  //@Input() disease:Idisease;
+  // bsModalRef: BsModalRef;
+  // constructor(private diseaseServiceService:DiseaseServiceService,private modalService: BsModalService) { }
+
+  // ngOnInit() {
+  // }
+  // deleteDisease(id:number){
+  //   this.diseaseServiceService.delete(id);
+  // }
+  // public openEditModalWithComponent(_id:number) {
+  //   const initialState = {
+  //     id: _id
+  //   };
+  //   /* this is how we open a Modal Component from another component */
+  //   this.bsModalRef = this.modalService.show(DiseaseEditComponent,{initialState});
+  // }
 }
