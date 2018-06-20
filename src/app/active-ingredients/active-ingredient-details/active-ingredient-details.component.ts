@@ -34,7 +34,7 @@ export class ActiveIngredientDetailsComponent implements OnInit {
       this.foodinteractions[i] = this.fis.getById(this.ai.foodinteractions[i]);
     }
     for(let i=0;i<this.ai.diseases.length;i++){
-      this.diseases[i]= this.diseaseservice.getById(this.ai.diseases[i]);
+      this.diseases[i]= this.diseaseservice.getDisease(this.ai.diseases[i]);
     }
 
   }

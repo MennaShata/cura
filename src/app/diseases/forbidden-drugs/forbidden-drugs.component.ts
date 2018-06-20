@@ -17,7 +17,7 @@ export class ForbiddenDrugsComponent implements OnInit {
   
   ngOnInit() {
     this.activatedRoute.params.subscribe((params)=>{this.id=params['id'];});
-    this.forbiddenDrugs=this.diseaseServiceService.getForbiddenDrugs(this.id);
+    // this.forbiddenDrugs=this.diseaseServiceService.getForbiddenDrugs(this.id);
   }
 
 }

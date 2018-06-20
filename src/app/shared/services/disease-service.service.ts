@@ -158,4 +158,5 @@ export class DiseaseServiceService {
       return this.diseases;
     }
     
-}}
+}
+}
