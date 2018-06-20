@@ -2,7 +2,7 @@
     <div class="col-xs-8 col-xs-offset-1 mt-xlg">
         <div class="input-group">
             <input type="hidden" name="search_param" value="all" id="search_param">
-            <input type="text" class="form-control" name="txtSearch" placeholder="Search term..." [(ngModel)]="txtSearch" (keypress)="search()"/>
+            <input type="text" class="form-control" name="txtSearch" placeholder="Search term..." [(ngModel)]="txtSearch" (keydown)="search()"/>
             <span class="input-group-btn">
                 <button class="btn btn-primary btn-md" style="background-color:#008fe2!important;">
                     <span>
