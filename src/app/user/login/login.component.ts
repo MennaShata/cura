@@ -6,6 +6,9 @@ import {Http, Headers, RequestOptions} from '@angular/http';
 import {Router} from '@angular/router';
 import { Observable, Subject, ReplaySubject, from, of, range } from 'rxjs';
 import { map, filter, switchMap } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
+import { UserService } from '../../shared/services/user/user.service';
+
 
 @Component({
   selector: 'app-login',
@@ -13,30 +16,32 @@ import { map, filter, switchMap } from 'rxjs/operators';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  user:Iuser;
+  isLoginError : boolean = false;
+  constructor(private userService : UserService,private router : Router ) {
 
-  constructor(public bsModalRef: BsModalRef, private Http:Http, private Router:Router) {
-    this.user = {
-      username: '',
-      email:'',
-      password:'',
-      confirmPassword:''
-    }
     
    }
-   public login(){
-     if(this.user.username && this.user.email && this.user.password){
-       let headers = new Headers({'content-type':'application/json'});
-       let options = new RequestOptions({headers: headers});
-       this.Http.post('http://localhost:4200/login', JSON.stringify(this.user), options)
-          // .map(result => result.json())
-      //     .subscribe(result => {
-      //       this.Router.navigate(["/profile"], {'queryParams': result})
-      //  })
-     }
-   }
+  //  public login(){
+  //    if(this.user.username && this.user.email && this.user.password){
+  //      let headers = new Headers({'content-type':'application/json'});
+  //      let options = new RequestOptions({headers: headers});
+  //      this.Http.post('http://localhost:4200/login', JSON.stringify(this.user), options)
+  //         // .map(result => result.json())
+  //     //     .subscribe(result => {
+  //     //       this.Router.navigate(["/profile"], {'queryParams': result})
+  //     //  })
+  //    }
+  //  }
 
   ngOnInit() {
   }
-
+  OnSubmit(userName,password){
+    this.userService.userAuthentication(userName,password).subscribe((data : any)=>{
+     localStorage.setItem('userToken',data.access_token);
+     this.router.navigate(['/home']);
+   },
+   (err : HttpErrorResponse)=>{
+     this.isLoginError = true;
+   });
+ }
 }

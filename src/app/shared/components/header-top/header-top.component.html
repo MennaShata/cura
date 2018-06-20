@@ -15,8 +15,8 @@
                 </li>
                 <li class=" pull-right">
 
-                    <span class="ws-nowrap">
-                        <a (click)="openLogin()">
+                    <span  *ngIf="notfound == true" class="ws-nowrap">
+                        <a routerLink="user/login">
                             <div class="col-md-12 btn btn-primary pull-right mt-sm ">
                                 <i class="fa fa-sign-in" style="color:white"></i>
                                 Login
@@ -27,8 +27,20 @@
                 </li>
                 <li class=" pull-right">
 
-                    <span class="ws-nowrap">
-                        <a (click)="openSignUp()">
+                        <span  *ngIf="notfound == false" class="ws-nowrap">
+                            <a (click)="Logout()">
+                                <div class="col-md-12 btn btn-primary pull-right mt-sm ">
+                                    <i class="fa fa-sign-in" style="color:white"></i>
+                                    Logout
+                                </div>
+                            </a>
+                        </span>
+    
+                    </li>
+                <li class=" pull-right">
+
+                    <span *ngIf="notfound == true"class="ws-nowrap">
+                        <a routerLink="user/signup">
                             <div class="col-md-12 btn btn-primary pull-right mt-sm">
                                 <i class="fa fa-user-plus" style="color:white"></i>
                                 Register
