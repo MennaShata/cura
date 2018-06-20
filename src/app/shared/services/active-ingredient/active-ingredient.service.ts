@@ -15,13 +15,25 @@ export class ActiveIngredientService {
 
   activeIngredients: Iactiveingredient[] =
     [
-      { id: 0, name: 'paracetamol', description: "is a medicine used to treat pain and fever. It is typically used for mild to moderate pain relief", drugs: [1, 2], foodinteractions: [0, 1], diseases: [1], sideEffect: [1] },
-      { id: 1, name: 'dextromethorphan', description: " is a drug of the morphinan class with sedative, dissociative, and stimulant properties (at higher doses).", drugs: [2, 3], foodinteractions: [0, 1, 0, 1, 0, 1], diseases: [3], sideEffect: [2] },
-      { id: 2, name: 'acetylsalicylic acid', drugs: [1], diseases: [0], sideEffect: [2], foodinteractions: [0, 1] },
-      { id: 3, name: 'Acetaminophen', foodinteractions: [0, 1], diseases: [1], sideEffect: [1] },
-      { id: 4, name: 'Dextromethorphan', drugs: [3], diseases: [2], sideEffect: [1], foodinteractions: [0, 1] },
-      { id: 5, name: 'Diphenhydramine', foodinteractions: [0, 1], diseases: [1], sideEffect: [1] }
-    ];
+      { 
+        id: 0, 
+        name: 'Paracetamol', 
+        description: " is a medicine used to treat pain and fever. It is typically used for mild to moderate pain relief. Evidence for its use to relieve fever in children is mixed. It is often sold in combination with other medications, such as in many cold medications. In combination with opioid pain medication, paracetamol is also used for severe pain such as cancer pain and pain after surgery. It is typically used either by mouth or rectally but is also available intravenously. Effects last between two and four hours.", 
+        drugs: [1, 2], 
+        foodinteractions: [0, 1], 
+        diseases: [1], 
+        sideEffect: [1] 
+      },
+      { 
+        id: 1, 
+        name: 'Aminophylline', 
+        description: "a compound of the bronchodilator theophylline with ethylenediamine in 2:1 ratio. The ethylenediamine improves solubility, and the aminophylline is usually found as a dihydrate.Aminophylline is less potent and shorter-acting than theophylline. Its most common use is in the treatment of airway obstruction from asthma or COPD. It is used off-label as a reversal agent during nuclear stress testing. Aminophylline is a nonselective adenosine receptor antagonist and phosphodiesterase inhibitor.", 
+        drugs: [1], 
+        foodinteractions: [0, 1], 
+        diseases: [1], 
+        sideEffect: [1] 
+      },
+      ];
 
   private activeIngredientsDisplay:Iactiveingredient[]=this.activeIngredients.slice();  
   activeing: Iactiveingredient;
@@ -112,7 +124,7 @@ export class ActiveIngredientService {
 
 
   search(name) {
-    if(name !='' && name !=null && name.length > 1){
+    if(name !='' && name !=null && name.length > 0){
       this.activeIngredientsDisplay=[];
       this.activeIngredientsDisplay = this.activeIngredients.filter(a=> a.name.toLowerCase().indexOf(name.toLowerCase())>-1);
       }
