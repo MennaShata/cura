@@ -40,9 +40,9 @@
                                 <label for="AgreeTerms">I agree with <a href="#">terms of use</a></label>
                             </div>
                         </div>
-                        <div class="col-sm-4 text-right">
-                            <button type="submit" class="btn btn-primary hidden-xs">Sign Up</button>
-                            <button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign Up</button>
+                        <div class="col-sm-4 text-right"><button type="submit" class="btn btn-primary hidden-xs" [disabled]="!userRegistrationForm.valid">Sign Up</button>
+                            
+                            <button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg" [disabled]="!userRegistrationForm.valid">Sign Up</button>
                         </div>
                     </div>
 

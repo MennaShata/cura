@@ -5,6 +5,7 @@ import { Iuser } from '../../shared/models/interfaces/Iuser';
 import { NgForm } from '@angular/forms';
 import { UserService} from './../../shared/services/user/user.service'
 import { ToastrService } from 'ngx-toastr'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,17 +14,19 @@ import { ToastrService } from 'ngx-toastr'
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-  constructor( private UserService:UserService, private toastr: ToastrService) { }
+  constructor( private UserService:UserService, private toastr: ToastrService,private router : Router ) { }
   onSubmit(form: NgForm){
     this.UserService.registerUser(form.value)
     .subscribe((data:any)=>{
       if(data.Succeded == true){
         this.resetForm(form);
         this.toastr.success('User Registration Successfull')
+        
       }
       else{
         this.toastr.error(data.Errors[0])
       }
+      this.router.navigate(["/home"]);;
     });
 
   }
