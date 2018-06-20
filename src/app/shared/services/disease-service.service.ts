@@ -137,6 +137,7 @@ export class DiseaseServiceService {
   //   oldDisease.forbiddenDrugs=newDisease.forbiddenDrugs;
   // }
 
+  Search(diseaseName) {
   // Search(diseaseName) {
   //   const index = this.diseases.findIndex(a => a.name == diseaseName);
   //   if (index > -1) {
@@ -148,4 +149,13 @@ export class DiseaseServiceService {
     
   //     return this.diseases;
   // }
-}
+  if(diseaseName !='' && diseaseName !=null && diseaseName.length > 0){
+    let result:Idisease[]=[];
+    result = this.diseases.filter(a=> a.name.toLowerCase().indexOf(diseaseName.toLowerCase())>-1);
+    return result;
+    }
+    else{
+      return this.diseases;
+    }
+    
+}}
