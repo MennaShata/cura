@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row col-md-offset-3">
     <input type="text" class="form-control" name="txtSearch" id="DrugName" placeholder="Search term..." [(ngModel)]="txtSearch"
-      (keypress)="search()" (change)="search()" [typeahead]="aisName" />
+      (keydown)="search()" (change)="search()" [typeahead]="aisName" />
     
       <button class="btn btn-primary btn-md" id="searchbtn" style="background-color:#008fe2!important;">
         <span>

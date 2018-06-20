@@ -29,7 +29,7 @@
                         </ul>
                     </div> -->
                     <!-- <input type="hidden" name="search_param" value="all" id="search_param"> -->
-                    <input type="text" class="form-control" name="txtSearch" id="DrugName" placeholder="Search term..." [(ngModel)]="txtSearch" (keypress)="search()" (change)="search()" [typeahead]="allDrugsName"/>
+                    <input type="text" class="form-control" name="txtSearch" id="DrugName" placeholder="Search term..." [(ngModel)]="txtSearch" (keydown)="search()" (change)="search()" [typeahead]="allDrugsName"/>
                     <span class="input-group-btn">
                         <button class="btn btn-primary btn-md" style="background-color:#008fe2!important;">
                             <span>
