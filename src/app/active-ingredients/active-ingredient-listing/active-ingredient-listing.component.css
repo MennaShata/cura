@@ -19,4 +19,8 @@
 }
 #searchbtn {
     margin-top: -5px;
+    
+}
+.fa.fa-plus-circle{
+    vertical-align: middle !important;
 }
