@@ -26,7 +26,7 @@ export class SignUpComponent implements OnInit {
       else{
         this.toastr.error(data.Errors[0])
       }
-      this.router.navigate(["/home"]);;
+      this.router.navigate[("/home")];;
     });
 
   }
