@@ -1,0 +1,68 @@
+
+<div role="main" class="main">
+    <section class="page-header" style="padding-bottom: 61.5px; margin-top: -7px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="mt-xs">News</h1>
+                    <ul class="breadcrumb breadcrumb-valign-mid">
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li class="active">News</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+  <div class="container">
+    <div class="row pt-xl">
+
+      <div class="col-md-10 col-md-offset-1">
+
+        <div class="blog-posts single-post mt-xl">
+
+          <article class="post post-large blog-single-post">
+
+            <div class="post-date">
+              <span class="day">{{day}}</span>
+              <span class="month">{{month}}</span>
+            </div>
+
+            <div class="post-content">
+
+              <h2>{{oneNews.title}}</h2>
+
+              <div class="divider divider-primary divider-small mb-xl">
+                <hr>
+              </div>
+
+              <div class="post-meta">
+                <span>
+                  <i class="fa fa-user"></i> By
+                  <a >{{oneNews.publisher}}</a>
+                </span>
+                <span>
+                  <i class="fa fa-tag"></i>
+                  <a >{{oneNews.source}}</a>,
+                  <a >News</a>
+                </span>
+               
+              </div>
+
+              <img [src]="oneNews.image" class="img-responsive pull-left mb-xs mr-xl" alt="" style="width: 330px;">
+
+
+              <p>{{oneNews.content}}</p>
+
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

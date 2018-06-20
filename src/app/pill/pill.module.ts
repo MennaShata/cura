@@ -15,12 +15,12 @@ import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
     RouterModule,
     [ReactiveFormsModule]
   ],
-  declarations: [PillComponent,
+  declarations: [
+    PillComponent,
     PillListingComponent,
     PillItemComponent,
     PillInfoComponent,
-    PillSearchComponent
-,
+    PillSearchComponent,
     PillEditComponent
 ]
 })
