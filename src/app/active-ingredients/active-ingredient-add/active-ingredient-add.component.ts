@@ -9,6 +9,7 @@ import { Idisease } from 'src/app/shared/models/interfaces/idisease';
 import { DiseaseServiceService } from 'src/app/shared/services/disease-service.service';
 import { IfoodInteraction } from 'src/app/shared/models/interfaces/ifoodInteraction';
 import { FoodInteractionService } from 'src/app/shared/services/foodInteraction.service';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-active-ingredient-add',
@@ -26,6 +27,7 @@ export class ActiveIngredientAddComponent implements OnInit {
 
   foodinteractions:IfoodInteraction[];
   diseases:Idisease[]=[];
+  //diseases:Observable<Idisease>
   aiDiseases:number[]=[];
 
   myForm:FormGroup;
@@ -49,7 +51,7 @@ export class ActiveIngredientAddComponent implements OnInit {
       (data)=> {this.activeingredients=data}
     );
     this.length = this.activeingredients.length;
-    this.diseases=this.diseaseservice.getDiseases();
+    //this.diseases=this.diseaseservice.getDisease();
     this.foodinteractions = this.fis.getFoodInteractionList();
 
     this.myForm = new FormGroup({

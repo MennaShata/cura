@@ -12,7 +12,7 @@ import { FoodItemComponent } from './food/food-item/food-item.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { AppComponent } from './app.component';
-import { PillListingComponent } from './pill/pill-listing/pill-listing.component';
+
 import {RouterModule,Routes,ActivatedRoute} from '@angular/router';
 import {DrugsModule} from './drugs/drugs.module';
 import {DrugsComponent} from './drugs/drugs.component';
@@ -21,6 +21,15 @@ import {DrugAddComponent} from './drugs/drug-add/drug-add.component';
 import { PillModule } from './pill/pill.module';
 import { PillComponent } from './pill/pill.component';
 import { PillItemComponent } from './pill/pill-item/pill-item.component';
+import { PillListingComponent } from './pill/pill-listing/pill-listing.component';
+import { PillEditComponent } from './pill/pill-edit/pill-edit.component';
+
+import { NewsModule } from './news/news.module';
+import { NewsComponent } from './news/news.component';
+import { NewsListingComponent } from './news/news-listing/news-listing.component';
+import { NewsDetailsComponent} from './news/news-details/news-details.component';
+import { NewsAddComponent } from './news/news-add/news-add.component';
+import { NewsEditComponent } from './news/news-edit/news-edit.component';
 
 import { SideEffectItemComponent } from './side-effects/side-effect-item/side-effect-item.component';
 import { FormsModule ,ReactiveFormsModule, FormGroup, FormControl }   from '@angular/forms';
@@ -53,7 +62,7 @@ import { SideEffectAddComponent } from './side-effects/side-effect-add/side-effe
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { ModalModule } from 'ngx-bootstrap';
 import { DiseaseEditComponent } from './diseases/disease-edit/disease-edit.component';
-import { PillEditComponent } from './pill/pill-edit/pill-edit.component';
+
 import {DrugListingComponent} from './drugs/drug-listing/drug-listing.component';
 import { DrugInteractionListingComponent} from './Interactions/drug-interaction/drug-Interaction-Listing/drug-Interaction-Listing.component';
 import { DrugInteractionModule } from './Interactions/drug-interaction/drug-interaction.module';
@@ -79,10 +88,17 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { OwlModule } from 'ngx-owl-carousel';
 import { AboutUsComponent } from './shared/components/aboutUs/aboutUs.component';
 import { QuestionAndAnswerComponent } from './shared/components/questionAndAnswer/questionAndAnswer.component';
+import { UserService } from './shared/services/user/user.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+
+
+
 
 
 const routes: Routes = [
   {path :'', component : IndexComponent},
+  {path :'home', component : IndexComponent},
   {path:'aboutUs',component:AboutUsComponent},
   {path:'questionAndAnswer',component:QuestionAndAnswerComponent},
   {path:'drug',children:[
@@ -125,8 +141,7 @@ const routes: Routes = [
 
   { path:'addFood' , component :FoodAddComponent},
   { path:'editFood/:id' , component :FoodEditComponent},
-  { path:'login' , component :LoginComponent},
-  { path:'signup' , component :SignUpComponent},
+  
 
   {path:'pill',children:[
     { path:'page', component: PillComponent},
@@ -135,6 +150,17 @@ const routes: Routes = [
     { path:'addPill' , component: DrugAddComponent},
     { path:'editPill/:id' , component: PillEditComponent},
   ]},
+
+  {path:'news',children:[
+    { path:'page', component: NewsComponent},
+    { path:'listing', component: NewsListingComponent},
+    { path:'details/:id' , component :NewsDetailsComponent},
+    { path:'addNews' , component: NewsAddComponent},
+    { path:'editNews/:id' , component: NewsEditComponent},
+    
+  ]},
+
+
   {path:'user',children:[
     {path:'login', component: LoginComponent},
     {path:'signup', component: SignUpComponent},
@@ -178,6 +204,7 @@ const routes: Routes = [
     ActiveIngredientModule,
     SideEffectModule,
     SharedModule,
+    NewsModule,
     CommunitiesModule,
     RouterModule.forRoot(routes),
     FoodInteractionModule,
@@ -187,7 +214,10 @@ const routes: Routes = [
     TabsModule.forRoot(),
     MatSelectModule,
     BrowserAnimationsModule,
-    OwlModule
+    OwlModule,
+    HttpClientModule,
+    ToastrModule.forRoot(),
+    
   
   ],
   providers: [
@@ -195,6 +225,7 @@ const routes: Routes = [
     ActiveIngredientService,
     BsModalService,
     FoodService,
+    UserService
     
   ],
   bootstrap: [AppComponent]

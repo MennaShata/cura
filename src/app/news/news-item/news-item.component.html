@@ -1,0 +1,78 @@
+<section class="">
+  <div class="timeline-body">
+    <div class="col-md-4" style="margin-bottom:15px; margin-top:10px">
+      
+      <article class="news-art timeline-box mb-xs left post post-medium">
+          <div class="row drug-buttons">
+              <div class="col-md-offset-10 col-xs-offset-8">
+
+                  <!-- <a [routerLink]="['/pill/editPill',pill.id]"> -->
+                  <button type="button" class="btn-borders btn-primary btn-info primary btn-xs" style="margin: 3px; padding: 0px 3px;" (click)="openModalWithComponent(oneNews.id)">
+                      <i class="fa fa-edit">
+                      </i>
+                  </button>
+                  <!-- </a> -->
+                  <button type="button" class="btn-danger primary btn-xs btn-borders"  (click)="deleteNews(oneNews.id)"  style="padding: 0px 3px; ">
+                      <i class="fa fa-trash">
+                      </i>
+                  </button>
+              </div>
+          </div>
+        <div class="row">
+
+          <div class="col-md-12">
+            <div class="post-image">
+              <div>
+                <div class="img-thumbnail">
+                    <a [routerLink]="['/news/details',oneNews.id]" >
+                      <img [src]="oneNews.image" class="img-responsive" alt="">
+                  </a>
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 ">
+
+            <div class="post-content">
+              <h4 class="heading-primary">
+                <a [routerLink]="['/news/details',oneNews.id]">{{oneNews.title}}</a>
+              </h4>
+              <p>{{content}}</p>
+            </div>
+
+          </div>
+        </div>
+       
+        <div class="row">
+          <div class="col-md-12">
+            <div class="post-meta">
+             
+              <span>
+                <i class="fa fa-user"></i> Publisher
+                <a>{{oneNews.publisher}}</a>
+              </span>
+              <span>
+                <i class="fa fa-tag"></i>
+                <a>{{oneNews.source}}</a>,
+                <a>News</a>
+              </span>
+
+              <span>
+                  <i class="fa fa-calendar"></i>{{oneNews.date}}
+                </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <a [routerLink]="['/news/details',oneNews.id]" class="btn btn-xs btn-primary pull-right">Read more...</a>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </div>
+</section>

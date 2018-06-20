@@ -1648,7 +1648,7 @@ html[dir="rtl"] #header .header-search .btn-default {
 }
 
 .page-header h1 {
-	border-bottom: 5px solid #CCC;
+	border-bottom: 7px solid #CCC;
 	color: #fff;
 	display: inline-block;
 	font-size: 32px;

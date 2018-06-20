@@ -201,7 +201,7 @@ export class DrugServiceService {
 
   }
   drugSearch(drugName) {
-    if(drugName !='' && drugName !=null && drugName.length > 1){
+    if(drugName !='' && drugName !=null && drugName.length >0){
       this.drugsDisplay=[];
       this.drugsDisplay = this.drugs.filter(a=> a.drugName.toLowerCase().indexOf(drugName.toLowerCase())>-1);
       }
