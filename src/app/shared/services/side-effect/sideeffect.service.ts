@@ -12,17 +12,16 @@ constructor() {
   this.sideeffects = [
     {
       id:1,
-      name : "soda3",
-      description:"haza el dwa bigeb soda3 lma yta5d m3 el lban",
+      name : " nausea",
+      description:"Nausea is pronounced stomach discomfort and the sensation of wanting to vomit. Nausea can be a precursor to vomiting the contents of the stomach",
       isDeleted:false
 
   },
   {
     id:2,
-    name : "soda3 nsfi",
-    description:"haza el dwa bigeb soda3 lma yta5d m3 el lban",
+    name : "Vicodin",
+    description:"This particular drug is used to treat pain, and is classified as an opioid. There’s a massive opioid epidemic plaguing the U.S. right now",
     isDeleted:false
-
 
 }
 ]
