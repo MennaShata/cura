@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row col-md-offset-3">
     <input type="text" class="form-control" name="txtSearch" id="DrugName" placeholder="Search term..." [(ngModel)]="txtSearch"
       (keypress)="search()" (change)="search()" [typeahead]="aisName" />
     
@@ -11,7 +11,7 @@
 
     
   </div>
-  <div class="row">
+  <div class="row col-md-offset-1">
     <app-active-ingrediant-item class="col-lg-5" *ngFor="let ai of ais" [ai]=ai></app-active-ingrediant-item>
   </div>
 </div>
