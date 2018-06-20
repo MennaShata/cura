@@ -10,14 +10,24 @@ import { ActiveIngredientService } from 'src/app/shared/services/active-ingredie
 export class ActiveIngrediantItemComponent implements OnInit {
 
   @Input() ai:Iactiveingredient;
+  desc:string;
   constructor(private ActiveIngredientService:ActiveIngredientService) { }
 
   ngOnInit() {
+    this.desc = this.TrimMaxLength(this.ai.description,100);
   }
 
   deleteAI(id:number){
     this.ActiveIngredientService.Delete(id);
     
   }
+  public TrimMaxLength(str, maxLength) {
+    var res = str;
+    if (str.length > maxLength) {
+        res = str.substr(0, maxLength);
+        res = res.concat("...");
+    }
+    return res;
+}
 
 }

@@ -7,6 +7,9 @@ import { Idrug } from 'src/app/shared/models/interfaces/Idrug';
 import { DrugServiceService } from 'src/app/shared/services/drug/drug-service.service';
 import { Idisease } from 'src/app/shared/models/interfaces/idisease';
 import { DiseaseServiceService } from 'src/app/shared/services/disease-service.service';
+import { IfoodInteraction } from 'src/app/shared/models/interfaces/ifoodInteraction';
+import { FoodInteractionService } from 'src/app/shared/services/foodInteraction.service';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-active-ingredient-add',
@@ -15,12 +18,16 @@ import { DiseaseServiceService } from 'src/app/shared/services/disease-service.s
 })
 export class ActiveIngredientAddComponent implements OnInit {
 
+  activeingredients:Iactiveingredient[];
+  length:number;
   title='';
   activeingredient:Iactiveingredient;
   drugs:Idrug[]=[];
   aiDrugs:number[]=[];
 
+  foodinteractions:IfoodInteraction[];
   diseases:Idisease[]=[];
+  //diseases:Observable<Idisease>
   aiDiseases:number[]=[];
 
   myForm:FormGroup;
@@ -30,7 +37,8 @@ export class ActiveIngredientAddComponent implements OnInit {
     private ds:DrugServiceService,
     private r:Router,
     private ar:ActivatedRoute,
-    private diseaseservice:DiseaseServiceService
+    private diseaseservice:DiseaseServiceService,
+    private fis:FoodInteractionService
   ){}
 
   ngOnInit() {
@@ -39,13 +47,19 @@ export class ActiveIngredientAddComponent implements OnInit {
     this.ds.getAllDrug().subscribe(
       (data)=>{this.drugs=data}
     )
-    this.diseases=this.diseaseservice.getDiseases();
+    this.ActiveIngredientService.getAll().subscribe(
+      (data)=> {this.activeingredients=data}
+    );
+    this.length = this.activeingredients.length;
+    //this.diseases=this.diseaseservice.getDisease();
+    this.foodinteractions = this.fis.getFoodInteractionList();
 
     this.myForm = new FormGroup({
       name:new FormControl(),
       description:new FormControl(),
       drugs:new FormControl(),
-      diseases:new FormControl()
+      diseases:new FormControl(),
+      foodinteractions:new FormControl()
     });
 
     if(this.id){
@@ -56,7 +70,9 @@ export class ActiveIngredientAddComponent implements OnInit {
       this.myForm.patchValue({
         name : this.activeingredient.name,
         description : this.activeingredient.description,
-        drugs : this.activeingredient.drugs
+        drugs : this.activeingredient.drugs,
+        diseases: this.activeingredient.diseases,
+        foodinteractions : this.activeingredient.foodinteractions
       });
     }
 
@@ -64,18 +80,19 @@ export class ActiveIngredientAddComponent implements OnInit {
 
   onSubmit(){
     console.log(this.myForm.get('drugs'));
-    console.log(this.aiDrugs = this.activeingredient.drugs);
+    console.log(this.activeingredients.length);
+    //console.log(this.aiDrugs = this.activeingredient.drugs);
     
     this.activeingredient = {
-      id : this.id,
+      id : (this.length+1) ,
       name : this.myForm.get('name').value,
       description : this.myForm.get('description').value,
-      drugs: this.myForm.get('drugs').value
+      drugs: this.myForm.get('drugs').value,
+      foodinteractions:this.myForm.get('foodinteractions').value,
+      diseases:this.myForm.get('diseases').value
     }
 
-    // for(let i=0;i<this.aiDrugs.length;i++){
-    //   console.log(this.aiDrugs[i]);
-    // }
+  
     if(this.id){
       this.ActiveIngredientService.update(this.activeingredient);
     }

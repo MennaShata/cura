@@ -5,9 +5,11 @@ import { ActiveIngredientListingComponent } from './active-ingredient-listing/ac
 import { ActiveIngrediantItemComponent } from './active-ingrediant-item/active-ingrediant-item.component';
 import { ActiveIngredientDetailsComponent } from './active-ingredient-details/active-ingredient-details.component';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import {MatSelectModule} from '@angular/material/select';
+import { ActiveIngrediantWithoutComponent } from './ActiveIngrediant-without/ActiveIngrediant-without.component';
+import { TypeaheadModule } from 'ngx-bootstrap';
 
 
 @NgModule({
@@ -16,16 +18,23 @@ import {MatSelectModule} from '@angular/material/select';
     ReactiveFormsModule,
     RouterModule,
     SharedModule,
-    MatSelectModule
+    MatSelectModule,
+    FormsModule,
+    [TypeaheadModule.forRoot()]
+    
   ],
   declarations: [
     ActiveIngredientAddComponent,
     ActiveIngredientListingComponent,
     ActiveIngrediantItemComponent,
-    ActiveIngredientDetailsComponent
+    ActiveIngredientDetailsComponent,
+    ActiveIngrediantWithoutComponent
+,
+    ActiveIngrediantWithoutComponent
 ],
 exports:[
-  ActiveIngrediantItemComponent
+  ActiveIngrediantItemComponent,
+  ActiveIngrediantWithoutComponent
 ]
 })
 export class ActiveIngredientModule { }

@@ -22,6 +22,6 @@ export class DiseaseDetailsComponent implements OnInit {
     // this.disease=this.diseaseServiceService.getById(1);    
     // this.bodyparts=this.diseaseServiceService.getDiseaseBodyParts(1);
     this.activatedRoute.params.subscribe((params)=>{this.id=params['id'];});
-    this.disease = this.diseaseServiceService.getById(this.id);
+    this.disease = this.diseaseServiceService.getDisease(this.id);
   }
 }

@@ -15,7 +15,7 @@ export class TreatedDrugsComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params)=>{this.id=params['id'];});
-    this.treatedDrugs=this.diseaseServiceService.getTreatedDrugs(this.id);
+    //this.treatedDrugs=this.diseaseServiceService.getTreatedDrugs(this.id);
 
   }
 

@@ -88,11 +88,17 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { OwlModule } from 'ngx-owl-carousel';
 import { AboutUsComponent } from './shared/components/aboutUs/aboutUs.component';
 import { QuestionAndAnswerComponent } from './shared/components/questionAndAnswer/questionAndAnswer.component';
+import { UserService } from './shared/services/user/user.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+
+
 
 
 
 const routes: Routes = [
   {path :'', component : IndexComponent},
+  {path :'home', component : IndexComponent},
   {path:'aboutUs',component:AboutUsComponent},
   {path:'questionAndAnswer',component:QuestionAndAnswerComponent},
   {path:'drug',children:[
@@ -135,8 +141,7 @@ const routes: Routes = [
 
   { path:'addFood' , component :FoodAddComponent},
   { path:'editFood/:id' , component :FoodEditComponent},
-  { path:'login' , component :LoginComponent},
-  { path:'signup' , component :SignUpComponent},
+  
 
   {path:'pill',children:[
     { path:'page', component: PillComponent},
@@ -209,7 +214,10 @@ const routes: Routes = [
     TabsModule.forRoot(),
     MatSelectModule,
     BrowserAnimationsModule,
-    OwlModule
+    OwlModule,
+    HttpClientModule,
+    ToastrModule.forRoot(),
+    
   
   ],
   providers: [
@@ -217,6 +225,7 @@ const routes: Routes = [
     ActiveIngredientService,
     BsModalService,
     FoodService,
+    UserService
     
   ],
   bootstrap: [AppComponent]

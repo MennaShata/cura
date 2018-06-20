@@ -13,9 +13,11 @@ import { HeaderTopComponent } from 'src/app/shared/components/header-top/header-
 import { FoodInteractionCarouselListingComponent } from 'src/app/shared/components/food-interaction-carousel-listing/food-interaction-carousel-listing.component';
 import { FoodInteractionCarouselComponent } from 'src/app/shared/components/food-interaction-carousel/food-interaction-carousel.component';
 import { OwlModule } from 'ngx-owl-carousel';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+
 
 @NgModule({
-  imports: [CommonModule, [FormsModule],OwlModule],
+  imports: [CommonModule, [FormsModule],OwlModule,RouterModule ],
   declarations: [
     SharedComponent,
     SearchComponent, 

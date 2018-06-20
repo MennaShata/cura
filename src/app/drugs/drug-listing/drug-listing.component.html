@@ -3,10 +3,9 @@
         <div class="row">
             <div class="col-xs-8 col-xs-offset-2 mt-xlg">
                 <div class="input-group">
-                    <div class="input-group-btn search-panel">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="border-color: #ccc">
-                            <span id="search_concept">Filter by</span>
-                            <!-- <span class="caret"></span> -->
+                    <!-- <div class="input-group-btn search-panel">
+                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="border-color: #ccc">
+                            <span id="search_concept">Filter by</span> 
                         </button>
                         <ul class="dropdown-menu" role="menu">
                             <li>
@@ -28,7 +27,7 @@
                                 <a href="#all">Anything</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
                     <!-- <input type="hidden" name="search_param" value="all" id="search_param"> -->
                     <input type="text" class="form-control" name="txtSearch" id="DrugName" placeholder="Search term..." [(ngModel)]="txtSearch" (keypress)="search()" (change)="search()" [typeahead]="allDrugsName"/>
                     <span class="input-group-btn">
@@ -51,7 +50,7 @@
         <br>
         <div class="row">
             <div class="col-md-2">
-                <aside class="sidebar" id="sidebar" data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
+                <!-- <aside class="sidebar" id="sidebar" data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
 
                     <h4 class="heading-primary">
                         <strong>Filter</strong> By
@@ -75,7 +74,7 @@
                         </li>
                     </ul>
 
-                </aside>
+                </aside> -->
             </div>
             <div class="col-md-10">
                 <div class="featured-boxes">

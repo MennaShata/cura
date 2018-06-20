@@ -9,12 +9,12 @@ export class SliderService {
     {
       image:'./../../../../assets/images/Medical-Wallpapers-3.jpg',
       title:'Pill Identifier',
-      description:'ay kalam pla pla pla'
+      description:'Identify unknown pill'
     },
     {
       image:'./../../../../assets/images/Medical-Wallpapers-4.jpg',
-      title:'Check Drug Interacton',
-      description:'ay kalam pla pla pla'
+      title:'Drug Interacton',
+      description:'Check Interaction'
     }
   ];
 

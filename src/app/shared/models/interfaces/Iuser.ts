@@ -5,6 +5,7 @@ export interface Iuser {
     username:string
     email:string
     password:string
+    confirmPassword?:string;
     firstName?: string;
     lastName?: string;
     profession?: string;
