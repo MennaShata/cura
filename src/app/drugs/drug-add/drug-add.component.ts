@@ -174,11 +174,9 @@ export class DrugAddComponent implements OnInit{
         
       };
       if(this.id){
-        debugger;
         this.drugservice.save(this.drug);
       }
       else{
-        debugger;
         this.drugservice.add(this.drug);
       }
       this.route.navigate(['/drug','listing']);

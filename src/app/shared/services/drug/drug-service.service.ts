@@ -122,7 +122,6 @@ export class DrugServiceService {
     // return this.http.get<Idrug[]>(this.url);
   }
   getById(id) {
-    debugger;
     const index = this.drugs.findIndex(a => a.id == id);
     if (index > -1) {
       return this.drugs[index];
@@ -172,7 +171,6 @@ export class DrugServiceService {
   }
 
   save(drug: Idrug) {
-    debugger;
     const oldDrug = this.getById(drug.id);
     oldDrug.image = drug.image;
     oldDrug.drugName = drug.drugName;
