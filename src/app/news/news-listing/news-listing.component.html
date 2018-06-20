@@ -1,0 +1,31 @@
+<div class="container">
+
+    <div class="row"  style="margin-bottom: 30px;  margin-top: -25px;">
+        <div class="col-xs-8 col-xs-offset-2 mt-xlg">
+            <div class="input-group">
+
+                <!-- <input type="hidden" name="search_param" value="all" id="search_param"> -->
+                <input type="text" class="form-control" name="txtSearch" id="newsName" placeholder="Search term..." [(ngModel)]="txtSearch"
+                    (keypress)="search()" (change)="search()" (keydown)="search()"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-primary btn-md" style="background-color:#008fe2!important;">
+                        <span>
+                            <i class="fa fa-search" style="color:white"></i>
+                        </span>
+                    </button>
+
+                </span>
+            </div>
+        </div>
+        
+        <div class="col-xs-2 mt-xlg" style="font-size:xx-large;color:#008fe2;">
+            <a (click)="openModalWithComponent()" data-toggle="modal" data-target="#defaultModal">
+                <i class="fa fa-plus-circle"></i>
+            </a>
+        </div>
+    </div>
+
+
+    <app-news-item [oneNews]="i" *ngFor="let i of news"></app-news-item>
+
+</div>
