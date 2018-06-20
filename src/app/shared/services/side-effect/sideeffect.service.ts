@@ -23,7 +23,6 @@ constructor() {
     description:"This particular drug is used to treat pain, and is classified as an opioid. There’s a massive opioid epidemic plaguing the U.S. right now",
     isDeleted:false
 
-
 }
 ]
 }

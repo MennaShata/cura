@@ -9,8 +9,17 @@ import { Idisease } from '../../shared/models/interfaces/idisease';
 export class DiseaseWithoutComponent implements OnInit {
   @Input() disease:Idisease;
   constructor() { }
-
+  public TrimMaxLength(str, maxLength) {
+    var res = str;
+    if (str.length > maxLength) {
+        res = str.substr(0, maxLength);
+        res = res.concat("...");
+    }
+    return res;
+  }
   ngOnInit() {
+    this.disease.descripton=this.TrimMaxLength(this.disease.descripton,100);
+    
   }
 
 }
