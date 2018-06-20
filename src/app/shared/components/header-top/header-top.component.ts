@@ -16,6 +16,7 @@ export class HeaderTopComponent implements OnInit {
   //signin: BsModalRef
   usertoken:string
   notfound = false
+  username:string
   constructor(private router : Router) { }
 
   // public openLogin() {
@@ -25,14 +26,17 @@ export class HeaderTopComponent implements OnInit {
   //   this.signin = this.modalService.show(SignUpComponent);
   // }
   ngOnInit() {
-    this.usertoken = localStorage.getItem('userToken')
+    this.usertoken = localStorage.getItem('userToken');
+    this.username = localStorage.getItem('username');
     if(this.usertoken==null){
       this.notfound =true
     }
-   
+ 
   }
+ 
   Logout(){
     localStorage.removeItem('userToken');
     this.router.navigate(['/user/login']);
+
   }
 }
