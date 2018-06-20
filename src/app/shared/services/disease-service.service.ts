@@ -12,7 +12,7 @@ export class DiseaseServiceService {
       id:0,
       name: 'cancer',
       descripton: 'bla bla bla',
-      bodyParts: ['Eyes', 'Eyes'],
+      bodyParts: ['Eyes', 'Arms'],
       forbiddenDrugs: [{ name: 'panadol', type: 'drink', image: '../../../assets/images/p.jpg' },{ name: 'kitofan', type: 'pill', image: '../../../assets/images/ke.gif' },{ name: 'asposide', type: 'drink', image: '../../../assets/images/aspo.jpg' },{ name: 'cataflam', type: 'pill', image: '../../../assets/images/ca.jpg' }],
       treatedDrugs: [{ name: 'panadol', type: 'drink', image: '../../../assets/images/p.jpg' },{ name: 'kitofan', type: 'pill', image: '../../../assets/images/ke.gif' },{ name: 'asposide', type: 'drink', image: '../../../assets/images/aspo.jpg' },{ name: 'cataflam', type: 'pill', image: '../../../assets/images/ca.jpg' },{ name: 'panadol', type: 'drink', image: '../../../assets/images/p.jpg' },{ name: 'kitofan', type: 'pill', image: '../../../assets/images/ke.gif' },{ name: 'asposide', type: 'drink', image: '../../../assets/images/aspo.jpg' },{ name: 'cataflam', type: 'pill', image:'../../../assets/images/ca.jpg'}]
     },
@@ -87,14 +87,23 @@ export class DiseaseServiceService {
   }
 
   Search(diseaseName) {
-    const index = this.diseases.findIndex(a => a.name == diseaseName);
-    if (index > -1) {
-      let disease = this.diseases[index];
-      this.diseases =[];
-      this.diseases.push(disease);
-      //console.log(this.diseases);
+  //   const index = this.diseases.findIndex(a => a.name == diseaseName);
+  //   if (index > -1) {
+  //     let disease = this.diseases[index];
+  //     this.diseases =[];
+  //     this.diseases.push(disease);
+  //     //console.log(this.diseases);
+  //   }
+    
+  //     return this.diseases;
+  // }
+  if(diseaseName !='' && diseaseName !=null && diseaseName.length > 0){
+    let result:Idisease[]=[];
+    result = this.diseases.filter(a=> a.name.toLowerCase().indexOf(diseaseName.toLowerCase())>-1);
+    return result;
+    }
+    else{
+      return this.diseases;
     }
     
-      return this.diseases;
-  }
-}
+}}
