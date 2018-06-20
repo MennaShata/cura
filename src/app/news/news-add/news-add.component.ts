@@ -37,6 +37,13 @@ export class NewsAddComponent implements OnInit {
       newsImage: new FormControl('', Validators.required)
     });
 
+
+    this.addForm.patchValue(
+      {
+        newsImage: "./../../../assets/images/"
+      }
+    );
+
   }
 
   whenCanceled() {

@@ -48,19 +48,19 @@ export class PillService {
         strengthUnit: 2,
         backImprint: "OO",
         frontImprint: "d",
-        color: 3,
+        color: 1,
         shape: 7
       },
       {
         id: 4,
-        name: "Panadol",
-        image: "./../../../assets/images/panadolpill.jpg",
-        strength: 500,
-        strengthUnit: 1,
-        backImprint: "14-H",
-        frontImprint: "e",
-        color: 2,
-        shape: 5
+        name: "Gabapentin",
+        image: "./../../../assets/images/p4.jpg",
+        strength: 300,
+        strengthUnit: 2,
+        backImprint: "v",
+        frontImprint: "36 01",
+        color: 3,
+        shape: 2
 
       },
       {
@@ -71,44 +71,44 @@ export class PillService {
         strengthUnit: 2,
         backImprint: "c",
         frontImprint: "G G 258",
-        color: 3,
+        color: 1,
         shape: 4
 
       },
       {
         id: 6,
         name: "Alprazolam",
-        image: "./../../../assets/images/alprazolam.JPG",
+        image: "./../../../assets/images/p2.jpg",
         strength: 300,
-        strengthUnit: 2,
-        backImprint: "a",
-        frontImprint: "b",
+        strengthUnit: 2, 
+        backImprint: "gg",
+        frontImprint: "256",
         color: 1,
         shape: 5
 
       },
       {
         id: 7,
-        name: "DrugSearch",
-        image: "./../../../assets/images/panadolpill.jpg",
+        name: " Aripiprazole",
+        image: "./../../../assets/images/p3.JPG",
         strength: 300,
         strengthUnit: 1,
-        backImprint: "b",
-        frontImprint: "a",
-        color: 1,
+        backImprint: "a",
+        frontImprint: "5",
+        color: 11,
         shape: 5
 
       },
       {
         id: 8,
-        name: "ha2ool",
-        image: "./../../../assets/images/CCA03770.JPG",
+        name: "GRALISE",
+        image: "./../../../assets/images/p5.jpg",
         strength: 200,
         strengthUnit: 3,
-        backImprint: "b",
-        frontImprint: "c",
+        backImprint: "mp",
+        frontImprint: "116",
         color: 3,
-        shape: 2
+        shape: 1
       }
     ]
   }
