@@ -11,23 +11,35 @@ import { DiseaseAddComponent } from '../disease-add/disease-add.component';
   styleUrls: ['./disease-lising.component.css']
 })
 export class DiseaseLisingComponent implements OnInit {
- diseases:Idisease[];
- bsModalRef: BsModalRef;
- public txtSearch:string='';
- 
-  constructor( private diseaseServiceService:DiseaseServiceService, private modalService: BsModalService) { }
-public getDiseases(){
-  this.diseases=this.diseaseServiceService.getDiseases();
-}
+  diseases: any[]=[];
+  disease: Idisease;
+  getDiseases() {
+    this.DiseaseServiceService.getDiseases().subscribe(res => {
+      this.DiseaseServiceService.diseases = res;
+      this.diseases=this.DiseaseServiceService.diseases;
+    });
+  }
+  constructor(private DiseaseServiceService: DiseaseServiceService) { }
   ngOnInit() {
     this.getDiseases();
   }
-  public openModalWithComponent() {
-    this.bsModalRef = this.modalService.show(DiseaseAddComponent);
-  }
-  search(){
-   // console.log(this.txtSearch);
-    this.diseases = this.diseaseServiceService.Search(this.txtSearch);
+//  diseases:Idisease[];
+//  bsModalRef: BsModalRef;
+//  public txtSearch:string='';
+ 
+//   constructor( private diseaseServiceService:DiseaseServiceService, private modalService: BsModalService) { }
+// public getDiseases(){
+//   this.diseases=this.diseaseServiceService.getDiseases();
+// }
+//   ngOnInit() {
+//     this.getDiseases();
+//   }
+//   public openModalWithComponent() {
+//     this.bsModalRef = this.modalService.show(DiseaseAddComponent);
+//   }
+//   search(){
+//    // console.log(this.txtSearch);
+//     this.diseases = this.diseaseServiceService.Search(this.txtSearch);
 
-  }
+//   }
 }
