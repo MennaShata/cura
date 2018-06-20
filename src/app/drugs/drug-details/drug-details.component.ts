@@ -51,7 +51,7 @@ export class DrugDetailsComponent implements OnInit {
     for(let i=0;i<this.drug.activeIngredient.length;i++){
       this.activeIngredient[i] = this.activeIngredientService.getById(this.drug.activeIngredient[i]);
       for(let j=0;j<this.activeIngredient[i].diseases.length;j++){
-        this.disease[j] = this.diseaseService.getDisease(this.activeIngredient[i].diseases[j]);
+        this.disease[j] = this.diseaseService.getById(this.activeIngredient[i].diseases[j]);
       }
       for(let j=0;j<this.activeIngredient[i].sideEffect.length;j++){
       this.sideEffect[j] = this.sideEffectService.getById(this.activeIngredient[i].sideEffect[j]);
