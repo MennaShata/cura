@@ -60,11 +60,11 @@ export class DrugAddComponent implements OnInit{
     this.colors=this.colorService.getAll();
     this.strengthUnits= this.strengthService.getAll();
     this.myForm = new FormGroup({
-      tradeName : new FormControl('',Validators.required),
-      company : new FormControl('',Validators.required),
+      tradeName : new FormControl('',[Validators.required,Validators.minLength(4),Validators.pattern('^[A-Z]{2}\\d{4}')]),
+      company : new FormControl('',[Validators.required,Validators.minLength(4),Validators.pattern('^[A-Z]{2}\\d{4}')]),
       activeIngredient: new FormControl('',Validators.required),
-      usage : new FormControl('',Validators.required),
-      dosage : new FormControl('',Validators.required),
+      usage : new FormControl('',[Validators.required,Validators.minLength(5),Validators.pattern('^[A-Z]{2}\\d{4}')]),
+      dosage : new FormControl('',[Validators.required,Validators.minLength(5)]),
       pregnancyWarning : new FormControl('',Validators.required),
       childernWarning : new FormControl('',Validators.required),
       warning : new FormControl(),
@@ -106,8 +106,7 @@ export class DrugAddComponent implements OnInit{
           strengthUnit : this.drugStrengthUnit.id,
           approvalHistory : this.drug.approvalHistory,
           //drugLogo : this.drug.image
-        });
-      }   
+        });  
       if(this.drugType.name=== 'Tablets'){
          this.pill=true;
          this.drugColor= this.colorService.getById(this.drug.color);
@@ -135,11 +134,10 @@ export class DrugAddComponent implements OnInit{
             // drugLogo : this.drug.image,
            // pillImage : this.drug.pillImage
           });
-      }
+      }}
         
   }
   callType(){
-    debugger;
     this.drugType = this.drugTypeService.getById(this.myForm.get('type').value);
       if(this.drugType.name === "Tablets")
       {
@@ -185,9 +183,8 @@ export class DrugAddComponent implements OnInit{
       }
       this.route.navigate(['/drug','listing']);
     } 
+
   }
-
-
 
   cancelForm(){
     this.myForm.reset();

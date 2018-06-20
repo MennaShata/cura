@@ -4,7 +4,10 @@ import { DrugListingComponent } from './../../../drugs/drug-listing/drug-listing
 import { Observable } from 'rxjs/internal/Observable';
 import { of } from 'rxjs';
 import { Subject } from 'rxjs';
-// import { Observable } from 'rxjs/internal/Observable';
+
+import { Http, HttpModule } from '@angular/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { error } from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -83,10 +86,15 @@ export class DrugServiceService {
       foodInteraction: [1, 2]
     }
   ];
+  url = "http://localhost:53795/api/drug";
+
+
   private drugsDisplay:Idrug[]=this.drugs.slice();
   constructor() { }
   getAllDrug(): Observable<Idrug[]> {
     return of(this.drugsDisplay);
+    // this.http.get<Idrug[]>(this.url).subscribe(res => { this.drugs = res });
+    // return this.http.get<Idrug[]>(this.url);
   }
   getById(id) {
     debugger;
@@ -109,6 +117,23 @@ export class DrugServiceService {
       this.drugs.splice(index, 1);
       this.drugsDisplay.splice(index,1);
     }
+
+    // const url = `${this.url}/${id}`;
+    // this.http.delete(url).subscribe(
+    //   (isSuccess)=>
+    //   {
+    //     if(isSuccess)
+    //     { 
+    //       debugger
+    //       var i =this.drugs.findIndex(a=> a.id === id);
+    //       this.drugs.splice(i,1);
+    //       this.http.delete(url);
+    //     }
+    //   },
+    //   (error)=> {
+    //     alert('you can not delete this drug since it has a relation with other entities');
+    //   }
+    // );
   }
 
   add(drug: Idrug) {
@@ -116,6 +141,7 @@ export class DrugServiceService {
           drug.id = this.drugs.length+1;
       this.drugs.push(drug);
       this.drugsDisplay = this.drugs;
+      // return this.http.post<Istudent>(this.url, student);
     }
 
   }
@@ -142,6 +168,11 @@ export class DrugServiceService {
     oldDrug.pillImage = drug.pillImage;
     oldDrug.color = drug.color;
     oldDrug.shape = drug.shape;
+
+
+    // const url = `${this.url}/${drug.id}`;
+    // //console.log(url);
+    // return this.http.put<Idrug>(url, drug);
 
   }
   drugSearch(drugName) {

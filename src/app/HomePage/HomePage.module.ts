@@ -7,10 +7,12 @@ import { ServiceSmallItemComponent } from './service-small-item/service-small-it
 import { ServiceListingComponent } from './service-listing/service-listing.component';
 import { DoctorSliderComponent } from './doctorSlider/doctorSlider.component';
 import { DoctorSmallItemComponent } from './doctor-small-item/doctor-small-item.component';
+import { RouterModule, Routes ,ActivatedRoute} from '@angular/router';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   declarations: [HomePageComponent,
     IndexComponent,
