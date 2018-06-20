@@ -18,7 +18,7 @@ export class PillService {
   constructor(private drugService: DrugServiceService) {
     this.pills = [
       {
-        id: 1,
+        id: 5,
         name: "Tramadol",
         image: "./../../../assets/images/CCA03770.JPG",
         strength: 200,
@@ -29,7 +29,7 @@ export class PillService {
         shape: 5
       },
       {
-        id: 2,
+        id: 3,
         name: "Panadol",
         image: "./../../../assets/images/panadolpill.jpg",
         strength: 500,
@@ -41,7 +41,7 @@ export class PillService {
 
       },
       {
-        id: 3,
+        id: 7,
         name: "Tamol",
         image: "./../../../assets/images/CoDydramol.jpg",
         strength: 100,
@@ -52,7 +52,7 @@ export class PillService {
         shape: 7
       },
       {
-        id: 4,
+        id: 8,
         name: "Gabapentin",
         image: "./../../../assets/images/p4.jpg",
         strength: 300,
@@ -64,7 +64,7 @@ export class PillService {
 
       },
       {
-        id: 5,
+        id: 9,
         name: "Xanax",
         image: "./../../../assets/images/Xanax.jpg",
         strength: 300,
@@ -76,7 +76,7 @@ export class PillService {
 
       },
       {
-        id: 6,
+        id: 10,
         name: "Alprazolam",
         image: "./../../../assets/images/p2.jpg",
         strength: 300,
@@ -88,19 +88,19 @@ export class PillService {
 
       },
       {
-        id: 7,
+        id: 11,
         name: " Aripiprazole",
         image: "./../../../assets/images/p3.JPG",
         strength: 300,
         strengthUnit: 1,
-        backImprint: "a",
-        frontImprint: "5",
+        backImprint: "5",
+        frontImprint: "a",
         color: 11,
         shape: 5
 
       },
       {
-        id: 8,
+        id: 12,
         name: "GRALISE",
         image: "./../../../assets/images/p5.jpg",
         strength: 200,
