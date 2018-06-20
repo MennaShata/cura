@@ -3,6 +3,8 @@ import { BsModalRef } from 'ngx-bootstrap';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { Iuser } from '../../shared/models/interfaces/Iuser';
 import { NgForm } from '@angular/forms';
+import { UserService} from './../../shared/services/user/user.service'
+import { ToastrService } from 'ngx-toastr'
 
 
 @Component({
@@ -11,6 +13,23 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+  constructor( private UserService:UserService, private toastr: ToastrService) { }
+  onSubmit(form: NgForm){
+    this.UserService.registerUser(form.value)
+    .subscribe((data:any)=>{
+      if(data.Succeded == true){
+        this.resetForm(form);
+        this.toastr.success('User Registration Successfull')
+      }
+      else{
+        this.toastr.error(data.Errors[0])
+      }
+    });
+
+  }
+  
+
+  
   user: Iuser={
     username:'',
     email:'',
@@ -18,7 +37,6 @@ export class SignUpComponent implements OnInit {
     confirmPassword:''
   }
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
-  constructor(public bsModalRef: BsModalRef) { }
 
   ngOnInit() {
     

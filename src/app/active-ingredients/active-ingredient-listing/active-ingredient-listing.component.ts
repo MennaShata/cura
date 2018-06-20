@@ -9,13 +9,21 @@ import { Iactiveingredient } from 'src/app/shared/models/interfaces/iactiveingre
 })
 export class ActiveIngredientListingComponent implements OnInit {
 
-  ais:Iactiveingredient[];
+  public txtSearch:string='';
+  public aisName:string[];
+
+  ais:Iactiveingredient[]=[];
   constructor(private ActiveIngredientService:ActiveIngredientService) { }
 
   ngOnInit() {
     this.ActiveIngredientService.getAll().subscribe(
       (data)=>{this.ais=data}
     )
+    this.aisName = this.ActiveIngredientService.getAllNames();
+  }
+
+  search(){
+    this.ais = this.ActiveIngredientService.search(this.txtSearch);
   }
 
 }

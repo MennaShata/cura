@@ -10,16 +10,16 @@ import { SignUpComponent } from '../../../user/sign-up/sign-up.component';
   styleUrls: ['./header-top.component.css']
 })
 export class HeaderTopComponent implements OnInit {
-  bsModalRef: BsModalRef;
-  signin: BsModalRef
-  constructor(private modalService: BsModalService) { }
+ // bsModalRef: BsModalRef;
+  //signin: BsModalRef
+  constructor() { }
 
-  public openLogin() {
-    this.bsModalRef = this.modalService.show(LoginComponent);
-  }
-  openSignUp(){
-    this.signin = this.modalService.show(SignUpComponent);
-  }
+  // public openLogin() {
+  //   this.bsModalRef = this.modalService.show(LoginComponent);
+  // }
+  // openSignUp(){
+  //   this.signin = this.modalService.show(SignUpComponent);
+  // }
   ngOnInit() {
   }
 

@@ -2,20 +2,20 @@
 		<!-- start: page -->
 		<section class="body-sign">
 			<div class="center-sign">
-				<a href="/" class="logo pull-left">
+				<!-- <a href="/" class="logo pull-left">
 					<img src="Logo.png" height="54" alt="Porto Admin" />
-				</a> 
+				</a>  -->
 
 				<div class="panel panel-sign">
 					<div class="panel-title-sign mt-xl text-right">
 						<h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Sign In</h2>
 					</div>
 					<div class="panel-body">
-						<form action="index.html" method="post">
+						<form  #loginForm="ngForm" (ngSubmit)="OnSubmit(UserName.value,Password.value)"action="index.html" method="post">
 							<div class="form-group mb-lg">
 								<label>Username</label>
 								<div class="input-group input-group-icon">
-									<input name="username" type="text" class="form-control input-lg" />
+									<input  #UserName ngModel name="UserName" type="text" class="form-control input-lg" />
 									<span class="input-group-addon">
 										<span class="icon icon-lg">
 											<i class="fa fa-user"></i>
@@ -30,7 +30,7 @@
 									<a href="pages-recover-password.html" class="pull-right">Lost Password?</a>
 								</div>
 								<div class="input-group input-group-icon">
-									<input name="pwd" type="password" class="form-control input-lg" />
+									<input  type="password" #Password ngModel name="Password" class="form-control input-lg" />
 									<span class="input-group-addon">
 										<span class="icon icon-lg">
 											<i class="fa fa-lock"></i>
@@ -47,7 +47,7 @@
 									</div>
 								</div>
 								<div class="col-sm-4 text-right">
-									<button type="submit" class="btn btn-primary hidden-xs">Sign In</button>
+									<button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary hidden-xs">Sign In</button>
 									<button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign In</button>
 								</div>
 							</div>
@@ -61,7 +61,7 @@
 								<a class="btn btn-twitter mb-md ml-xs mr-xs">Connect with <i class="fa fa-twitter"></i></a>
 							</div>
 
-							<p class="text-center">Don't have an account yet? <a href="pages-signup.html">Sign Up!</a>
+							<p class="text-center">Don't have an account yet? <a routerLink="/user/signup">Sign Up!</a>
 
 						</form>
 					</div>

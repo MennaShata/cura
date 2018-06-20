@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserDrugEditComponent } from './user-drug/user-drug-edit/user-drug-edit.component';
 import { TabsModule } from 'ngx-bootstrap';
+import { Router, RouterModule } from '@angular/router';
 
 
 
@@ -20,12 +21,12 @@ import { TabsModule } from 'ngx-bootstrap';
   imports: [
     CommonModule,
     FormsModule,
-    TabsModule
+    TabsModule,
+    RouterModule
   ],
   declarations: [UserComponent,
     LoginComponent,
-    SignUpComponent
-,
+    SignUpComponent,
     UserProfileComponent,
     UserDiseaseAddComponent,
     UserDiseaseItemComponent,
@@ -36,6 +37,10 @@ import { TabsModule } from 'ngx-bootstrap';
     UserDrugEditComponent,
 
   
+],exports : [
+SignUpComponent,
+LoginComponent,
+
 ]
 })
 export class UserModule { }
