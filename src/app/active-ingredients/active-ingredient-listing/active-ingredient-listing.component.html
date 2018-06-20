@@ -2,14 +2,17 @@
   <div class="row col-md-offset-3">
     <input type="text" class="form-control" name="txtSearch" id="DrugName" placeholder="Search term..." [(ngModel)]="txtSearch"
       (keydown)="search()" (change)="search()" [typeahead]="aisName" />
-    
-      <button class="btn btn-primary btn-md" id="searchbtn" style="background-color:#008fe2!important;">
-        <span>
-          <i class="fa fa-search" style="color:white"></i>
-        </span>
-      </button>
 
-    
+    <button class="btn btn-primary btn-md " id="searchbtn" style="background-color:#008fe2!important;">
+      <span>
+        <i class="fa fa-search" style="color:white"></i>
+      </span>
+    </button>
+    <div class="col-md-1" style="font-size:xx-large;color:#008fe2;">
+        <a [routerLink]="['/activeingredient/addActiveIngredient']">
+            <i class="fa fa-plus-circle"></i>
+        </a>
+    </div>
   </div>
   <div class="row col-md-offset-1">
     <app-active-ingrediant-item class="col-lg-5" *ngFor="let ai of ais" [ai]=ai></app-active-ingrediant-item>
